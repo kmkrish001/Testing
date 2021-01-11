@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Essential JS 1: DropDownList - Default Functionalities</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+    <link href="https://cdn.syncfusion.com/18.4.0.30/js/web/flat-azure/ej.web.all.min.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> 
+	<![endif]-->
+    <!--[if IE 9]><!-->
+        <script src="scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <!--<![endif]--> 
+    <script src="scripts/ej.core.js"></script>
+    <script src="scripts/ej.data.js"></script>
+    <script src="scripts/ej.scroller.js"></script>
+    <script src="scripts/ej.draggable.js"></script>
+    <script src="scripts/ej.globalize.js"></script>
+    <script src="scripts/ej.button.js"></script>
+    <script src="scripts/ej.checkbox.js"></script>
+    <script src="scripts/ej.dropdownlist.js"></script>
+</head>
+<body>
+    <div class="content-container-fluid">
+        <div class="row">
+            <div class="cols-sample-area">
+                <div class="frame">
+                    <div class="ctrllabel">local data with multiple field</div>
+                    <input type="text" id="customerList" />
+                    <div class="ctrllabel">local data with single field</div>
+                    <input type="text" id="bookSelect" />
+                </div>
+                <label>remote data</label>
+                <div class="control">
+                    <select id="RegionId" name="RegionId"></select>  
+                </div>
+                <label>id with text field</label>
+                <div class="control">
+                    <input type="text" id="userdestlist" />
+                </div>
+                <div class="ctrllabel">checkbox</div>
+
+                        <input type="text" id="customerList1" />
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+       var target;
+       var localData = [{"UserID":113,"Text":"Alberto113"},
+                   {"UserID":44,"Text":"Alexander44"},
+                   {"UserID":88,"Text":"Alvaro88"},
+                   {"UserID":84,"Text":"Angeles84"},
+                   {"UserID":76,"Text":"Arnaud76"},
+                   {"UserID":85,"Text":"Audrey85"},
+                   {"UserID":62,"Text":"Auto62"},
+                   {"UserID":48,"Text":"Brieuc48"},
+                   {"UserID":19,"Text":"Bruno19"},
+                   {"UserID":36,"Text":"Carlos E36"},
+                   {"UserID":109,"Text":"Carlos109"},
+                   {"UserID":27,"Text":"Carlos27"},
+                   {"UserID":97,"Text":"Carlos97"},
+                   {"UserID":53,"Text":"Chafik53"},
+                   {"UserID":35,"Text":"Chantal35"},
+                   {"UserID":114,"Text":"Christophe114"},
+                   {"UserID":21,"Text":"Christophe21"},
+                   {"UserID":99,"Text":"Christophe99"},
+                   {"UserID":45,"Text":"Client45"},
+                   {"UserID":40,"Text":"Contabilidad40"},
+                   {"UserID":41,"Text":"Contabilidad41"},
+                   {"UserID":65,"Text":"Contabilidad65"},
+                   {"UserID":96,"Text":"Contact96"},
+                   {"UserID":74,"Text":"Contacto74"},
+                   {"UserID":82,"Text":"Contacto82"},
+                   {"UserID":98,"Text":"Coordinador98"},
+                   {"UserID":107,"Text":"Cristina107"},
+                   {"UserID":105,"Text":"Daniel105"},
+                   {"UserID":59,"Text":"David59"},
+                   {"UserID":117,"Text":"Diego117"},{"UserID":37,"Text":"Dora37"},{"UserID":6,"Text":"Edwin6"},{"UserID":55,"Text":"Emilio55"},{"UserID":71,"Text":"Emma71"},{"UserID":12,"Text":"Emmanuel12"},{"UserID":52,"Text":"Emmanuel52"},{"UserID":93,"Text":"Estrella93"},{"UserID":123,"Text":"Eva123"},{"UserID":79,"Text":"Fabrice Bernard79"},{"UserID":1,"Text":"Fabrice1"},{"UserID":10,"Text":"Fabrice10"},{"UserID":4,"Text":"Fabrice4"},{"UserID":56,"Text":"Fiona56"},{"UserID":122,"Text":"Francisco Javier122"},{"UserID":120,"Text":"Francisco120"},{"UserID":5,"Text":"Geoffroy5"},{"UserID":95,"Text":"Gloria95"},{"UserID":118,"Text":"Gonzalo Alfredo118"},{"UserID":89,"Text":"Grégory89"},{"UserID":25,"Text":"Guillaume25"},{"UserID":31,"Text":"IT31"},{"UserID":80,"Text":"Jair80"},{"UserID":73,"Text":"Javier73"},{"UserID":17,"Text":"Jean-Charles17"},{"UserID":58,"Text":"JEROME58"},{"UserID":90,"Text":"Julie90"},{"UserID":23,"Text":"Julien23"},{"UserID":33,"Text":"Laurent33"},{"UserID":77,"Text":"Licensing77"},{"UserID":67,"Text":"Luis Antonio67"},{"UserID":108,"Text":"Luis108"},{"UserID":51,"Text":"Maria José51"},{"UserID":70,"Text":"Mark70"},{"UserID":34,"Text":"Mauricio34"},{"UserID":8,"Text":"Mauricio8"},{"UserID":72,"Text":"Michel72"},{"UserID":119,"Text":"Miguel 119"},{"UserID":102,"Text":"Miguel Ángel102"},{"UserID":28,"Text":"Miguel Angel28"},{"UserID":103,"Text":"Mylène103"},{"UserID":39,"Text":"Myriam39"},{"UserID":60,"Text":"Myriam60"},{"UserID":50,"Text":"Natalia50"},{"UserID":116,"Text":"Nerea 116"},{"UserID":47,"Text":"Nicolas47"},{"UserID":7,"Text":"Nicolas7"},{"UserID":49,"Text":"Olivier49"},{"UserID":38,"Text":"Paola38"},{"UserID":75,"Text":"Pascal75"},{"UserID":26,"Text":"Patricia26"},{"UserID":81,"Text":"Patricio81"},{"UserID":106,"Text":"Peggy106"},{"UserID":104,"Text":"Philippe104"},{"UserID":87,"Text":"Philippe87"},{"UserID":94,"Text":"Plusieurs clients94"},{"UserID":46,"Text":"Sandra46"},{"UserID":86,"Text":"Sébastien86"},{"UserID":92,"Text":"Servicio Andaluz de Salud (SAS)92"},{"UserID":91,"Text":"Symantec Spain S.L.91"},{"UserID":29,"Text":"Test29"},{"UserID":112,"Text":"Thierry112"},{"UserID":18,"Text":"Timothy18"},{"UserID":121,"Text":"Virginia121"},{"UserID":43,"Text":"Wilson43"},{"UserID":111,"Text":"Yacine111"},{"UserID":101,"Text":"Yineth101"}];
+      
+       $(function () {
+        $('#customerList').ejDropDownList({
+            dataSource: localData,
+            fields: { text: "Text" , value:"UserID" },
+            watermarkText: "",
+            width: "70%",
+            enableFilterSearch: true,
+            multiSelectMode: "visualmode",
+        });
+        var BooksSection = [
+            { category: "Art" }, { category: "Architecture" }, { category: "Biographies" }, { category: "Business" }, { category: "ComputerIT" },
+            { category: "se" }, { category: "0ne" }, { category: "two" }, { category: "three" }, { category: "four" },
+            { category: "Comics" }, { category: "Cookery" }, { category: "Environment" }, { category: "Fiction" },
+            { category: "Health" }, { category: "Humanities" }, { category: "Language" }, { category: "Literature" }, { category: "Memoirs" },
+            { category: "Management" }, { category: "Professional" }, { category: "Reference" }, { category: "Spirituality" },
+            { category: "Sports" }, { category: "Sciences" }
+        ];
+        $('#bookSelect').ejDropDownList({
+            dataSource: BooksSection,
+            enableFilterSearch: true,
+            fields: { text: "category", value: "category" },
+        });  
+        
+        var dataManagerObj = ej.DataManager({ 
+            url:   "https://mvc.syncfusion.com/services/Northwnd.svc/Orders" 
+        });
+        var query = ej.Query().select("ShipName", "ShipCountry");
+        // declaration
+        $('#RegionId').ejDropDownList({ 
+            dataSource: dataManagerObj, 
+            query: query, 
+            fields: { text: "ShipName"}, 
+            itemsCount : 20,
+            enableFilterSearch: true,
+        }); 
+
+        // different text and  value field
+        BikeList = [
+            { empid: "bk1", text: "Apache RTR" }, { empid: "bk2", text: "CBR 150-R" }, { empid: "bk3", text: "CBZ Xtreme" },
+            { empid: "bk4", text: "Discover" }, { empid: "bk5", text: "Dazzler" }, { empid: "bk6", text: "Flame" },
+            { empid: "bk7", text: "Fazzer" }, { empid: "bk8", text: "FZ-S" }, { empid: "bk9", text: "Pulsar" },
+            { empid: "bk10", text: "Shine" }, { empid: "bk11", text: "R15" }, { empid: "bk12", text: "Unicorn" }
+        ];
+        BikeList1 = [
+             { empid: 5, text: "CBR 150-R" }, { empid: 9, text: "CBZ Xtreme" },
+            { empid: 2, text: "Discover" },
+            
+            { empid: 6, text: "Dazzler" }, { empid: 10, text: "Flame" },
+            { empid: 1, text: "Apache RTR" },
+            { empid: 3, text: "Fazzer" }, { empid: 7, text: "FZ-S" }, { empid: 11, text: "Pulsar" },
+            { empid: 4, text: "Shine" }, { empid: 8, text: "R15" }, { empid: 12, text: "Unicorn" }
+        ];
+   
+  
+        $('#userdestlist').ejDropDownList({
+            dataSource: BikeList1,
+            fields: { value: "empid", text: "text" },
+            popupHeight: '300px', 
+            multiSelectMode: "visualmode",
+            enablePopupResize: true,
+            enableFilterSearch: true,
+            width: "300px"
+        });
+
+        var ProdctionDetails = [
+                    {	ProductionGroupDetailID:	'40'	, ProductionGroupDetailName:	'AK'	, CurrencyName:	'HRK'	},
+                    {	ProductionGroupDetailID:	'41'	, ProductionGroupDetailName:	'AN'	, CurrencyName:	'HRK'	},
+                    {	ProductionGroupDetailID:	'39'	, ProductionGroupDetailName:	'AO'	, CurrencyName:	'HRK'	},
+                    {	ProductionGroupDetailID:	'87'	, ProductionGroupDetailName:	'AO plus'	, CurrencyName:	'HRK'	},
+                    {	ProductionGroupDetailID:	'140'	, ProductionGroupDetailName:	'B-Relaxed'	, CurrencyName:	'HRK'	},
+                    {	ProductionGroupDetailID:	'139'	, ProductionGroupDetailName:	'B-Safe'	, CurrencyName:	'HRK'	},
+                    {	ProductionGroupDetailID:	'141'	, ProductionGroupDetailName:	'B-Smart'	, CurrencyName:	'HRK'	},
+                    {	ProductionGroupDetailID:	'92'	, ProductionGroupDetailName:	'Djelomični kasko A'	, CurrencyName:	'HRK'	},
+                    {	ProductionGroupDetailID:	'69'	, ProductionGroupDetailName:	'Djelomični kasko D'	, CurrencyName:	'HRK'	},
+                    {	ProductionGroupDetailID:	'68'	, ProductionGroupDetailName:	'Djelomični kasko H'	, CurrencyName:	'HRK'	},
+                    {	ProductionGroupDetailID:	'24'	, ProductionGroupDetailName:	'DN1'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'25'	, ProductionGroupDetailName:	'DN2'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'129'	, ProductionGroupDetailName:	'DN3'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'97'	, ProductionGroupDetailName:	'Dobrovoljno osiguranje od posljedica nezgode putnika na brodicama KN'	, CurrencyName:	'HRK'	},
+                    {	ProductionGroupDetailID:	'35'	, ProductionGroupDetailName:	'Dobrovoljno osiguranje odgovornosti vlasnika brodica EUR'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'96'	, ProductionGroupDetailName:	'Dobrovoljno osiguranje odgovornosti vlasnika brodica KN'	, CurrencyName:	'HRK'	},
+                    {	ProductionGroupDetailID:	'36'	, ProductionGroupDetailName:	'Dobrovoljno osiguranje PUTNIKA I ČLANOVA posade od posljedica nesr.sl. EUR '	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'142'	, ProductionGroupDetailName:	'Dodatno osig. bicikla od krađe'	, CurrencyName:	'HRK'	},
+                    {	ProductionGroupDetailID:	'105'	, ProductionGroupDetailName:	'Dodatno osiguranje za slučaj smrti osigurane osobe 2'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'27'	, ProductionGroupDetailName:	'Domaćinstvo'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'130'	, ProductionGroupDetailName:	'Drugi Auto'	, CurrencyName:	'HRK'	},
+                    {	ProductionGroupDetailID:	'67'	, ProductionGroupDetailName:	'Drugo mišljenje'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'18'	, ProductionGroupDetailName:	'FAMILY CARE (TIF)'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'43'	, ProductionGroupDetailName:	'G1'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'47'	, ProductionGroupDetailName:	'G11'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'45'	, ProductionGroupDetailName:	'G3'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'46'	, ProductionGroupDetailName:	'G5'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'91'	, ProductionGroupDetailName:	'GRAWE 123 Štedi'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'123'	, ProductionGroupDetailName:	'GRAWE APARTMAN PLUS DOMAĆINSTVO '	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'122'	, ProductionGroupDetailName:	'GRAWE APARTMAN PLUS STAMB/ETAŽNO'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'28'	, ProductionGroupDetailName:	'GRAWE BIZ'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'108'	, ProductionGroupDetailName:	'GRAWE BIZ Ekspres'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'109'	, ProductionGroupDetailName:	'GRAWE ELITE 20 PLUS'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'124'	, ProductionGroupDetailName:	'GRAWE INVEST'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'125'	, ProductionGroupDetailName:	'GRAWE INVEST 4U'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'42'	, ProductionGroupDetailName:	'GRAWE Mobil'	, CurrencyName:	'HRK'	},
+                    {	ProductionGroupDetailID:	'135'	, ProductionGroupDetailName:	'GRAWE Mobil HR '	, CurrencyName:	'HRK'	},
+                    {	ProductionGroupDetailID:	'132'	, ProductionGroupDetailName:	'GRAWE PREVENT CLASSIC'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'134'	, ProductionGroupDetailName:	'GRAWE PREVENT DELUXE'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'133'	, ProductionGroupDetailName:	'GRAWE PREVENT PREMIUM'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'138'	, ProductionGroupDetailName:	'GRAWE rente'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'31'	, ProductionGroupDetailName:	'GRAWE Tour'	, CurrencyName:	'HRK'	},
+                    {	ProductionGroupDetailID:	'126'	, ProductionGroupDetailName:	'GRAWE Transport'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'127'	, ProductionGroupDetailName:	'GRAWE Transport – odgov. prijevoznika'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'112'	, ProductionGroupDetailName:	'GRAWE TRAVEL'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'115'	, ProductionGroupDetailName:	'GRAWE Trezor'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'77'	, ProductionGroupDetailName:	'Grupno osiguranje života'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'62'	, ProductionGroupDetailName:	'Hospital 1 (10€)'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'63'	, ProductionGroupDetailName:	'Hospital 2 (20€)'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'128'	, ProductionGroupDetailName:	'Imovina ostalo'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'49'	, ProductionGroupDetailName:	'K'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'50'	, ProductionGroupDetailName:	'K11'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'107'	, ProductionGroupDetailName:	'Kasko 5+'	, CurrencyName:	'HRK'	},
+                    {	ProductionGroupDetailID:	'33'	, ProductionGroupDetailName:	'Kasko brodica'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'111'	, ProductionGroupDetailName:	'Kolektivna nezgoda – djeca u kn'	, CurrencyName:	'HRK'	},
+                    {	ProductionGroupDetailID:	'19'	, ProductionGroupDetailName:	'Kolektivna nezgoda - EUR'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'110'	, ProductionGroupDetailName:	'Kolektivna nezgoda - gosti'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'118'	, ProductionGroupDetailName:	'Kolektivna nezgoda - kn'	, CurrencyName:	'HRK'	},
+                    {	ProductionGroupDetailID:	'119'	, ProductionGroupDetailName:	'Kolektivna nezgoda - posjetitelji'	, CurrencyName:	'HRK'	},
+                    {	ProductionGroupDetailID:	'103'	, ProductionGroupDetailName:	'Mini TOBI'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'117'	, ProductionGroupDetailName:	'Moja kuća 3u1'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'37'	, ProductionGroupDetailName:	'Obvezno osiguranje brodica'	, CurrencyName:	'HRK'	},
+                    {	ProductionGroupDetailID:	'38'	, ProductionGroupDetailName:	'Obvezno osiguranje putnika u javnom prometu od posljedica nesretnog slučaja'	, CurrencyName:	'HRK'	},
+                    {	ProductionGroupDetailID:	'29'	, ProductionGroupDetailName:	'Odgovornost'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'64'	, ProductionGroupDetailName:	'Operation 1 (3.000 €)'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'65'	, ProductionGroupDetailName:	'Operation 2 (5.000 €)'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'120'	, ProductionGroupDetailName:	'Osiguranje gostiju od posljedica nesretnog slučaja'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'121'	, ProductionGroupDetailName:	'Osiguranje loma stroja bazenske tehnike'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'34'	, ProductionGroupDetailName:	'Osiguranje prtljage putnika i članova posade'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'131'	, ProductionGroupDetailName:	'Paket Protekt'	, CurrencyName:	'HRK'	},
+                    {	ProductionGroupDetailID:	'22'	, ProductionGroupDetailName:	'PN1'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'23'	, ProductionGroupDetailName:	'PN2'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'66'	, ProductionGroupDetailName:	'PN3'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'30'	, ProductionGroupDetailName:	'Potres'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'59'	, ProductionGroupDetailName:	'Prevent 1'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'60'	, ProductionGroupDetailName:	'Prevent 2'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'61'	, ProductionGroupDetailName:	'Prevent 3'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'70'	, ProductionGroupDetailName:	'Prevent kolektivno'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'98'	, ProductionGroupDetailName:	'PROGRESSIVE 300 BASIC (TI300 MINI)'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'100'	, ProductionGroupDetailName:	'PROGRESSIVE 300 PRO (TI300 MAXI)'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'99'	, ProductionGroupDetailName:	'PROGRESSIVE 300 SMART (TI300 MIDI)'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'51'	, ProductionGroupDetailName:	'R1'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'53'	, ProductionGroupDetailName:	'R11K'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'52'	, ProductionGroupDetailName:	'R5K'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'56'	, ProductionGroupDetailName:	'Safe Life'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'17'	, ProductionGroupDetailName:	'SELECT CARE (TI)'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'113'	, ProductionGroupDetailName:	'SPORT (UISA)'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'114'	, ProductionGroupDetailName:	'SPORT PRO (UISP)'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'136'	, ProductionGroupDetailName:	'Stambene zgrade'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'26'	, ProductionGroupDetailName:	'Stambeni objekt / etažno'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'104'	, ProductionGroupDetailName:	'Super TOBI'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'20'	, ProductionGroupDetailName:	'TI1'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'21'	, ProductionGroupDetailName:	'TI2'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'101'	, ProductionGroupDetailName:	'TOBI'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'102'	, ProductionGroupDetailName:	'TOBI Ekspress (jednokratno plaćenje)'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'137'	, ProductionGroupDetailName:	'UI11'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'14'	, ProductionGroupDetailName:	'UI3 - nezgoda'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'15'	, ProductionGroupDetailName:	'UI4 - nezgoda'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'16'	, ProductionGroupDetailName:	'UI5 - nezgoda'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'90'	, ProductionGroupDetailName:	'UK11'	, CurrencyName:	'EUR'	},
+                    {	ProductionGroupDetailID:	'89'	, ProductionGroupDetailName:	'UK5'	, CurrencyName:	'EUR'	},
+            ];
+          $('#customerList1').ejDropDownList({
+            dataSource: ProdctionDetails,
+                width: "100%",
+                fields: { text: "ProductionGroupDetailName", value: "ProductionGroupDetailID" },
+                showRoundedCorner: true,
+                watermarkText: "",
+                popupHeight: "200",
+                showCheckbox: true,
+                popupHide: function (args) {
+                    alert($("#customerList2").data("ejDropDownList").getSelectedValue());
+                }
+            });
+    });
+      
+    </script>
+</body>
+</html>
