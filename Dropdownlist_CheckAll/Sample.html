@@ -29,15 +29,23 @@
                         <div class="ctrllabel">Select your skill</div>
                         <input type="text" id="skillsets" />
                     </div>
+                    <div class="control">
+                        <div class="ctrllabel">Select your skill</div>
+                        <input type="text" id="dropdown2" />
+                    </div>
                 </div>
             </div>
 
             <div id="sampleProperties">
                 <div class="prop-grid">
                     <div class="row">
-                        <div class="col-md-3">Check\Uncheck All</div>
+                        <div class="col-md-3">Visual Mode Check\Uncheck All</div>
                         <div class="col-md-3">
                             <input type="checkbox" id="btnchkunchk" class="e-togglebtn" value="checkuncheck" />
+                        </div>
+                        <div class="col-md-3">Delimeter mode Check\Uncheck All</div>
+                        <div class="col-md-3">
+                            <input type="checkbox" id="delCheckBtn" class="e-togglebtn" value="checkuncheck" />
                         </div>
                     </div>
 
@@ -61,13 +69,38 @@
               multiSelectMode: ej.MultiSelectMode.VisualMode 
             });
             target = $('#skillsets').data("ejDropDownList");
-            $("#btnchkunchk").ejToggleButton({ "change": "onCheckUncheckAll", "defaultText": "Check All", "activeText": "Uncheck All" });
+            
+            $("#btnchkunchk").ejToggleButton({ 
+                "change": "onCheckUncheckAll", 
+                "defaultText": "Check All",
+                "activeText": "Uncheck All" 
+            });
+
+            $('#dropdown2').ejDropDownList({
+                dataSource: skillset,
+                fields: { text: "skill" },
+                showCheckbox: true,
+              multiSelectMode: ej.MultiSelectMode.Delimeter 
+            });
+            target2 = $('#dropdown2').data("ejDropDownList");
+            $("#delCheckBtn").ejToggleButton({ 
+                change: "onCheckUncheckAll2", 
+                defaultText: "Check All",
+                activeText: "Uncheck All" 
+            });
         });
         function onCheckUncheckAll(args) {
             if (args.isChecked)
                 target.checkAll();
             else
-                target.unCheckAll();
+            target.unCheckAll();
+        }
+
+        function onCheckUncheckAll2(args) {
+            if (args.isChecked)
+                target2.checkAll();
+            else
+            target2.unCheckAll();
         }
       
     </script>
