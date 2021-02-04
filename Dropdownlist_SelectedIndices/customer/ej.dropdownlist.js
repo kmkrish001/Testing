@@ -774,7 +774,8 @@
 					listText = compareVal ? this._decode(dataSource[count][compareVal]) : this._decode(dataSource[count].text ? dataSource[count].text : dataSource[count] );
 				else
 					listText = compareVal ? this._decode(dataSource[count][compareVal]) : this._decode(dataSource[count].value ? dataSource[count].value : dataSource[count] );
-                if (listValues.indexOf(listText) !== -1) {
+                var listValuesArr = (typeof(listValues) == "string") ? listValues.split(this.model.delimiterChar): listValues;
+                if (listValuesArr.indexOf(listText) !== -1) {
                     if (value) 
                         listValues[listValues.indexOf(listText)] = initialPosition;
                     else
@@ -1770,7 +1771,7 @@
             if (!value || !this.model.enableFilterSearch) return;
             this._selectedIndices = this.model.selectedItems = this.model.selectedIndices = [];
             this._virtualList = this._virtualUl.children("li:not('.e-category')");
-            var item = this._toArray(value);
+            var item = (typeof(value) == "string") ? this._toArray(value) : value;
             for (var k = 0; k < item.length; k++) {
                 for (var m = 0; m < this._virtualList.length; m++) {
                     if (item[k] == this._getIndexedValue(this._virtualList[m])) {
@@ -2801,9 +2802,12 @@
 			if(this._visibleInput.val() == "" && this.element.val())
 			   this.element.val("");
             if ((this.value() != this.element.val()) || (this.value() == null && ($.inArray("", this._valueContainer) != -1))) {
-				if (!ej.isNullOrUndefined($(this.getSelectedItem()).last()[0])) {
-					(this.model.enableFilterSearch && this.model.enableServerFiltering)?this._updateSelectedIndex(this.element.val(),$(this.getSelectedItem()).last().attr("data-uid")): this._updateSelectedIndexByValue(this.element.val());
-				}
+                if(this.model.enableFilterSearch && this.model.enableServerFiltering) {
+                    if (!ej.isNullOrUndefined($(this.getSelectedItem()).last()[0]))
+                        this._updateSelectedIndex(this.element.val(),$(this.getSelectedItem()).last().attr("data-uid"))
+                } else {
+                    this._updateSelectedIndexByValue(this._valueContainer);
+                }
 				if (!this._isSingleSelect() ) {
 				    this._updateValue(this._valueContainer.toString());
 				}

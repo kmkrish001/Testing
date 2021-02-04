@@ -2722,6 +2722,7 @@
                         if (!this._isChecked(checkboxEle)) {
 							this._removeClass(checkboxEle, "e-ddl-anim");	
                             this._setClass(checkboxEle, "e-check-act e-ddl-anim");
+                            console.log(checkboxEle);
                             this._setAttr(checkboxEle,{"aria-checked":true});
                             $(checkboxEle).find(".e-check-input")[0].checked = true;
                         }

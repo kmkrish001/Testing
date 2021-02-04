@@ -2170,8 +2170,13 @@
                 if (!ej.isNullOrUndefined(_dhtmlAttributes) && (_dhtmlAttributes != "")) {
                     this._setAttr(litag, _dhtmlAttributes);
                 }
+                for(var j = 0; j < this.model.dataSource.length; j++) {
+                    if(list[i] == this.model.dataSource[j]){
+                        var index = j;
+                    }
+                }
 				if (ej.isNullOrUndefined(_did) || (_did == "")){
-					this._setAttr(litag, { id: this._id +"_"+ i + "_popup_option", "aria-selected": false, "tabindex": -1 });
+                    this._setAttr(litag, { id: this._id +"_"+ index + "_popup_option", "aria-selected": false, "tabindex": -1 });
 				}
                 if (this.model.template) {
                     $(litag).append(this._getTemplatedString(list[i]));
@@ -2728,6 +2733,7 @@
                         if (!this._isChecked(checkboxEle)) {
 							this._removeClass(checkboxEle, "e-ddl-anim");	
                             this._setClass(checkboxEle, "e-check-act e-ddl-anim");
+                            $("#"+$(checkboxEle).attr("id")).addClass("e-check-act e-ddl-anim");
                             this._setAttr(checkboxEle,{"aria-checked":true});
                             $(checkboxEle).find(".e-check-input")[0].checked = true;
                         }
@@ -2850,18 +2856,19 @@
             return $("<span>").html(val).text();
         },
         _chooseSelectionType: function () {
+            this._virtualList = this._virtualUl.children("li:not('.e-category')");
             this.activeItem = this._getActiveItem();
             this.selectedIndexValue = this._activeItem;
             this._mapFields();
             if (this._dataSource() != null && (!this._isPlainType(this._dataSource()) || !this._isPlainType(this.popupListItems))) {
-                if(this.model.enableFilterSearch && this.ultag.children()[this._activeItem].textContent == this.activeItem.text() )
-				 this._currentText = this._decode(this.ultag.children()[this._activeItem].textContent);
+                if(this.model.enableFilterSearch && this._virtualList[this._activeItem].textContent == this.activeItem.text() )
+				 this._currentText = this._decode(this._virtualList[this._activeItem].textContent);
 				else
-                this._currentText = this._decode(this._getField(this.popupListItems[this._activeItem], this.mapFld._text));
+                this._currentText = this._decode(this._getField(this.model.dataSource[this._activeItem], this.mapFld._text));
                 this._currentText = (this._currentText === "" || this._currentText == null) ? this.activeItem.text() : this._currentText;
-                this._selectedValue = this._getField(this.popupListItems[this._activeItem], this.mapFld._value);
+                this._selectedValue = this._getField(this.model.dataSource[this._activeItem], this.mapFld._value);
                 this._selectedValue = (this._selectedValue != null) ? this._selectedValue : this._currentText;
-                this._itemID = this._getField(this.popupListItems[this._activeItem], this.mapFld._id);
+                this._itemID = this._getField(this.model.dataSource[this._activeItem], this.mapFld._id);
             } else {
                 this._currentText = this.activeItem.text();
                 if (this._getAttributeValue(this.activeItem[0]))
@@ -2931,6 +2938,7 @@
                     var checkboxEle = this.activeItem.find('.e-checkwrap')[0];
                     if (this._isChecked(checkboxEle)) {
                         this._removeClass(checkboxEle, "e-check-act");
+                        $("#"+$(checkboxEle).attr("id")).removeClass("e-check-act e-ddl-anim");
 						this._setAttr(checkboxEle,{"aria-checked":false});
                         $(checkboxEle).find(".e-check-input")[0].checked = true;
                     }
@@ -3085,7 +3093,7 @@
             return top < 0 ? 0 : top;
         },
         _getActiveItem: function () {
-            return this._getLi().eq(this._activeItem);
+            return this._virtualList.eq(this._activeItem);
         },
         _setDimentions: function () {
             if (this.model.height)
@@ -3948,7 +3956,8 @@
         _onCheckChange: function (e) {
             this.checkChange = true;
             var curEle = e.target.nodeName === "INPUT" ? e.target.parentElement : e.target;
-            this._activeItem = $.inArray($(curEle).parents("li")[0], this._getLi());
+            var _liId = $(curEle).parents("li").attr("id");
+            this._activeItem = parseInt(_liId.replace("_popup_option","").replace(this._id+"_",""));
             if (!this._hasClass(curEle, "e-check-act")) {
                 this._enterTextBoxValue(true);
             }
