@@ -108,13 +108,8 @@ var clipboardCleaner = (function () {
     };
     clipboardCleaner.prototype._insertContent = function (args) {
         if (args === void 0) { args = true; }
-        //var tempSpanNode = this.currentDocument.createElement("span"), 
         var elemColl = [];
-        // content, blockElem = this.currentDocument.createElement("p");
-        // tempSpanNode.appendChild(content = this.currentDocument.createTextNode(String.fromCharCode(65279)));
-        // blockElem.appendChild(tempSpanNode);
         this._finalCleanup(this.Container);
-        //this.Container.appendChild(blockElem);
         if (this._isIE() && args) {
             elemColl = [];
             for (var gt = this.Container.childNodes.length - 1; gt > -1; gt--)
@@ -125,10 +120,8 @@ var clipboardCleaner = (function () {
         }
         else
             this._contentPositionHandler();
-        //$((ej.browserInfo().name == "msie" || ej.browserInfo().name == "mozilla") ? this.currentDocument.body.parentNode : this.currentDocument.body).scrollTop($(tempSpanNode).offset().top - 25);
         $((ej.browserInfo().name == "msie" || ej.browserInfo().name == "mozilla") ? this.currentDocument.body.parentNode : this.currentDocument.body).scrollTop();
         this.callback.call(this.env);
-        //this._updateRange(content, 0, content.textContent.length);
     };
     clipboardCleaner.prototype._insertAfter = function (elem, newElem) {
         if (elem.nextSibling) {
@@ -176,15 +169,6 @@ var clipboardCleaner = (function () {
                         parentNodes.push(elem.nodeName.toLowerCase());
                     while (this.blockNode.indexOf(elem.nodeName.toLowerCase()) == -1 && (elem = elem.parentElement));
                     nodeSet = this._createNodeCollection(parentNodes);
-                    // if (elem)
-                    //     if (elem.nextSibling)
-                    //         elem.parentElement.insertBefore(nodeSet.root, elem.nextSibling);
-                    //     else
-                    //         elem.parentElement.appendChild(nodeSet.root);
-                    elem = this.Container;
-                    while (elem == elem.nextSibling)
-                        nodeSet.leaf.appendChild(elem);
-                    this._insertAfter(this.Container.parentElement, this.Container);
                 }
                 for (var index = 0; index < this.Container.childNodes.length; index++)
                     childNodes.push(this.Container.childNodes[index]);
@@ -274,11 +258,11 @@ var clipboardCleaner = (function () {
     clipboardCleaner.prototype._processContent = function (args, state) {
         if (args === void 0) { args = null; }
         if (state === void 0) { state = true; }
-        if (args.target.textContent == "") {
-            args.target.parentElement.remove();
+        var target = args.target;
+        if (target.textContent == "") {
+            target.parentElement.remove();
         }
-        var elm = (args.target.textContent != "") ? this.currentDocument.createElement("span"): this.currentDocument.createElement("p");
-        //var elm = this.currentDocument.createElement("p");
+        var elm = (target.textContent != "") ? this.currentDocument.createElement("span") : this.currentDocument.createElement("p");
         var temp = this, nonBlock = true;
         var patern = /class="?Mso|style="[^ ]*\bmso-/i, tempContainer = this.currentDocument.createElement("p"), ChildNode;
         if (patern.test(this.htmlContent) && state) {

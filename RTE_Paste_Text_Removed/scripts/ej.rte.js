@@ -6552,7 +6552,8 @@
             this._imgSpanBox(e);
         },
         _iframePaste: function (e) {
-            var _proxy = this,temp=ej;           
+            var _proxy = this,temp=ej; 
+            var pasteArgs = e;			
 			if(e){
 				var clipboardData = e.originalEvent ? e.originalEvent.clipboardData : e.clipboardData;
 				try {
@@ -6587,6 +6588,7 @@
                 _proxy._setAutoHeight();
                 _proxy._updateCount();
                 _proxy._pasteTableResize();
+				_proxy._trigger("onPasteComplete", {event: pasteArgs});
 				
 			if (temp.browserInfo().name == "webkit")
                 _proxy._getWindow().focus();
