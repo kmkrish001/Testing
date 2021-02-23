@@ -43,6 +43,7 @@ var __extends = (this && this.__extends) || function (d, b) {
                 enableIncrementalSearch: true,
                 readOnly: false,
                 enableAnimation: false,
+                loadOnDemand: false,
                 validationRules: null,
                 validationMessage: null,
                 treeViewSettings: {},
@@ -71,6 +72,7 @@ var __extends = (this && this.__extends) || function (d, b) {
                 query: 'data',
                 fields: 'data',
                 enableAnimation: 'boolean',
+                loadOnDemand: 'boolean',
                 enableSorting: 'boolean',
                 validationRules: 'data',
                 validationMessage: 'data',
@@ -93,6 +95,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             this.ddWidth = null;
             this.name = null;
             this.popUpShow = false;
+            this.loadPopup = false;
             this.maxPopupHeight = null;
             this.minPopupHeight = '20';
             this.maxPopupWidth = null;
@@ -268,10 +271,16 @@ var __extends = (this && this.__extends) || function (d, b) {
         };
         ejDropDownTree.prototype.OnDropdownClick = function (e) {
             this.preventDefaultAction(e);
+            if (this.model.loadOnDemand && ej.isNullOrUndefined(this.popupListWrapper)) {
+                this.popupCreation();
+                this.renderScroller();
+            }
             if (($(e.target).is('li') && $(e.target).parent().hasClass('e-boxes')) || ($(e.target).parents('ul').hasClass('e-boxes') && $(e.target).hasClass('e-icon e-close'))) {
                 return false;
             }
             if (this.model.readOnly || this.readOnly) {
+                if (this.model.loadOnDemand)
+                    this.loadPopup = true;
                 return false;
             }
             if (((e.which && e.which === 1) || (e.button && e.button === 0))) {
@@ -623,8 +632,12 @@ var __extends = (this && this.__extends) || function (d, b) {
                         this.setFullPathDelimiter(options[option]);
                         break;
                     case 'treeViewSettings':
-                        if(options[option]["fields"]){
+                        if (options[option]["fields"]) {
                             delete this.model.treeViewSettings.fields.dataSource;
+                            var oldWrapper = $('#' + this.element[0].id + '_popup_wrapper')[0];
+                            $(oldWrapper).remove();
+                            this.popupTree = undefined;
+                            this.popupListWrapper = undefined;
                         }
                         this.model.treeViewSettings = $.extend(true, this.model.treeViewSettings, options[option]);
                         if (!ej.isNullOrUndefined(this.popupTree)) {
@@ -636,7 +649,7 @@ var __extends = (this && this.__extends) || function (d, b) {
                         if (ej.isNullOrUndefined(optionValue)) {
                             this.clearTextboxValue();
                         }
-                        else {
+                        else if (!ej.isNullOrUndefined(this.treeView)) {
                             this.setValueText(ej.util['getVal'](options[option]), 'value');
                             options[option] = this.model.value;
                         }
@@ -645,7 +658,7 @@ var __extends = (this && this.__extends) || function (d, b) {
                         if (ej.isNullOrUndefined(options[option])) {
                             this.clearTextboxValue();
                         }
-                        else {
+                        else if (!ej.isNullOrUndefined(this.treeView)) {
                             this.setValueText(options[option], 'text');
                             options[option] = this.model.text;
                         }
@@ -740,14 +753,14 @@ var __extends = (this && this.__extends) || function (d, b) {
                 this.enabled(this.model.enabled);
                 this.initValue = false;
                 this.checkboxValue = false;
-                if (!(ej.DataManager && !ej.isNullOrUndefined(this.model.treeViewSettings.fields) && this.model.treeViewSettings.fields.dataSource instanceof ej.DataManager)) {
+                if (!(ej.DataManager && !ej.isNullOrUndefined(this.model.treeViewSettings.fields) && this.model.treeViewSettings.fields.dataSource instanceof ej.DataManager) && !this.model.loadOnDemand) {
                     this.finalize();
                 }
                 if (this.model.validationRules != null) {
                     this.initValidator();
                     this.setValidation();
                 }
-                if (this.model.popupSettings.showPopupOnLoad) {
+                if (this.model.popupSettings.showPopupOnLoad && !this.model.loadOnDemand) {
                     this.setInitialPopup(true);
                 }
                 this.roundedCorner(this.model.showRoundedCorner);
@@ -1049,8 +1062,10 @@ var __extends = (this && this.__extends) || function (d, b) {
         ejDropDownTree.prototype.render = function () {
             this.createInput();
             this.setWatermark();
-            this.popupCreation();
-            this.renderScroller();
+            if (!this.model.loadOnDemand) {
+                this.popupCreation();
+                this.renderScroller();
+            }
         };
         ejDropDownTree.prototype.createInput = function () {
             this.wrapper = ej.buildTag('span.e-ddl e-ddtree e-widget ' + this.model.cssClass + '#' + this.id + '_wrapper', '', {}, { 'tabindex': '0', 'accesskey': this.element.attr('accesskey') })[0];
@@ -1284,6 +1299,8 @@ var __extends = (this && this.__extends) || function (d, b) {
                 this.treeView._trigger('ready', args);
                 this.treeView.option({ ready: $.proxy(this.onTreeReady, this) });
             }
+            var completeargs = { model: this.model, cancel: false, type: 'actionComplete', treedetails: args };
+            this._trigger('actionComplete', completeargs);
         };
         ejDropDownTree.prototype.onNodeCheckUncheck = function (args) {
             this.OnMouseClick(args);
@@ -1540,7 +1557,8 @@ var __extends = (this && this.__extends) || function (d, b) {
                 this.maintainHiddenValue();
                 this.removeText(this.currentText);
             }
-            this.ensureRootCheck(args);
+            if (this.model.treeViewSettings.autoCheck)
+                this.ensureRootCheck(args);
         };
         ejDropDownTree.prototype.ensureRootCheck = function (args) {
             var rootEle = $(args.currentElement).parents('ul.e-treeview-ul');
@@ -1795,6 +1813,9 @@ var __extends = (this && this.__extends) || function (d, b) {
             if (!ej.isNullOrUndefined(this.popupListWrapper)) {
                 $(this.popupListWrapper).removeClass('e-load');
             }
+            if (this.loadPopup) {
+                this.OnPopupHideShow();
+            }
         };
         ejDropDownTree.prototype.refreshPopup = function () {
             if (this.model.popupSettings.width === 'auto' && !this.validatePixelData(this.minPopupWidth)) {
@@ -1930,7 +1951,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         ejDropDownTree.prototype.OnKeyDown = function (e) {
             this.uiInteract = true;
             var code;
-            if (this.model.enabled) {
+            if (this.model.enabled && !ej.isNullOrUndefined(this.popupListWrapper)) {
                 code = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
                 var popupListItems = this.getLi();
                 this.listSize = popupListItems.length;
