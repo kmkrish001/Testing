@@ -1734,7 +1734,6 @@
             }
             this.popupListItems = this.resultList;
             this.ultag.empty();
-			if(this._hiddenInputElement.length == this.listitems.length)
             this._isPlainType(this.popupListItems) ? this._plainArrayTypeBinding(this.resultList) :
             this._objectArrayTypeBinding(this.resultList, "search");
             if (flag && this.ultag.find("li").length == 1) {
