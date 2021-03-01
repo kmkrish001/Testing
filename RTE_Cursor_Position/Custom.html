@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+    <title>Essential JS 1: RTE Default</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+    <link href="https://cdn.syncfusion.com/18.4.0.30/js/web/flat-azure/ej.web.all.min.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> 
+	<![endif]-->
+    <!--[if IE 9]><!-->
+    <script src="scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <!--<![endif]--> 
+    <script src="scripts/ej.core.js"></script>
+    <script src="scripts/ej.data.js"></script>
+    <script src="scripts/ej.scroller.js"></script>
+    <script src="scripts/ej.draggable.js"></script>
+    <script src="scripts/ej.globalize.js"></script>
+    <script src="scripts/ej.button.js"></script>
+    <script src="scripts/ej.splitbutton.js"></script>
+    <script src="scripts/ej.checkbox.js"></script>
+    <script src="scripts/ej.dropdownlist.js"></script>
+    <script src="scripts/ej.dialog.js"></script>
+    <script src="scripts/ej.toolbar.js"></script>
+    <script src="scripts/ej.editor.js"></script>
+    <script src="scripts/ej.clipboardcleaner.js"></script>
+    <script src="scripts/ej.editormanager.js"></script>
+    <script src="scripts/ej.tooltip.js"></script>
+    <script src="scripts/ej.menu.js"></script>
+    <script src="scripts/ej.rte.js"></script>
+    <script src="scripts/ej.rte.findandreplace.js"></script>
+
+</head>
+<body>
+    <body>
+	
+        <textarea id="myRTE">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam felis sapien, gravida at congue vitae, tempor nec erat. Orci varius natoque penatibus et magnis dis parturient montes..
+        </textarea>
+        </body>
+    <script>
+        $(function() {
+            $("#myRTE").ejRTE({
+                pasteCleanupSettings: { listConversion: true, cleanCSS: false, removeStyles: false, cleanElements: false },
+                onPasteComplete: PasteComplete
+            });
+        });
+
+        function rimuoviHtmlMailWord(stringaDaPulire) {			
+            var regexp = /<xml>[\s\S]*?<\/xml>|<style>[\s\S]*?<\/style>|<meta[\s\S]*?>|<link.*[\s\S]*?\>|<!--[\s\S]*?-->|<!.*[\s\S]*?-->/gi,
+                stringa = stringaDaPulire.replace(regexp, "");
+            return stringa.replace(/\r?\n|\r|&nbsp;/gi, " ");
+        }
+
+        function PasteComplete(args) {
+            this.setHtml(rimuoviHtmlMailWord(args.model.value));
+            var contentDoc = this._getDocument();
+            var range = contentDoc.createRange();
+            var lastText = lastElement(contentDoc.body.lastChild);
+            range.setStart(lastText, lastText.length);
+            range.setEnd(lastText, lastText.length);
+            var selection = this._rteIframe[0].contentWindow.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+        }
+
+        function lastElement(ele) {
+            if(ele.childNodes) {
+                for(var i = 0; i < ele.childNodes.length;){
+                    if(ele.childNodes[i].nodeType != 3) {
+                        ele = ele.childNodes[i];
+                        i = 0;
+                    } else{
+                        lastText = ele.childNodes[i];
+                        i++;
+                    }
+                }
+            }
+            return lastText;
+        }
+    </script>
+</body>
+</html>
