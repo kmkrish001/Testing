@@ -817,7 +817,7 @@
 			}
 				var srcContainer = ele[i] == "element" ? this._valueContainer : this._textContainer;
                 if (this[ele[i]][0].value && this[ele[i]][0].value != "") {
-                    var splitedText = this[ele[i]][0].value.split(this.model.delimiterChar);
+                    var splitedText = (ele[i] == 'element') ? this[ele[i]][0].value.split(this.model.delimiterChar): this._visibleValue;
 					if( ele[i] == 'element' && $.inArray(val, splitedText) === -1){
 						splitedText.push(val);
 					}
@@ -836,7 +836,8 @@
 							this[ele[i]][0].value = splitedText.join(this.model.delimiterChar);
 						}
 						else
-							this[ele[i]][0].value = val;
+                            this[ele[i]][0].value = val;
+                            if(ele[i] == '_visibleInput') this._visibleValue.push(val);
 					}
 				}
 				srcContainer.push(val);
@@ -1183,7 +1184,8 @@
 			this._hiddenInputElement = [];
 			this._boxValue = [];
 			this._valueContainer = [];
-			this._textContainer =[];
+            this._textContainer =[];
+            this._visibleValue = [];
 			this._checkedValues=[];
             this.target = this.element[0];
             this._disabledItems = new Array();
@@ -1732,6 +1734,7 @@
             }
             this.popupListItems = this.resultList;
             this.ultag.empty();
+			if(this._hiddenInputElement.length == this.listitems.length)
             this._isPlainType(this.popupListItems) ? this._plainArrayTypeBinding(this.resultList) :
             this._objectArrayTypeBinding(this.resultList, "search");
             if (flag && this.ultag.find("li").length == 1) {
