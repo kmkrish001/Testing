@@ -55,7 +55,11 @@
             this.setHtml(rimuoviHtmlMailWord(args.model.value));
             var contentDoc = this._getDocument();
             var range = contentDoc.createRange();
-            var lastText = lastElement(contentDoc.body.lastChild);
+            var target = contentDoc.body.lastChild;
+            while(target.innerText == "") {
+                target = target.previousSibling;
+            }
+            var lastText = lastElement(target);
             range.setStart(lastText, lastText.length);
             range.setEnd(lastText, lastText.length);
             var selection = this._rteIframe[0].contentWindow.getSelection();
@@ -64,16 +68,18 @@
         }
 
         function lastElement(ele) {
-            if(ele.childNodes) {
-                for(var i = 0; i < ele.childNodes.length;){
-                    if(ele.childNodes[i].nodeType != 3) {
+            if(ele.childNodes.length > 0) {
+                for(var i = ele.childNodes.length - 1; i > 0 ;){
+                    if(ele.childNodes[i].nodeType != 3 && ele.childNodes[i].childNodes) {
                         ele = ele.childNodes[i];
-                        i = 0;
-                    } else{
+                        i = ele.childNodes.length - 1;                            
+                    } else {
                         lastText = ele.childNodes[i];
-                        i++;
+                        i--;
                     }
                 }
+            } else {
+                lastText = ele.childNodes;
             }
             return lastText;
         }

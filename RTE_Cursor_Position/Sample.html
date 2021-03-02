@@ -41,31 +41,86 @@
         $(function() {
             $("#myRTE").ejRTE({
                 pasteCleanupSettings: { listConversion: true, cleanCSS: false, removeStyles: false, cleanElements: false },
-                onPasteComplete: function (args) {
-                    // get the existing value
-                    var oldContent = args.model.value;
-                    // empty the rte
-                    this.setHtml("<p><br></p>");
-                    // insert the formatted content.
-                    this.executeCommand("inserthtml", rimuoviHtmlMailWord(oldContent));
-                    loc = this._getRange();//manually set the cursor
-                    range = this.createRange();
-                    txt = range.commonAncestorContainer.parentElement;
-                    range.setStart(txt.firstChild, loc.startOffset);
-                    range.setEnd(txt.firstChild, loc.startOffset);
-                    this.selectRange(range);
-                }
+                onPasteComplete: PasteComplete1
             });
             rte = $("#myRTE").data("ejRTE");
             
-            function rimuoviHtmlMailWord(stringaDaPulire) {			
-                var regexp = /<xml>[\s\S]*?<\/xml>|<style>[\s\S]*?<\/style>|<meta[\s\S]*?>|<link.*[\s\S]*?\>|<!--[\s\S]*?-->|<!.*[\s\S]*?-->/gi,
-                    stringa = stringaDaPulire.replace(regexp, "");
-
-                return stringa.replace(/\r?\n|\r|&nbsp;/gi, " ");
-            }
+           
             
-        });		
+        });	
+
+        function rimuoviHtmlMailWord(stringaDaPulire) {			
+            var regexp = /<xml>[\s\S]*?<\/xml>|<style>[\s\S]*?<\/style>|<meta[\s\S]*?>|<link.*[\s\S]*?\>|<!--[\s\S]*?-->|<!.*[\s\S]*?-->/gi,
+                stringa = stringaDaPulire.replace(regexp, "");
+
+            return stringa.replace(/\r?\n|\r|&nbsp;/gi, " ");
+        }
+
+        function PasteComplete1(args) {
+            this.setHtml(rimuoviHtmlMailWord(args.model.value));
+            
+            //loc = this._getRange();//manually set the cursor
+            //range = this.createRange();
+            //txt = range.commonAncestorContainer;
+            //range.setStart(txt.lastChild, txt.lastChild.innerText.length);
+            //range.setEnd(txt.lastChild, txt.lastChild.innerText.length);
+            //this.selectRange(range);
+           // this.element[0].selectionStart = txt.lastChild.innerText.length;
+            //this.element[0].selectionEnd = txt.lastChild.innerText.length;
+            //this.element[0].focus ();
+//contentDoc.body.lastChild.innerText.length
+            var contentDoc = this._getDocument();
+            var range = contentDoc.createRange();
+            //var lastText = $(contentDoc.body.lastChild.lastElementChild).contents().filter(function() {
+              //  return this.nodeType === 3;
+            //});
+            var target = contentDoc.body.lastChild;
+            while(target.innerText == "") {
+                target = target.previousSibling;
+            }
+            var lastText = lastElement(target);
+            range.setStart(lastText, lastText.length);
+            range.setEnd(lastText, lastText.length);
+            var selection = this._rteIframe[0].contentWindow.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+        }
+
+        function lastElement(ele) {
+            if(ele.childNodes.length > 0) {
+                for(var i = ele.childNodes.length - 1; i > 0 ;){
+                    if(ele.childNodes[i].nodeType != 3 && ele.childNodes[i].childNodes) {
+                        ele = ele.childNodes[i];
+                        i = ele.childNodes.length - 1;                            
+                    } else {
+                        lastText = ele.childNodes[i];
+                        i--;
+                    }
+                }
+            } else {
+                lastText = ele.childNodes;
+            }
+            return lastText;
+        }
+        
+        function PasteComplete(args) {
+            // get the existing value
+            var oldContent = args.model.value;
+            // empty the rte
+           // this.setHtml("<p><br></p>");
+            //this.pasteContent(oldContent);
+            this.setHtml(rimuoviHtmlMailWord(oldContent));
+            // insert the formatted content.
+           // this.executeCommand("insertHTML", rimuoviHtmlMailWord(oldContent));
+            //this.executeCommand("paste", rimuoviHtmlMailWord(oldContent));
+            loc = this._getRange();//manually set the cursor
+            range = this.createRange();
+           // txt = range.commonAncestorContainer;
+            txt = range.commonAncestorContainer.parentElement;
+            range.setStart(txt.firstChild, loc.startOffset);
+            range.setEnd(txt.firstChild, loc.startOffset);
+            this.selectRange(range);
+        }
     </script>
 </body>
 </html>
