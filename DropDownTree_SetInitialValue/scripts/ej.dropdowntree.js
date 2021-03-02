@@ -791,25 +791,11 @@ var __extends = (this && this.__extends) || function (d, b) {
                                 var element = ej.DataManager(source.dataSource).executeLocal(ej.Query().where(source.text, "equal", value[i], false));
                                 input_text.push(element[0][field_name[0]]);
                             }
+                            $(this.visibleInput).val(input_text);
                         }
                         else {
-                            var data = source.dataSource;
-                            var element = ej.DataManager(data).executeLocal(ej.Query().where(source.text, "equal", value, false));
-                            while(element.length == 0 && data.length != 0) {
-                                var childList = [];
-                                for(var i = 0; i < data.length; i++) {
-                                    if(data[i].child) {
-                                        $.merge(childList, data[i].child);
-                                    }
-                                }
-                                element = ej.DataManager(childList).executeLocal(ej.Query().where(source.text, "equal", value, false));
-                                data = childList;
-                            }
-                            if(element.length != 0) {
-                                input_text.push(element[0][field_name[0]]);
-                            }
+                            this._setInitValue(source.dataSource, source.text, value);
                         }
-                    $(this.visibleInput).val(input_text);
                     }
                     else {
                         var proxy =this;
@@ -841,6 +827,25 @@ var __extends = (this && this.__extends) || function (d, b) {
             }
         };
 
+        ejDropDownTree.prototype._setInitValue = function(data, field_name, value){
+            var element = ej.DataManager(data).executeLocal(ej.Query().where(field_name, "equal", value, false));
+            while(element.length == 0 && data.length != 0) {
+                var childList = [];
+                for(var i = 0; i < data.length; i++) {
+                    if(data[i].child) {
+                        $.merge(childList, data[i].child);
+                    }
+                }
+                element = ej.DataManager(childList).executeLocal(ej.Query().where(field_name, "equal", value, false));
+                data = childList;
+            }
+            var input_text =[];
+            if(element.length != 0) {
+                input_text.push(element[0][field_name]);
+                $(this.visibleInput).val(input_text);
+            }
+        };
+
         ejDropDownTree.prototype.getChildItem = function (item, mapper) {
             var proxy = this, queryPromise, pid, id, childItems;
             pid = (mapper["child"]["parentId"]) ? mapper["child"]["parentId"] : proxy.model.treeViewSettings.fields.parentId, id;
@@ -856,21 +861,7 @@ var __extends = (this && this.__extends) || function (d, b) {
                         proxy._updateRemoteData(proxy._newDataSource, parentID, childItems, proxy.model.treeViewSettings.fields);
                     }
                     var field_name = proxy.model.treeViewSettings.fields.child["text"];
-                    var data = proxy._newDataSource;
-                    var element = ej.DataManager(data).executeLocal(ej.Query().where(field_name, "equal", proxy.value(), false));
-                    while(element.length == 0 && data.length != 0) {
-                        var childList = [];
-                        for(var i = 0; i < data.length; i++) {
-                            if(data[i].child) {
-                                $.merge(childList, data[i].child);
-                            }
-                        }
-                        element = ej.DataManager(childList).executeLocal(ej.Query().where(field_name, "equal", proxy.value(), false));
-                        data = childList;
-                    }
-                    if(element.length != 0) {
-                        $(proxy.visibleInput).val(element[0][field_name]);
-                    }
+                    proxy._setInitValue(proxy._newDataSource, field_name, proxy.value() );
                 }
             });
         };
