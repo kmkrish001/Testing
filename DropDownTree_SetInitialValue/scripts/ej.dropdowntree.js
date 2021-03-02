@@ -784,7 +784,6 @@ var __extends = (this && this.__extends) || function (d, b) {
             var source = this.model.treeViewSettings.fields;         
             var input_text =[];
             if(this.model.loadOnDemand && (ej.isNullOrUndefined(this.ultag) || this.ultag.children().length==0)) {  
-                if(ej.isNullOrUndefined(source.child)) {        
                     if (!source.dataSource.offline && !(source.dataSource.json && source.dataSource.json.length > 0) && ej.isNullOrUndefined(source.dataSource.dataSource)) {
                         var field_name = this.treeMapping("text");
                         if(this.model.treeViewSettings.allowMultiSelection) {
@@ -794,32 +793,133 @@ var __extends = (this && this.__extends) || function (d, b) {
                             }
                         }
                         else {
-                            var element = ej.DataManager(source.dataSource).executeLocal(ej.Query().where(source.text, "equal", value, false));
-                            input_text.push(element[0][field_name[0]]);
+                            var data = source.dataSource;
+                            var element = ej.DataManager(data).executeLocal(ej.Query().where(source.text, "equal", value, false));
+                            while(element.length == 0 && data.length != 0) {
+                                var childList = [];
+                                for(var i = 0; i < data.length; i++) {
+                                    if(data[i].child) {
+                                        $.merge(childList, data[i].child);
+                                    }
+                                }
+                                element = ej.DataManager(childList).executeLocal(ej.Query().where(source.text, "equal", value, false));
+                                data = childList;
+                            }
+                            if(element.length != 0) {
+                                input_text.push(element[0][field_name[0]]);
+                            }
                         }
                     $(this.visibleInput).val(input_text);
                     }
                     else {
                         var proxy =this;
                         ej.DataManager(source.dataSource.dataSource.url).executeQuery(source.query).done(function (e) {
-                            var field_name = proxy.model.treeViewSettings.fields ["text"];
+                            var field_name = proxy.model.treeViewSettings.fields["text"];
                             if(proxy.model.treeViewSettings.allowMultiSelection) {
                                 for(var i=0;i< value.length;i++) {
                                     var element = ej.DataManager(e.result).executeLocal(ej.Query().where(field_name, "equal", value[i], false)); 
                                     input_text.push(element[0][field_name]);
                                 }
                             }
-                            else{
-                                var element = ej.DataManager(e.result).executeLocal(ej.Query().where(field_name, "equal", value, false)); 
-                                input_text.push(element[0][field_name]);
+                            else {
+                                var data = proxy._newDataSource = e.result;
+                                var element = ej.DataManager(data).executeLocal(ej.Query().where(field_name, "equal", value, false));
+                                if(element.length == 0) {
+                                    for(var i = 0; i < data.length; i++){
+                                        var parentId = ej.getObject(proxy.model.treeViewSettings.fields.parentId, data[i]);
+                                        if (ej.isNullOrUndefined(parentId) || parentId == 0 )
+                                            proxy.getChildItem(data[i], proxy.model.treeViewSettings.fields);
+                                    }
+                                } else {
+                                    input_text.push(element[0][field_name]);
+                                }
                             }
                             $(proxy.visibleInput).val(input_text);
                         });
                     }
                     input_text=[];
-                }
             }
         };
+
+        ejDropDownTree.prototype.getChildItem = function (item, mapper) {
+            var proxy = this, queryPromise, pid, id, childItems;
+            pid = (mapper["child"]["parentId"]) ? mapper["child"]["parentId"] : proxy.model.treeViewSettings.fields.parentId, id;
+            id = (mapper.id) ? mapper.id : proxy.model.treeViewSettings.fields.id;
+            var itemID = ej.getObject(id, item);
+            queryPromise = this._executeDataQuery(mapper["child"], pid, parseInt(itemID));
+            proxy._isAvailable = false;
+            queryPromise.done(function (e) {
+                if(!proxy._isAvailable) {
+                    childItems = (e.xhr && e.xhr.responseJSON && e.xhr.responseJSON.d) ? e.xhr.responseJSON.d : (e.result ? e.result : []);
+                    if (childItems && childItems.length > 0) {
+                        var parentID = childItems[0][mapper["child"]["parentId"]];
+                        proxy._updateRemoteData(proxy._newDataSource, parentID, childItems, proxy.model.treeViewSettings.fields);
+                    }
+                    var field_name = proxy.model.treeViewSettings.fields.child["text"];
+                    var data = proxy._newDataSource;
+                    var element = ej.DataManager(data).executeLocal(ej.Query().where(field_name, "equal", proxy.value(), false));
+                    while(element.length == 0 && data.length != 0) {
+                        var childList = [];
+                        for(var i = 0; i < data.length; i++) {
+                            if(data[i].child) {
+                                $.merge(childList, data[i].child);
+                            }
+                        }
+                        element = ej.DataManager(childList).executeLocal(ej.Query().where(field_name, "equal", proxy.value(), false));
+                        data = childList;
+                    }
+                    if(element.length != 0) {
+                        $(proxy.visibleInput).val(element[0][field_name]);
+                    }
+                }
+            });
+        };
+
+        ejDropDownTree.prototype._executeDataQuery = function(mapper, key, val) {
+            var queryManager, queryPromise;
+            queryManager = ej.Query();
+            queryManager = this._columnToSelect(mapper);
+            if (!ej.isNullOrUndefined(key) && key != "") {
+                var tempQuery=$.extend(true,[],queryManager._params);
+                queryManager._params = [];
+                queryManager.addParams(key, val);
+                for (var i = 0; i < tempQuery.length; i++)
+                    (tempQuery[i].key != key) && queryManager.addParams(tempQuery[i].key, tempQuery[i].value);
+                queryManager.where(key, ej.FilterOperators.equal, val);
+            }
+            queryPromise = mapper["dataSource"].executeQuery(queryManager);
+            return queryPromise;
+        },
+
+        ejDropDownTree.prototype._columnToSelect = function (mapper) {
+            var column = [], queryManager = ej.Query();
+            if (!mapper.query && !ej.isNullOrUndefined(mapper.tableName)) {
+                for (var col in mapper) {
+                    if (col !== "tableName" && col !== "child" && col !== "dataSource" && mapper[col])
+                        column.push(mapper[col]);
+                }
+                (column.length > 0) && queryManager.select(column);
+                if (!mapper.dataSource.dataSource.url.match(mapper.tableName + "$"))
+                    !ej.isNullOrUndefined(mapper.tableName) && queryManager.from(mapper.tableName);
+            }
+            else queryManager = (mapper.query) ? mapper.query.clone() : queryManager;
+            return queryManager;
+        };
+
+        ejDropDownTree.prototype._updateRemoteData = function (obj, searchId, childObj, mapper) {
+            if (mapper.dataSource != null && mapper.dataSource.dataSource.offline) return;
+            for (var i = 0; i < obj.length; i++) {
+                var fieldId = ej.getObject(mapper.id, obj[i]);
+                if (fieldId && (fieldId.toString() == searchId)) {
+                    obj[i]["child"] = childObj;
+                    var newobj = obj[i];
+                    obj.splice(i, 1, newobj);
+                    break;
+                }
+                if (obj[i].hasOwnProperty('child'))
+                    this._updateRemoteData(obj[i].child, searchId, childObj, mapper.child ? mapper.child : mapper);
+            }
+        },
    
         ejDropDownTree.prototype.finalize = function () {
             if ((!ej.isNullOrUndefined(this.value()) && this.value() === '') || this.value() !== this.element.val()) {
@@ -860,7 +960,7 @@ var __extends = (this && this.__extends) || function (d, b) {
                 if (!(this.treeView.dataSource() instanceof ej.DataManager)) {
                     treeSrc = this.treeView.getTreeData();
                     for (var i = 0; i < treeSrc.length; i++) {
-                        if(this.model.loadOnDemand &&  $(this.visibleInput).val() !== "" && ej.isNullOrUndefined(this.activeItem) ) {
+                        if(this.model.loadOnDemand &&  $(this.visibleInput).val() !== "" && this.model.value == "" && ej.isNullOrUndefined(this.activeItem) ) {
                             $(this.visibleInput).val('');
                         }
                         if (!ej.isNullOrUndefined(val) && typeof (val) == "string" || typeof (val) == "number") {
