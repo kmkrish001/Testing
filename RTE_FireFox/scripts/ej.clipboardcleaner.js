@@ -120,7 +120,6 @@ var clipboardCleaner = (function () {
         }
         else
             this._contentPositionHandler();
-        $((ej.browserInfo().name == "msie" || ej.browserInfo().name == "mozilla") ? this.currentDocument.body.parentNode : this.currentDocument.body).scrollTop();
         this.callback.call(this.env);
     };
     clipboardCleaner.prototype._insertAfter = function (elem, newElem) {
@@ -258,7 +257,7 @@ var clipboardCleaner = (function () {
     clipboardCleaner.prototype._processContent = function (args, state) {
         if (args === void 0) { args = null; }
         if (state === void 0) { state = true; }
-        var target = args.target;
+        var target = (ej.browserInfo().name == "mozilla" || ej.browserInfo().name == "edge") ? args.target.firstChild : args.target;
         if (target.textContent == "") {
             target.parentElement.remove();
         }
