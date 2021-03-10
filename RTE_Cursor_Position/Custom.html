@@ -52,19 +52,40 @@
         }
 
         function PasteComplete(args) {
+           // var contentDoc = this._getDocument();
+           // var selection = contentDoc.getSelection();
+           // var lastText = selection.baseNode;
+           // var offset = selection.baseOffset;
+            //var copiedText = selection.toString();
+            //var selectionRange = this._saveSelection();
+            //var sel = JSON.parse(JSON.stringify(selection));
+           // var vegetable = Object.assign(selection, selection);
+           var range = selection.getRangeAt(0);
+           //var startCont = range.startContainer;
+          // var startOff = range.startOffset;
+         //  var endOff = range.endOffset;
+         //  var endCont = range.endContainer;
+           var newRange = {startContainer: range.startContainer, startOffset: range.startOffset, endContainer: range.endContainer, endOffset: range.endOffset};
             this.setHtml(rimuoviHtmlMailWord(args.model.value));
-            var contentDoc = this._getDocument();
-            var range = contentDoc.createRange();
-            var target = contentDoc.body.lastChild;
-            while(target.innerText == "") {
-                target = target.previousSibling;
-            }
-            var lastText = lastElement(target);
-            range.setStart(lastText, lastText.length);
-            range.setEnd(lastText, lastText.length);
-            var selection = this._rteIframe[0].contentWindow.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
+            //var range = contentDoc.createRange();
+            // var target = contentDoc.body.lastChild;
+            // while(target.innerText == "") {
+            //     target = target.previousSibling;
+            // }
+           // var lastText = lastElement(target);
+         //   range.setStart(lastText, lastText.length);
+         //   range.setEnd(lastText, lastText.length);
+         //   selection = this._rteIframe[0].contentWindow.getSelection();
+           // selection.removeAllRanges();
+            //selection.addRange(range);
+           // range.setStart(startCont, startOff);
+           // range.setEnd(endCont, endOff);
+           range.setStart(newRange.startContainer, newRange.startOffset);
+           range.setEnd(newRange.endContainer, newRange.endOffset);
+            this._selectionRange = range;
+            this.focus();
+            //range.move("character", lastText.length);
+           // range.select();
         }
 
         function lastElement(ele) {
@@ -79,7 +100,7 @@
                     }
                 }
             } else {
-                lastText = ele.childNodes;
+                lastText = (ele.childNodes.length == 0) ? ele : ele.childNodes;
             }
             return lastText;
         }
