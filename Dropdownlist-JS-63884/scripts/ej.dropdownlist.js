@@ -1496,7 +1496,7 @@
 
         _updateText: function () {
             var val = this._visibleInput.val();
-            this.model.text = (val == "") ? (this._textContainer.length == 0) ? null : "" : this._textContainer;
+            this.model.text = (val == "") ? (this._textContainer.length == 0) ? null : "" : (this.model.showCheckbox || this.model.multiSelectMode != "none") ? this._textContainer : val;
         },
         _updateValue: function (val) {
             this.value(val == "" ? (this._valueContainer.length == 0)? null : "" : val);

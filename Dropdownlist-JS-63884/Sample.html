@@ -812,8 +812,8 @@
 				  dataSource: myDS,
 				  width: '450px',
 				  //allowFiltering: true,
-				  //showCheckbox: true,
-				  //multiSelectMode: 'visualmode',
+				  showCheckbox: true,
+				  multiSelectMode: 'visualmode',
 				  enableFilterSearch: true,
 			  });
 		  var ddlObj = $("#dropdown1").ejDropDownList("instance");
@@ -824,24 +824,23 @@
 		  
 		  });
   
-		  function outputMessage(value)
-      {
-          if (value == undefined)
-              value = $("#dropdown1").ejDropDownList("option", "text") ;
-          
-          			$("#result").html("").html("option ---> text selected: " + value + "<br/><br/>");
-          
-      }
-	// function outputMessage(value)
-	// {
-	// 	if (value == undefined)
-	// 		value = $("#dropdown1").ejDropDownList("instance").getSelectedValue();
+	// 	  function outputMessage(value)
+    //   {
+    //       if (value == undefined)
+    //           value = $("#dropdown1").ejDropDownList("option", "text") ;
+    //       			$("#result").html("").html("option ---> text selected: " + value + "<br/><br/>");
+    //   }
+	function outputMessage(value)
+	{
+		if (value == undefined)
+			value = $("#dropdown1").ejDropDownList("instance").getSelectedValue();
+			text = $("#dropdown1").ejDropDownList("option", "text") ;
 		
-	// 				$("#result").html("").html("value: " + value + "  <b> -> " + value.split(",").length + " items</b><br/><br/>"
-	// 	  + "getSelectedValue: " + $("#dropdown1").ejDropDownList("instance").getSelectedValue() + "  <b> -> " + $("#dropdown1").ejDropDownList("instance").getSelectedValue().split(",").length + " items</b><br/><br/>"
-	// 	  + "selectedIndices: " + $("#dropdown1").ejDropDownList("option", "selectedIndices") + "  <b> -> " + $("#dropdown1").ejDropDownList("option", "selectedIndices").length + " items</b><br/><br/>");
+			$("#result").html("").html("option ---> text selected: " + text + "<br/><br/> value: " + value + "  <b> -> " + value.split(",").length + " items</b><br/><br/>"
+		  + "getSelectedValue: " + $("#dropdown1").ejDropDownList("instance").getSelectedValue() + "  <b> -> " + $("#dropdown1").ejDropDownList("instance").getSelectedValue().split(",").length + " items</b><br/><br/>"
+		  + "selectedIndices: " + $("#dropdown1").ejDropDownList("option", "selectedIndices") + "  <b> -> " + $("#dropdown1").ejDropDownList("option", "selectedIndices").length + " items</b><br/><br/>");
 		
-	// }
+	}
 	  </script>
 </head>
 
