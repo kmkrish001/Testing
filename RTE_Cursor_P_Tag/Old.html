@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head>
+    <title>Essential JS 1: RTE Default</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+    <link href="https://cdn.syncfusion.com/18.4.0.30/js/web/flat-azure/ej.web.all.min.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> 
+	<![endif]-->
+    <!--[if IE 9]><!-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <!--<![endif]--> 
+    <!-- <script src="scripts/ej.core.js"></script>
+    <script src="scripts/ej.data.js"></script>
+    <script src="scripts/ej.scroller.js"></script>
+    <script src="scripts/ej.draggable.js"></script>
+    <script src="scripts/ej.globalize.js"></script>
+    <script src="scripts/ej.button.js"></script>
+    <script src="scripts/ej.splitbutton.js"></script>
+    <script src="scripts/ej.checkbox.js"></script>
+    <script src="scripts/ej.dropdownlist.js"></script>
+    <script src="scripts/ej.dialog.js"></script>
+    <script src="scripts/ej.toolbar.js"></script>
+    <script src="scripts/ej.editor.js"></script>
+    <script src="scripts/ej.editormanager.js"></script>
+    <script src="scripts/ej.tooltip.js"></script>
+    <script src="scripts/ej.menu.js"></script>
+    <script src="17.2.0.34/ej.rte.js"></script> -->
+    <script src="ej.web.all.min.js"></script>
+</head>
+    <body>
+	
+        <textarea id="myRTE">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam felis sapien, gravida at congue vitae, tempor nec erat. Orci varius natoque penatibus et magnis dis parturient montes..
+
+        </textarea>
+        </body>
+    <script>
+        $(function() {
+            $("#myRTE").ejRTE({
+                pasteCleanupSettings: { listConversion: true, cleanCSS: false, removeStyles: false, cleanElements: false },
+                onPasteComplete: PasteComplete
+            });
+        });
+
+        function rimuoviHtmlMailWord(stringaDaPulire) {			
+            var regexp = /<xml>[\s\S]*?<\/xml>|<style>[\s\S]*?<\/style>|<meta[\s\S]*?>|<link.*[\s\S]*?\>|<!--[\s\S]*?-->|<!.*[\s\S]*?-->/gi,
+                stringa = stringaDaPulire.replace(regexp, "");
+            return stringa.replace(/\r?\n|\r|&nbsp;/gi, " ");
+        }
+
+    ej.clipboardCleaner.prototype._processContent = function (args, state) {
+        if (args === void 0) { args = null; }
+        if (state === void 0) { state = true; }
+        var target = args.target;
+        if (target.textContent == "") {
+            target.parentElement.remove();
+        }
+        var elm = (target.textContent != "") ? this.currentDocument.createElement("span") : this.currentDocument.createElement("p");
+        var temp = this, nonBlock = true;
+        var patern = /class="?Mso|style="[^ ]*\bmso-/i, tempContainer = this.currentDocument.createElement("p"), ChildNode;
+        if (patern.test(this.htmlContent) && state) {
+            this.htmlContent = this.htmlContent.replace(/<img[^>]+>/i, "");
+            elm.innerHTML = this.htmlContent;
+            this.syncLoad = true;
+            this.Collection = [];
+            this.blockqouteNodes = [];
+            this.listNodes = [];
+            this._cleanup(elm);
+            this._flush();
+            if (this.filterOptions.listConversion) {
+                this._listConverter();
+            }
+            if (this.filterOptions.cleanElements) {
+                this._blockquoteConvert();
+                this._cleanElement(elm);
+                this._flush();
+            }
+            if (this.filterOptions.cleanCSS) {
+                this._cleanStyles(elm);
+                this._flush(false);
+            }
+            elm.innerHTML = rimuoviHtmlMailWord(elm.innerHTML);
+            this.Container = elm;
+            if (this.insertCleanedContent)
+                this._insertContent();
+        }
+        else {
+            this.syncLoad = true;
+            elm.innerHTML = this.htmlContent;
+            if (this.filterOptions.cleanCSS) {
+                this._cleanStyles(elm);
+                this._flush(false);
+            }
+            if (elm.childNodes.length) {
+                for (var index = 0; index < elm.childNodes.length; index++) {
+                    if (this.blockNode.indexOf(elm.childNodes[index].nodeName.toLowerCase()) != -1)
+                        nonBlock = false;
+                }
+                if (nonBlock) {
+                    tempContainer.appendChild(elm);
+                    elm = tempContainer;
+                }
+            }
+            // custom method.
+            elm.innerHTML = rimuoviHtmlMailWord(elm.innerHTML);
+            this.Container = elm;
+            if (this.insertCleanedContent)
+                this._insertContent(!nonBlock);
+        }
+    };
+
+        function PasteComplete(args) {
+            var selection = this._getDocument().getSelection();
+            var emptyP_node = selection.anchorNode.parentElement.parentNode;
+            var lastSelectionNode = selection.anchorNode.parentElement.parentNode.previousElementSibling;
+            var lastText = lastElement(lastSelectionNode);
+            var range = this._getDocument().createRange();
+            range.setStart(lastText, lastText.length);
+            range.setEnd(lastText, lastText.length);
+            selection.removeAllRanges();
+            selection.addRange(range);
+            emptyP_node.remove();
+        }
+
+        // to get the last paste element
+        function lastElement(ele) {
+            if(ele.childNodes.length > 0) {
+                for(var i = ele.childNodes.length - 1; i >= 0 ;){
+                    if(ele.childNodes[i].nodeType != 3 && ele.childNodes[i].childNodes) {
+                        ele = ele.childNodes[i];
+                        i = ele.childNodes.length - 1;                            
+                    } else {
+                        lastText = ele.childNodes[i];
+                        i--;
+                        if(lastText.wholeText.trim() != "") break;
+                    }
+                }
+            } else {
+                lastText = (ele.childNodes.length == 0) ? ele : ele.childNodes;
+            }
+            return lastText;
+        }
+    </script>
+</html>
