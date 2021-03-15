@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Schedule JS Context Menu</title>
+    <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" /> 
+    <link href="https://cdn.syncfusion.com/17.4.0.46/js/web/flat-azure/ej.web.all.min.css" rel="stylesheet" />
+    <link href="https://cdn.syncfusion.com/17.4.0.46/js/web/responsive-css/ej.responsive.css" rel="stylesheet" />
+             
+    
+    <script type="text/javascript" src="https://cdn.syncfusion.com/js/assets/external/jquery-2.1.4.min.js" ></script>    
+    <script src="https://cdn.syncfusion.com/js/assets/external/jquery.easing.1.3.min.js"></script>    
+    <script src="https://cdn.syncfusion.com/js/assets/external/jsrender.min.js"></script>
+    <!--<script type="text/javascript" src="https://cdn.syncfusion.com/17.4.0.46/js/web/ej.web.all.min.js"></script>-->
+    <script src="scripts/ej.core.js"></script>
+    <script src="scripts/ej.data.js"></script>
+    <script src="scripts/ej.scroller.js"></script>
+    <script src="scripts/ej.draggable.js"></script>
+    <script src="scripts/ej.globalize.js"></script>
+    <script src="scripts/ej.button.js"></script>
+    <script src="scripts/ej.checkbox.js"></script>
+    <script src="scripts/ej.dropdownlist.js"></script>
+    <script src="scripts/ej.tooltip.js"></script>
+    <script src="scripts/ej.datepicker.js"></script>
+    <script src="scripts/ej.menu.js"></script>
+    <script src="scripts/ej.dialog.js"></script>
+    <script src="scripts/ej.timepicker.js"></script>
+    <script src="scripts/ej.autocomplete.js"></script>
+    <script src="scripts/ej.recurrenceeditor.js"></script>
+    <script src="scripts/ej.editor.js"></script>
+    <script src="scripts/ej.radiobutton.js"></script>
+    <script src="scripts/ej.schedule.horizontal.js"></script>
+    <script src="scripts/ej.schedule.resources.js"></script>
+    <script src="scripts/ej.schedule.render.js"></script>
+    
+  
+</head>
+<body>
+    <div class="content-container-fluid">
+        <div class="row">
+            <div class="cols-sample-area">
+                <div style="float: left" id="Schedule1">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            var dManager = ej.DataManager(window.Default).executeLocal(ej.Query().take(10));
+            $("#Schedule1").ejSchedule({
+                width: "100%",
+                height: "525px",
+				currentDate:new Date(2014,4,5),
+                contextMenuSettings: {
+                    enable: true,
+                    menuItems: {
+                        appointment: [
+                            { id: "open", text: "Open Appointment" },
+                            { id: "delete", text: "Delete Appointment" },
+                            { id: "customMenu3", text: "Menu Item 3" },
+                            { id: "customMenu4", text: "Menu Item 4" },
+                            { id: "categorize", text: "Categorize" }
+                        ],
+                        cells: [
+                            { id: "new", text: "New Appointment" },
+                            { id: "recurrence", text: "New Recurring Appointment" },
+                            { id: "today", text: "Today" },
+                            { id: "gotodate", text: "Go to date" },
+                            { id: "settings", text: "Settings" },
+                            { id: "view", text: "View", parentId: "settings" },
+                            { id: "timemode", text: "TimeMode", parentId: "settings" },
+                            { id: "view_Day", text: "Day", parentId: "view" },
+                            { id: "view_Week", text: "Week", parentId: "view" },
+                            { id: "view_Workweek", text: "Workweek", parentId: "view" },
+                            { id: "view_Month", text: "Month", parentId: "view" },
+                            { id: "timemode_Hour12", text: "12 Hours", parentId: "timemode" },
+                            { id: "timemode_Hour24", text: "24 Hours", parentId: "timemode" },
+                            { id: "businesshours", text: "Business Hours", parentId: "settings" },
+                            { id: "customMenu1", text: "Menu Item 1" },
+                            { id: "customMenu2", text: "Menu Item 2" }
+                        ]
+                    }
+                },
+          categorizeSettings:
+                {
+				   
+                    enable:true,
+	                allowMultiple:false,
+                    dataSource: [
+
+                        { text: "Blue Category", id: 1, color: "#7499e1", fontColor: "red" },
+                        { text: "Green Category", id: 2, color: "#7cce6e", fontColor: "white" },
+                        { text: "Orange Category", id: 3, color: "#ffaa00", fontColor: "green" },
+                        { text: "Purple Category", id: 4, color: "#cb6bb2", fonColor: "black" },
+                        { text: "Red Category", id: 5, color: "#e04343", fontColor: "white" },
+                        { text: "Yellow Category", id: 6, color: "#f8f264", fontColor: "black" }
+
+                    ],
+                    text: "text", id: "id", color: "color", fontColor: "fontColor"
+                },
+                appointmentSettings: {
+                    dataSource: dManager,
+                    id: "Id",
+                    subject: "Subject",
+                    startTime: "StartTime",
+                    endTime: "EndTime",
+					description:"Description",
+                    allDay: "AllDay",
+                    recurrence: "Recurrence",
+                    recurrenceRule: "RecurrenceRule",
+                    categorize:"Categorize"
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>
+

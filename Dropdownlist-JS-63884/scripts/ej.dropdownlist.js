@@ -573,8 +573,11 @@
                                 if (this._selectedValue) {
                                     this._activeItem = i;
                                     if (this._activeItem == this._aselectedItem) this._aselectedItem = null;
-                                      if((this._visibleInput.val()!= this._checkedValues && (e && e.type == "keyup")) || this.model.enablePersistence) this._removeTextBoxValue();
-                                     break;
+                                    if((this._visibleInput.val()!= this._checkedValues && (e && e.type == "keyup")) || this.model.enablePersistence){
+                                        this._removeTextBoxValue();
+                                        --k;
+                                    }
+                                    break;
                                 }
                             }
                         }
@@ -2665,6 +2668,7 @@
             }
         },
         _hideResult: function (e) {
+            this._prevSearchValue = "";
             if (this.model && this._isPopupShown()) {
 				if (!ej.isNullOrUndefined(e) && !ej.isNullOrUndefined(this.inputSearch) && $(this.inputSearch).is(":focus")){
 					if(e.type == "scroll" && ej.isTouchDevice())
