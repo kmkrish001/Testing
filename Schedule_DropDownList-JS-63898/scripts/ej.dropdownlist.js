@@ -356,7 +356,7 @@
             if (!ej.isNullOrUndefined(text)) {
                 if(this.model.loadOnDemand && (ej.isNullOrUndefined(this.ultag) || this.ultag.children().length==0))this._showFullList();
                 this._raiseEvents = false;
-                this.unselectItemByText(this.model.text);
+                if (!ej.isNullOrUndefined(this.model.text)) this.unselectItemByText(this.model.text);
                 this._raiseEvents = true;
                 this.selectItemByText(text);
             }
