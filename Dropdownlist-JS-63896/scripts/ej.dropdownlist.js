@@ -2665,6 +2665,7 @@
             }
         },
         _hideResult: function (e) {
+            this._prevSearchValue = "";
             if (this.model && this._isPopupShown()) {
 				if (!ej.isNullOrUndefined(e) && !ej.isNullOrUndefined(this.inputSearch) && $(this.inputSearch).is(":focus")){
 					if(e.type == "scroll" && ej.isTouchDevice())
