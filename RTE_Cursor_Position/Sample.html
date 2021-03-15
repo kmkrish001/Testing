@@ -98,7 +98,7 @@
                     }
                 }
             } else {
-                lastText = ele.childNodes;
+                lastText = (ele.childNodes.length == 0) ? ele : ele.childNodes;
             }
             return lastText;
         }

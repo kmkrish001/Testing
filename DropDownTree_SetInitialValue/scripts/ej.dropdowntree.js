@@ -664,6 +664,9 @@ var __extends = (this && this.__extends) || function (d, b) {
                             this.setValueText(ej.util['getVal'](options[option]), 'value');
                             options[option] = this.model.value;
                         }
+                        else if(this.model.loadOnDemand && (optionValue !== '')) {
+                            this.setInputItemValue(optionValue);
+                        }
                         break;
                     case "text":
                         if (ej.isNullOrUndefined(options[option])) {

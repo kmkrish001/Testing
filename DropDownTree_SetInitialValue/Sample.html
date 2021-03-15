@@ -35,11 +35,20 @@
                         <h3> Local self self-referential data</h3>
                         <input type="text" id="localList" />
 
-						<h3>Remote hierachical data</h3>
-                        <input type="text" id="customerTreeList" />
+						<!-- <h3>Remote hierachical data</h3>
+                        <input type="text" id="customerTreeList" /> -->
                         
                         <h3> local hierachical data</h3>
                         <input type="text" id="selectItem" />
+
+                        <div class="control">
+                            <button>
+                              set value
+                            </button>
+                              <div class="ctrllabel">Select a customer</div>
+      
+                              <input type="text" id="customerTreeList" />
+                          </div>
                 </div>
             </div>
 
@@ -49,7 +58,13 @@
     <script type="text/javascript">
 	  
         $(function () {
-                 
+            $('button:last').on('click', function() {
+		       // $('#customerTreeList').ejDropDownTree({ value: "Chai" });
+                ddTObj = $('#customerTreeList').ejDropDownTree("instance");
+                ddTObj.setModel({
+                    value: "Chai"
+                })
+            });
             var dataManger = ej.DataManager({
                 url: "https://mvc.syncfusion.com/Services/Northwnd.svc/"
             });

@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Essential Studio for JavaScript">
+    <meta name="author" content="Syncfusion">
+    <title>Untitled</title>
+    <!-- Essential Studio for JavaScript  theme reference --> 
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/17.4.0.46/js/web/flat-azure/ej.web.all.min.css" />
+    <!-- Essential Studio for JavaScript  script references -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> 
+    <script src="https://cdn.syncfusion.com/js/assets/external/jsrender.min.js"></script>
+    <!--<script src="https://cdn.syncfusion.com/17.2.0.34/js/web/ej.web.all.min.js"> </script>-->
+	<script src="scripts/ej.core.js"></script>
+    <script src="scripts/ej.data.js"></script>
+    <script src="scripts/ej.scroller.js"></script>
+    <script src="scripts/ej.draggable.js"></script>
+    <script src="scripts/ej.globalize.js"></script>
+    <script src="scripts/ej.button.js"></script>
+    <script src="scripts/ej.checkbox.js"></script>
+    <script src="scripts/ej.dropdownlist.js"></script>
+    <!--Add custom scripts here -->
+  <script>
+	var myDS = [
+    {
+		"value": "CTR",
+		"valueOriginale": "test1",
+		"text": " CUSTOMER TRAINING 2D TECH.",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "TRAINING -  CUSTOMER TRAINING 2D TECH."
+	},
+	{
+		"value": "CTM",
+		"valueOriginale": "test2",
+		"text": " CUSTOMER TRAINING 3D TECH.",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "TRG -  CUSTOMER TRAINING 3D TECH."
+	},
+	{
+		"value": "CTX",
+		"valueOriginale": "test3",
+		"text": " CUSTOMER TRAINING BEND TECH.",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "CTBT -  CUSTOMER TRAINING BEND TECH."
+	},
+
+	{
+		"value": "TRAINING",
+		"valueOriginale": "TRAINING",
+		"text": " CUSTOMER TRAINING 2D TECH.",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "TRAINING -  CUSTOMER TRAINING 2D TECH."
+	},
+	{
+		"value": "TRG",
+		"valueOriginale": "TRG",
+		"text": " CUSTOMER TRAINING 3D TECH.",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "TRG -  CUSTOMER TRAINING 3D TECH."
+	},
+	{
+		"value": "CTBT",
+		"valueOriginale": "CTBT",
+		"text": " CUSTOMER TRAINING BEND TECH.",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "CTBT -  CUSTOMER TRAINING BEND TECH."
+	},
+	{
+		"value": "CTNM",
+		"valueOriginale": "CTNM",
+		"text": " CUSTOMER TRAINING NEW MACHINE",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "CTNM -  CUSTOMER TRAINING NEW MACHINE"
+	},
+	{
+		"value": "CTST",
+		"valueOriginale": "CTST",
+		"text": " CUSTOMER TRAINING SYSTEM TECH.",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "CTST -  CUSTOMER TRAINING SYSTEM TECH."
+	},
+	{
+		"value": "EX-05",
+		"valueOriginale": "EX-05",
+		"text": " EXHIBITION - AIR-TEC",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "EX-05 -  EXHIBITION - AIR-TEC",
+		//"selectedItems": [
+		//	43,
+		//	19,
+		//	5,
+		//	7,
+		//	20,
+		//	18,
+		//	9,
+		//	8,
+		//	35,
+		//	21,
+		//	15,
+		//	6
+		//]
+	},
+	{
+		"value": "EX-03",
+		"valueOriginale": "EX-03",
+		"text": " EXHIBITION - BLECH-EXPO STUTTGART",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "EX-03 -  EXHIBITION - BLECH-EXPO STUTTGART",
+		//"selectedItems": [
+		//	43,
+		//	19,
+		//	5,
+		//	7,
+		//	20,
+		//	18,
+		//	9,
+		//	8,
+		//	35,
+		//	21,
+		//	15,
+		//	6
+		//]
+	},
+	{
+		"value": "EX-01",
+		"valueOriginale": "EX-01",
+		"text": " EXHIBITION - EMO",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "EX-01 -  EXHIBITION - EMO",
+		//"selectedItems": [
+		//	43,
+		//	19,
+		//	5,
+		//	7,
+		//	20,
+		//	18,
+		//	9,
+		//	8,
+		//	35,
+		//	21,
+		//	15,
+		//	6
+		//]
+	},
+	{
+		"value": "EX-02",
+		"valueOriginale": "EX-02",
+		"text": " EXHIBITION - EURO-BLECH HANNOVER",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "EX-02 -  EXHIBITION - EURO-BLECH HANNOVER",
+		//"selectedItems": [
+		//	43,
+		//	19,
+		//	5,
+		//	7,
+		//	20,
+		//	18,
+		//	9,
+		//	8,
+		//	35,
+		//	21,
+		//	15,
+		//	6
+		//]
+	},
+	{
+		"value": "EX-06",
+		"valueOriginale": "EX-06",
+		"text": " EXHIBITION - GEN. SMALL EVENTS",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "EX-06 -  EXHIBITION - GEN. SMALL EVENTS",
+		//"selectedItems": [
+		//	43,
+		//	19,
+		//	5,
+		//	7,
+		//	20,
+		//	18,
+		//	9,
+		//	8,
+		//	35,
+		//	21,
+		//	15,
+		//	6
+		//]
+	},
+	{
+		"value": "EX",
+		"valueOriginale": "EX",
+		"text": " EXHIBITION - IN-HOUSE",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "EX -  EXHIBITION - IN-HOUSE"
+	},
+	{
+		"value": "EX-04",
+		"valueOriginale": "EX-04",
+		"text": " EXHIBITION - SCHWEISSEN + SCHNEIDEN",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "EX-04 -  EXHIBITION - SCHWEISSEN + SCHNEIDEN"
+	},
+	{
+		"value": "INS",
+		"valueOriginale": "INS",
+		"text": " INSTALLATION NEW MACHINE",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "INS -  INSTALLATION NEW MACHINE"
+	},
+	{
+		"value": "TIS",
+		"valueOriginale": "TIS",
+		"text": " INSTALLATION TRAINING",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "TIS -  INSTALLATION TRAINING"
+	},
+	{
+		"value": "MNE",
+		"valueOriginale": "MNE",
+		"text": " INTERCOMPANY WORK DONE ABROAD",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "MNE -  INTERCOMPANY WORK DONE ABROAD"
+	},
+	{
+		"value": "ICCG",
+		"valueOriginale": "ICCG",
+		"text": " INTERN - CAR CHANGE AND GARAGE",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "ICCG -  INTERN - CAR CHANGE AND GARAGE",
+		//"selectedItems": [
+		//	43,
+		//	19,
+		//	5,
+		//	7,
+		//	20,
+		//	18,
+		//	9,
+		//	8,
+		//	35,
+		//	21,
+		//	15,
+		//	6
+		//]
+	},
+	{
+		"value": "O2",
+		"valueOriginale": "O",
+		"text": " INTERN - HELPDESK_ COORDINATOR WORK",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "O -  INTERN - HELPDESK_ COORDINATOR WORK"
+	},
+	{
+		"value": "IHO",
+		"valueOriginale": "IHO",
+		"text": " INTERN - HOME OFFICE",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "IHO -  INTERN - HOME OFFICE",
+		//"selectedItems": [
+		//	43,
+		//	19,
+		//	5,
+		//	7,
+		//	20,
+		//	18,
+		//	9,
+		//	8,
+		//	35,
+		//	21,
+		//	15,
+		//	6
+		//]
+	},
+	{
+		"value": "IT",
+		"valueOriginale": "IT",
+		"text": " INTERN - PERSONNEL EDUCATION",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "IT -  INTERN - PERSONNEL EDUCATION",
+		//"selectedItems": [
+		//	43,
+		//	19,
+		//	5,
+		//	7,
+		//	20,
+		//	18,
+		//	9,
+		//	8,
+		//	35,
+		//	21,
+		//	15,
+		//	6
+		//]
+	},
+	{
+		"value": "IPT",
+		"valueOriginale": "IPT",
+		"text": " INTERN - PERSONNEL TALK",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "IPT -  INTERN - PERSONNEL TALK",
+		//"selectedItems": [
+		//	43,
+		//	19,
+		//	5,
+		//	7,
+		//	20,
+		//	18,
+		//	9,
+		//	8,
+		//	35,
+		//	21,
+		//	15,
+		//	6
+		//]
+	},
+    {
+		"value": "O",
+		"valueOriginale": "O",
+		"text": "(O) CUSTOMER TRAINING NEW MACHINE",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "CTNM -  CUSTOMER TRAINING NEW MACHINE"
+	},
+	{
+		"value": "SB",
+		"valueOriginale": "SB",
+		"text": " INTERN - WAITING FOR NEXT JOB",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "SB -  INTERN - WAITING FOR NEXT JOB",
+		//"selectedItems": [
+		//	43,
+		//	19,
+		//	5,
+		//	7,
+		//	20,
+		//	18,
+		//	9,
+		//	8,
+		//	35,
+		//	21,
+		//	15,
+		//	6
+		//]
+	},
+	{
+		"value": "IWC",
+		"valueOriginale": "IWC",
+		"text": " INTERN - WORKERS´ COUNCIL",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "IWC -  INTERN - WORKERS´ COUNCIL",
+		//"selectedItems": [
+		//	43,
+		//	19,
+		//	5,
+		//	7,
+		//	20,
+		//	18,
+		//	9,
+		//	8,
+		//	35,
+		//	21,
+		//	15,
+		//	6
+		//]
+	},
+	{
+		"value": "LOFF",
+		"valueOriginale": "LOFF",
+		"text": " Lay Off (CIGO)",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "LOFF -  Lay Off (CIGO)"
+	},
+	{
+		"value": "CMG",
+		"valueOriginale": "CMG",
+		"text": " MAINTENANCE - WITH CONTRACT",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "CMG -  MAINTENANCE - WITH CONTRACT"
+	},
+	{
+		"value": "MNT",
+		"valueOriginale": "MNT",
+		"text": " MAINTENANCE - WITHOUT CONTRACT",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "MNT -  MAINTENANCE - WITHOUT CONTRACT"
+	},
+	{
+		"value": "INP",
+		"valueOriginale": "INP",
+		"text": " OPEN POINT LIST AFTER INSTALLATION",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "INP -  OPEN POINT LIST AFTER INSTALLATION"
+	},
+	{
+		"value": "OWE",
+		"valueOriginale": "OWE",
+		"text": " OUT WARRANTY INTERVENTION - EXTENDED WARRANTY CONTRACT",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "OWE -  OUT WARRANTY INTERVENTION - EXTENDED WARRANTY CONTRACT"
+	},
+	{
+		"value": "PSNM",
+		"valueOriginale": "PSNM",
+		"text": " PRODUCTION SUPPORT FOR NEW MACHINE",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "PSNM -  PRODUCTION SUPPORT FOR NEW MACHINE"
+	},
+	{
+		"value": "TLS",
+		"valueOriginale": "TLS",
+		"text": " REMOTE DIAGNOSTICS",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "TLS -  REMOTE DIAGNOSTICS"
+	},
+	{
+		"value": "CTR2",
+		"valueOriginale": "CTR",
+		"text": " REPAIR WORK WITH CONTRACT",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "CTR -  REPAIR WORK WITH CONTRACT"
+	},
+	{
+		"value": "FIG",
+		"valueOriginale": "FIG",
+		"text": " REPAIR WORK WITHOUT CONTRACT",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "FIG -  REPAIR WORK WITHOUT CONTRACT"
+	},
+	{
+		"value": "SGW",
+		"valueOriginale": "SGW",
+		"text": " SALES - GOOD WILL",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "SGW -  SALES - GOOD WILL"
+	},
+	{
+		"value": "SNMC",
+		"valueOriginale": "SNMC",
+		"text": " SALES - NEW MACHINE COSTS",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "SNMC -  SALES - NEW MACHINE COSTS"
+	},
+	{
+		"value": "SPM",
+		"valueOriginale": "SPM",
+		"text": " SALES - PROJECT MANAGEMENT",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "SPM -  SALES - PROJECT MANAGEMENT"
+	},
+	{
+		"value": "SWDC",
+		"valueOriginale": "SWDC",
+		"text": " SALES - WORKING AT DEMOCENTER / TIME STUDY",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "SWDC -  SALES - WORKING AT DEMOCENTER / TIME STUDY"
+	},
+	{
+		"value": "SL",
+		"valueOriginale": "SL",
+		"text": " Sick Leave",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "SL -  Sick Leave",
+		//"selectedItems": [
+		//	43,
+		//	19,
+		//	5,
+		//	7,
+		//	20,
+		//	18,
+		//	9,
+		//	8,
+		//	35,
+		//	21,
+		//	15,
+		//	6
+		//]
+	},
+	{
+		"value": "SPDI",
+		"valueOriginale": "SPDI",
+		"text": " SPARE PARTS - DURING INSTALLATION",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "SPDI -  SPARE PARTS - DURING INSTALLATION"
+	},
+	{
+		"value": "UAOR",
+		"valueOriginale": "UAOR",
+		"text": " UPGRADE - ADD. OPTION OR RETROFIT TO INVOICE",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "UAOR -  UPGRADE - ADD. OPTION OR RETROFIT TO INVOICE"
+	},
+	{
+		"value": "UBT",
+		"valueOriginale": "UBT",
+		"text": " UPGRADE - BENDING TOOLS",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "UBT -  UPGRADE - BENDING TOOLS"
+	},
+	{
+		"value": "UCCC",
+		"valueOriginale": "UCCC",
+		"text": " UPGRADE - COMPUTER OR CONTROL CHANGE",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "UCCC -  UPGRADE - COMPUTER OR CONTROL CHANGE"
+	},
+	{
+		"value": "USC",
+		"valueOriginale": "USC",
+		"text": " UPGRADE - SOFTWARE CONTRACT",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "USC -  UPGRADE - SOFTWARE CONTRACT"
+	},
+	{
+		"value": "USWC",
+		"valueOriginale": "USWC",
+		"text": " UPGRADE - SOFTWARE WITHOUT CONTRACT",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "USWC -  UPGRADE - SOFTWARE WITHOUT CONTRACT"
+	},
+	{
+		"value": "REL",
+		"valueOriginale": "REL",
+		"text": " USED MACHINE RELOCATION",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "REL -  USED MACHINE RELOCATION"
+	},
+	{
+		"value": "V",
+		"valueOriginale": "V",
+		"text": " Vacations",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "V -  Vacations",
+		//"selectedItems": [
+		//	43,
+		//	19,
+		//	5,
+		//	7,
+		//	20,
+		//	18,
+		//	9,
+		//	8,
+		//	35,
+		//	21,
+		//	15,
+		//	6
+		//]
+	},
+	{
+		"value": "WIEWT",
+		"valueOriginale": "WIEWT",
+		"text": " WARRANTY INTERVENTION - EXTENDED WARRANTY TIME",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "WIEWT -  WARRANTY INTERVENTION - EXTENDED WARRANTY TIME"
+	},
+	{
+		"value": "OWG",
+		"valueOriginale": "OWG",
+		"text": " WARRANTY INTERVENTION - GOOD WILL",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "OWG -  WARRANTY INTERVENTION - GOOD WILL"
+	},
+	{
+		"value": "WIUB",
+		"valueOriginale": "WIUB",
+		"text": " WARRANTY INTERVENTION - UPDATE/BULLETINS",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "WIUB -  WARRANTY INTERVENTION - UPDATE/BULLETINS"
+	},
+	{
+		"value": "GAR",
+		"valueOriginale": "GAR",
+		"text": " WARRANTY INTERVENTION AFTER ACCEPTANCE",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "GAR -  WARRANTY INTERVENTION AFTER ACCEPTANCE"
+	},
+    {
+		"value": "GAR1",
+		"valueOriginale": "GAR",
+		"text": " WARRANTY INTERVENTION AFTER ACCEPTANCE",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "GAR -  WARRANTY INTERVENTION AFTER ACCEPTANCE"
+	},
+    {
+		"value": "GAR2",
+		"valueOriginale": "GAR",
+		"text": " WARRANTY INTERVENTION AFTER ACCEPTANCE",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "GAR -  WARRANTY INTERVENTION AFTER ACCEPTANCE"
+	},
+    {
+		"value": "SLS",
+		"valueOriginale": "test5",
+		"text": " CUSTOMER TRAINING SYSTEM TECH.",
+		"ordinePerAnnullati": "",
+		"stringa_Servizio": "",
+		"dictionaryDatiAggiuntivi": {},
+		"valore_descrizione": "CTST -  CUSTOMER TRAINING SYSTEM TECH."
+	},                    
+];
+	
+	  //var initValue = "IHO,EX-04,EX,O";
+      var initValue = "CTR,CTM,CTX,O,SLS";
+      //var initValue = "";
+            //var initValue = "CTR,CTM,CTX,O,SLS";
+	 //// var array = initValue.split(",");
+
+
+		////array.sort(function (a, b) {
+  ////        // ASC  -> a.length - b.length
+  ////        // DESC -> b.length - a.length
+  ////        return a.length - b.length;
+	 //// });
+  ////    initValue = array.join();
+
+      //var initValue = "V,LOFF,IHO,EX,EX-04";
+   //   arr.sort(function (a, b) {
+   //       // ASC  -> a.length - b.length
+   //       // DESC -> b.length - a.length
+   //       return b.length - a.length;
+	  //});
+
+			$(function () {
+				$("#dropdown1").ejDropDownList({
+					dataSource: myDS,
+					width: '450px',
+					//allowFiltering: true,
+					showCheckbox: true,
+					multiSelectMode: 'visualmode',
+					enableFilterSearch: true,
+				});
+			var ddlObj = $("#dropdown1").ejDropDownList("instance");
+			ddlObj.selectItemByValue(initValue);
+			outputMessage(initValue);
+			
+			});
+	
+      function outputMessage(value)
+      {
+          if (value == undefined)
+              value = $("#dropdown1").ejDropDownList("instance").getSelectedValue();
+          
+          			$("#result").html("").html("value: " + value + "  <b> -> " + value.split(",").length + " items</b><br/><br/>"
+			+ "getSelectedValue: " + $("#dropdown1").ejDropDownList("instance").getSelectedValue() + "  <b> -> " + $("#dropdown1").ejDropDownList("instance").getSelectedValue().split(",").length + " items</b><br/><br/>"
+			+ "selectedIndices: " + $("#dropdown1").ejDropDownList("option", "selectedIndices") + "  <b> -> " + $("#dropdown1").ejDropDownList("option", "selectedIndices").length + " items</b><br/><br/>");
+          
+      }
+		</script>
+</head>
+
+<body>
+    <input id="dropdown1"/>
+    <br>
+    <br>
+    <br>
+    <input type="button" onclick="javascript:outputMessage();" value=":: refresh selected value ::">
+
+<br/>
+<pre id="result">
+</pre>
+</body>
+
+</html>
