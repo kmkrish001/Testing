@@ -703,7 +703,7 @@
 ];
 	
 	  //var initValue = "IHO,EX-04,EX,O";
-     // var initValue = "CTR,CTM,CTX,O,SLS";
+      var initValue = "CTR,CTM,CTX,O,SLS";
       //var initValue = "";
             //var initValue = "CTR,CTM,CTX,O,SLS";
 	 //// var array = initValue.split(",");
@@ -733,8 +733,8 @@
 					enableFilterSearch: true,
 				});
 			var ddlObj = $("#dropdown1").ejDropDownList("instance");
-			//ddlObj.selectItemByValue(initValue);
-			//outputMessage(initValue);
+			ddlObj.selectItemByValue(initValue);
+			outputMessage(initValue);
 			
 			});
 	
