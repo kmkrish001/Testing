@@ -23,45 +23,6 @@
     <script src="Scripts/ej.dialog.js"></script>
     <script src="scripts/ej.combobox.js"></script>
 </head>
-<style>
-
-		/* removed ej2 background style - done */
-		/* .e-widget.ej1-combobox.e-input-group::after,
-		.e-widget.ej1-combobox.e-input-group::before {
-			background: none;
-		} */
-
-		/* border for input focus */
-        /* .ej1-combobox.e-widget.e-input-group.e-input-focus:not(.e-float-icon-left):not(.e-success):not(.e-warning):not(.e-error),
-		.ej1-combobox.e-widget.e-ddl.e-input-group.e-input-focus {
-			border-width: 1px;
-		} */
-
-		/* border for combobox */
-        /* .ej1-combobox.e-widget.e-input-group:not(.e-success):not(.e-warning):not(.e-error):not(.e-float-icon-left),
-		.ej1-combobox.e-widget.e-ddl.e-input-group {
-			border-color: #c8c8c8;
-        } */
-
-        /* input value selection */
-    /* .ej1-combobox.e-ddl.e-input-group:not(.e-disabled) .ej1-combobox.e-input-group-btn:active button,
-    .ej1-combobox.e-ddl.e-input-group:not(.e-disabled) .ej1-combobox.e-input-group-icon:active,
-    .ej1-combobox input.e-combobox.e-input::selection {
-      background: #179bd7;
-      color: #fff;
-    } */
-
-		/* removed min-height and min-wdith for dropdownicon */ 
-		/* .e-widget.ej1-combobox .e-input-group-icon.e-ddl-icon {
-			min-height: unset;
-			min-width: unset;
-		} */
-
-		/* maintaining the border color */
-		/* .ej1-combobox.e-widget.e-ddl.e-input-group .e-input-group-icon {
-			border-color: #c8c8c8;
-		} */
-	</style>
 <body>
   <div id="container">
     <input type="text" tabindex="1" id="list" />
@@ -80,7 +41,6 @@
         $('#list').ejComboBox({
             dataSource: sportsData,
           loadOnDemand: true,
-         // cssClass: 'ej1-widget',
           noRecordsTemplate: 'Data Not Found',
             fields: { text: 'game', value: 'id' },
             placeholder: 'Select a game',
