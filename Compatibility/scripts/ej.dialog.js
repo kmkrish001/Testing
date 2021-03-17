@@ -504,7 +504,8 @@
         },
         _renderControl: function () {
             this._cloneElement = this.element.clone();
-            this.element.attr("tabindex", 0).attr({ "role": "dialog", "aria-labelledby": this.element.prop("id") + "_title" });
+            this.element.attr("tabindex", 0).attr({ "role": "dialog"});
+            if(this.model.showHeader) this.element.attr({"aria-labelledby": this.element.prop("id") + "_title"});
             this._ejDialog = ej.buildTag("div.e-dialog e-widget e-box " + this.model.cssClass + " e-dialog-wrap e-shadow#" + (this.element.prop("id") == "" ? "" : this.element.prop("id") + "_wrapper"), "", { display: "none", zIndex: this.model.zIndex }, { tabindex: 0 });
             if(this.model.isResponsive) this._ejDialog.addClass("e-dialog-resize");
             this.wrapper = this._ejDialog;
@@ -610,7 +611,7 @@
         },
 
         _renderFooterBar: function () {
-            this._dialogFooterbar = ej.buildTag("div#" + this.element.prop("id") + "_foot.e-footerbar  e-js").appendTo(this._ejDialog);
+            this._dialogFooterbar = ej.buildTag("div#" + this.element.prop("id") + "_foot.e-footerbar e-js").appendTo(this._ejDialog);
         },
 
         _addTitleText: function () {
