@@ -904,9 +904,7 @@
         _subMenuPos: function (element, direction) {
             var pos = $(element).offset();
             var subMenuLeft, subMenuRight ;
-       //     var posLeft = pos.left;
             var posLeft = (direction == "right") ? pos.left + $(element).width() : pos.left;
-           // var posLeft = pos.left + $(element).width();
             var subMenu = $('ul:first', element);
             var menuWidth = $(element).outerWidth();
             if (pos == null || pos == undefined)
