@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Essential Studio for JavaScript : DropDownList - Multi Select Functionalities</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+    <link href="https://cdn.syncfusion.com/18.4.0.30/js/web/flat-azure/ej.web.all.min.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> 
+	<![endif]-->
+    <!--[if IE 9]><!-->
+        <script src="scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <!--<![endif]--> 
+    <script src="scripts/ej.core.js"></script>
+    <script src="scripts/ej.data.js"></script>
+    <script src="scripts/ej.scroller.js"></script>
+    <script src="scripts/ej.draggable.js"></script>
+    <script src="scripts/ej.globalize.js"></script>
+    <script src="scripts/ej.button.js"></script>
+    <script src="scripts/ej.checkbox.js"></script>
+    <script src="scripts/ej.dropdownlist.js"></script>
+    <script src="scripts/ej.waitingpopup.js"></script>
+    <script src="scripts/ej.treeview.js"></script>
+
+    <script src="scripts/ej.dropdowntree.js"></script>
+</head>
+<body>
+      <div class="content-container-fluid">
+        <div class="row">
+            <div class="cols-sample-area">
+                <div class="frame">
+                
+                    <div class="control">
+                      <button>
+                        set value
+                      </button>
+                        <div class="ctrllabel">Select a customer</div>
+
+                        <input type="text" id="customerTreeList" />
+                    </div>					
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var target;
+        $(function () {
+            // DataManager creation
+              var customAdaptor = new ej.UrlAdaptor().extend({         
+                processQuery: function (dm, query) {
+                 debugger  
+                 }                // reused process query from  adaptor
+            });
+			var dataManger2= ej.DataManager({
+                url: "https://js.syncfusion.com/demos/ejServices/api/TreeViewData/GetAllData",
+		       adaptor: new ej.UrlAdaptor(),
+               crossDomain: true,
+              // offline: true,
+             //  dataType: "JSON",
+             //  requestType: "Json"
+            });
+			
+			var query2 = ej.Query().from("Categories").select("CategoryID,CategoryName").take(1000);
+            
+			$('#customerTreeList').ejDropDownTree({
+                watermarkText: "Please select",
+				loadOnDemand: true,
+                width: "100%",
+                treeViewSettings: {
+                    fields: {
+                        dataSource: dataManger2,  id: "id",  parentId: "pid",value:"id",text: "name", query:query2,
+                        child: { dataSource: dataManger2, tableName: "Products", parentId: "CategoryID", text: "ProductName" }
+                    }
+                }
+				});
+          
+		    $('#customerTreeList').ejDropDownTree({ value: "Local Disk(C:)" });  
+			$('button:last').on('click', function() {
+		    $('#customerTreeList').ejDropDownTree({ value: "Local Disk(D:)" });  
+          });
+        });
+
+    </script> 
+    <style>
+        .frame{
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .ctrllabel{
+            font-weight: 700;
+        }
+		@media (min-width: 990px){
+			.cols-sample-area .row .col-md-6{
+				width: 43.71%;
+			}
+		}
+		@media (min-width: 1200px){
+			.cols-sample-area .row .col-lg-6{
+				width: 45.71%;
+			}
+		}
+		@media (max-width: 992px) {
+			.cols-sample-area .row .col-sm-12:nth-child(2), 
+			.cols-sample-area .row .col-xs-12:nth-child(2),
+			.cols-sample-area .row .col-md-6:nth-child(2) {
+				padding-top : 30px;
+			}
+		
+		}
+		
+    </style>
+	</body>
+</html>

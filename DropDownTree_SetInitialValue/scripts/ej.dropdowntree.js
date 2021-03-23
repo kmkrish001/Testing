@@ -802,7 +802,7 @@ var __extends = (this && this.__extends) || function (d, b) {
                     }
                     else {
                         var proxy =this;
-                        ej.DataManager(source.dataSource.dataSource.url).executeQuery(source.query).done(function (e) {
+                        source.dataSource.executeQuery(source.query).done(function (e) {
                             var field_name = proxy.model.treeViewSettings.fields["text"];
                             if(proxy.model.treeViewSettings.allowMultiSelection) {
                                 for(var i=0;i< value.length;i++) {
