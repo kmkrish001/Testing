@@ -275,6 +275,8 @@
                 if (options && options.value != undefined) {
                     this._trigger("_change", { value: this.model.value });
                 }
+                this.IsIncremented = false;
+                this.IsDecremented = false;
             }
             else {
                 this._destroy();
@@ -901,8 +903,8 @@
         },
 
         _spinEvents: function (action) {
-            this[action](this.spinUp, "mousedown touchstart touchend", this._spinUpClick);
-            this[action](this.spinDown, "mousedown touchstart touchend", this._spinDownClick);
+            this[action](this.spinUp, "mousedown mouseup touchstart touchend", this._spinUpClick);
+            this[action](this.spinDown, "mousedown mouseup touchstart touchend", this._spinDownClick);
         },
 
         _isIE8: function () {
@@ -930,7 +932,7 @@
             this.spinUp.addClass("e-active");
             var self = this;
             if (event.type == "mouseup"|| event.type == "touchend") {
-                this._updateInputField("increment");
+                if(!self.IsIncremented) this._updateInputField("increment"); self.IsIncremented = false;
                 this.spinUp.removeClass("e-active");
                 this._off($(document), 'mouseup', this._mouseUpClick);
             }
@@ -938,6 +940,7 @@
                 if (!this._focused) this._hiddenInput[0].focus();
                 this._timeout = setInterval(function () {
                     self._updateInputField("increment");
+                    self.IsIncremented = true;
                 }, 150);
                 this._on($(document), 'mouseup', this._mouseUpClick);
             }
@@ -959,7 +962,7 @@
             this._on(this.spinDown, 'mouseleave', this._mouseUpClick);
             this.spinDown.addClass("e-active");
             if (event.type == "mouseup"|| event.type == "touchend") {
-                this._updateInputField("decrement");
+                if(!self.IsDecremented) this._updateInputField("decrement"); self.IsDecremented = false;
                 this.spinDown.removeClass("e-active");
                 this._off($(document), 'mouseup', this._mouseUpClick);
             }
@@ -967,6 +970,7 @@
                 if (!this._focused) this._hiddenInput[0].focus()
                 this._timeout = setInterval(function () {
                     self._updateInputField("decrement");
+                    self.IsDecremented = true;
                 }, 150);
                 this._on($(document), 'mouseup', this._mouseUpClick);
             }
