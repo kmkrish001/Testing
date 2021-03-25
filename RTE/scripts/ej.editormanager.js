@@ -14,6 +14,7 @@ var documentManager;
             this.currentWindow = win;
             this._rangeExtract = new RangeExtractor(this.currentDocument);
             this._bindEvent();
+            this.tagFormat = false;
         }
         editorManager.prototype._bindEvent = function () {
             $(this.currentDocument.body).on("keydown", $.proxy(this._editorKeyUpEvent, this));
@@ -746,7 +747,7 @@ var documentManager;
             return status;
         };
         editorManager.prototype._getSelectNode = function () {
-            return this._rangeExtract.ProcessRange();
+            return this._rangeExtract.ProcessRange(this.tagFormat);
         };
         editorManager.prototype._getFormatedTagOrder = function (data, index) {
             data[index].currentNode = this._getNodeOrder(data[index].textNode, data[index].node);
@@ -915,7 +916,9 @@ var documentManager;
             return (!selectedNode.length || (selectedNode.length == 1 && selectedNode[0].data && !selectedNode[0].data.length));
         };
         editorManager.prototype._tagFormatProcess = function (format, remove) {
+            this.tagFormat = true;
             var selectedNode = this._getSelectNode();
+            this.tagFormat = false;
             if (this._validateSelectedNode(selectedNode))
                 return;
             var status = this._CurrentformateStatus(selectedNode, format), node, nodeData = { Info: null, status: null }, retNode, startNode, endNode;
@@ -1161,13 +1164,14 @@ var documentManager;
             this.nodeCollection = { leftSide: [], rightSide: [] };
             this.currentDocument = target;
         }
-        RangeExtractor.prototype.ProcessRange = function () {
+        RangeExtractor.prototype.ProcessRange = function (tagFormat) {
             var tempRange = this._getRange();
             if (($(this.currentDocument.body).attr("contenteditable") == "true") && tempRange) {
                 this._nodeCollection = [], this._noContent = false;
                 this._iterationStatus = false;
                 this._cursorData = { node: null, offSet: null };
                 if ((tempRange.startContainer == tempRange.endContainer) && (tempRange.startOffset == tempRange.endOffset)) {
+                    if(tagFormat) return;
                     this._collectCursorBasedTextNode(tempRange.startContainer, tempRange.startOffset);
                     this.cursorBasedCollection = true;
                 }

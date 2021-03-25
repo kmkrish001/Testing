@@ -2427,6 +2427,7 @@
             this._bgSplitObj.option("beforeOpen", function () { proxy._bindClickOperation("BGColor"); });
             this._on(this._bgColorSplit, "click", this._bgColorClick);
             this._bgColorSplit.find("span." + this._rteIconsList["backgroundColor"]).removeClass("e-icon");
+			 
             this._bgColorSplit.find("span.e-btntxt").css("background-color", this._bgColor);
         },
         _bindClickOperation: function (toolName) {
@@ -3063,10 +3064,12 @@
 			     var $rteEle;
                (this.element.closest("div").hasClass("e-normal"))? $rteEle = $("textarea#"+args.model.htmlAttributes.datafontid):$rteEle = this.element.closest("div.e-rte").find("textarea.e-rte");
 				var rteInstcne = $rteEle.ejRTE("instance"), rteId = $rteEle.attr('id');
-                rteInstcne._focus();
-                args.value !== "" && rteInstcne._onFontName(args.value);
-                rteInstcne._onChange();
 				rteInstcne._setBackupData();
+                if (!args.isInteraction){
+                    rteInstcne._focus();
+                    args.value !== "" && rteInstcne._onFontName(args.value);
+                    rteInstcne._onChange();
+                }
             }
         },
 
@@ -5493,8 +5496,8 @@
                 if(!this._isIE()) { this._undoSave = this._backupArray[this._undoRedoPosition - 1].range; }
                 if (this.model.enableHtmlEncode)
                 (!this._isIE()) ? this.setHtml(this._decode(this._backupArray[this._undoRedoPosition - 1].text)) : this.setHtml(this._decode(this._backupArray[this._undoRedoPosition - 1]));
-                else
-                    (!this._isIE()) ? this.setHtml(this._backupArray[this._undoRedoPosition - 1].text) : this.setHtml(this._backupArray[this._undoRedoPosition - 1].text);
+                else 
+                    (!this._isIE()) ? this.setHtml(this._backupArray[this._undoRedoPosition - 1].text) : this.setHtml(this._backupArray[this._undoRedoPosition - 1]);
                 this._undoRedoPosition--;
                 this._focus();
                 if(!this._isIE()) { this._restore(); }
@@ -5712,7 +5715,6 @@
 			   proxy._checkColor(args.value); 
 			   
 			 },
-			
 		    }).data("ejColorPicker");
             var model = this._getDialogModel();
             model.width = "auto";
@@ -5726,8 +5728,8 @@
             this._customColor.ejDialog(model);
 	        this._customDialogobj=(this._customColor).ejDialog("instance");
             this._customColor.closest(".e-dialog-wrap").addClass("e-rte");
-		    this.colorobj.popupContainer.appendTo(palette);
-		    this.colorobj.popupContainer.css({"display":"block","border-style":"none"});
+		    this.colorobj.wrapper.appendTo(palette);
+		    this.colorobj.wrapper.css({"display":"block","border-style":"none"});
 		    $("#"+this._rteId+"_customColorDialog").find("span.e-colorwidget.e-picker").remove();
 		    $("#"+this._rteId+"_customColorDialog").prepend(palette);
 		    this.colorobj._hidePopup=function () {
@@ -5741,6 +5743,10 @@
 		
 		_openColorpalette:function(e)
 		{
+			if (this._isIE())
+			{
+           this._focus(); 
+			}
 		  if(!this._customColor)
 				this._createcustomColorpalette();
 		  if (e.currentTarget.id == this._rteId + "_customcolor") {
@@ -5755,10 +5761,10 @@
 		
 		}
 		     this._customColor.ejDialog("open");
-
+ 
 		},
-		
-		
+		 
+		 
 		_checkColor:function(e)
 		{
 		  if(this._fontclick)
@@ -5984,6 +5990,7 @@
                             else if (e.shiftKey) {//custom Table
                                 e.preventDefault();
                                 this._getPasteRangeVal();
+                                this._openCustomTable(e);
                                 if (this._customTableDialog)
                                     this._renderTableDialog();
                                 this._customTableDialog.ejDialog("open");
@@ -6220,9 +6227,9 @@
             this._trigger("keydown", { keyCode: e.keyCode });
         },
         _changeFontsize: function (status) {
-            var fontSize = parseInt(this._getCommandValue('fontsize')) ? parseInt(this._getCommandValue('fontsize')) : 2;
-            if ((!status && fontSize > this.model.fontSize[0].value) || (status && fontSize < this.model.fontSize[this.model.fontSize.length - 1].value)) {
-                this._onFontSize(status ? fontSize + 1 : fontSize - 1);
+            var fontSize= $(this._getSelectedNode()).css("font-size"); 
+            if ((!status && parseInt(fontSize) > parseInt(this.model.fontSize[0].value)) || (status && fontSize < this.model.fontSize[this.model.fontSize.length - 1].value)) {
+                this._onFontSize(status ? parseInt(fontSize) + 1 +"px": parseInt(fontSize) - 1 + "px");
                 this._updateFontOptionStatus();
             }
         },
