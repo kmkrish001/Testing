@@ -788,7 +788,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             var input_text =[];
             if(this.model.loadOnDemand && (ej.isNullOrUndefined(this.ultag) || this.ultag.children().length==0)) {  
                     if (!source.dataSource.offline && !(source.dataSource.json && source.dataSource.json.length > 0) && ej.isNullOrUndefined(source.dataSource.dataSource)) {
-                        var field_name = this.treeMapping("text");
+                        var field_name = (source.value) ? this.treeMapping("value") :this.treeMapping("text");
                         if(this.model.treeViewSettings.allowMultiSelection) {
                             for(var i=0;i< value.length;i++) {
                                 var element = ej.DataManager(source.dataSource).executeLocal(ej.Query().where(source.text, "equal", value[i], false));
@@ -797,17 +797,18 @@ var __extends = (this && this.__extends) || function (d, b) {
                             $(this.visibleInput).val(input_text);
                         }
                         else {
-                            this._setInitValue(source.dataSource, source.text, value);
+                            this._setInitValue(source.dataSource, field_name[0], value);
                         }
                     }
                     else {
                         var proxy =this;
                         source.dataSource.executeQuery(source.query).done(function (e) {
-                            var field_name = proxy.model.treeViewSettings.fields["text"];
+                            var field_name = (!ej.isNullOrUndefined(proxy.model.treeViewSettings.fields.value)) ? proxy.model.treeViewSettings.fields.value : proxy.model.treeViewSettings.fields.text;
+                            var visibleVal = proxy.model.treeViewSettings.fields.text;
                             if(proxy.model.treeViewSettings.allowMultiSelection) {
                                 for(var i=0;i< value.length;i++) {
                                     var element = ej.DataManager(e.result).executeLocal(ej.Query().where(field_name, "equal", value[i], false)); 
-                                    input_text.push(element[0][field_name]);
+                                    input_text.push(element[0][visibleVal]);
                                 }
                             }
                             else {
@@ -816,11 +817,11 @@ var __extends = (this && this.__extends) || function (d, b) {
                                 if(element.length == 0) {
                                     for(var i = 0; i < data.length; i++){
                                         var parentId = ej.getObject(proxy.model.treeViewSettings.fields.parentId, data[i]);
-                                        if (ej.isNullOrUndefined(parentId) || parentId == 0 )
+                                        if ((ej.isNullOrUndefined(parentId) || parentId == 0) && proxy.model.treeViewSettings.fields.child )
                                             proxy.getChildItem(data[i], proxy.model.treeViewSettings.fields);
                                     }
                                 } else {
-                                    input_text.push(element[0][field_name]);
+                                    input_text.push(element[0][visibleVal]);
                                 }
                             }
                             $(proxy.visibleInput).val(input_text);
@@ -844,14 +845,15 @@ var __extends = (this && this.__extends) || function (d, b) {
             }
             var input_text =[];
             if(element.length != 0) {
-                input_text.push(element[0][field_name]);
+                var visibleVal = (this.model.treeViewSettings.fields.value) ? this.model.treeViewSettings.fields.text : field_name;
+                input_text.push(element[0][visibleVal]);
                 $(this.visibleInput).val(input_text);
             }
         };
 
         ejDropDownTree.prototype.getChildItem = function (item, mapper) {
             var proxy = this, queryPromise, pid, id, childItems;
-            pid = (mapper["child"]["parentId"]) ? mapper["child"]["parentId"] : proxy.model.treeViewSettings.fields.parentId, id;
+            pid = (mapper["child"] && mapper["child"]["parentId"]) ? mapper["child"]["parentId"] : proxy.model.treeViewSettings.fields.parentId, id;
             id = (mapper.id) ? mapper.id : proxy.model.treeViewSettings.fields.id;
             var itemID = ej.getObject(id, item);
             queryPromise = this._executeDataQuery(mapper["child"], pid, parseInt(itemID));
@@ -985,7 +987,7 @@ var __extends = (this && this.__extends) || function (d, b) {
                     }
                     for (var i = 0; i < treeSrc.length; i++) {
                         nodeIndex = nodeIndex + 1;
-                        if (typeof (val) == "string" || val == null) {
+                        if (typeof (val) == "string" || typeof (val) == "number" || val == null) {
                             if (ej.getObject(mappedField[0], treeSrc[i]) === val) {
                                 this.treeNodeSelection(nodeIndex);
                             }
@@ -1034,7 +1036,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             var parentText = this.model.treeViewSettings.fields.text;
             var childText;
             if (fieldType === 'value') {
-                parentValue = (!ej.isNullOrUndefined(this.treeView.model.fields.value)) ? this.treeView.model.fields.value : parentText;
+                parentValue = (!ej.isNullOrUndefined(this.model.treeViewSettings.fields.value)) ? this.model.treeViewSettings.fields.value : parentText;
                 if (!ej.isNullOrUndefined(this.model.treeViewSettings.fields.child)) {
                     childText = (!ej.isNullOrUndefined(this.model.treeViewSettings.fields.child.text)) ? this.model.treeViewSettings.fields.child.text : parentText;
                     childValue = (!ej.isNullOrUndefined(this.model.treeViewSettings.fields.child.value)) ? this.model.treeViewSettings.fields.child.value : childText;
