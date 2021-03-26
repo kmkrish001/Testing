@@ -29,29 +29,35 @@
             <div class="cols-sample-area">
                 <div class="frame">
                     <div class="control">
-                        <h3> Remote self self-referential data</h3>
-                        <input type="text" id="user" />
 
-                        <h3> Local self self-referential data</h3>
+                        <h3> Local self-referential data</h3>
                         <input type="text" id="localList" />
 
-						<!-- <h3>Remote hierachical data</h3>
-                        <input type="text" id="customerTreeList" /> -->
+                        <h3> Remote self-referential data</h3>
+                        <input type="text" id="user" />
                         
                         <h3> local hierachical data</h3>
                         <input type="text" id="selectItem" />
 
-                        <div class="control">
-                            <button>
-                              set value
-                            </button>
-                              <div class="ctrllabel">Select a customer</div>
-      
-                              <input type="text" id="customerTreeList" />
-                          </div>
-                </div>
-            </div>
+                        <h3> Remote hierachical data</h3>
+                        <input type="text" id="customerTreeList" />
 
+                        <h3> Local self-referential Id field</h3>
+                        <input type="text" id="localList2" />
+
+                        <h3>Remote self-referential with Id field</h3>
+                        <input type="text" id="customerTreeList2" />
+
+                        <h3> local hierachical with Id field</h3>
+                        <input type="text" id="selectItem2" />
+
+                        <h3> Remote hierachical with Id</h3>
+                        <input type="text" id="customerTreeList3" />
+                    </div>
+            </div>
+            <button>
+                set value
+              </button>
         </div>
     </div>
 
@@ -59,11 +65,12 @@
 	  
         $(function () {
             $('button:last').on('click', function() {
-		       // $('#customerTreeList').ejDropDownTree({ value: "Chai" });
-                ddTObj = $('#customerTreeList').ejDropDownTree("instance");
-                ddTObj.setModel({
-                    value: "Chai"
-                })
+                $('#user').ejDropDownTree({ value: "BOLID"});
+		        $('#customerTreeList').ejDropDownTree({ value: "Chai" });
+                $('#selectItem').ejDropDownTree({value: "India" });
+                $('#localList').ejDropDownTree({ value: "Songs" });
+                $('#localList2').ejDropDownTree({ value: 4 });
+                $('#customerTreeList2').ejDropDownTree({ value: 10 });  
             });
             var dataManger = ej.DataManager({
                 url: "https://mvc.syncfusion.com/Services/Northwnd.svc/"
@@ -92,9 +99,7 @@
                 watermarkText: "Please select",
 				loadOnDemand: true,
                 width: "100%",
-               // value:"Beverages",
-               value: "Spegesild",
-                //value:"Chai",
+                value: "Spegesild",
                 treeViewSettings: {
                     fields: {
                         dataSource: dataManger2, query: query2, id: "CategoryID", text: "CategoryName",
@@ -139,9 +144,18 @@
                         dataSource: continents,  id: "code", text: "name", child: "child"
                     }
                 },
-               // value : "Delhi"
-                //value: "India"
                 value: "Chennai"
+            });
+
+            $('#selectItem2').ejDropDownTree({
+                width: "100%",
+                loadOnDemand: true,
+                treeViewSettings: {
+                    fields: {
+                        dataSource: continents,  id: "code", value: "code", text: "name", child: "child"
+                    }
+                },
+                value: "IND"
             });
 
             var localData = [{
@@ -279,9 +293,59 @@
                     hasChild: "hasChild",
                     dataSource: localData,
                     expanded: "expanded"
-                },
-                
-            }        });
+                }, 
+            }
+        });
+
+        $('#localList2').ejDropDownTree({
+            loadOnDemand: true,
+            value: 3,
+            treeViewSettings: {
+                fields: {
+                    id: "id",
+                    parentId: "pid",
+                    value: "id",
+                    text: "name",
+                    hasChild: "hasChild",
+                    dataSource: localData,
+                    expanded: "expanded"
+                }, 
+            }
+        });
+
+            var dataManger3= ej.DataManager({
+                url: "https://js.syncfusion.com/demos/ejServices/api/TreeViewData/GetAllData",
+		       adaptor: new ej.UrlAdaptor(),
+               crossDomain: true,
+            });
+
+            var query3 = ej.Query().from("Categories").select("CategoryID,CategoryName").take(1000);
+            
+			$('#customerTreeList2').ejDropDownTree({
+                watermarkText: "Please select",
+				loadOnDemand: true,
+                width: "100%",
+                treeViewSettings: {
+                    fields: {
+                        dataSource: dataManger3,  id: "id", value: "id",  parentId: "pid", text: "name", query:query3,
+                    }
+                }
+			});
+
+            $('#customerTreeList2').ejDropDownTree({ value: 4 });  
+
+            $('#customerTreeList3').ejDropDownTree({
+                watermarkText: "Please select",
+				loadOnDemand: true,
+                width: "100%",
+                value: 5,
+                treeViewSettings: {
+                    fields: {
+                        dataSource: dataManger2, query: query2, id: "CategoryID", value: "CategoryID", text: "CategoryName",
+                        child: { dataSource: dataManger2, tableName: "Products", parentId: "CategoryID", text: "ProductName" }
+                    },
+                }
+            });
         });
     </script>
 	</body>
