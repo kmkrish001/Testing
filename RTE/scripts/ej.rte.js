@@ -727,6 +727,7 @@
                         this._off($(this._getDocument()), "mousemove", this._imgBoxMouseMove);
                     }
                     this._updateCursor();
+                    this._setBackupData();
                     break;
                 case "copy":
                     (!this._isIE() && this._getValidbrowser(ej.browserInfo().name)) ? this._openAlert(this._getLocalizedLabels("copyAlert")) : this._getDocument().execCommand(action, false, undefined);
@@ -753,27 +754,34 @@
                 case "addcolumnleft":
                     _node = this.insertColumn(true, this._currentSelNode);
                     this._updateCursor(_node);
+                    this._setBackupData();
                     break;
                 case "addcolumnright":
                     _node = this.insertColumn(false, this._currentSelNode);
                     this._updateCursor(_node);
+                    this._setBackupData();
                     break;
                 case "addrowabove":
                     _node = this.insertRow(true, this._currentSelNode);
                     this._updateCursor(_node);
+                    this._setBackupData();
                     break;
                 case "addrowbelow":
                     _node = this.insertRow(false, this._currentSelNode);
                     this._updateCursor(_node);
+                    this._setBackupData();
                     break;
                 case "deleterow":
                     this.removeRow(this._currentSelNode);
+                    this._setBackupData();
                     break;
                 case "deletecolumn":
                     this.removeColumn(this._currentSelNode);
+                    this._setBackupData();
                     break;
                 case "deletetable":
                     this.removeTable($(this._currentSelNode).closest('table'));
+                    this._setBackupData();
                     break;
                 case "tableproperties":
                     this._renderEditTableDialog();
