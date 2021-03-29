@@ -2583,7 +2583,7 @@
 				this._valArray = this.element.val().split(this._getSeparator());
 				for(var i = 0; i < this._formatArray.length ; i++){
 					if(this._formatArray[i].startsWith("y") && this._valArray.length > 1){
-						if((this._formatArray[i].length == 4 && this._valArray[i].length == 2) || (this._formatArray[i].length == 2 && this._valArray[i].length == 2)){
+						if(this._formatArray[i].length == 4 && this._valArray[i].length == 2){
 							this._valArray[i] = (parseInt(this._valArray[i]) + 2000).toString();
 							this.element.val(this._valArray.join(this._getSeparator()));
 						}
