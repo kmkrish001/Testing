@@ -1,0 +1,41 @@
+<html>
+	<head>
+	    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> 
+		
+		<link rel="stylesheet" href="https://cdn.syncfusion.com/17.4.0.46/js/web/flat-azure/ej.web.all.min.css" />
+		<script src="scripts/ej.core.js"></script>
+    <script src="scripts/ej.data.js"></script>
+    <script src="scripts/ej.scroller.js"></script>
+    <script src="scripts/ej.draggable.js"></script>
+    <script src="scripts/ej.globalize.js"></script>
+    <script src="scripts/ej.button.js"></script>
+    <script src="scripts/ej.splitbutton.js"></script>
+    <script src="scripts/ej.checkbox.js"></script>
+    <script src="scripts/ej.dropdownlist.js"></script>
+    <script src="scripts/ej.dialog.js"></script>
+    <script src="scripts/ej.toolbar.js"></script>
+    <script src="scripts/ej.editor.js"></script>
+    <script src="scripts/ej.clipboardcleaner.js"></script>
+    <script src="scripts/ej.editormanager.js"></script>
+    <script src="scripts/ej.tooltip.js"></script>
+    <script src="scripts/ej.menu.js"></script>
+    <script src="scripts/ej.rte.js"></script>
+    <script src="scripts/ej.rte.findandreplace.js"></script>
+		<script>
+			$(function() {
+				$("#myRTE").ejRTE({
+					pasteCleanupSettings: { listConversion: true, cleanCSS: true, removeStyles: true, cleanElements: true },				
+				});
+				
+			});		
+		</script>
+		
+	</head>
+	<body>
+	
+	<textarea id="myRTE">
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam felis sapien, gravida at congue vitae, tempor nec erat. Orci varius natoque penatibus et magnis dis parturient montes..
+	</textarea>
+	
+	</body>
+</html>

@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+    <title>Essential JS 1: RTE Default</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+    <link href="https://cdn.syncfusion.com/18.4.0.30/js/web/flat-azure/ej.web.all.min.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> 
+	<![endif]-->
+    <!--[if IE 9]><!-->
+    <script src="scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <!--<![endif]--> 
+    <script src="scripts/ej.core.js"></script>
+    <script src="scripts/ej.data.js"></script>
+    <script src="scripts/ej.scroller.js"></script>
+    <script src="scripts/ej.draggable.js"></script>
+    <script src="scripts/ej.globalize.js"></script>
+    <script src="scripts/ej.button.js"></script>
+    <script src="scripts/ej.splitbutton.js"></script>
+    <script src="scripts/ej.checkbox.js"></script>
+    <script src="scripts/ej.dropdownlist.js"></script>
+    <script src="scripts/ej.dialog.js"></script>
+    <script src="scripts/ej.toolbar.js"></script>
+    <script src="scripts/ej.editor.js"></script>
+    <script src="scripts/ej.clipboardcleaner.js"></script>
+    <script src="scripts/ej.editormanager.js"></script>
+    <script src="scripts/ej.tooltip.js"></script>
+    <script src="scripts/ej.menu.js"></script>
+    <script src="scripts/ej.rte.js"></script>
+    <script src="scripts/ej.rte.findandreplace.js"></script>
+
+</head>
+<body>
+	
+        <textarea id="myRTE">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam felis sapien, gravida at congue vitae, tempor nec erat. Orci varius natoque penatibus et magnis dis parturient montes..
+        </textarea>
+        </body>
+    <script>
+        $(function() {
+            $("#myRTE").ejRTE({
+                pasteCleanupSettings: { listConversion: true, cleanCSS: true, removeStyles: true, cleanElements: true },
+              //  onPasteComplete: PasteComplete
+            });
+        });
+
+        function rimuoviHtmlMailWord(stringaDaPulire) {			
+            var regexp = /<xml>[\s\S]*?<\/xml>|<style>[\s\S]*?<\/style>|<meta[\s\S]*?>|<link.*[\s\S]*?\>|<!--[\s\S]*?-->|<!.*[\s\S]*?-->/gi,
+                stringa = stringaDaPulire.replace(regexp, "");
+            return stringa.replace(/\r?\n|\r|&nbsp;/gi, " ");
+        }
+
+        clipboardCleaner.prototype._processContent = function (args, state) {
+        if (args === void 0) { args = null; }
+        if (state === void 0) { state = true; }
+        var target = args.target;
+        if (target.textContent == "") {
+            target.parentElement.remove();
+        }
+        var elm = (target.textContent != "") ? this.currentDocument.createElement("span") : this.currentDocument.createElement("p");
+        var temp = this, nonBlock = true;
+        var patern = /class="?Mso|style="[^ ]*\bmso-/i, tempContainer = this.currentDocument.createElement("p"), ChildNode;
+        if (patern.test(this.htmlContent) && state) {
+            this.htmlContent = this.htmlContent.replace(/<img[^>]+>/i, "");
+            elm.innerHTML = this.htmlContent;
+            this.syncLoad = true;
+            this.Collection = [];
+            this.blockqouteNodes = [];
+            this.listNodes = [];
+            this._cleanup(elm);
+            this._flush();
+            if (this.filterOptions.listConversion) {
+                this._listConverter();
+            }
+            if (this.filterOptions.cleanElements) {
+                this._blockquoteConvert();
+                this._cleanElement(elm);
+                this._flush();
+            }
+            if (this.filterOptions.cleanCSS) {
+                this._cleanStyles(elm);
+                this._flush(false);
+            }
+            this.Container = elm;
+            if (this.insertCleanedContent)
+                this._insertContent();
+        }
+        else {
+            this.syncLoad = true;
+            elm.innerHTML = this.htmlContent;
+            if (this.filterOptions.cleanCSS) {
+                this._cleanStyles(elm);
+                this._flush(false);
+            }
+            if (elm.childNodes.length) {
+                for (var index = 0; index < elm.childNodes.length; index++) {
+                    if (this.blockNode.indexOf(elm.childNodes[index].nodeName.toLowerCase()) != -1)
+                        nonBlock = false;
+                }
+                if (nonBlock) {
+                    tempContainer.appendChild(elm);
+                    elm = tempContainer;
+                }
+            }
+           // this.Container = elm;
+           //elm.innerHTML = rimuoviHtmlMailWord(elm.innerHTML);
+            this.Container = elm;
+            if (this.insertCleanedContent)
+                this._insertContent(!nonBlock);
+        }
+    };
+
+        function cursorPos(lastSelectionNode, node, nodeSelection, docElement, editNode) {
+            lastSelectionNode.classList.add('lastNode');
+           // editNode.innerHTML = util_1.updateTextNode(editNode.innerHTML);
+            lastSelectionNode = editNode.querySelector('.lastNode');
+            this.placeCursorEnd(lastSelectionNode, node, nodeSelection, docElement, editNode);
+            lastSelectionNode.classList.remove('lastNode');
+            if (lastSelectionNode.classList.length === 0) {
+                lastSelectionNode.removeAttribute('class');
+            }
+        }
+
+        function PasteComplete(args) {
+           var contentDoc = this._getDocument();
+            var selection = this._getDocument().getSelection();
+           // var lastText = selection.baseNode;
+           // var offset = selection.baseOffset;
+            var copiedText = selection.toString();
+            //var selectionRange = this._saveSelection();
+            //var sel = JSON.parse(JSON.stringify(selection));
+           // var vegetable = Object.assign(selection, selection);
+           var range = selection.getRangeAt(0);
+           //var startCont = range.startContainer;
+          // var startOff = range.startOffset;
+         //  var endOff = range.endOffset;
+         //  var endCont = range.endContainer;
+         var ext = {anchorNode: selection.anchorNode,anchorOffset: selection.anchorOffset,focusNode: selection.focusNode,focusOffset: selection.focusOffset};
+           var newRange = {startContainer: range.startContainer, startOffset: range.startOffset, endContainer: range.endContainer, endOffset: range.endOffset};
+            this.setHtml(rimuoviHtmlMailWord(args.model.value));
+            var range = contentDoc.createRange();
+            // var target = contentDoc.body.lastChild;
+            // while(target.innerText == "") {
+            //     target = target.previousSibling;
+            // }
+           // var lastText = lastElement(target);
+         //   range.setStart(lastText, lastText.length);
+         //   range.setEnd(lastText, lastText.length);
+            selection = this._rteIframe[0].contentWindow.getSelection();
+           // selection.removeAllRanges();
+            //selection.addRange(range);
+           // range.setStart(startCont, startOff);
+           // range.setEnd(endCont, endOff);
+           range.setStart(newRange.startContainer, newRange.startOffset);
+           range.setEnd(newRange.endContainer, newRange.endOffset);
+          // this.selectRange(range);
+        //  range.selectNodeContents(newRange.startContainer);
+          selection.removeAllRanges();
+        selection.addRange(range);
+         // selection.setBaseAndExtent(ext.anchorNode, ext.anchorOffset, ext.focusNode, ext.focusOffset);
+          //selection.setBaseAndExtent(newRange.startContainer,0,newRange.endContainer,1);
+          //  this._selectionRange = range;
+            //this.focus();
+            //range.move("character", lastText.length);
+           // range.select();
+        }
+
+        // function lastElement(ele) {
+        //     if(ele.childNodes.length > 0) {
+        //         for(var i = ele.childNodes.length - 1; i > 0 ;){
+        //             if(ele.childNodes[i].nodeType != 3 && ele.childNodes[i].childNodes) {
+        //                 ele = ele.childNodes[i];
+        //                 i = ele.childNodes.length - 1;                            
+        //             } else {
+        //                 lastText = ele.childNodes[i];
+        //                 i--;
+        //             }
+        //         }
+        //     } else {
+        //         lastText = (ele.childNodes.length == 0) ? ele : ele.childNodes;
+        //     }
+        //     return lastText;
+        // }
+    </script>
+</body>
+</html>
