@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>DropDownList - SelectedIncides issue</title>
+    <link href="themes\material\bold.reports.all.min.css" rel="stylesheet" />
+    <script src="jquery-1.10.2.min.js"></script>
+    <script src="bold.reports.common.min.js"></script>
+    <script src="bold.reports.widgets.min.js"></script>
+</head>
+<body>
+    <div class="content-container-fluid">
+        <div class="row">
+            <div class="cols-sample-area">
+                <div class="frame">
+                    <div class="control">
+                        <div class="ctrllabel">Select a skill</div>
+                        <input type="text" id="skillsets" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        var target;
+        $(function () {
+          var skillset = [];
+		  var selectedValue = [];
+         for (index = 1; index <= 13; index++){
+              skillset.push({value: index, text: index});
+            }
+			
+            var dataManagerObj = ej.DataManager(skillset);
+            $('#skillsets').ejDropDownList({
+                dataSource: dataManagerObj,
+                fields: { id: "value", text: "text", value: "value" },
+                //showCheckbox: true,
+                width: "185px",
+                allowMultiSelection: true,
+                itemsCount: 10,
+                allowVirtualScrolling: true,
+                virtualScrollMode:"continuous",
+            });
+			
+			dataManagerObj.selectedIndex = 11;
+        });
+    </script>
+	<style type="text/css" class="cssStyles">
+        .control {
+            margin-left: 30px;
+        }
+
+        .ctrllabel {
+            padding-top: 15px;
+        }
+    </style>
+</body>
+</html>

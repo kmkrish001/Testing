@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>DropDownList - SelectedIncides issue</title>
+    <link href="themes\material\bold.reports.all.min.css" rel="stylesheet" />
+    <script src="jquery-1.10.2.min.js"></script>
+    <script src="bold.reports.common.min.js"></script>
+     <script src="ej.dropdownlist.js"></script>
+</head>
+<body>
+<button onclick="setDropDownVal('skillsets', '142957_16')">Select value</button>
+    <div class="content-container-fluid">
+        <div class="row">
+            <div class="cols-sample-area">
+                <div class="frame">
+                    <div class="control">
+                        <div class="ctrllabel">Select a skill</div>
+                        <input type="text" id="skillsets" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+	
+		var abigailReports = [
+    { id: "1", text: '140152' },
+    { id: "2", text: '140269_1' },
+    { id: "3", text: '140269_2' },
+    { id: "4", text: '140269_3' },
+    { id: "5", text: '140269_4' },
+    { id: "6", text: '140332' },
+    { id: "7", text: '140407_1' },
+    { id: "8", text: '140407_2' },
+    { id: "9", text: '140407_3' },
+    { id: "10", text: '140407_4' },
+    { id: "11", text: '140561_1' },
+    { id: "12", text: '140561_2' },
+    { id: "13", text: '140561_3' },
+    { id: "14", text: '140561_4' },
+    { id: "15", text: '140561_5' },
+    { id: "16", text: '140561_6' },
+    { id: "17", text: '140561_7' },
+    { id: "18", text: '140561_8' },
+    { id: "19", text: '140561_9' },
+    { id: "20", text: '140561_10' },
+    { id: "21", text: '140561_11' },
+    { id: "22", text: '140561_12' },
+    { id: "23", text: '140561_13' },
+    { id: "24", text: '140561_14' },
+    { id: "25", text: '140561_15' },
+    { id: "26", text: '140619' },
+    { id: "27", text: '140649' },
+    { id: "28", text: '140650' },
+    { id: "29", text: '140860' },
+    { id: "30", text: '140914' },
+    { id: "31", text: '140917_1' },
+    { id: "32", text: '140917_2' },
+    { id: "33", text: '140917_3' },
+    { id: "34", text: '141188_1' },
+    { id: "35", text: '141188_2' },
+    { id: "36", text: '141188_3' },
+    { id: "37", text: '141188_4' },
+    { id: "38", text: '141485' },
+    { id: "39", text: '142268_1' },
+    { id: "40", text: '142268_2' },
+    { id: "41", text: '142268_3' },
+    { id: "42", text: '142268_4' },
+    { id: "43", text: '142268_5' },
+    { id: "44", text: '142268_6' },
+    { id: "45", text: '142268_7' },
+    { id: "46", text: '142268_8' },
+    { id: "47", text: '142268_9' },
+    { id: "48", text: '142268_10' },
+    { id: "49", text: '142302_1' },
+    { id: "50", text: '142302_2' },
+    { id: "51", text: '142935_1' },
+    { id: "52", text: '142935_2' },
+    { id: "53", text: '142957_4' },
+    { id: "54", text: '142957_5' },
+    { id: "55", text: '142957_6' },
+    { id: "56", text: '142957_7' },
+    { id: "57", text: '142957_8' },
+    { id: "58", text: '142957_9' },
+    { id: "59", text: '142957_10' },
+    { id: "60", text: '142957_11' },
+    { id: "61", text: '142957_12' },
+    { id: "62", text: '142957_13' },
+    { id: "63", text: '142957_14' },
+    { id: "64", text: '142957_15' },
+    { id: "65", text: '142957_16' }]
+		
+        $(function () {
+           var ddlobj= $('#skillsets').ejDropDownList({
+                dataSource: abigailReports,
+                fields: { id: "id", text: "text", value: "text" },
+                selectedIndex: 0,
+                itemsCount: 10,
+				watermarkText: "Select a report",
+                allowVirtualScrolling: true,
+                virtualScrollMode:"continuous",
+				selectedIndex: 0,
+				width:'auto'
+            }).data("ejDropDownList");
+        });
+		
+		function setDropDownVal(ctrlId, selectValue) {  
+						$('#' + ctrlId).data('ejDropDownList').selectItemByText(selectValue);
+					}
+    </script>
+	<style type="text/css" class="cssStyles">
+        .control {
+            margin-left: 30px;
+        }
+
+        .ctrllabel {
+            padding-top: 15px;
+        }
+    </style>
+</body>
+</html>
