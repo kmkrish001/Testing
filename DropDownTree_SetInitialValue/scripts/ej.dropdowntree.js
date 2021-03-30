@@ -802,6 +802,7 @@ var __extends = (this && this.__extends) || function (d, b) {
                     }
                     else {
                         var proxy =this;
+                        source.query = (!source.query) ? this._columnToSelect(source): source.query;
                         source.dataSource.executeQuery(source.query).done(function (e) {
                             var field_name = (!ej.isNullOrUndefined(proxy.model.treeViewSettings.fields.value)) ? proxy.model.treeViewSettings.fields.value : proxy.model.treeViewSettings.fields.text;
                             var visibleVal = proxy.model.treeViewSettings.fields.text;

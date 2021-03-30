@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Essential Studio for JavaScript : DropDownList - Multi Select Functionalities</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+    <link href="https://cdn.syncfusion.com/18.4.0.30/js/web/flat-azure/ej.web.all.min.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> 
+	<![endif]-->
+    <!--[if IE 9]><!-->
+        <script src="scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <!--<![endif]--> 
+    <script src="scripts/ej.core.js"></script>
+    <script src="scripts/ej.data.js"></script>
+    <script src="scripts/ej.scroller.js"></script>
+    <script src="scripts/ej.draggable.js"></script>
+    <script src="scripts/ej.globalize.js"></script>
+    <script src="scripts/ej.button.js"></script>
+    <script src="scripts/ej.checkbox.js"></script>
+    <script src="scripts/ej.dropdownlist.js"></script>
+    <script src="scripts/ej.waitingpopup.js"></script>
+    <script src="scripts/ej.treeview.js"></script>
+
+    <script src="scripts/ej.dropdowntree.js"></script>
+</head>
+<body>
+      <div class="content-container-fluid">
+        <div class="row">
+            <div class="cols-sample-area">
+                <div class="frame">
+                    <div class="control">
+
+                        <h3> API data</h3>
+                        <input type="text" id="user" />
+
+                        <h3> Table data</h3>
+                        <input type="text" id="customerTreeList" />
+                    </div>
+            </div>
+            <button>
+                set value
+              </button>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+	  
+        $(function () {
+            $('button:last').on('click', function() {
+                $('#user').ejDropDownTree({ value: "File 3"});
+		        $('#customerTreeList').ejDropDownTree({ value: "Chai" });
+            });
+
+            var dataManger= ej.DataManager({
+                url: "https://js.syncfusion.com/demos/ejServices/api/TreeViewData/GetAllData",
+		       adaptor: new ej.UrlAdaptor(),
+               crossDomain: true,
+            });
+			
+			var query2 = ej.Query().from("Categories").select("CategoryID,CategoryName").take(1000);
+            
+
+            $('#user').ejDropDownTree({
+                watermarkText: "Please select",
+				loadOnDemand: true,
+                width: "100%",
+                value: "File 1",
+              //  value: 20,
+                treeViewSettings: {
+                    fields: {
+                        dataSource: dataManger,  id: "id",  parentId: "pid", text: "name",
+                        // query:query2,
+                    }
+                }
+            });
+            var dataManger2= ej.DataManager({
+                url: "https://js.syncfusion.com/demos/ejServices/Wcf/Northwind.svc/",
+				adaptor: new ej.ODataAdaptor(),
+                crossDomain: true
+            });
+			
+			var query2 = ej.Query().from("Categories").select("CategoryID,CategoryName").take(10);
+
+			$('#customerTreeList').ejDropDownTree({
+                watermarkText: "Please select",
+				loadOnDemand: true,
+                width: "100%",
+                value: "Chai",
+                treeViewSettings: {
+                    fields: {
+                        dataSource: dataManger2,
+                      //   query: query2,
+                          id: "CategoryID", text: "CategoryName",
+                        child: { dataSource: dataManger2, tableName: "Products", parentId: "CategoryID", text: "ProductName" }
+                    },
+                }
+            });
+            
+         
+        });
+    </script>
+	</body>
+</html>
