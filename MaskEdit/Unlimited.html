@@ -1,0 +1,81 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Essential JS 1 : Editors - Default Functionalities</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+    <link href="https://cdn.syncfusion.com/18.4.0.30/js/web/flat-azure/ej.web.all.min.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> 
+	<![endif]-->
+    <!--[if IE 9]><!-->
+        <script src="scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <!--<![endif]--> 
+    <script src="scripts/ej.core.js"></script>
+    <script src="scripts/ej.data.js"></script>
+    <script src="scripts/ej.globalize.js"></script>
+    <script src="scripts/ej.button.js"></script>
+    <script src="scripts/ej.maskedit.js"></script>
+    <script src="scripts/ej.editor.js"></script>
+</head>
+<body>
+    <div class="content-container-fluid">
+        <div class="row">
+            <div class="cols-sample-area">
+                <div class="frame">
+                    <div class="control">
+                        <table class="editors">
+
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span>Mobile No</span>
+                                    </td></tr> <tr>
+                                    <td>
+                                        <input id="maskedit" type="text" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $("#maskedit").ejMaskEdit({
+                name: "mask",
+                inputMode: ej.InputMode.Text,
+                value:"123456789",
+                maskFormat: "(999)999-999",
+                width:"100%",
+                keyPress: "onKeypress",
+                //hidePromptOnLeave: true,
+            });
+        });
+
+        function onKeypress(args) {
+            // check the entered key in number or not
+            if(args.originalArgs.keyCode>=48 && args.originalArgs.keyCode<=57) {
+                // append with the existing value
+                var value = (args.model.value) ? this._textbox.value.match(/\d/g).join(""): args.originalArgs.key;
+                if(this.model.maskFormat.length <= value.length + 3) // "3" is for the custom characters length in the mask format.
+                    this.setModel({ maskFormat: this.model.maskFormat + "9", value:value + args.originalArgs.key});
+            }
+        }
+    </script>
+    <style type="text/css" class="cssStyles">
+        .control table{
+           width:100%;
+        }
+        .control td {
+           padding: 5px;
+        }
+        div.paybill{
+            position:relative;
+            float:right;
+        }
+        
+    </style>
+</body>
+</html>
