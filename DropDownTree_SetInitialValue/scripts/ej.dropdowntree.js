@@ -955,14 +955,16 @@ var __extends = (this && this.__extends) || function (d, b) {
                 var selectedNodes = [];
                 var mappedField = this.treeMapping(fieldType);
                 if (!(this.treeView.dataSource() instanceof ej.DataManager)) {
-                    treeSrc = this.treeView.getTreeData();
-                    for (var i = 0; i < treeSrc.length; i++) {
+                    treeSrc = this.model.treeViewSettings.fields.dataSource;
+                    var i = 0, len = treeSrc.length;
+                    while(i < len) {
                         if(this.model.loadOnDemand &&  $(this.visibleInput).val() !== "" && this.model.value == "" && ej.isNullOrUndefined(this.activeItem) ) {
                             $(this.visibleInput).val('');
                         }
                         if (!ej.isNullOrUndefined(val) && typeof (val) == "string" || typeof (val) == "number") {
                             if (ej.getObject(mappedField[0], treeSrc[i]) === val) {
                                 this.treeNodeSelection(i);
+                                break;
                             }
                         }
                         else if (!ej.isNullOrUndefined(val) && typeof (val) == "object" && this._setValuesCalled) {
@@ -976,6 +978,7 @@ var __extends = (this && this.__extends) || function (d, b) {
                                 }
                             }
                         }
+                        i++;
                     }
                     if (selectedNodes.length > 0) {
                         this.treeNodesSelection(selectedNodes);
@@ -1485,7 +1488,7 @@ var __extends = (this && this.__extends) || function (d, b) {
                 this.treeView._trigger('nodeCollapse', args);
                 this.treeView.option({ nodeCollapse: $.proxy(this.onNodeCollapseExpand, this) });
             }
-            this.refreshPopup();
+            if(args.isInteraction) this.refreshPopup();
         };
         ejDropDownTree.prototype.onNodeSelectUnselect = function (args) {
             this.OnMouseClick(args);
