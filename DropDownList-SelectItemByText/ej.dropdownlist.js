@@ -642,6 +642,7 @@
                         this.model.selectedIndices = checkTexts;
                         } else{
                             this.model.selectedIndex = -1;
+                            this.model.selectedIndices = [];
                             for(var i=0; i<checkTexts.length;i++){
                             this.model.selectedIndices.push(checkTexts[i]);
                             }
