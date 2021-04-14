@@ -1068,14 +1068,15 @@
             this._allowOnDemand = true;
             var thisElement = this.element, cookieData = this._getCookies("_persistedValues"), idColl = [], id = 0, element = [], expandList, parsedData, temp;
             if (!(this.model.expandedNodes instanceof Array && this.model.expandedNodes.length > 0)) {
-                expandList = thisElement.find("li.expanded"), len = expandList.length;
-                for (var i = 0; i < len; i++) {
+                var expandList = thisElement.find("li.expanded"), len = expandList.length, i = 0;
+                while(i < len){
                     var expandEle = $(expandList[i]);
                     if (!this.model.enableMultipleExpand) {
                         var distinctEle = expandEle.siblings().find(">div>.e-minus").closest(".e-item");
                         if (distinctEle.length > 0) continue;
                     }
                     this._expandNode(expandEle);
+                    i++;
                 }
             }
             if (cookieData)

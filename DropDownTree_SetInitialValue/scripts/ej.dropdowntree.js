@@ -941,12 +941,13 @@ var __extends = (this && this.__extends) || function (d, b) {
         };
         ejDropDownTree.prototype.setValueText = function (val, fieldType) {
             if (!ej.isNullOrUndefined(this.model.targetId)) {
-                var liEle = this.getLi();
-                for (var i = 0; i < liEle.length; i++) {
+                var liEle = this.getLi(), i = 0, len = liEle.length;
+                while(i < len) {
                     var textEle = liEle[i].querySelector('a');
                     if (textEle.innerHTML.toString() === val) {
                         this.treeNodeSelection(i);
                     }
+                    i++;
                 }
             }
             else {
@@ -1477,7 +1478,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             }
         };
         ejDropDownTree.prototype.onNodeCollapseExpand = function (args) {
-            this.calcScrollTop();
+            if(args.isInteraction) this.calcScrollTop();
             if (this.model.treeViewSettings.nodeExpand) {
                 this.treeView.option({ nodeExpand: this.model.treeViewSettings.nodeExpand });
                 this.treeView._trigger('nodeExpand', args);
