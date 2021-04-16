@@ -656,7 +656,7 @@
             this._mapFields();
             if (ej.isNullOrUndefined(val)) this._clearTextboxValue();
             else { 
-                if(valTexts.length==1 && this.model.selectedIndices.length==1) this._selectUnSelectValue(val, "selectText", ignoreCasing);
+                if(valTexts.length==1) this._selectUnSelectValue(val, "selectText", ignoreCasing);
             }
         },
 

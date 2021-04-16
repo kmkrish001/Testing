@@ -17,7 +17,33 @@
                         <div class="ctrllabel">Select a skill</div>
                         <input type="text" id="skillsets" />
                     </div>
+                    <h3>Get Set Value</h3>
+                    <input type="text" id="dropdown1" />
+
+                    <h3>CheckBox</h3>
+                    <input type="text" id="dropdown2" />
+
+                    <h3>selectedIndices</h3>
+                    
+                    <input type="text" id="dropdown3" />
+
+                    <h3>selectedIndex</h3>
+                    
+                    <input type="text" id="dropdown4" />
+
+                    <h3>Un select Item</h3>
+                    
+                    <input type="text" id="dropdown5" />
+                    <input type="button" value="Unselect" onclick="unselect()" />
+
+                    <h3>Filter Search</h3>
+                    
+                    <input type="text" id="dropdown6" />
+
+                    <h3>String type data</h3>
+                <input type="text" id="bikeList" />
                 </div>
+                
             </div>
         </div>
 
@@ -25,6 +51,123 @@
     <script type="text/javascript">
         var target;
         $(function () {
+
+            var items = [{ text: "ListItem 1", value: "item1" },
+		
+			{ text: "ListItem 2", value: "item2" },
+			
+			{ text: "ListItem 3", value: "item3" },
+				
+			{ text: "ListItem 4", value: "item4" },
+				
+			{ text: "ListItem 5", value: "item5" }];
+				
+				
+		$('#dropdown1').ejDropDownList({
+					
+			dataSource: items,
+				
+			fields: { text: "text", value: "value" },
+				
+			value: "item3"
+		});
+			
+		var obj = $('#dropdown1').data("ejDropDownList");
+				
+		console.log("Selected Item's Text - " + obj.option("text"));
+				
+		console.log("selected Item's Value - " + obj.option("value"));      
+        //the below given code will return the li element of the selected item
+        console.log(obj.getSelectedItem());
+        //the below given code will return the JSON object of the selected item
+
+        $('#dropdown2').ejDropDownList({
+            width: 300,
+            dataSource: items,
+            fields: {
+                text: "text",
+                value: "value"
+            },
+            showCheckbox: true,
+            multiSelectMode: ej.MultiSelectMode.VisualMode
+        });
+
+        $('#dropdown3').ejDropDownList({
+            dataSource: items,
+            fields: {
+                text: "text",
+                value: "value"
+            },
+            showCheckbox: true,
+            selectedIndices: [1, 2]
+        });
+        
+        $('#dropdown4').ejDropDownList({
+            dataSource: items,
+            fields: {
+                text: "text",
+                value: "value"
+            },
+            selectedIndex: 1
+        });
+
+        $('#dropdown5').ejDropDownList({
+          width: 300,
+          dataSource: items,
+          fields: {
+              text: "text",
+              value: "value"
+          },
+          showCheckbox: true,
+          selectedIndices: [1, 2, 3]
+      });
+      obj5 = $('#dropdown5').data("ejDropDownList");
+      console.log("Selected Item's Text - " + obj5.option("text"));
+      console.log("selected Item's Value - " + obj5.option("value"));
+
+
+      var items2 = [{
+            text: "Adams",
+            value: "emp1"
+        }, {
+            text: "James",
+            value: "emp2"
+        }, {
+            text: "Maria",
+            value: "emp3"
+        }, {
+            text: "Jessica",
+            value: "emp4"
+        }, {
+            text: "Jenneth",
+            value: "emp5"
+        }];
+        $('#dropdown6').ejDropDownList({
+            dataSource: items2,
+            fields: {
+                text: "text",
+                value: "value"
+            },
+            enableFilterSearch: true,
+            filterType: "startsWith"
+        });
+
+        BikeList = [
+                 { empid: "bk1", text: "Apache RTR" }, { empid: "bk2", text: "CBR 150-R" }, { empid: "bk3", text: "CBZ Xtreme" },
+                 { empid: "bk4", text: "Discover" }, { empid: "bk5", text: "Dazzler" }, { empid: "bk6", text: "Flame" },
+                 { empid: "bk7", text: "Fazzer" }, { empid: "bk8", text: "FZ-S" }, { empid: "bk9", text: "Pulsar" },
+                 { empid: "bk10", text: "Shine" }, { empid: "bk11", text: "R15" }, { empid: "bk12", text: "Unicorn" }
+            ];
+            $('#bikeList').ejDropDownList({
+                dataSource: BikeList,
+				width: "100%",
+                watermarkText: "Select a bike",
+                fields: { id: "empid", text: "text", value: "text" }
+            });
+
+           ddObj = $('#bikeList').ejDropDownList("instance");
+           ddObj.selectItemByText("Shine");
+
           var skillset = [];
 		  var selectedValue = [];
          //for (index = 1; index <= 100; index++){
@@ -50,7 +193,7 @@
            var ddlobj= $('#skillsets').ejDropDownList({
                 dataSource: dataManagerObj,
                 fields: { text: "text", value: "value" },
-                //showCheckbox: true,
+                showCheckbox: true,
                 width: "185px",
                 itemsCount: 10,
                 allowVirtualScrolling: true,
@@ -61,6 +204,12 @@
 		function setDropDownVal(ctrlId, value) {  
 			$('#' + ctrlId).data('ejDropDownList').selectItemByText(value);
 		}
+
+
+    function unselect() {
+      obj5.unselectItemByValue("item2");
+      obj5.unselectItemByText("ListItem 4");
+    }
     </script>
 	<style type="text/css" class="cssStyles">
         .control {
