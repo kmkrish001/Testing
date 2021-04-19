@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Essential Studio for JavaScript : DropDownList - Text With Icons</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8"  />
+	<link href="http://cdn.syncfusion.com/19.1.0.54/js/web/flat-azure/ej.web.all.min.css"
+              rel="stylesheet" />
+<script src="jquery.min.js"></script>
+<script src="bold.reports.common.js"></script>
+<script src="bold.reports.widgets.js"></script>
+<script src="bold.report-designer-widgets.js"></script>
+
+</head>
+<body>
+
+  <div class="content-container-fluid">
+        <div class="row">
+            <div class="cols-sample-area">
+                <div class="frame">
+                    <div class="control">
+                        <input type="text" id="bikeList" /><br>
+						 <input type="text" id="bikeList1" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div><br><br>
+	    <input type="submit" value="Submit" onclick="myFunction()"><br><br>
+		
+    <script type="text/javascript">
+         var target;
+        $(function () {
+            // declaration
+            BikeList = [{"text":"EmployeeID","value":"EmployeeID"},{"text":"EmployeeID(EmployeeAddress_EmployeeID)","value":"EmployeeID"}];
+            $('#bikeList').ejDropDownList({
+                dataSource: BikeList,
+				width: '130px',
+                height: '26px',
+                fields: { text: "text", value: "value" },
+				enableFilterSearch: true,
+				enabled: false,
+				selectedIndex:0
+				
+            });
+			$('#bikeList1').ejDropDownList({
+                dataSource: BikeList,
+				width: '130px',
+                height: '26px',
+                fields: { text: "text", value: "value" },
+				enableFilterSearch: true,
+				enabled: false,selectedIndex:1
+				
+            });
+        });
+		 function myFunction() {
+		  var item = $('#bikeList').data('ejDropDownList').getSelectedItem();
+		   var item1 = $('#bikeList1').data('ejDropDownList').getSelectedItem();
+		 
+		   alert('getSelectedItem method returns '+ item.length + ' items for dropdown1;' + ' getSelectedItem method returns '+ item1.length + ' items for dropdown2');
+		   }
+    </script>
+ <style class="cssStyles">
+        .control {
+            margin-left: 20px;
+        }
+
+        .ctrllabel {
+            padding-bottom: 3px;
+        }
+    </style>
+</body>
+</html>
