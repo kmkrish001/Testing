@@ -825,6 +825,7 @@
                     compareVal = (this.mapFld._value) ? this.mapFld._value : compareVal;
                 }
 			}
+            if (!ej.isNullOrUndefined(dataSource)){
             while (count < dataSource.length) {
 				if (value)
 					listText = compareVal ? this._decode(dataSource[count][compareVal]) : this._decode(dataSource[count].text ? dataSource[count].text : dataSource[count] );
@@ -843,6 +844,7 @@
             if (!value) {
                 listValues = listValues.split(this.model.delimiterChar);
             }
+        }
             count = 0;
             while (count < initialPosition) {
                 if(value) {
