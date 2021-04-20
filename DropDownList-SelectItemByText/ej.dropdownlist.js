@@ -628,12 +628,14 @@
             var checkTexts = []; checkStringText = [];
             if(valTexts.length>0){
                 for(var i=0; i<valTexts.length;i++){
+                    if(this._dataSource() != null){
                     if(this._dataSource().dataSource){
                         checkTexts.push(this._dataSource().dataSource.json.findIndex(x => x.text.toString() ===valTexts[i].replace(/^\s+|\s+$/gm,'')));
                     }
                     else {
                     checkTexts.push(this._dataSource().findIndex(x => x.text.toString() ===valTexts[i].replace(/^\s+|\s+$/gm,'')));
                     }
+                }
                     checkStringText = valTexts[i].replace(/^\s+|\s+$/gm,'');
                 }
                 if (this.model.itemsCount < checkTexts[checkTexts.length - 1]) {
