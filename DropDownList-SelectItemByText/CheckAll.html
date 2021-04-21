@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>DropDownList - SelectedIncides issue</title>
+    <link href="themes\material\bold.reports.all.min.css" rel="stylesheet" />
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="bold.reports.common.min.js"></script>
+    <script src="ej.checkbox.js"></script>
+     <script src="ej.dropdownlist.js"></script>
+</head>
+<body>
+    <div class="content-container-fluid">
+        <div class="row">
+            <div class="cols-sample-area">
+                <div class="frame">
+                    <div class="control">
+                        <div class="ctrllabel">Select a bike</div>
+                      <input type="text" id="dropdown1" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script type="text/javascript">
+      var flag;
+     $(function () {
+            // var items1 = [
+            //   { text: "ListItem 1,Muthu,Hello", value: "item1" },
+	        //   { text: "ListItem 2,New item", value: "item2" },
+		    //   { text: "ListItem 3,welcome", value: "item3" },
+		    //   { text: "ListItem 4,google", value: "item4" },
+		    //   { text: "ListItem 5,yahoo", value: "item5" },
+            //   { text: "ListItem 6", value: "item6" },
+	        //   { text: "ListItem 7", value: "item7" },
+		    //   { text: "ListItem 8", value: "item8" },
+            // ];
+
+            var items = [
+                { text: "144 Duane Street Corporation"},
+                { text: "219 Green Realty LLC Private Investor"},
+                { text: "40 North Properties"},
+                { text: "AAG Management, Inc."},
+                { text: "ABC Electric"},
+                { text: "Ackerman, O&apos;Brien,  Pachman & Brown, LLP"},
+                { text: "All About Spay Neuter"},
+                { text: "Alliance Companies"},
+                { text: "Alliance for Progress"},
+                { text: "Alma Bank - Astoria"},
+                { text: "Almar Plumbing"},
+                { text: "Alpine Capital Bank - Fifth Ave"},
+                { text: "Amber Property Management"},
+                { text: "Amboy Bank - Administrative Office"},
+                { text: "Andrew Lichtenstein, Inc."},
+                { text: "Andrew Raffi"},
+                { text: "Andrew Zeniou"},
+                { text: "Astoria Federal - Jericho Plaza"},
+                { text: "Axelrod Development Group"},
+                { text: "Bank Leumi - NY Headquarters"},
+                { text: "Bank of America"},
+                { text: "Bank of America - Bryant Park"},
+                { text: "Bank of America - Charlotte"},
+                { text: "Bank of America - Dallas"},
+                { text: "Bank of America - Jacksonville"},
+                { text: "Bank of America - Richmond VA"},
+                { text: "Bank of America - Washington DC"},
+                { text: "BankUnited - Fifth Ave"},
+                { text: "BankUnited - West Palm Beach"},
+                { text: "Basis Investment Group, LLC"},
+                { text: "BCB Community Bank - Avenue C Lending"},
+                { text: "BDM Solutions"},
+                { text: "Berkadia - Fifth Ave"},
+                { text: "Berkshire Bank - Midtown"},
+                { text: "Bethpage Federal - Bethpage"},
+                { text: "Bridgehampton NB - Hauppauge"},
+                { text: "Bridgeton Holdings - 5th Avenue"},
+                { text: "Brothers II Business Machines of LI, Inc."},
+                { text: "Cabot"},
+                { text: "Cabot & Forbes"},
+                { text: "Cadwalader, Wickersham & Taft - NYC"},
+                { text: "Capital One - New Orleans"},
+                { text: "Capital One Bank - 90 Park Ave"},
+                { text: "Capital One Bank - King of Prussia"},
+                { text: "Cayre Investments"},
+                { text: "Chenango Place, LLC"},
+                { text: "C-III Asset Management - Birmingham"},
+                { text: "Citi Community Capital - Los Angeles"},
+                { text: "Citibank Communiy Capital - Chicago"},
+                { text: "Citigroup Global Markets - Downtown"},
+                { text: "City Jeans"},
+                { text: "Claremont Companies"},
+                { text: "Columbia Bank"},
+                { text: "Community Housing Capital - GA"},
+                { text: "Community National Bank - Melville"},
+                { text: "Customers Bank - Melville"},
+                { text: "Customers Bank - Phoenixville"},
+                { text: "Customers Bank - Reading PA"},
+                { text: "D&F Construction Group, Inc."},
+                { text: "DC5 Properties LLC"},
+                { text: "Donald Crawford"},
+                { text: "Douglas Elliman Real Estate - Manhasset"},
+                { text: "Earle W. Kazis Associates, Inc."},
+                { text: "East West Bank - El Monte"},
+                { text: "East West Bank - Madison Ave"},
+                { text: "East West Bank - Pasadena"},
+                { text: "ECA Risk Management - Birmingham"},
+                { text: "Empire National Bank - Islandia"},
+                { text: "Enterprise Asset Management - Res. Investments"},
+                { text: "Enterprise Community Investment, Inc."},
+                { text: "Eserac Realty Corp."},
+                { text: "FAU - Florida Atlantic University"},
+                { text: "Fifth Third Bank - Pittsburgh"},
+                { text: "Fifth Third Bank - Rolling Meadows IL"},
+                { text: "First Central Savings Bank - Glen Cove"},
+                { text: "First Commercial Bank - New York Branch"},
+                { text: "First Niagara"},
+                { text: "First Niagara - Albany"},
+                { text: "First Niagara - Buffalo"},
+                { text: "First Niagara - New Haven"},
+                { text: "First Niagara - Nyack"},
+                { text: "FLANK"},
+                { text: "Flushing Savings Bank - Northern Blvd"},
+                { text: "Ford Coyle"},
+                { text: "Forest City - Cleveland Headquarters"},
+                { text: "Forest Properties Management, Inc."},
+                { text: "Fortress Investment Group - Irving"},
+                { text: "Frontier Adjusters - Honolulu"},
+                { text: "FSJ Realty Group II"},
+                { text: "GCP Capital Group LLC"},
+                { text: "GEC Finance,GKA Design Group Inc."},
+                { text: "Goldman Sachs - Irving TX"},
+                { text: "Granoff Walker & Forlenza - NYC"},
+                { text: "Greater Hudson Bank - Middletown"},
+                { text: "Greater Hudson Bank - Tarrytown"},
+                { text: "GRS Group - Irvine CA"},
+                { text: "GRS Group - Laguna Beach"},
+                { text: "HELP USA - NYC Hanover Square"},
+                { text: "HFF - New York"},
+                { text: "HP Flood Services"},
+                { text: "HRP Associates - Farmington CT"},
+                { text: "HSBC - Jersey City"},
+                { text: "Hudson Housing - Rockefeller Center"},
+                { text: "Investors Bank"},
+                { text: "Investors Bank - Short Hills"},
+                { text: "Island Development Asset Management"},
+                { text: "Jenel Management - NYC"},
+                { text: "Jim Coleman,JLL - NYC"},
+                { text: "John Henry"},
+                { text: "JP Morgan Chase - Dallas"},
+                { text: "JP Morgan Chase - Downtown"},
+                { text: "KCG Architects - Palisades Park"},
+                { text: "KeyBank - Brooklyn OH"},
+                { text: "KeyBank - Cleveland"},
+                { text: "KeyBank - Colorado"},
+                { text: "KeyBank - NYC"},
+                { text: "Lamb & Barnosky, LLP"},
+                { text: "Latos Latos & Associates"},
+                { text: "Lender Consulting Services - Buffalo"},
+                { text: "Lift NYC"},
+                { text: "Lockton Companies - John Lumelleau"},
+                { text: "M&T Bank - Boston"},
+                { text: "M&T Bank - Fannie Mae - Baltimore"},
+                { text: "M&T Bank - Manassas VA"},
+                { text: "M&T Bank - Norwalk"},
+                { text: "M&T Bank - Park Ave"},
+                { text: "M&T Bank - Pottsville PA"},
+                { text: "M&T Bank - Saddle Brook"},
+                { text: "M&T Bank - Tarrytown"},
+                { text: "M&T Bank - Wilmington"},
+                { text: "M&T Realty Capital - Baltimore"},
+                { text: "Magnum Real Estate"},
+                { text: "Margate Atlantic Properties - Brooklyn"},
+                { text: "Masone, White, Penkava & Cristofari (MWPC)"},
+                { text: "Maspeth Federal - Main Office"},
+                { text: "Maxim Capital Group"},
+                { text: "Meadow Partners - NYC"},
+                { text: "MidFirst Bank - NYC"},
+                { text: "Minrav Group"},
+                { text: "Ms. Lily L. Chuang"},
+                { text: "National Republic Bank of Chicago"},
+                { text: "NEFCU - Westbury"},
+                { text: "New York Business Dev. Corp - Albany"},
+                { text: "New York Business Dev. Corp. - Long Island"},
+                { text: "New York Community Bank - Hicksville"},
+                { text: "New York Community Bank - Jericho"},
+                { text: "New York State Housing & Finance Agency - NYC"},
+                { text: "Nixon Peabody - Jericho"},
+                { text: "Noah Bank - Edison"},
+                { text: "Noah Smith"},
+                { text: "North West Real Estate - NYC"},
+                { text: "Northwestern Mutual - Milwaukee"},
+                { text: "NYCEEC - New York City Energy Efficiency Corp"},
+                { text: "NYSHCR - NYC"},
+                { text: "OceanFirst Bank - Red Bank"},
+                { text: "OceanFirst Bank - Toms River"},
+                { text: "Omni American"},
+                { text: "Omni Housing Development LLC"},
+                { text: "Ontario Wealth Management"},
+                { text: "Opthalmic Consultants of Long Island"},
+                { text: "Oritani Bank - Township of Washington"},
+                { text: "People's United Bank - Bridgeport"},
+                { text: "People's United Bank - Hauppauge"},
+                { text: "People's United Bank - Park Ave"},
+                { text: "People's United Bank - Springfield"},
+                { text: "People's United Bank - Stamford"},
+                { text: "People's United Bank - Third Ave"},
+                { text: "People's United Bank - Waterbury"},
+                { text: "Perfetto Contracting Co. Inc"},
+                { text: "Ponce De Leon - Bronx"},
+                { text: "Popular Community Bank - 3rd Ave Bronx"},
+                { text: "Popular Community Bank - Downtown"},
+                { text: "Popular Community Bank - Elizabeth"},
+                { text: "Principal Real Estate Investors"},
+                { text: "R&S Realty Advisors LLC"},
+                { text: "RANA Holdings, Inc."},
+                { text: "Red Stone - NYC"},
+                { text: "Regions Bank - Atlanta Midtown"},
+                { text: "Regions Bank - Birmingham"},
+                { text: "Regions Bank - Chicago"},
+                { text: "Regions Bank - Dunedin"},
+                { text: "Regions Bank - Louisiana"},
+                { text: "Regions Bank - Orlando"},
+                { text: "RES Group"},
+                { text: "Richard Creditor, LLC"},
+                { text: "RiverCore Capital LLC"},
+                { text: "Riverside Court at Secaucaus Association"},
+                { text: "Robert S. McEwan, Jr. Attorney at Law"},
+                { text: "Rodman Properties, Inc."},
+                { text: "Roosevelt Plumbing"},
+                { text: "RW Investment Co, LLL"},
+                { text: "Sabal Financial Group - Newport Beach"},
+                { text: "Sabal Financial Group - Pasadena"},
+                { text: "Safdieh Group"},
+                { text: "Samuel Wertheimer"},
+                { text: "Santander - Brooklyn"},
+                { text: "Santander - Dorchester"},
+                { text: "Savoy Bank - 52nd Street NYC"},
+                { text: "Scandinavian Homes"},
+                { text: "Seyfarth Shaw LLP - New York"},
+                { text: "Signature Bank - Melville"},
+                { text: "Silverpeak - New York"},
+                { text: "Silverpeak Real Estate Finance"},
+                { text: "Slate Property Group"},
+                { text: "Southampton Housing Authority"},
+                { text: "Spring Bank - Bronx"},
+                { text: "State Bank of Texas - Dallas"},
+                { text: "Sterling National Bank - Chicago"},
+                { text: "Sterling National Bank - Montebello"},
+                { text: "Suffolk County National Bank - Bohemia"},
+                { text: "Suffolk County National Bank - Garden City"},
+                { text: "Suffolk County National Bank - Melville"},
+                { text: "Suffolk County National Bank - Port Jeff"},
+                { text: "Suffolk County National Bank - Riverhead"},
+                { text: "Suffolk County National Bank - Southampton"},
+                { text: "Suffolk Federal Credit Union - Medford"},
+                { text: "Sun National Bank - Edison"},
+                { text: "SunTrust - Atlanta"},
+                { text: "SunTrust - Durham"},
+                { text: "SunTrust - Miami"},
+                { text: "SunTrust - Orlando"},
+                { text: "SunTrust - Richmond"},
+                { text: "TD Bank - Cherry Hill"},
+                { text: "TD Bank - Fort Lauderdale"},
+                { text: "TD Bank - Madison Ave"},
+                { text: "TD Bank - Melville"},
+                { text: "The Bancorp Bank"},
+                { text: "The Boatyard Condominium"},
+                { text: "The Hampton Maid"},
+                { text: "The Jemstone Group"},
+                { text: "The Orbach Group"},
+                { text: "The Park Ridge Organization"},
+                { text: "Tom Semmel"},
+                { text: "Transcor - USA"},
+                { text: "Treetop Develpment"},
+                { text: "Triumph Community Bank - Elgin, IL"},
+                { text: "UC Funding - Boston"},
+                { text: "United Construction & Development Group Corp."},
+                { text: "Urban American Management"},
+                { text: "URS Corporation"},
+                { text: "US Bank - Chicago"},
+                { text: "US Bank - Minneapolis"},
+                { text: "US Bank - Virginia"},
+                { text: "USR Properties LLC"},
+                { text: " UTC - United Technical Consultants, LLC"},
+                { text: "Valley National Bank - Jericho Plaza"},
+                { text: "Valley National Bank - Wayne"},
+                { text: "Vanessa DiCarlo"},
+                { text: "Vass Stevens Group - Astoria"},
+                { text: "Visions FCU - Endicott Ny"},
+                { text: "Visions FCU - Syracuse"},
+                { text: "Webster Bank - Hartford"},
+                { text: "Webster Bank - Stamford"},
+               { text: " Wells Fargo - Denver"},
+               { text: " Wells Fargo - Folsom"},
+               { text: " Wells Fargo - Philadelphia"},
+               { text: "Wells Fargo - Pittsburgh"},
+               { text: "Wells Fargo - RETECHS"},
+               { text: "Wells Fargo - Summit"},
+               { text: "Wells Fargo - Washington D.C."},
+               { text: "Wells Fargo RETECHS - Los Angeles"},
+               { text: " Wilmington Savings"},
+               { text: " Wings MFG Corp"},
+               { text: " WSFS Bank - Wilmington Commercial Division"}
+            ];
+            $('#dropdown1').ejDropDownList({
+                width: 300,
+                dataSource: items,
+                fields: { text: "text", value: "text" },
+                showCheckbox: true,
+                change: "Check",
+                selectedIndices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263],
+              //  selectedIndices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23,24, 25, 26, 27,28, 29,30, 31, 32, 33, 34, 35],
+                headerTemplate: "<div class='temp' ><input id ='check' type='checkbox'/></div>"
+            });
+            $("#check").ejCheckBox({ text: "Check All", change: "Change" });
+        });
+        function Change(args) {
+           if (!flag) {
+            var drop = $("#dropdown1").ejDropDownList("instance");
+            if (args.isChecked) drop.checkAll();
+            else drop.uncheckAll();
+           }
+        }
+       function Check(args) {
+        var drop = $("#dropdown1").ejDropDownList("instance");
+        var instance = $("#check").data("ejCheckBox");
+
+        if (!args.isChecked) {
+            flag = true; //set flag variable to avoid triggering of checkbox change during check change.
+            instance.setModel({ checked: false }); //uncheck checkAll when any one of the item is unchecked.
+            flag = false;
+
+        }
+        if (drop.getSelectedItem().length == drop.getListData().length) //get selected items length
+        {
+            instance.setModel({ checked: true }); //check checkAll checkbox when all items in list are selected.
+        }
+
+        }
+        
+    </script>
+    <style class="cssStyles">
+        .control {
+            margin-left: 20px;
+        }
+
+        .ctrllabel {
+            padding-bottom: 3px;
+        }
+      .temp {
+            height: 30px;
+            display: block;
+            padding-left: 13px;
+            padding-top: 5px;
+            border-bottom: 1px solid #c8c8c8;
+        }
+        .e-chkbox-wrap .e-text {
+            font-size: 14px;
+            padding-left: 10px;
+        }
+    </style>
+</body>
+</html>
