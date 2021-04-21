@@ -2503,9 +2503,6 @@
         },
         _createListHidden: function (value) {
             var arrayHidden = document.createElement("input");
-			var quote = /'/;
-			if(quote.test(value))
-			   value =value.replace(quote,"&apos;")
             this._setAttr(arrayHidden, { type: "hidden", name: this._name, value: value, id: "#" + value });
 			if($.inArray(arrayHidden.value,this._hiddenInputElement) == -1){
 				this._hiddenInputElement.push(arrayHidden.value);
