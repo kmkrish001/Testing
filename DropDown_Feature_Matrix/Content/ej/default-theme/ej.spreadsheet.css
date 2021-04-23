@@ -1,0 +1,576 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+.e-spreadsheet {
+  color: #333333;
+  border-color: #c8c8c8;
+}
+.e-spreadsheet .e-headercell,
+.e-spreadsheet .e-headercontent,
+.e-spreadsheet .e-rowheader {
+  border-color: #c8c8c8;
+  color: #333333;
+}
+.e-spreadsheet .e-headercell:hover,
+.e-spreadsheet .e-rowheader:hover {
+  background-color: #e0eff6;
+}
+.e-spreadsheet .e-rowheadercontent {
+  border-bottom-color: #c8c8c8;
+}
+.e-spreadsheet .e-spreadsheetcontentcontainer {
+  border-left-color: #c8c8c8;
+  background-color: white;
+}
+.e-spreadsheet .e-spreadsheetcolumnheader {
+  border-color: #c8c8c8;
+}
+.e-spreadsheet .e-spreadsheetheader {
+  border-bottom-color: #c8c8c8;
+  border-top-color: #c8c8c8;
+}
+.e-spreadsheet .e-spreadsheetcolumnheader {
+  border-right-color: #c8c8c8;
+}
+.e-spreadsheet .e-rowcell {
+  color: #333333;
+  background-color: white;
+  border-color: #c8c8c8;
+}
+.e-spreadsheet .e-spreadsheetcolumnheader,
+.e-spreadsheet .e-rowheader,
+.e-spreadsheet .e-scrollcss,
+.e-spreadsheet .e-scrollrowcss {
+  background-color: white;
+}
+.e-ss-editinput .e-in-wrap,
+.e-ss-editinput .e-input {
+  color: inherit;
+  font-size: 11pt;
+  font-family: Calibri;
+}
+/*---------------------------Frozen Row------------------------*/
+
+.e-spreadsheet .e-reSizeColbg {
+  border-left-color: #c8c8c8;
+}
+.e-spreadsheet .e-reSizeAPbg {
+  border-left-color: #c8c8c8;
+}
+.e-spreadsheet .e-reSizeRowbg {
+  border-top-color: #c8c8c8;
+}
+.e-spreadsheet .e-selected,
+.e-spreadsheet .e-ctrlselected {
+  background: #e0eff6;
+}
+.e-spreadsheet .e-activecell {
+  background-color: white;
+}
+.e-spreadsheet .e-rowhighlight,
+.e-spreadsheet .e-colhighlight {
+  background-color: #e0eff6;
+  color: #2390c1;
+}
+.e-spreadsheet .e-rowhighlight {
+  border-right-color: #2390c1;
+}
+.e-spreadsheet .e-colhighlight {
+  border-bottom-color: #2390c1;
+}
+.e-spreadsheet .e-rowhighlight:hover,
+.e-spreadsheet .e-colhighlight:hover {
+  background-color: #e0eff6;
+}
+.e-menu-wrap .e-chartcell:hover,
+.e-chartimg:hover {
+  background-color: #e0eff6;
+}
+/*-------------------- Borders ------------------------ */
+
+.e-spreadsheet td.e-bborderright,
+.e-spreadsheet td.e-bctrlborderright,
+.e-spreadsheet td.e-bcbright {
+  border-right-color: #2094c9;
+}
+.e-spreadsheet td.e-bborderbottom,
+.e-spreadsheet td.e-bctrlborderbottom,
+.e-spreadsheet td.e-bcbbottom {
+  border-bottom-color: #2094c9;
+}
+.e-spreadsheet td.e-rborderright,
+.e-spreadsheet td.e-rctrlborderright,
+.e-spreadsheet td.e-rcbright {
+  border-right-color: #fc100c;
+}
+.e-spreadsheet td.e-rborderbottom,
+.e-spreadsheet td.e-rctrlborderbottom,
+.e-spreadsheet td.e-rcbbottom {
+  border-bottom-color: #fc100c;
+}
+.e-spreadsheet td.e-vborderright,
+.e-spreadsheet td.e-vctrlborderright,
+.e-spreadsheet td.e-vcbright {
+  border-right-color: #6a13ad;
+}
+.e-spreadsheet td.e-vborderbottom,
+.e-spreadsheet td.e-vctrlborderbottom,
+.e-spreadsheet td.e-vcbbottom {
+  border-bottom-color: #6a13ad;
+}
+.e-spreadsheet .e-gborderright,
+.e-spreadsheet .e-gctrlborderright {
+  border-right-color: #62c435 !important;
+}
+.e-spreadsheet td.e-gborderbottom,
+.e-spreadsheet td.e-gctrlborderbottom {
+  border-bottom-color: #62c435;
+}
+.e-spreadsheet td.e-pborderright,
+.e-spreadsheet td.e-pctrlborderright {
+  border-right-color: #f411b0;
+}
+.e-spreadsheet td.e-pborderbottom,
+.e-spreadsheet td.e-pctrlborderbottom {
+  border-bottom-color: #f411b0;
+}
+.e-spreadsheet td.e-oborderright,
+.e-spreadsheet td.e-octrlborderright {
+  border-right-color: #e59604;
+}
+.e-spreadsheet td.e-oborderbottom,
+.e-spreadsheet td.e-octrlborderbottom {
+  border-bottom-color: #e59604;
+}
+.e-spreadsheet .e-thinright {
+  border-right-color: #2390c1;
+}
+.e-spreadsheet .e-thinbottom {
+  border-bottom-color: #2390c1;
+}
+.e-spreadsheet .e-ss-numeric .e-select .e-spin {
+  background-color: white;
+  color: #797979;
+}
+.e-spreadsheet .e-ss-numeric .e-select .e-spin:hover {
+  background-color: #5cb2da;
+  border-color: #bebdbd;
+  color: white;
+}
+.e-spreadsheet .e-ss-numeric .e-select {
+  border-color: white;
+}
+.e-spreadsheet .e-ss-numeric .e-select:hover {
+  border-color: #bebdbd;
+}
+/*--------------------- Selection -------------------------- */
+
+.e-spreadsheet div.e-selecttop {
+  border-top-color: #2390c1;
+}
+.e-spreadsheet div.e-selectbottom {
+  border-bottom-color: #2390c1;
+}
+.e-spreadsheet div.e-selectright {
+  border-right-color: #2390c1;
+}
+.e-spreadsheet div.e-selectleft {
+  border-left-color: #2390c1;
+}
+.e-spreadsheet .e-ss-selectall {
+  color: #c2e7f8;
+}
+.e-spreadsheet .e-ss-selectall:hover {
+  color: #65c4ef;
+}
+.e-spreadsheet .e-sheetselected,
+.e-spreadsheet .e-sheetselected:hover {
+  color: #5bb3db;
+}
+/*--------------------- Auto Fill -------------------------------*/
+
+.e-spreadsheet .e-autofill {
+  border-color: white;
+  background-color: #2390c1;
+}
+.e-spreadsheet div.e-autofillright {
+  border-right-color: #2390c1;
+}
+.e-spreadsheet div.e-autofillbottom {
+  border-bottom-color: #2390c1;
+}
+.e-spreadsheet div.e-autofilltop {
+  border-top-color: #2390c1;
+}
+.e-spreadsheet div.e-autofillleft {
+  border-left-color: #2390c1;
+}
+/*--------------------- Cut and Copy ------------------------ */
+
+.e-spreadsheet td.e-cutright {
+  border-right-color: #2390c1;
+}
+.e-spreadsheet td.e-cutbottom {
+  border-bottom-color: #2390c1;
+}
+.e-spreadsheet .e-blur {
+  background-color: whitesmoke;
+}
+.e-spanfilter {
+  border-color: #c8c8c8;
+  background-color: #eeeeee;
+  color: #333333;
+}
+.e-spanddl {
+  border-color: #c8c8c8;
+  background-color: #eeeeee;
+  color: #333333;
+}
+.e-spreadsheet .e-spreadsheetcontentcontainer .e-ss-object.e-ss-activeimg {
+  border-color: #2390c1;
+}
+.e-spreadsheet .e-ss-object.e-datavisualization-chart {
+  border-color: #c8c8c8;
+}
+.e-spreadsheet .e-ss-imgvisual {
+  border-color: #c8c8c8;
+}
+.e-spreadsheet .e-rowcell.e-redft {
+  background-color: #ffc7ce;
+  color: #9c0055;
+}
+.e-spreadsheet .e-rowcell.e-yellowft {
+  background-color: #ffeb9c;
+  color: #9c6500;
+}
+.e-spreadsheet .e-rowcell.e-greenft {
+  background-color: #c6efce;
+  color: #006100;
+}
+.e-spreadsheet .e-rowcell.e-redf {
+  background-color: #ffc7ce;
+}
+.e-spreadsheet .e-rowcell.e-redt {
+  color: #9c0055;
+}
+.e-spreadsheet .e-rowcell.e-hlcell {
+  background-color: yellow;
+  color: red;
+}
+.e-spreadsheet .e-rowcell.e-goto-blank {
+  background-color: #c8c8c8;
+}
+/*-------------------------- Formula Tab --------------------------- */
+
+.e-spreadsheet .e-indexbox,
+.e-spreadsheet .functionbox,
+.e-spreadsheet .e-inputbox {
+  border-color: #c8c8c8;
+  color: #333333;
+  background-color: white;
+}
+.e-ss-autocomplete.e-atc-popup ul li {
+  color: #333333;
+}
+.e-spreadsheet .e-inputbox > input {
+  color: #333333;
+}
+/*-------------Pager-------------*/
+
+.e-spreadsheet .e-pager .e-numericitem {
+  color: #333333;
+}
+.e-spreadsheet .e-pager .e-currentitem,
+.e-spreadsheet .e-pager .e-currentitem:hover,
+.e-spreadsheet .e-pager .e-numericitem:hover {
+  background: #e0eff6;
+  color: #2390c1;
+}
+.e-spreadsheet .e-pager {
+  background-color: white;
+}
+.e-spreadsheet .e-pager .e-prevpagedisabled,
+.e-spreadsheet .e-pager .e-prevpage,
+.e-spreadsheet .e-pager .e-nextpage,
+.e-spreadsheet .e-pager .e-nextpagedisabled,
+.e-spreadsheet .e-pager .e-lastpagedisabled,
+.e-spreadsheet .e-pager .e-lastpage,
+.e-spreadsheet .e-pager .e-firstpage,
+.e-spreadsheet .e-pager .e-firstpagedisabled,
+.e-spreadsheet .e-pager .e-numericcontainer {
+  background-color: white;
+}
+.e-spreadsheet .e-pager .e-pagercontainer {
+  background-color: white;
+}
+.e-spreadsheet .e-pager .e-icon:not(.e-disable):hover {
+  color: #2390c1;
+  cursor: pointer;
+}
+.e-spreadsheet div.e-field-validation-error {
+  background-color: #fffe91;
+  color: #cd0a0a;
+}
+div.e-dlg-field-validation-error:before {
+  border-bottom-color: #fffe91;
+}
+.e-spreadsheet div.e-error .e-errortail {
+  border-bottom-color: #fffe91;
+}
+.e-spreadsheetfooter {
+  border-color: #c8c8c8;
+}
+.e-spreadsheet .e-hyperlinks {
+  color: inherit;
+}
+.e-spreadsheet .e-pager .e-mediaforward {
+  border-right-color: #c8c8c8;
+}
+.e-spreadsheet .e-formulabar {
+  background-color: white;
+}
+.e-ss-dialog .e-chartheader {
+  background-color: white;
+  color: #333333;
+}
+.e-ss-dialog .e-tab .e-header.e-addborderbottom .e-active {
+  border-top-color: #c8c8c8;
+}
+/*---------------------- Dialog -------------------------- */
+
+.e-dlgtab .e-header,
+.e-valdlgtab .e-header {
+  overflow: visible;
+  /*border-color: @ssheader-bgcolor;*/
+
+}
+.e-dlg-field-validation-error {
+  background-color: #fffe91;
+  color: #cd0a0a;
+}
+.e-dlgright,
+.e-dlgleft,
+.e-dlginput,
+.e-dlgcontent,
+.e-chtdlgright,
+.e-chtdlgleft,
+.e-chtdlgcontent {
+  border-color: #c8c8c8;
+}
+.e-dlgviewpanel {
+  border: 1px solid #c8c8c8;
+}
+.e-ss-dlgtab .e-ss-sctnseparator {
+  border-color: #c8c8c8;
+}
+.e-ss-dialog hr {
+  border-color: #eeeeee;
+}
+/*---------------------- Name Manager ------------------*/
+
+.e-menu .e-nmuseinformularow:hover {
+  background-color: #2390c1;
+}
+/*---------------------- Cell Styles--------------------*/
+
+.e-menu-wrap .e-cellstylecontent,
+.e-menu-wrap .e-formatastablecontent,
+.e-menu-wrap .e-chartcontent {
+  background-color: white;
+  color: #333333;
+}
+.e-menu-wrap .e-cellstyleheader,
+.e-menu-wrap .e-formatastableheader {
+  background-color: white;
+  color: #333333;
+  border-color: #c8c8c8;
+}
+.e-cellstylecell:hover,
+.e-formatastablecell:hover,
+.e-menu-wrap .e-chartcontent:hover {
+  border-color: #86cbea;
+}
+/*---------------------- Comments--------------------*/
+
+.e-spreadsheet .e-celltoparrow {
+  border-color: red transparent transparent;
+}
+.e-spreadsheet .e-comment-txtarea {
+  background-color: #f7fbbd;
+  color: #333333;
+}
+.e-list.e-hdrcolor {
+  background-color: #f2f2f2 !important;
+  color: #333333 !important;
+}
+.e-list.e-color {
+  border-color: #fcfcfc !important;
+}
+.e-list.e-hdrcolor.e-mhover > a,
+.e-list.e-hdrcolor.e-mfocused > a {
+  background-color: transparent !important;
+  color: #333333 !important;
+}
+.e-list.e-color.e-mhover.e-mfocused {
+  border-color: #5cb2da !important;
+}
+.e-spreadsheet .e-excelfilter .e-in-wrap {
+  border-color: #bebdbd;
+}
+/*---------------------------RTL--------------------------*/
+
+.e-spreadsheetrowheader.e-scrollrowcss.e-rtl {
+  border-color: #c8c8c8;
+}
+.e-spreadsheetcolumnheader.e-rtl {
+  border-color: #c8c8c8;
+}
+.e-spreadsheetcontentcontainer.e-rtl {
+  border-color: #c8c8c8;
+}
+.e-spreadsheet .e-numeric .e-in-wrap {
+  border-color: #bebdbd;
+}
+.e-ss-dialog .e-chartselect {
+  border-color: #179bd7;
+}
+.e-menu-wrap .e-chartcell {
+  border-color: #fcfcfc;
+}
+.e-spreadsheet .e-ss-object {
+  background-color: white;
+}
+.e-spreadsheet .e-ss-charttheme {
+  background-color: #121212;
+}
+/*-------------------------Merge--------------------*/
+
+.e-spreadsheet .e-ssr-horizontalprt .e-btn.e-ss-active {
+  color: #333333;
+}
+.e-spreadsheet .e-ssr-horizontalprt .e-btn.e-ss-active {
+  background: #5cc0ee;
+}
+.e-spreadsheet .e-ssr-horizontalprt .e-btn.e-ss-active:hover .e-icon {
+  color: #686969;
+}
+/*-------------------------Auto fill Option--------------------*/
+
+.e-ss-colorpicker .e-in-wrap.e-tool,
+.e-ss-colorpicker .e-in-wrap.e-tool .e-select {
+  background-color: white;
+}
+/*--------------------------------- Freeze Pane -------------------------------*/
+
+.e-frow {
+  border-bottom-color: #c8c8c8;
+}
+.e-fcol {
+  border-right-color: #c8c8c8;
+}
+/*-------------------------Ribbon icons Customization--------------------*/
+
+.e-spreadsheet .e-ssr-verticalHparent:hover .e-btn.e-select:not(.e-disable):not(.e-active),
+.e-spreadsheet .e-split .e-in-wrap.e-ssr-horizontalprt:hover .e-split-btn:not(.e-disable),
+.e-spreadsheet .e-ss-colorpicker .e-in-wrap.e-ssr-colpickHprt:hover:not(.e-disable) .e-ssr-colorcontainer {
+  border-color: #86cbea;
+}
+.e-spreadsheet .e-ssr-verticalHparent:hover .e-active,
+.e-spreadsheet .e-splitspan .e-spreadsheet.e-btn.e-select:hover {
+  background: #5cc0ee;
+}
+.e-spreadsheet .e-split.e-active .e-in-wrap.e-ssr-horizontalprt:hover .e-split-btn:not(.e-disable) {
+  background: #5cc0ee;
+}
+.e-spreadsheet .e-split.e-active .e-box .e-btn,
+.e-spreadsheet .e-button.e-active {
+  background: #5cc0ee;
+}
+.e-spreadsheet .e-split.e-active .e-box .e-btn .e-icon,
+.e-spreadsheet .e-split .e-btn.e-select:active .e-icon {
+  color: #686969;
+}
+.e-spreadsheet .e-hborder {
+  border-color: transparent;
+}
+.e-spreadsheet .e-content.e-viewbrdr {
+  border-color: #c8c8c8;
+}
+.e-chkbox-wrap div > span.e-chkhover {
+  background-color: #e0eff6;
+}
+/*-------------------------------------Spreadsheet Ribbon override------------*/
+
+.e-spreadsheet .e-ribbon .e-header {
+  border-right: none;
+  border-left: none;
+  border-top: none;
+}
+.e-spreadsheet .e-ribbon .e-content {
+  border-right: none;
+  border-left: none;
+}
+.e-spreadsheet .e-ribbon .e-header {
+  border-right: medium none;
+  border-left: medium none;
+  border-top: medium none;
+}
+.e-spreadsheet .e-ribbon .e-content {
+  border-right: medium none;
+  border-left: medium none;
+}
+.e-ribbon .e-btn.e-ss-active {
+  background-color: #2390c1;
+  color: #fcfcfc;
+}
+.e-spreadsheet .e-ribbon .e-ddl {
+  border-color: #b6b6b6;
+}
+.e-spreadsheet .e-ribbon .e-ddl {
+  border-color: #b6b6b6;
+}
+.e-spreadsheet .e-menu.e-split,
+.e-menu-wrap .e-spreadsheet.e-split.e-autofillbtn li.e-list,
+.e-spreadsheet .e-splitspan .e-btn.e-select {
+  background: white;
+}
+.e-ssr-bscontent div:not(.e-ssr-bsnewtmpl) .e-btn.e-select {
+  border-color: #c8c8c8;
+}
+.e-spreadsheet .e-spreadsheetfooter .e-numericcontainer a:not(.e-currentitem),
+.e-ss-colorpicker.e-popup {
+  background-color: white;
+}
+.e-spreadsheet .e-ribbon .e-btn.e-select.e-disable:hover .e-icon {
+  color: #686969;
+}
+.e-spreadsheet .e-rowheader.e-filterhiglight,
+.e-spreadsheet .e-rowheader.e-rowhighlight.e-filterhiglight {
+  color: #00cc00;
+}
+/***********************SpreadsheetTextArea***********************************/
+
+.e-ss-textarea,
+.e-ss-textarea:focus,
+.e-ss-textarea:hover {
+  border-color: #c8c8c8;
+}
+/*-------------------------------------SpreadsheetCellType--------------------*/
+
+.e-spreadsheet .e-cellreadonly .e-datewidget .e-select {
+  background: white;
+}
+.e-spreadsheet .e-cellreadonly .e-ddl .e-select {
+  background: white;
+}
+/*-------------------------------------SpreadSheet End -----------------------*/
+

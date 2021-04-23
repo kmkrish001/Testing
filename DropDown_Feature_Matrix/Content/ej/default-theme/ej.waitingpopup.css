@@ -1,0 +1,26 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+/*------------------------------------- MetroLight Skin -------------------------------------------*/
+
+.e-waitpopup-pane .e-image {
+  background-color: white;
+  background-image: url(images/waitingpopup.gif);
+}
+.e-waitpopup-pane {
+  background-color: #383838;
+  color: #282827;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

@@ -1,0 +1,126 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+/*------------------------------------- ToolBar -------------------------------------------*/
+
+.e-toolbar {
+  font-family: Segoe UI;
+  font-weight: normal;
+  font-size: 14px;
+  color: #686969;
+  background-repeat: no-repeat;
+  border-color: #c8c8c8;
+}
+.e-toolbar {
+  background: #ececec;
+}
+.e-toolbar.e-focus {
+  box-shadow: 0 0 2px #cbcbcb;
+}
+.e-toolbar > .e-horizontal.e-separator {
+  border-right: 1px solid #c8c8c8;
+  border-left: none;
+  border-radius: initial;
+}
+.e-toolbar > .e-horizontal .e-separator {
+  border-right: 1px solid #c8c8c8;
+  border-left: none;
+  border-radius: inherit;
+}
+.e-toolbar > .e-vertical.e-separator {
+  border-bottom: 1px solid #c8c8c8;
+  border-top: none;
+  border-radius: initial;
+}
+.e-toolbar > .e-vertical .e-separator {
+  border-bottom: 1px solid #c8c8c8;
+  border-top: none;
+  border-radius: inherit;
+}
+.e-toolbar.e-rtl > .e-horizontal.e-separator {
+  border-left: 1px solid #c8c8c8;
+  border-right: none;
+  border-radius: initial;
+}
+.e-toolbar.e-rtl > .e-horizontal .e-separator {
+  border-left: 1px solid #c8c8c8;
+  border-right: none;
+  border-radius: inherit;
+}
+.e-toolbar.e-rtl > .e-vertical.e-separator {
+  border-top: 1px solid #c8c8c8;
+  border-bottom: none;
+  border-radius: initial;
+}
+.e-toolbar.e-rtl > .e-vertical .e-separator {
+  border-top: 1px solid #c8c8c8;
+  border-bottom: none;
+  border-radius: inherit;
+}
+.e-toolbar.e-rtl > .e-vertical .e-corner-all {
+  border-radius: inherit;
+}
+.e-toolbar > ul > li div.e-item-overlay {
+  background-color: #ececec;
+}
+.e-toolbar > .e-horizontal .e-hover,
+.e-toolbar > .e-vertical > .e-hover {
+  color: #282827;
+  border-color: #86cbea;
+}
+.e-toolbar > .e-horizontal .e-hover,
+.e-toolbar > .e-vertical > .e-hover {
+  background: #86cbea;
+}
+.e-toolbar > .e-horizontal .e-hover > div:before,
+.e-toolbar > .e-vertical > .e-hover > div:before,
+.e-toolbar > .e-horizontal .e-hover > span:before,
+.e-toolbar > .e-vertical > .e-hover > span:before,
+.e-toolbar > .e-horizontal .e-hover > a:before,
+.e-toolbar > .e-vertical > .e-hover > a:before {
+  color: #282827;
+}
+.e-toolbar > .e-horizontal .e-active.e-hover > div:before,
+.e-toolbar > .e-vertical > .e-active.e-hover > div:before,
+.e-toolbar > .e-horizontal .e-active.e-hover > span:before,
+.e-toolbar > .e-vertical > .e-active.e-hover > span:before,
+.e-toolbar > .e-horizontal .e-active.e-hover > a:before,
+.e-toolbar > .e-vertical > .e-active.e-hover > a:before {
+  color: white;
+}
+.e-toolbar > .e-horizontal .e-active,
+.e-toolbar > .e-vertical > .e-active {
+  border-color: #c8c8c8;
+  color: white;
+}
+.e-toolbar > .e-horizontal .e-active,
+.e-toolbar > .e-vertical > .e-active {
+  background: #179bd7;
+}
+.e-toolbar > .e-horizontal > .e-hover > a,
+.e-toolbar > .e-horizontal > .e-hover > span,
+.e-toolbar > .e-horizontal > .e-hover > div,
+.e-toolbar > .e-vertical > .e-hover > a,
+.e-toolbar > .e-vertical > .e-hover > span,
+.e-toolbar > .e-vertical > .e-hover > div {
+  background-color: transparent;
+  color: #282827;
+}
+.e-toolbar > .e-horizontal > .e-active > a,
+.e-toolbar > .e-horizontal > .e-active > span,
+.e-toolbar > .e-horizontal > .e-active > div,
+.e-toolbar > .e-vertical > .e-active > a,
+.e-toolbar > .e-vertical > .e-active > span,
+.e-toolbar > .e-vertical > .e-active > div {
+  background-color: transparent;
+  color: white;
+}

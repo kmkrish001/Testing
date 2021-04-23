@@ -1,0 +1,87 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+/*Theme Color*/
+
+.e-gantt .e-toolbaricons {
+  color: #686969;
+}
+.e-gantt .e-chkbox-wrap .e-chk-image {
+  background-image: url(images/checkedtick.png) !important;
+}
+.e-search.e-tooltxt.e-hover {
+  color: #282827 !important;
+}
+.e-gantt .e-tooltxt.e-hover > span {
+  color: #282827;
+}
+.e-gantt .e-gantt-add:before {
+  content: "\e6fe";
+}
+.e-gantt .e-gantt-edit:before {
+  content: "\e705";
+}
+.e-gantt .e-gantt-delete:before {
+  content: "\e706";
+}
+.e-gantt .e-gantt-save:before {
+  content: "\e6fc";
+}
+.e-gantt .e-gantt-cancel:before {
+  content: "\e708";
+}
+.e-gantt .e-gantt-indent:before {
+  content: "\e702";
+}
+.e-gantt .e-gantt-outdent:before {
+  content: "\e6fd";
+}
+.e-gantt .e-gantt-expandall:before {
+  content: "\e703";
+}
+.e-gantt .e-gantt-collapseall:before {
+  content: "\e707";
+}
+#Add.e-menuitem > div.e-icon:before {
+  content: "\e6fe";
+}
+#Indent.e-menuitem > div.e-icon:before {
+  content: "\e702";
+}
+#Outdent.e-menuitem > div.e-icon:before {
+  content: "\e6fd";
+}
+#Delete.e-menuitem > div.e-icon:before {
+  content: "\e706";
+}
+.e-gantt .e-splitter .e-splitbar.e-h-bar:before {
+  content: "\e6fa";
+}
+.e-gantt .e-gantt-Spliter {
+  border-top-color: #c8c8c8 !important;
+  border-bottom-color: #c8c8c8 !important;
+}
+.e-gantt .e-editValue .e-treegrid .e-headercell {
+  border-bottom-color: #c8c8c8 !important;
+  background-color: #ececec !important;
+}
+.e-ejinputtext {
+  border: 1px solid #c8c8c8;
+  outline: none;
+  background-color: white;
+  color: #333333;
+  vertical-align: baseline;
+}
+.e-deletepre.e-icon,
+.e-addpre.e-icon {
+  font-family: Segoe UI;
+}

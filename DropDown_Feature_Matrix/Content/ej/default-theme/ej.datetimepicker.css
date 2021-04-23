@@ -1,0 +1,170 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+/*------------------------------------- DateTimePicker -------------------------------------------*/
+
+.e-datetime-wrap .e-input,
+.e-datetime-popup {
+  background-color: white;
+  font-family: Segoe UI;
+  font-weight: normal;
+  color: #333333;
+}
+.e-datetime-wrap .e-in-wrap,
+.e-datetime-popup,
+.e-datetime-popup .e-timecontainer .e-header {
+  border-color: #c8c8c8;
+}
+.e-datetime-wrap.e-focus .e-in-wrap,
+.e-datetime-popup .e-focus {
+  box-shadow: 0 0 2px #cbcbcb;
+}
+.e-datetime-wrap .e-select,
+.e-datetime-wrap.e-rtl .e-select,
+.e-datetime-wrap .e-disable.e-select:hover {
+  border-color: #c8c8c8;
+  color: #686969;
+}
+.e-datetime-wrap .e-select,
+.e-datetime-wrap.e-rtl .e-select,
+.e-datetime-wrap .e-disable.e-select:hover {
+  background: #ececec;
+}
+.e-datetime-wrap .e-select:hover {
+  color: #282827;
+}
+.e-datetime-wrap .e-select:hover {
+  background: #86cbea;
+}
+.e-datetime-popup .e-dt-button {
+  border: 1px solid #c8c8c8;
+  color: #333333;
+}
+.e-datetime-popup .e-dt-button {
+  background: #ececec;
+}
+.e-datetime-popup .e-dt-button:active {
+  border-color: #c8c8c8;
+  color: #333333;
+}
+.e-datetime-popup .e-dt-button:active {
+  background: #179bd7;
+}
+.e-datetime-popup .e-dt-button:hover {
+  color: #282827;
+  border-color: #c8c8c8;
+}
+.e-datetime-popup .e-dt-button:hover {
+  background: #86cbea;
+}
+.e-timepicker.e-time-hours,
+.e-timepicker.e-time-minitues {
+  border-color: #c8c8c8;
+  background-color: white;
+}
+.e-drillDowncontainer .e-timepicker.e-popup .e-header,
+.e-drillDowncontainer .e-timepicker.e-popup .e-mins-header,
+.e-drillDowncontainer .e-timepicker.e-popup .e-header-am,
+.e-drillDowncontainer .e-timepicker.e-popup .e-header-pm {
+  color: #282827;
+  font-size: 16px;
+  font-weight: normal;
+}
+.e-drillDowncontainer .e-timepicker.e-popup .e-header {
+  border-bottom: 1px solid #c8c8c8;
+}
+.e-drillDowncontainer .e-timepicker.e-popup .e-header {
+  background: #fcfcfc;
+}
+.e-drillDowncontainer .e-timepicker.e-popup .e-header-pm > .e-text {
+  border-top: 1px solid #c8c8c8;
+}
+.e-drillDowncontainer .e-timepicker.e-popup .e-header .e-icon {
+  color: #282827;
+}
+.e-timepicker table td.e-active,
+.e-timepicker table td.e-active.e-state-hover {
+  border-radius: 4px;
+  box-shadow: 0 0 0 transparent inset;
+  /*For flicker issue */
+  color: white;
+  border-color: #c8c8c8;
+}
+.e-timepicker table td.e-active,
+.e-timepicker table td.e-active.e-state-hover {
+  background: #179bd7;
+}
+.e-timepicker .e-state-default {
+  color: #333333;
+  font-weight: normal;
+}
+.e-timepicker table td:hover,
+.e-timepicker table td.e-state-hover {
+  color: #282827;
+  border-color: #c8c8c8;
+  border-radius: 4px;
+  box-shadow: 0 0 0 transparent inset;
+}
+.e-timepicker table td:hover,
+.e-timepicker table td.e-state-hover {
+  background: #86cbea;
+}
+.e-timepicker .e-hours-headertext:hover,
+.e-timepicker .e-minitues-headertext:hover {
+  background: #86cbea;
+}
+.e-timepicker .e-footer {
+  color: #333333;
+  border: 1px solid transparent;
+}
+.e-timepicker .e-footer:hover {
+  color: #282827;
+  border: 1px solid #c8c8c8;
+}
+.e-timepicker .e-footer:hover {
+  background: #86cbea;
+}
+.e-timepicker table td.e-disable {
+  color: #bfbfbf;
+}
+.e-timepicker table td.e-disable:hover {
+  background: none;
+  border-color: none;
+  color: #bfbfbf;
+}
+.e-timepicker .e-left-arrow:hover,
+.e-timepicker .e-right-arrow:hover {
+  background-color: #86cbea;
+  border-radius: 4px 4px 4px 4px;
+  border-color: #c8c8c8;
+}
+.e-timepicker .e-disable.e-left-arrow:hover,
+.e-timepicker .e-disable.e-right-arrow:hover {
+  border-color: #c8c8c8;
+}
+.e-timepicker.e-popup.e-disable table td:hover,
+.e-timepicker.e-popup.e-disable td.e-state-hover {
+  background: none;
+  color: #333333;
+  font-weight: normal;
+  border-radius: 0px;
+  border-color: #c8c8c8;
+}
+.e-timepicker.e-popup.e-disable .e-left-arrow:hover,
+.e-timepicker.e-popup.e-disable .e-right-arrow:hover {
+  border-color: #c8c8c8;
+}
+.e-timepicker.e-popup.e-disable .e-footer:hover {
+  background: none;
+  color: #333333;
+  border: 1px solid transparent;
+}

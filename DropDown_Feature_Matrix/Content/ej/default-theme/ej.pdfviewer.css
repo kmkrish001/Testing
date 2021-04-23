@@ -1,0 +1,144 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+/*------------------------------pdfviewer Theme Start-------------------------------*/
+
+.e-pdfviewer-outerborder:hover {
+  border-color: #c8c8c8;
+  color: #333333;
+}
+.e-pdfviewer-outerborder:hover {
+  background: #86cbea;
+}
+.e-pdfviewer-tbdiv.e-pdfviewer-exporttip {
+  border-color: #c8c8c8;
+  background-color: white;
+}
+.e-pdfviewer-tbdiv.e-pdfviewer-exporttip {
+  background: #ececec;
+}
+.e-pdfviewer-tbdiv.e-pdfviewer-fittopagetip {
+  border-color: #c8c8c8;
+  background-color: white;
+}
+.e-pdfviewer-tbdiv.e-pdfviewer-fittopagetip {
+  background: #ececec;
+}
+.e-pdfviewer-tbdiv.e-pdfviewer-tooltip {
+  background: white;
+  border-color: #c8c8c8;
+}
+.e-pdfviewer-headerspan,
+.e-pdfviewer-contentspan {
+  color: #333333;
+  font-family: Segoe UI !important;
+}
+.e-pdfviewer-viewer {
+  font-size: 14px;
+}
+.e-pdfviewer-popuppageno,
+.e-pdfviewer-popuptotalpage {
+  color: white;
+}
+.e-pdfviewer-toolbarcontainer .ejinputtext {
+  background-color: white !important;
+}
+.e-pdfviewer-viewerblock {
+  background-color: #f6f6f6;
+  font-size: 12.5px;
+  color: #333333;
+}
+.e-pdfviewer-viewerblockcellcontent {
+  font-size: 14.5px;
+  color: #333333;
+}
+.e-pdfviewer-viewpdf {
+  border-left-color: #c8c8c8;
+}
+.e-pdfviewer-scrollcontainer,
+.e-pdfviewer-viewer > .e-splitter .e-pane {
+  background-color: #e9e9e9;
+}
+.e-pdfviewer-pageviewcontainer {
+  background-color: #e9e9e9;
+}
+.e-pdfviewer-pageview {
+  -moz-box-shadow: rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: rgba(0, 0, 0, 0.6);
+  box-shadow: rgba(0, 0, 0, 0.3);
+  border-color: gray;
+}
+.e-pdfviewer-label,
+.e-pdfviewer-tbpage,
+.e-pdfviewer-elementalignments,
+.e-pdfviewer-textbox {
+  color: #333333;
+}
+.e-pdfviewer-label,
+.e-pdfviewer-tbpage,
+.e-pdfviewer-elementalignments,
+.e-pdfviewer-textbox {
+  font-size: 14px;
+  font-weight: normal;
+}
+.e-pdfviewer-labelpageno {
+  font-size: 16px !important;
+}
+.e-pdfviewer-documentmapcontainer div,
+.e-pdfviewer-documentmappopup {
+  background-color: #ebebeb;
+}
+.e-pdfviewer-pagepopupinfo {
+  background-color: black;
+}
+.e-pdfviewer-viewerblock,
+.e-pdfviewer-viewer,
+.e-pdfviewer-pagenumber,
+.e-pdfviewer-tbpage,
+.e-pdfviewer-tbdiv.e-pdfviewer-exportlist,
+.e-pdfviewer-label,
+.e-pdfviewer-labelpageno {
+  font-family: Segoe UI !important;
+}
+.e-pdfviewer-toolbarcontainer.e-toolbar,
+.e-pdfviewer-viewerblock,
+.e-pdfviewer-viewercontainer,
+.e-pdfviewer-elementalignments,
+.e-pdfviewer-viewerblockcellcontent,
+.e-pdfviewer-viewerblockcontent,
+.e-pdfviewer-textbox,
+.e-pdfviewer-documentmappopup {
+  border-color: #c8c8c8;
+}
+.e-pdfviewer-popupli:hover {
+  background-color: #86cbea;
+  color: #282827;
+}
+.e-pdfviewer-popupli:hover {
+  background: #86cbea;
+}
+.e-pdfviewer-popupli {
+  color: #333333 !important;
+  font-family: Segoe UI !important;
+  font-size: 14px !important;
+  font-weight: normal !important;
+}
+.e-pdfviewer-gotonext.e-pdfviewer-disabled,
+.e-pdfviewer-gotoprevious.e-pdfviewer-disabled,
+.e-pdfviewer-gotolast.e-pdfviewer-disabled,
+.e-pdfviewer-gotofirst.e-pdfviewer-disabled,
+.e-pdfviewer-disabled-fitWidthButton,
+.e-pdfviewer-disabled-fitPageButton {
+  color: #b2b2b2;
+}
+/*------------------------------pdfviewer Theme End-------------------------------*/
+

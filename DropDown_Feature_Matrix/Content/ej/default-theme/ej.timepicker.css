@@ -1,0 +1,60 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+/*------------------------------------- TimeEditor -------------------------------------------*/
+
+.e-timewidget .e-input,
+.e-time-popup {
+  background-color: white;
+  font-family: Segoe UI;
+  font-weight: normal;
+  color: #333333;
+}
+.e-timewidget .e-in-wrap,
+.e-time-popup {
+  border-color: #c8c8c8;
+}
+.e-timewidget.e-focus .e-in-wrap {
+  box-shadow: 0 0 2px #cbcbcb;
+}
+.e-timewidget .e-select,
+.e-timewidget.e-rtl .e-select,
+.e-timewidget .e-disable.e-select:hover {
+  border-color: #c8c8c8;
+  color: #686969;
+}
+.e-timewidget .e-select,
+.e-timewidget.e-rtl .e-select,
+.e-timewidget .e-disable.e-select:hover {
+  background: #ececec;
+}
+.e-timewidget .e-select:hover,
+.e-time-popup.e-popup .e-hover {
+  color: #282827;
+}
+.e-timewidget .e-select:hover,
+.e-time-popup.e-popup .e-hover {
+  background: #86cbea;
+}
+.e-timewidget .e-select:hover {
+  color: #282827;
+}
+.e-time-popup.e-popup .e-hover {
+  border-color: #86cbea;
+}
+.e-time-popup .e-active {
+  color: white;
+  border-color: #179bd7;
+}
+.e-time-popup .e-active {
+  background: #179bd7;
+}

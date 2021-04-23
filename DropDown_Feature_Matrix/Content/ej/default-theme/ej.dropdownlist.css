@@ -1,0 +1,128 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+/*------------------------------------- dropdownlist -------------------------------------------*/
+
+.e-ddl .e-input,
+.e-ddl-popup,
+.e-ddl .e-options {
+  background-color: white;
+  color: #333333;
+  font-family: Segoe UI;
+  font-size: 14px;
+  font-weight: normal;
+}
+.e-ddl .e-in-wrap,
+.e-ddl-popup,
+.e-ddl .e-options,
+.e-ddl-popup .e-atc.e-search {
+  border-color: #c8c8c8;
+}
+.e-ddl .e-options.e-active {
+  background-color: #179bd7;
+  color: white;
+  border-color: #179bd7;
+}
+.e-ddl .e-boxes {
+  background-color: white;
+}
+.e-ddl.e-focus .e-in-wrap {
+  box-shadow: 0 0 2px #cbcbcb;
+}
+.e-ddl .e-input.e-watermark {
+  color: #d2d1d1 !important;
+  font-style: italic;
+}
+.e-ddl-popup .e-hover {
+  color: #282827;
+}
+.e-ddl-popup .e-hover {
+  background: #86cbea;
+}
+.e-ddl .e-select:hover,
+.e-ddl.e-rtl .e-select:hover {
+  color: #282827;
+  border-color: #c8c8c8;
+}
+.e-ddl .e-select:hover,
+.e-ddl.e-rtl .e-select:hover {
+  background: #86cbea;
+}
+.e-ddl-popup .e-active {
+  color: white;
+  border-bottom: 1px solid white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+.e-ddl-popup .e-active {
+  background: #179bd7;
+}
+.e-ddl .e-select,
+.e-ddl.e-rtl .e-select,
+.e-ddl .e-disable.e-select:hover {
+  color: #686969;
+  border-color: #c8c8c8;
+}
+.e-ddl .e-select,
+.e-ddl.e-rtl .e-select,
+.e-ddl .e-disable.e-select:hover {
+  background: #ececec;
+}
+.e-ddl-popup div > ul .e-ghead {
+  border-bottom: 1px solid #c8c8c8;
+  display: block;
+  font-weight: 600;
+  margin: 2px 2px 2px 4%;
+  position: relative;
+  padding-bottom: 5px;
+}
+.e-ddl .e-select.e-load {
+  background-image: url(images/ajax-loader.gif);
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.e-ddl-popup .e-resize-handle {
+  cursor: se-resize;
+  float: right;
+  padding: 4px 3px 0 0;
+  margin-right: 2px;
+}
+.e-ddl-popup .e-resize-handle.e-rtl-resize {
+  float: left;
+  cursor: sw-resize;
+  transform: rotate(90deg);
+  padding: 3px 0 0 3px;
+}
+.e-ddl-popup .e-resizebar {
+  border-top: 1px solid white;
+  height: 20px;
+  width: auto;
+  display: block;
+}
+.e-ddl-popup .e-resizebar {
+  background: #ececec;
+}
+.e-ddl-popup .e-atc.e-search .e-isearch:before,
+.e-ddl-popup .e-atc.e-search .e-iclose:before {
+  color: #c8c8c8;
+}
+::-webkit-input-placeholder {
+  color: #333333;
+}
+:-ms-input-placeholder {
+  color: #333333;
+}
+::-moz-placeholder {
+  color: #333333;
+}
+:-moz-placeholder {
+  color: #333333;
+}

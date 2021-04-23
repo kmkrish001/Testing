@@ -1,0 +1,28 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+.e-chkbox-wrap.e-focus div > span {
+  box-shadow: 0 0 2px #cbcbcb;
+}
+.e-chkbox-wrap div > span {
+  border-color: #c8c8c8;
+  background-color: white;
+}
+.e-chkbox-wrap .e-chk-image.e-chk-indetericon,
+.e-chkbox-wrap .e-chk-image.e-chk-activeicon {
+  color: #179bd7;
+}
+.e-chkbox-wrap .e-text {
+  font-family: Segoe UI;
+  font-size: 12px;
+  color: #333333;
+}

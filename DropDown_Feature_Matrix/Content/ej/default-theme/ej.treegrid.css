@@ -1,0 +1,252 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+.e-treegrid .e-extendcolumn {
+  background-color: white;
+}
+.e-treegrid .e-headercelldiv {
+  color: #282827;
+  font-family: Segoe UI;
+}
+.e-treegrid-core {
+  font-family: Segoe UI;
+}
+.e-treegrid {
+  border-color: #c8c8c8;
+  color: #333333;
+}
+.e-treegrid .e-gridcontent {
+  background-color: white;
+  border-color: #c8c8c8;
+}
+.e-treegrid .e-borderbox {
+  border-bottom-color: white;
+}
+.e-treegrid .e-editcell,
+.e-treegrid .e-detailsrowcell,
+.e-treegrid .e-rowcell,
+.e-treegrid .e-extendcolumn {
+  border-color: #c8c8c8;
+}
+.e-treegrid .e-detailsiconcell:hover,
+.e-treegrid .e-detailsinfoiconhide {
+  background-color: #e3e3e3;
+}
+.e-detailscellwrapperfly {
+  border-color: #c8c8c8;
+  box-shadow: 0px 0px 11px 3px #c8c8c8;
+  -moz-box-shadow: 0px 0px 11px 3px #c8c8c8;
+  -webkit-box-shadow: 0px 0px 11px 3px #c8c8c8;
+}
+.e-dragrowcell {
+  border-color: #c8c8c8 !important;
+}
+.e-treegrid .e-alt-row {
+  background: #fafafa;
+}
+.e-treegrid .e-selectionbackground {
+  color: white;
+}
+.e-treegrid .e-selectionbackground {
+  background: #179bd7;
+}
+.e-treegridPane .e-treegrid .e-selectionbackground {
+  color: #333333;
+}
+.e-treegridPane .e-treegrid .e-selectionbackground {
+  background: rgba(23, 155, 215, 0.2);
+  /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(23, 155, 215, 0.2), rgba(23, 155, 215, 0.2));
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(23, 155, 215, 0.2)), color-stop(100%, rgba(23, 155, 215, 0.2)));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(23, 155, 215, 0.2), rgba(23, 155, 215, 0.2));
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(23, 155, 215, 0.2), rgba(23, 155, 215, 0.2));
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(23, 155, 215, 0.2), rgba(23, 155, 215, 0.2));
+  /* IE10+ */
+  background: linear-gradient(to bottom, rgba(23, 155, 215, 0.2), rgba(23, 155, 215, 0.2));
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='rgba(23, 155, 215, 0.2)', endColorstr='rgba(23, 155, 215, 0.2)', GradientType=0);
+  /* IE6-9 */
+
+}
+.e-treegrid .e-detailsinfoiconhide:before,
+.e-treegrid .e-detailsinfoiconshow:before {
+  color: #179bd7 !important;
+}
+.e-treegrid .e-selectionbackground .e-detailsinfoiconshow:before {
+  color: white !important;
+}
+.e-treegrid .e-detailscellwrapper,
+.e-detailscellwrapperfly {
+  background: white;
+  color: #333333 !important;
+}
+.e-dragtooltipbackground {
+  background-color: white;
+  color: #333333;
+}
+.e-treegrid .e-tabletd {
+  border-color: #c8c8c8;
+}
+.e-treegrid .e-treegrid-add:before {
+  content: "\e6fe";
+}
+.e-treegrid .e-treegrid-edit:before {
+  content: "\e705";
+}
+.e-treegrid .e-treegrid-delete:before {
+  content: "\e706";
+}
+.e-treegrid .e-treegrid-save:before {
+  content: "\e6fc";
+}
+.e-treegrid .e-treegrid-cancel:before {
+  content: "\e708";
+}
+.e-treegrid .e-treegrid-expandall:before {
+  content: "\e703";
+}
+.e-treegrid .e-treegrid-collapseall:before {
+  content: "\e707";
+}
+.e-treegrid .e-treegridtoolbar {
+  background-color: white !important;
+  border-color: #c8c8c8 !important;
+}
+.e-treegrid .e-headercell {
+  border-top-color: #c8c8c8 !important;
+  border-right-color: #c8c8c8 !important;
+  border-bottom-color: #179bd7 !important;
+}
+.e-treegrid .e-filterbarcell {
+  border-color: #c8c8c8 !important;
+}
+.e-treegrid .e-grid-icon {
+  background: #fcfcfc;
+}
+.e-treegrid .e-gridheader {
+  color: #282827;
+  border-color: #c8c8c8;
+}
+.e-treegrid .e-gridheader {
+  background: #fcfcfc;
+}
+.e-treegrid .e-headercontent {
+  border-right-color: #c8c8c8;
+}
+.e-treegrid .e-ejinputtext {
+  border-color: #c8c8c8 !important;
+  background-color: white;
+  color: #333333;
+}
+.e-treegrid .e-ejinputtext:focus {
+  box-shadow: #c8c8c8 !important;
+}
+.e-treegrid .e-reSizeColbg {
+  border-left-color: #c8c8c8 !important;
+}
+.e-treegrid .e-gridheadercontainer {
+  border-right-color: #c8c8c8;
+}
+.e-columnmenu {
+  background: white;
+  border-color: #c8c8c8 !important;
+  color: #333333;
+  font-family: Segoe UI;
+}
+.e-columnmenuitem .e-icon,
+.e-menuitem .e-icon,
+.e-treegrid .e-toolbaricons {
+  color: #686969 !important;
+}
+.e-columnmenuselection .e-icon,
+.e-contextmenu-mouseover .e-icon,
+.e-treegrid .e-tooltxt.e-hover > span {
+  color: #282827 !important;
+}
+.e-columnSelector {
+  background: white;
+  border: 1px solid;
+  border-color: #c8c8c8 !important;
+  color: #333333 !important;
+}
+.e-columnMenuListDiv label {
+  font-family: Segoe UI;
+}
+.e-columnmenuselection {
+  color: #282827;
+}
+.e-columnmenuselection {
+  background: #86cbea;
+}
+.e-treegrid .e-summaryrow {
+  background: #f6f6f6;
+}
+.e-treegrid .e-footersummaryrow,
+.e-treegrid .e-footersummaryrowdiv {
+  background: #f6f6f6;
+}
+.e-treegrid .e-footersummaryrowdiv {
+  border-width: 0px 1px 1px 1px;
+  border-style: solid;
+  border-color: #c8c8c8;
+}
+.e-treegrid .e-summaryrow .e-summaryrowcell {
+  border-bottom-color: #c8c8c8;
+}
+.e-contextmenu,
+.e-innerContextmenu {
+  background: white;
+  border-color: #c8c8c8 !important;
+  color: #333333;
+  font-family: Segoe UI;
+}
+.e-contextmenu-mouseover {
+  color: #282827;
+}
+.e-contextmenu-mouseover {
+  background: #86cbea;
+}
+.e-columnmenu-icon {
+  color: #686969 !important;
+}
+.e-columnmenu-icon:hover {
+  color: #686969 !important;
+}
+#Add.e-menuitem > span.e-icon:before {
+  content: "\e6fe";
+}
+#Indent.e-menuitem > span.e-icon:before {
+  content: "\e702";
+}
+#Outdent.e-menuitem > span.e-icon:before {
+  content: "\e6fd";
+}
+#Delete.e-menuitem > span.e-icon:before {
+  content: "\e706";
+}
+.e-tooltipgantt {
+  background-color: white;
+  color: #333333;
+  border-color: #c8c8c8;
+}
+.e-treegrid .e-movablecontainer,
+.e-treegrid .e-movableheader,
+.e-treegrid .e-movablefooter {
+  border-left-color: #179bd7;
+}
+.e-treegrid .e-footercontainer {
+  border-right-color: #c8c8c8;
+}

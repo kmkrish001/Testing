@@ -1,0 +1,44 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+/*------------------------------------- splitter -------------------------------------------*/
+
+.e-splitter {
+  border-color: #c8c8c8;
+}
+.e-splitter .e-pane {
+  background-color: white;
+  color: #333333;
+}
+.e-splitter .e-splitbar.e-shadowbar.e-end-indicaton,
+.e-splitter .e-splitbar .e-end-indicaton {
+  background-color: #fef1ec;
+}
+.e-splitter .e-splitbar.e-shadowbar {
+  background: #179bd7;
+}
+.e-splitter .e-splitbar {
+  background-color: white;
+  border-color: #c8c8c8;
+}
+.e-splitter .e-splitbar .e-icon {
+  color: #686969;
+}
+.e-splitter .e-splitbar:hover .e-icon,
+.e-splitter .e-splitbar.e-hover .e-icon {
+  color: #282827;
+}
+.e-splitter .e-hover.e-splitbar.e-split-divider,
+.e-splitter .e-splitbar.e-split-divider:hover {
+  background-color: #86cbea;
+  border-color: #c8c8c8;
+}

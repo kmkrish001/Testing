@@ -1,0 +1,33 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+/*Theme Color*/
+
+.e-radiobtn-wrap > span {
+  background-color: white;
+  background-image: none;
+  border-color: #c8c8c8;
+}
+.e-radiobtn-wrap.e-focus > span {
+  box-shadow: 0 0 2px #cbcbcb;
+}
+.e-radiobtn-wrap .e-rad-select {
+  background: none repeat scroll 0 0 transparent;
+}
+.e-radiobtn-wrap .e-rad-active {
+  color: #179bd7;
+}
+.e-radiobtn-wrap .e-text {
+  font-family: Segoe UI;
+  font-size: 12px;
+  color: #333333;
+}

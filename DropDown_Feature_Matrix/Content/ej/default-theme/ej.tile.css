@@ -1,0 +1,26 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+/*------------------------------------- Tile View -------------------------------------------*/
+
+.e-tile.e-tile-common {
+  color: white;
+}
+.e-tile.e-tile-common {
+  background: #179bd7;
+}
+.e-tile.e-tile-flip .e-fontimage.e-tile-image {
+  color: white;
+}
+.e-tile.e-tile-flip .e-fontimage.e-tile-image {
+  background: #179bd7;
+}

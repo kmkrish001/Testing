@@ -1,0 +1,105 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+/*------------------------------------- Button -------------------------------------------*/
+
+.e-btn,
+.e-tbtn,
+.e-split-btn {
+  font-family: Segoe UI;
+  font-weight: normal;
+  font-size: 14px;
+}
+.e-rtl .e-splitarrowleft .e-split-btn.e-left-btn {
+  border-right: medium none;
+  border-left: 1px solid #c8c8c8;
+}
+.e-rtl .e-splitarrowright .e-split-btn.e-left-btn {
+  border-left: medium none;
+  border-right: 1px solid #c8c8c8;
+}
+.e-btn.e-select:focus {
+  box-shadow: 0 0 2px #cbcbcb;
+}
+.e-btn.e-select,
+.e-btn.e-disable.e-select:hover,
+.e-tbtn.e-disable {
+  color: #333333;
+  border-color: #c8c8c8;
+}
+.e-btn.e-select,
+.e-btn.e-disable.e-select:hover,
+.e-tbtn.e-disable {
+  background: #ececec;
+}
+.e-btn.e-disable,
+.e-btn.e-disable .e-icon {
+  cursor: default;
+}
+.e-btn.e-select:hover {
+  border-color: #c8c8c8;
+  color: #282827;
+}
+.e-btn.e-select:hover {
+  background: #86cbea;
+}
+.e-btn.e-select:active,
+.e-btn.e-disable.e-active.e-select:hover,
+.e-tbtn.e-active {
+  border-color: #c8c8c8;
+  color: white;
+}
+.e-btn.e-select:active,
+.e-btn.e-disable.e-active.e-select:hover,
+.e-tbtn.e-active {
+  background: #179bd7;
+}
+.e-drp-btn.e-select,
+.e-btn.e-select .e-icon,
+.e-btn.e-select.e-disable:hover,
+.e-btn.e-select.e-disable:hover .e-icon {
+  color: #686969;
+}
+.e-drp-btn.e-select:hover,
+.e-btn.e-select:hover .e-icon {
+  color: #282827;
+}
+.e-drp-btn.e-select:active,
+.e-btn.e-select:active .e-icon,
+.e-btn.e-active .e-icon,
+.e-btn.e-disable.e-select.e-active:hover .e-icon {
+  color: white;
+}
+.e-menu.e-split,
+.e-menu.e-context.e-split,
+.e-menu.e-context.e-split .e-list > ul,
+.e-menu.e-widget.e-split li.e-list {
+  color: #333333;
+  border-color: #c8c8c8;
+}
+.e-menu.e-split,
+.e-menu.e-context.e-split,
+.e-menu.e-context.e-split .e-list > ul,
+.e-menu.e-widget.e-split li.e-list {
+  background: #ececec;
+}
+/*------------------------------------- Common -------------------------------------------*/
+
+.ejinputtext {
+  background-color: white;
+  border: 1px solid #c8c8c8;
+  color: #333333;
+  outline: medium none;
+}
+.ejinputtext:focus {
+  box-shadow: 0 0 2px #cbcbcb;
+}

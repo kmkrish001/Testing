@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+    <link href="../content/bootstrap.css" rel="stylesheet">
+    <link href="../content/ej/default-theme/ej.web.all.min.css" rel="stylesheet" />
+
+    <!--[if lt IE 9]>
+    <script src="../scripts/jquery-1.11.3.min.js" type="text/javascript" ></script>
+    <![endif]-->
+    <!--[if IE 9]><!-->
+    <script src="../scripts/jquery-2.1.4.min.js" type="text/javascript"> </script>
+    <!--<![endif]-->
+    <script src="../scripts/jquery.easing.1.3.min.js" type="text/javascript"></script>
+    <script src="../scripts/jquery.globalize.min.js" type="text/javascript"></script>
+    <script src="../scripts/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="../scripts/ej/ej.web.all.min.js" type="text/javascript"></script>   
+</head>
+<body>
+    <div class="content-container-fluid" style="width: 100%; height: 100%">
+        <div style="margin-left: 200px">
+            <div class="ctrllabel">Select Group</div>
+            <input id="selectCar" type="text" />
+        </div>
+
+
+        <div class="row" style="width: 100%; height: 100%;">
+            <div class="col-lg-2" style="float: right">
+                <div>
+                    API
+                    <input type="checkbox" id="btnendis" class="e-togglebtn" value="checkuncheck" />
+                </div>
+                <input id="numeric" type="text" /><br />
+                <input type="checkbox" id="btnendisitem" class="e-togglebtn" value="checkuncheck" />
+                <button class="button" id="getSelectedItem">getSelectedValue</button><br />
+                <input id="numeric1" type="text" />
+                <input type="checkbox" id="unselectItemByText" class="e-togglebtn" value="checkuncheck" />
+                <input id="numeric2" type="text" /><br />
+                <input type="checkbox" id="unselectItemByValue" class="e-togglebtn" value="checkuncheck" />
+
+                <button class="button" id="addItem">addItem</button><br />
+                <button class="button" id="clearText">clearText</button>
+                <input type="checkbox" id="popup" class="e-togglebtn" value="checkuncheck" />
+                <input id="numeric4" type="text" />
+                <button class="button" id="unselectItemByIndex1">unselectItemByIndex</button>
+                <input id="Text1" type="text" />
+                <button class="button" id="selectItemByIndex1">selectItemByIndex</button>
+                <button class="button" id="checkbutton">checkAll</button>
+                <button class="button" id="uncheckbutton">uncheckAll</button>
+                <button class="button" id="btndestroyall">destroy</button>
+                <button class="button" id="btngetselecteditem">getSelectedItem</button>
+            </div>
+            <div class="col-lg-2" style="float: right">
+                Properties
+              
+                <input type="checkbox" id="btnallowcheck" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btnenablertl" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btnshowRoundedCorner" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btncheckall" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btnshowPopupOnLoad" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btncaseSensitiveSearch" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btnenablePersistence" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btnenableIncrementalSearch" class="e-togglebtn" value="checkuncheck" />
+                <!--<input type="checkbox" id="btnallowGrouping" class="e-togglebtn" value="checkuncheck" />-->
+                <input type="checkbox" id="btnenableAnimation" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btncssClass" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btndelimit" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btnenabled" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btnreadonly" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btnsorting" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btnvisualmulti" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btndelimitmulti" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btndata" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btnQuery" class="e-togglebtn" value="checkuncheck" />
+                <input id="numeric5" type="text" />
+                <button class="button" id="btnheight">Height</button>
+                <input id="numeric6" type="text" />
+                <button class="button" id="popupheight">popupheight</button>
+                <input id="numeric7" type="text" />
+                <button class="button" id="popupwidth">popupwidth</button>
+                <input id="numeric8" type="text" />
+                <button class="button" id="itemsCount">itemsCount</button>
+                <input id="numeric9" type="text" />
+                <button class="button" id="btntext">itemsCount</button>
+                <input id="numeric10" type="text" />
+                <button class="button" id="btnwidth">Width</button>
+                <input id="numeric11" type="text" />
+                <button class="button" id="btnwatermark">waterMark</button>
+                <input id="Text2" type="text" />
+                <input type="checkbox" id="btndisableItemByIndex" class="e-togglebtn" value="checkuncheck" />
+                <input id="Text3" type="text" />
+                <button class="button" id="btnselectedItems">SelectedItems</button>
+                <input id="Text4" type="text" />
+                <button class="button" id="Valuebtn">Value</button>
+                <input type="checkbox" id="btnpopupresize" class="e-togglebtn" value="checkuncheck" />
+
+
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var target, country, countries;
+        var dm = ej.DataManager({url:"http://mvc.syncfusion.com/services/Northwnd.svc/Customers"});
+        $(function () {
+            //first level child
+            countries = [
+                { value: 11, parentId: 'a', category: "Group A", text: "Algeria", sprite: "flag-dz" },
+                { value: 12, parentId: 'a', category: "Group A", text: "Armenia", sprite: "flag-am" },
+                { value: 13, parentId: 'a', category: "Group A", text: "Bangladesh", sprite: "flag-bd" },
+                { value: 14, parentId: 'a', category: "Group A", text: "Cuba", sprite: "flag-cu" },
+                { value: 15, parentId: 'b', category: "Group B", text: "Denmark", sprite: "flag-dk" },
+                { value: 16, parentId: 'b', category: "Group B", text: "Egypt", sprite: "flag-eg" },
+                { value: 20, parentId: 'd', category: "Group D", text: "New Zealand", sprite: "flag-nz" },
+                { value: 21, parentId: 'd', category: "Group D", text: "Norway", sprite: "flag-no" },
+                { value: 22, parentId: 'd', category: "Group D", text: "Poland", sprite: "flag-pl" },
+                { value: 23, parentId: 'e', category: "Group E", text: "Romania", sprite: "flag-ro" },
+                { value: 24, parentId: 'e', category: "Group E", text: "Singapore", sprite: "flag-sg" },
+                { value: 25, parentId: 'e', category: "Group E", text: "Thailand", sprite: "flag-th" },
+                { value: 18, parentId: 'c', category: "Group C", text: "India", sprite: "flag-in" },
+                { value: 19, parentId: 'c', category: "Group C", text: "Malaysia", sprite: "flag-my" },
+                 { value: 17, parentId: 'c', category: "Group C", text: "Finland", sprite: "flag-fi" },
+                { value: 26, parentId: 'e', category: "Group E", text: "Ukraine", sprite: "flag-ua" }
+            ];
+            window.country = [
+           { text: "Algeria", sprite: "flag-dz" }, { text: "Argentina", sprite: "flag-ar" },
+           { text: "Armenia", sprite: "flag-am" }, { text: "Brazil", sprite: "flag-br" },
+           { text: "Bangladesh", sprite: "flag-bd" }
+            ];
+           
+            target = $('#selectCar').ejDropDownList({
+                dataSource: dm,
+                fields: { category: "ContactTitle", text: "CompanyName", value: 'ContactName' },
+               // allowGrouping: true,
+                itemsCount: 10,
+                allowVirtualScrolling: true,
+                virtualScrollMode:"normal"
+            }).data("ejDropDownList");
+            $("#btndisableItemByIndex").ejToggleButton({ "click": "ondisableItemByIndex", "defaultText": "disableItemByIndex", "activeText": "enableItemByIndex", "cssClass": "button" });
+            $("#btnendis").ejToggleButton({ "click": "onEnableDiasableAll", "defaultText": "Disable All", "activeText": "Enable All", "cssClass": "button" });
+            $("#btnallowmul").ejToggleButton({ "click": "onallowmulti", "defaultText": "Multiselection:true", "activeText": "Multiselection:false", "cssClass": "button" });
+            $("#btnenablertl").ejToggleButton({ "click": "onenablertl", "defaultText": "EnableRTL:true", "activeText": "EnableRTL:false", "cssClass": "button" });
+            $("#btnallowcheck").ejToggleButton({ "click": "onshowcheckbox", "defaultText": "Showcheckbox:true", "activeText": "Showcheckbox:false", "cssClass": "button" });
+            $("#btnshowRoundedCorner").ejToggleButton({ "click": "onshowRoundedCorner", "defaultText": "showRoundedCorner:true", "activeText": "showRoundedCorner:false", "cssClass": "button" });
+            $("#btnshowPopupOnLoad").ejToggleButton({ "click": "onshowPopupOnLoad", "defaultText": "showPopupOnLoad:true", "activeText": "showPopupOnLoad:false", "cssClass": "button" });
+            $("#btncaseSensitiveSearch").ejToggleButton({ "click": "oncaseSensitiveSearch", "defaultText": "caseSensitiveSearch:true", "activeText": "caseSensitiveSearch:false", "cssClass": "button" });
+            $("#btnenablePersistence").ejToggleButton({ "click": "onenablePersistence", "defaultText": "enablePersistence:true", "activeText": "enablePersistence:false", "cssClass": "button" });
+            $("#btnenableIncrementalSearch").ejToggleButton({ "click": "onenableIncrementalSearch", "defaultText": "enableIncrementalSearch:true", "activeText": "enableIncrementalSearch:false", "cssClass": "button" });
+            $("#btnallowGrouping").ejToggleButton({ "click": "ongrouping", "defaultText": "allowGrouping:true", "activeText": "allowGrouping:false", "cssClass": "button" });
+            $("#btnenableAnimation").ejToggleButton({ "click": "onenableAnimation", "defaultText": "enableAnimation:true", "activeText": "enableAnimation:false", "cssClass": "button" });
+            $("#btncheckall").ejToggleButton({ "click": "oncheckall", "defaultText": "checkall", "activeText": "uncheckall", "cssClass": "button" });
+            $("#btnendisitem").ejToggleButton({ "click": "onEnableDiasableitem", "defaultText": "disableItemByIndex", "activeText": "enableItemByIndex", "cssClass": "button" });
+            $("#unselectItemByText").ejToggleButton({ "click": "unselectItemBytext", "defaultText": "selectItemByText", "activeText": "unselectItembytext", "cssClass": "button" });
+            $("#unselectItemByValue").ejToggleButton({ "click": "unselectItemByvalue", "defaultText": "selectItemByValue", "activeText": "unselectItembyValue", "cssClass": "button" });
+            $("#btncssClass").ejToggleButton({ "click": "applycssClass", "defaultText": "apply cssclass", "activeText": "remove cssclass", "cssClass": "button" });
+            $("#btndelimit").ejToggleButton({ "click": "ondelimitchange", "defaultText": "delimiter:(.)", "activeText": "delimiter:(,)", "cssClass": "button" });
+            $("#btnenabled").ejToggleButton({ "click": "onenablechange", "defaultText": "disabled:true", "activeText": "enabled:true", "cssClass": "button" });
+            $("#btnreadonly").ejToggleButton({ "click": "onreadonlychange", "defaultText": "readonly:false", "activeText": "readonly:true", "cssClass": "button" });
+            $("#btnsorting").ejToggleButton({ "click": "onsortingchange", "defaultText": "sorting:false", "activeText": "sorting:true", "cssClass": "button" });
+            $("#btnvisualmulti").ejToggleButton({ "click": "onmultiselectvisual", "defaultText": "multiselectmode:visual", "activeText": "multiselect:none", "cssClass": "button" });
+            $("#btndelimitmulti").ejToggleButton({ "click": "onmultiselectdelimit", "defaultText": "multiselectmode:delimit", "activeText": "multiselect:none", "cssClass": "button" });
+            $("#btnheight").ejButton({ "click": "onheightchange", "text": "height" });
+            $("#btnwidth").ejButton({ "click": "onwidthchange", "text": "width" });
+            $("#btnwatermark").ejButton({ "click": "onwatermarkchange", "text": "WaterMark" });
+            $("#popupheight").ejButton({ "click": "onpopupheightchange", "text": "popup height" });
+            $("#itemsCount").ejButton({ "click": "onitemscountchange", "text": "Items Count" });
+            $("#btntext").ejButton({ "click": "ontextchange", "text": "Text" });
+            $("#popupwidth").ejButton({ "click": "onpopupwidthchange", "text": "popup width" });
+            $("#popup").ejToggleButton({ "click": "popup", "defaultText": "showPopup", "activeText": "hidePopup", "cssClass": "button" });
+            $("#btndata").ejToggleButton({ "click": "ondatasourcechange", "defaultText": "DataSource", "activeText": "Rebind old", "cssClass": "button" });
+            $("#btnQuery").ejToggleButton({ "click": "onquerychange", "defaultText": "Query", "activeText": "Rebind old", "cssClass": "button" });
+            $("#checkbutton").ejButton({ click: "oncheckapi" });
+            $("#uncheckbutton").ejButton({ click: "onuncheckapi" });
+            $("#getSelectedItem").ejButton({
+                size: "normal", click: "getSelecteditem",
+            });
+            $("#addItem").ejButton({
+                size: "normal", click: "additem",
+            });
+            $("#btngetselecteditem").ejButton({
+                size: "normal", click: function () {
+                    alert(target.getSelectedItem().length);
+                }
+            });
+
+            $("#btnpopupresize").ejToggleButton({ "click": "onpopupresize", "defaultText": "enablePopupResize:true", "activeText": "enablePopupResize:false", "cssClass": "button" });
+            $("#clearText").ejButton({
+                size: "normal", click: "cleartext",
+            });
+            $("#btnselectedItems").ejButton({
+                size: "normal", click: "btnselectedItems",
+            });
+            $("#Valuebtn").ejButton({
+                size: "normal", click: "onvaluechange",
+            });
+            $("#unselectItemByIndex1").ejButton({ "click": "unselectItemByindex", "cssClass": "button" });
+            $("#selectItemByIndex1").ejButton({ "click": "selectItemByindex", "cssClass": "button" });
+            $("#btndestroyall").ejButton({ "click": "btndestroyall", "cssClass": "button" });
+        });
+        function onvaluechange() {
+            target.setModel({ value: $("#Text4").val() });
+        }
+        function onpopupresize(args) {
+            if (args.isChecked)
+                target.setModel({ enablePopupResize: true });
+            else
+                target.setModel({ enablePopupResize: false });
+        }
+        function onChange() {
+            var ctry = $('#countryList').data("ejDropDownList");
+            ctry.element.val("");
+        }
+        function btnselectedItems() {
+            var val2 = $("#Text3").val().split(',');
+            target.setModel({ selectedItems: val2 });
+        }
+        function onEnableDiasableAll(args) {
+            if (args.isChecked)
+                target.disable();
+            else
+                target.enable();
+        }
+        function oncheckapi(args) {
+            target.checkAll();
+        }
+        function btndestroyall(args) {
+            target = $('#selectCar').ejDropDownList("instance");
+            if (target) target.destroy();
+        }
+        function onuncheckapi(args) {
+            target.unCheckAll();
+        }
+        function onmultiselectvisual(args) {
+            if (args.isChecked)
+                target.setModel({ multiSelectMode: "visualmode" });
+            else
+                target.setModel({ multiSelectMode: "none" });
+        }
+        function onmultiselectdelimit(args) {
+            if (args.isChecked)
+                target.setModel({ multiSelectMode: "delimiter" });
+            else
+                target.setModel({ multiSelectMode: "none" });
+        }
+        function ondisableItemByIndex(args) {
+            var val = $("#Text2").val();
+            if (args.isChecked)
+                target.setModel({ disableItemsByIndex: val });
+            else
+                target.setModel({ enableItemsByIndex: val });
+        }
+        function onwatermarkchange(args) {
+            target.setModel({ "watermarkText": $("#numeric11").val() });
+        }
+        function onheightchange(args) {
+            target.setModel({ "height": $("#numeric5").val() });
+        }
+        function onwidthchange(args) {
+            target.setModel({ "width": $("#numeric10").val() });
+        }
+        function onpopupheightchange(args) {
+            target.setModel({ "popupHeight": $("#numeric6").val() });
+        }
+        function onpopupwidthchange(args) {
+            target.setModel({ "popupWidth": $("#numeric7").val() });
+        }
+        function onitemscountchange(args) {
+            target.setModel({ "itemsCount": parseInt($("#numeric8").val()) });
+        }
+        function ontextchange(args) {
+            target.setModel({ "text": $("#numeric9").val() });
+        }
+        function onquerychange(args) {
+
+            if (args.isChecked) {
+                target.setModel({ "query": ej.Query().skip(5) });
+            }
+            else {
+                target.setModel({ "query": ej.Query() });
+            }
+        }
+        function onreadonlychange(args) {
+            if (args.isChecked) {
+                target.setModel({ "readOnly": true });
+            }
+            else {
+                target.setModel({ "readOnly": false });
+            }
+        }
+        function oncheckall(args) {
+            if (args.isChecked) {
+                target.setModel({ "checkAll": true });
+            }
+            else {
+                target.setModel({ "uncheckAll": true });
+            }
+        }
+        function ondatasourcechange(args) {
+            if (args.isChecked) {
+                target.setModel({ "dataSource": window.country, field: { text: "text", value: "sprite" } });
+            }
+            else {
+                target.setModel({ "dataSource": countries, field: { text: "text", value: "value" } });
+            }
+        }
+        function onsortingchange(args) {
+            if (args.isChecked) {
+                target.setModel({ "checkAll": true });
+            }
+            else {
+                target.setModel({ "uncheckAll": false });
+            }
+        }
+        function applycssClass(args) {
+            if (args.isChecked) {
+                target.setModel({ "cssClass": "applycssClass" });
+            } else {
+                target.setModel({ "cssClass": "" });
+            }
+        }
+        function onenablechange(args) {
+            if (!args.isChecked) {
+                target.setModel({ "enabled": true });
+            } else {
+                target.setModel({ "enabled": false });
+            }
+        }
+        function ondelimitchange(args) {
+            if (args.isChecked) {
+                target.setModel({ "delimiterChar": '.' });
+            } else {
+                target.setModel({ "delimiterChar": ',' });
+            }
+        }
+        function onallowmulti(args) {
+            if (args.isChecked)
+                target.option("allowMultiSelection", true);
+            else
+                target.option("allowMultiSelection", false);
+        }
+        function oncaseSensitiveSearch(args) {
+            if (args.isChecked)
+                target.model.caseSensitiveSearch = true;
+            else
+                target.model.caseSensitiveSearch = false;
+        }
+        function onenablePersistence(args) {
+            if (args.isChecked)
+                target.option("enablePersistence", true);
+            else
+                target.option("enablePersistence", false);
+        }
+        function onenableIncrementalSearch(args) {
+            if (args.isChecked)
+                target.setModel({ "enableIncrementalSearch": true });
+            else
+                target.setModel({ "enableIncrementalSearch": false });
+        }
+        function ongrouping(args) {
+            if (args.isChecked)
+                target.setModel({ "allowGrouping": true });
+            else
+                target.setModel({ "allowGrouping": false });
+        }
+        function onenableAnimation(args) {
+            if (args.isChecked)
+                target.option("enableAnimation", true);
+            else
+                target.option("enableAnimation", false);
+        }
+        function onenablertl(args) {
+            if (args.isChecked)
+                target.option("enableRTL", true);
+            else
+                target.option("enableRTL", false);
+        }
+        function onshowcheckbox(args) {
+            if (args.isChecked)
+                target.option("showCheckbox", true);
+            else
+                target.option("showCheckbox", false);
+        }
+        function onshowRoundedCorner(args) {
+            if (args.isChecked)
+                target.option("showRoundedCorner", true);
+            else
+                target.option("showRoundedCorner", false);
+        }
+        function onshowPopupOnLoad(args) {
+            if (args.isChecked)
+                target.option("showPopupOnLoad", true);
+            else
+                target.option("showPopupOnLoad", false);
+        }
+        function popup(args) {
+            if (args.isChecked)
+                target.showPopup();
+            else
+                target.hidePopup();
+        }
+        function onEnableDiasableitem(args) {
+            var disitem = $("#numeric").val();
+            if (args.isChecked)
+                target.disableItemByIndex(disitem);
+            else
+                target.enableItemByIndex(disitem);
+        }
+
+        function cleartext(e) {
+            target.clearText();
+        }
+        function additem(e) {
+
+            target.addItem(window.country);
+        }
+        function cascadeto(e) {
+            var disitem = $("#numeric5").val();
+            target.model.cascadeTo = disitem;
+        }
+        function unselectItemByindex(e) {
+            var disitem = $("#numeric4").val();
+
+            target.unselectItemByIndex(disitem);
+
+        }
+        function selectItemByindex(e) {
+            var disitem = $("#Text1").val();
+
+            target.selectItemByIndex(disitem);
+
+        }
+        function getSelecteditem(e) {
+            alert(target.getSelectedValue());
+        }
+
+        function unselectItemBytext(args) {
+            target = $('#selectCar').data("ejDropDownList");
+            var disitem = $("#numeric1").val();
+            if (args.isChecked)
+                target.selectItemByText(disitem);
+            else
+                target.unselectItemByText(disitem);
+        }
+        function unselectItemByvalue(args) {
+            target = $('#selectCar').data("ejDropDownList");
+            var disitem = $("#numeric2").val();
+            if (args.isChecked)
+                target.selectItemByValue(disitem);
+            else
+                target.unselectItemByValue(disitem);
+        }
+    </script>
+    <style type="text/css" class="cssStyles">
+        .control {
+            margin-left: 30px;
+        }
+
+        .ctrllabel {
+            padding-top: 15px;
+        }
+
+        .button {
+            font-size: 12px;
+        }
+
+        .applycssClass {
+            background-color: yellow;
+        }
+
+        .button {
+            display: block;
+        }
+    </style>
+</body>
+</html>

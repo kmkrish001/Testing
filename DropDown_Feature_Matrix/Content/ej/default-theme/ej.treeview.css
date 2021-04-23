@@ -1,0 +1,69 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+/*Theme Color*/
+
+.e-treeview {
+  font-family: Segoe UI;
+}
+.e-treeview .e-text {
+  color: #333333;
+}
+.e-dragedNode {
+  background: #179bd7;
+  color: white;
+  padding: 0 10px 0 0;
+}
+.e-dragedNode .e-text {
+  color: white;
+  float: left;
+}
+.e-treeview .e-active {
+  color: white;
+  border: 1px solid transparent;
+  border-image: initial;
+}
+.e-treeview .e-active {
+  background: #179bd7;
+}
+.e-treeview .e-node-hover,
+.e-treeview .e-node-focus {
+  color: #282827;
+  border: 1px solid #c8c8c8;
+  border-image: initial;
+  cursor: pointer;
+}
+.e-treeview .e-node-hover,
+.e-treeview .e-node-focus {
+  background: #86cbea;
+}
+.e-treeview .e-sibling {
+  background: url(images/drop-sibling.png);
+  background-repeat: no-repeat;
+  width: 80px;
+  height: 5px;
+  position: absolute;
+  margin-top: -2px;
+}
+.e-treeview .e-node-disable {
+  filter: alpha(opacity=40);
+  opacity: 0.4;
+}
+.e-treeview .e-icon.e-load,
+.e-treeview.e-rtl .e-icon.e-load {
+  background-image: url(images/ajax-loader.gif);
+  background-position: right center;
+  background-repeat: no-repeat;
+}
+.e-treeview .e-item .e-icon {
+  color: #686969;
+}

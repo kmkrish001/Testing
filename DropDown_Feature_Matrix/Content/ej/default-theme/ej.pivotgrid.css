@@ -1,0 +1,836 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+.e-pivotgrid table {
+  font: 12px Segoe UI !important;
+  color: #333333;
+  border-collapse: collapse;
+  background-color: white;
+  cursor: default;
+}
+.e-pivotgrid .hoverBtn {
+  background: #86cbea;
+}
+.tooltipText {
+  margin: 5px 0 10px 0;
+  font-size: 12px;
+  text-align: left;
+  height: auto;
+  color: #333333;
+  font-weight: normal;
+}
+.editcondition,
+.value2,
+.borderrangeLbl,
+.borderstyleLbl,
+.fSizeLbl {
+  margin-left: 15px;
+}
+.pGridTooltip {
+  position: absolute;
+  z-index: 500;
+  display: none;
+  border-width: 10px;
+  height: auto;
+  padding: 5px;
+  opacity: 1;
+  background: #ececec;
+  border: 2px solid #c8c8c8;
+}
+.e-pivotgrid .pivotGridTable th,
+.e-pivotgrid .pivotGridTable td {
+  border: solid 1px #c8c8c8;
+}
+.e-pivotgrid th,
+.e-pivotgrid td {
+  padding: 10px 2px 0 8px;
+  white-space: nowrap;
+  height: 25px;
+  font-weight: normal;
+}
+.e-pivotgrid .value {
+  background-color: white;
+  text-align: right !important;
+  padding: 6px 6px 6px 16px;
+}
+.e-pivotgrid .summary {
+  white-space: nowrap;
+  text-align: left;
+  font-weight: bold;
+}
+.e-pivotgrid .colheader,
+.e-pivotgrid .rowheader,
+.e-pivotgrid .calc {
+  font-weight: bold;
+  color: #333333;
+  background: white;
+  background-repeat: repeat;
+  padding: 6px 16px 6px 2px;
+  text-align: left;
+  font-style: normal;
+}
+.e-pivotgrid .colheader:hover,
+.e-pivotgrid .rowheader:hover,
+.e-pivotgrid .calc:hover {
+  font-weight: bold;
+  color: #282827;
+  background: #86cbea;
+  background-repeat: repeat;
+  padding: 6px 16px 6px 2px;
+  text-align: left;
+  font-style: normal;
+}
+.e-pivotgrid {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.cellSelection {
+  background: #86cbea;
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+  position: absolute;
+  border-style: dotted;
+  border-width: 3px;
+  border-color: #c8c8c8;
+}
+.e-pivotgrid .value.selection {
+  cursor: crosshair;
+}
+.e-pivotgrid .e-rtl .colheader,
+.e-pivotgrid .e-rtl .colheader:hover,
+.e-pivotgrid .e-rtl .rowheader,
+.e-pivotgrid .e-rtl .rowheader:hover {
+  padding: 6px 0px 6px 24px;
+}
+.e-pivotgrid .expand,
+.e-pivotgrid .collapse {
+  width: 23px;
+  height: 17px;
+  display: inline-block;
+  cursor: pointer;
+}
+.e-pivotgrid .dialogremoveBtn:before {
+  font-family: "ej-webfont";
+  content: "\e711";
+  display: inline-block;
+}
+.e-pivotgrid .expand:before {
+  content: "\e6a3";
+  display: inline-block;
+  float: left;
+  font-size: 7px;
+  margin-left: 9px;
+  margin-top: 5px;
+}
+.e-pivotgrid .e-rtl .expand:before {
+  content: "\e699";
+  font-size: 23px;
+  margin-top: -3px;
+}
+.e-pivotgrid .e-rtl .collapse:before {
+  margin-left: 0px;
+}
+.e-pivotgrid .collapse:before {
+  content: "\e6a0";
+  display: inline-block;
+  float: left;
+  font-size: 6px;
+  margin-left: 7px;
+  margin-top: 5px;
+}
+.e-pivotgrid .kpiiconvalue {
+  height: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.e-pivotgrid .kpiuparrow {
+  background-image: url("../common-images/olapkpi/up-arrow.png");
+}
+.e-pivotgrid .kpirightarrow {
+  background-image: url("../common-images/olapkpi/right-arrow.png");
+}
+.e-pivotgrid .kpidownarrow {
+  background-image: url("../common-images/olapkpi/down-arrow.png");
+  background-position: center center;
+}
+.e-pivotgrid .kpidiamond {
+  background-image: url("../common-images/olapkpi/diamond.png");
+  background-position: center center;
+}
+.e-pivotgrid .kpitriangle {
+  background-image: url("../common-images/olapkpi/triangle.png");
+  background-position: center center;
+}
+.e-pivotgrid .kpicircle {
+  background-image: url("../common-images/olapkpi/circle.png");
+  background-position: center center;
+}
+.e-pivotgrid .kpiredroad {
+  background-image: url("../common-images/olapkpi/red.png");
+  background-position: center center;
+}
+.e-pivotgrid .kpigreenroad {
+  background-image: url("../common-images/olapkpi/green.png");
+  background-position: center center;
+}
+.e-pivotgrid .kpiallcolor {
+  background-image: url("../common-images/olapkpi/three-color.png");
+  background-position: center center;
+}
+.e-pivotgrid .hyperlinkValueCell {
+  color: #179bd7;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.e-pivotgrid .hyperlinkHeaderCell {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.e-pivotgrid .vScrollPanel {
+  background-color: #e3e3e3;
+  width: 8px;
+  margin-left: 8px;
+  display: inline-block;
+}
+.e-pivotgrid .hScrollPanel {
+  background-color: #e3e3e3;
+  height: 8px;
+  margin-top: 4px;
+}
+.e-pivotgrid .vScrollThumb {
+  width: 6px;
+  position: relative;
+  top: 1px;
+  left: 1px;
+  background-color: #bababa;
+}
+.e-pivotgrid .hScrollThumb {
+  height: 6px;
+  position: relative;
+  left: 1px;
+  top: 1px;
+  background-color: #bababa;
+}
+.e-pivotgrid .categPageIndicator,
+.e-pivotgrid .seriesPageIndicator {
+  width: auto;
+  background-color: #179bd7;
+  border: thin solid #c8c8c8;
+  color: white;
+  padding: 5px;
+  position: absolute;
+}
+.e-pivotgrid .vScrollThumb:hover,
+.e-pivotgrid .hScrollThumb:hover {
+  background-color: #989999;
+}
+.e-pivotgrid .inActive {
+  display: none;
+}
+.e-pivotgrid .dragging {
+  background-color: #686969 !important;
+}
+.e-pivotgrid .filter,
+.e-pivotgrid .sorting,
+.e-pivotgrid .removeBtn {
+  color: #333333;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.e-pivotgrid .filter:before {
+  content: "\e669";
+  float: right;
+  margin-right: 4px;
+}
+.e-pivotgrid .filter.filtered:before {
+  content: "\e668";
+  float: right;
+}
+.e-pivotgrid .sorting:before {
+  content: "\e672";
+  float: right;
+  margin-right: 4px;
+}
+.e-pivotgrid .sorting.descending:before {
+  content: "\e673";
+  float: right;
+}
+.e-pivotgrid .removeBtn:before {
+  content: "\e711";
+  float: right;
+  margin-right: 4px;
+}
+.e-pivotgrid .memberEditorDiv {
+  height: 256px;
+  margin-top: 5px;
+  border: 1px solid #c8c8c8;
+}
+.e-pivotgrid .editorTreeView {
+  margin-top: 7px;
+  height: 245px !important;
+}
+.e-pivotgrid .dialogOKBtn {
+  width: 69px;
+  margin-left: 83px;
+}
+.e-pivotgrid .dialogCancelBtn {
+  width: 69px;
+  margin-left: 10px;
+}
+.e-pivotgrid .e-treeview .e-text {
+  min-height: 20px;
+  border: 1px solid transparent;
+  font-family: Segoe UI;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: move;
+  color: #333333;
+}
+.e-pivotgrid .pivotButton {
+  color: #686969;
+  border-color: #c8c8c8;
+}
+.e-pivotgrid .pivotButton .e-btn.e-select {
+  border: none;
+  color: #686969;
+  border-color: #c8c8c8;
+}
+.e-pivotgrid .pivotButton .e-btn.e-select:hover {
+  border: none;
+  border-color: #c8c8c8;
+  color: #282827;
+}
+.e-pivotgrid .pivotButton .e-btn.e-select:hover {
+  background: #86cbea;
+}
+.e-pivotgrid .pivotButton.e-btn.e-select {
+  border: none;
+}
+.e-pivotgrid .drag {
+  color: white;
+  font-family: 'Segoe UI';
+  font-size: 14px;
+  font-weight: bold;
+  /*color: #5c5c5c;*/
+  padding: 9px 0px 9px 0px;
+  background: #179bd7;
+  /*background: @pager-default-bg-color;*/
+  border: 1px solid #c8c8c8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.e-pivotgrid .pivotButton.e-btn .e-icon {
+  padding: 0px;
+}
+.e-pivotgrid .values,
+.e-pivotgrid .columns,
+.e-pivotgrid .rows,
+.e-pivotgrid .emptyRows {
+  font-family: 'Segoe UI';
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  padding: 5px 0px 5px 0px;
+  /*background: @groupingBar-bg-color;*/
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.e-pivotgrid .values {
+  border-right: 1px solid #c8c8c8;
+}
+.e-pivotgrid .emptyRows {
+  background: #179bd7;
+  border: 1px solid #c8c8c8;
+}
+.e-pivotgrid .valueColumn {
+  background: #179bd7;
+  height: auto;
+  border-right: 1px solid #c8c8c8;
+  border-left: 1px solid #c8c8c8;
+}
+.e-pivotgrid .values .pivotButton,
+.e-pivotgrid .drag .pivotButton,
+.e-pivotgrid .columns .pivotButton,
+.e-pivotgrid .rows .pivotButton {
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background: #ececec;
+}
+.e-pivotgrid .values .pivotButton:hover,
+.e-pivotgrid .drag .pivotButton:hover,
+.e-pivotgrid .columns .pivotButton:hover,
+.e-pivotgrid .rows .pivotButton:hover {
+  background: #86cbea;
+}
+.e-pivotgrid .pivotButton,
+.e-pivotgrid .rows,
+.e-pivotgrid .valueColumn,
+.e-pivotgrid .values,
+.e-pivotgrid .columns {
+  display: inline-block;
+  vertical-align: top;
+}
+.e-pivotgrid .e-btn {
+  vertical-align: auto;
+}
+.e-pivotgrid .drag .e-btn,
+.e-pivotgrid .drag .e-btn div {
+  vertical-align: initial;
+}
+.e-pivotgrid .drag .pivotButton {
+  vertical-align: top;
+  line-height: 0;
+}
+.e-pivotgrid .rows {
+  padding-bottom: 4px;
+  display: table-cell;
+  vertical-align: bottom;
+  height: 100%;
+  width: 100%;
+  min-height: 24px;
+  min-width: 140px;
+}
+.e-pivotgrid .values {
+  min-height: 24px;
+  min-width: 140px;
+}
+.e-pivotgrid .columns {
+  min-height: 24px;
+  min-width: 140px;
+}
+.e-pivotgrid .rows .pivotButton,
+.e-pivotgrid .values .pivotButton,
+.e-pivotgrid .columns .pivotButton,
+.e-pivotgrid .drag .pivotButton {
+  vertical-align: bottom;
+}
+.e-pivotgrid .pivotButton {
+  margin-left: 5px;
+}
+.e-pivotgrid .grpRow {
+  background: #179bd7;
+  vertical-align: bottom;
+  text-align: left;
+}
+.e-pivotgrid .pivotButton {
+  border: 1px solid #c8c8c8 !important;
+  padding: 0px !important;
+}
+.e-pivotgrid .pivotButton:hover {
+  border: 1px solid #c8c8c8 !important;
+}
+.e-pivotgrid th.grpRow {
+  padding: 10px 2px 0 0px !important;
+}
+.e-pivotgrid .e-btn {
+  font-size: 13px;
+}
+.e-pivotgrid .widthSetter {
+  width: 3em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.e-pivotgrid .contextMenuPopup .menuItem:hover {
+  background-color: #86cbea;
+  color: #282827;
+}
+.e-pivotgrid .dropIndicatorActive {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  z-index: 30000;
+  color: #686969;
+  cursor: pointer;
+  font-family: "ej-webfont";
+}
+.e-pivotgrid .dropIndicatorActive:before {
+  content: "\E7CC";
+}
+.e-pivotgrid .selected {
+  background: #179bd7;
+  color: white;
+}
+.e-pivotschemadesigner {
+  color: #333333;
+  background: none repeat scroll 0 0 white;
+  font-size: 12px;
+  float: right;
+  position: static;
+  border: 1px solid #c8c8c8;
+  font-family: Segoe UI;
+}
+.bg-div {
+  background: none repeat scroll 0 0 white;
+  border: 1px solid #c8c8c8;
+}
+.e-pivotschemadesigner .fieldTable {
+  background: white;
+  border: 1px solid #c8c8c8;
+  border-collapse: collapse;
+  margin: 10px 10px 8px;
+  width: 94%;
+}
+.e-pivotschemadesigner .schemaFieldList {
+  display: inline-block;
+  overflow: auto;
+  height: 182px;
+  width: 100%;
+  color: #686969;
+}
+.e-pivotschemadesigner .elementSeparator {
+  border: solid #c8c8c8;
+  border-width: 0 0 1px 0;
+  display: block;
+  margin: 7px;
+}
+.e-pivotschemadesigner .schemaFieldTree {
+  overflow: hidden;
+  margin-top: 11px;
+}
+.e-pivotschemadesigner .editorTreeView {
+  margin-top: 7px;
+  height: 245px !important;
+}
+.e-pivotschemadesigner .schemaHeaders {
+  overflow: hidden;
+}
+.e-pivotschemadesigner .schemaFilter,
+.e-pivotschemadesigner .schemaColumn,
+.e-pivotschemadesigner .schemaRow,
+.e-pivotschemadesigner .schemaValue {
+  /*background: @aeb-bgcolor;*/
+  border: 1px solid #c8c8c8;
+  overflow: auto;
+  height: 75%;
+  width: 93%;
+  margin-left: 10px;
+  /* margin-top: 3px; */
+
+}
+.e-pivotschemadesigner .schemaColumn,
+.e-pivotschemadesigner .schemaValue {
+  margin-right: 10px;
+}
+.e-pivotschemadesigner .listSubhead {
+  margin: 10px 0 0;
+}
+.e-pivotschemadesigner .pivotHeader,
+.e-pivotschemadesigner .rPivotHeader {
+  font-weight: bold;
+  line-height: 240%;
+}
+.e-pivotschemadesigner .listHeader {
+  font-weight: bold;
+  /*background: none repeat scroll 0 0 #5eabde;*/
+  border-bottom: 1px solid #c8c8c8;
+  font-size: 15px;
+  margin: -1px;
+  line-height: 40px;
+}
+.e-pivotschemadesigner .folderCDB:before {
+  content: "\e6e1";
+  display: inline;
+  vertical-align: middle;
+  font-size: 17px;
+}
+.e-pivotschemadesigner .namedSetCDB:before {
+  content: "\e6de";
+  display: inherit;
+  vertical-align: middle;
+  font-size: 18px;
+}
+.e-pivotschemadesigner .measureGroupCDB:before {
+  content: "\e615";
+  display: inline;
+  vertical-align: middle;
+}
+.e-pivotschemadesigner .dimensionCDB:before {
+  content: "\e704";
+  display: inline;
+  vertical-align: middle;
+}
+.e-pivotschemadesigner .centerDiv {
+  background-color: #c8c8c8;
+  border-radius: 25px;
+  height: 2px;
+  margin-left: 4px;
+  width: 98%;
+}
+.e-pivotschemadesigner .centerDiv:hover {
+  cursor: default;
+}
+.e-pivotschemadesigner .centerHead {
+  margin: 7px 10px;
+  font: normal 14px Segoe UI;
+  color: #333333;
+}
+.e-pivotschemadesigner .pivotHeader,
+.e-pivotschemadesigner .rPivotHeader {
+  border: 1px solid #c8c8c8;
+  border-bottom: none;
+  font-weight: bold;
+  width: 93%;
+  margin-left: 10px;
+}
+.e-pivotschemadesigner .rPivotHeader,
+.e-pivotschemadesigner .schemaColumn,
+.e-pivotschemadesigner .schemaValue {
+  margin-left: 1%;
+}
+.e-pivotschemadesigner .headerText {
+  padding-left: 5px;
+}
+.e-pivotschemadesigner .subheadText {
+  padding-left: 10px;
+  margin: 10px 0 0;
+  font: normal 14px Segoe UI;
+  color: #333333;
+}
+.e-pivotschemadesigner .pivotLabel:hover {
+  background: none repeat scroll 0 0 #179bd7;
+  color: white;
+  cursor: move;
+}
+.e-pivotschemadesigner .pivotButton {
+  display: block;
+}
+.e-pivotschemadesigner .pivotButton > .pvtBtn {
+  cursor: move;
+  text-align: left;
+  text-overflow: ellipsis;
+  margin: 2px 3px 0;
+  width: 97%;
+  color: #686969;
+  border-color: #c8c8c8;
+  border: 1px solid #c8c8c8 !important;
+}
+/* .e-pivotschemadesigner .pvtBtn:hover
+{
+    background: linear-gradient(@active-font-color, @active-bg-stcolor);
+    border-color: @active-border-color;
+    color: @active-font-color;
+} */
+
+.e-pivotschemadesigner .pivotButton > .pvtBtn:hover {
+  border: 1px solid white !important;
+  color: #282827;
+}
+.e-pivotschemadesigner .pivotButton > .pvtBtn:hover {
+  background: #86cbea;
+}
+.e-pivotschemadesigner .errOKBtn {
+  display: inline-block;
+  margin: 20px 0 10px 165px;
+  width: 50px;
+}
+.e-pivotschemadesigner .pvtDrop:before,
+.e-pivotschemadesigner .treeDrop:before {
+  content: "\e666";
+}
+.e-pivotschemadesigner .dropIndicator {
+  background: none repeat scroll 0 0 transparent;
+  height: 2px;
+  width: auto;
+}
+.e-pivotschemadesigner .dropIndicatorHover {
+  background: none repeat scroll 0 0 #86cbea;
+}
+.e-pivotschemadesigner .removePivotBtn:before {
+  background-repeat: no-repeat;
+  height: 11px;
+  padding-left: 10px;
+  width: 11px;
+  color: white;
+  content: "\e681";
+  font-size: 13px;
+  background-color: white;
+  border: 1px solid #c8c8c8;
+  float: none;
+  padding: 6px;
+  position: absolute;
+}
+.e-pivotschemadesigner .removePivotBtn:hover {
+  cursor: pointer;
+  background: none repeat scroll 0 0 #86cbea;
+}
+.e-pivotschemadesigner .ascending:before {
+  content: "\e672";
+}
+.e-pivotschemadesigner .descending:before {
+  content: "\e673";
+}
+.e-pivotschemadesigner .filter:before {
+  content: "\e669";
+  float: right;
+  margin-right: 40px;
+}
+.e-pivotschemadesigner .filter {
+  color: #686969;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.e-pivotschemadesigner .treeDrop {
+  cursor: pointer;
+}
+.e-pivotschemadesigner .filterBtn {
+  height: 24px;
+}
+.e-pivotschemadesigner .filterIndicator {
+  background: none repeat scroll 0 0 #179bd7;
+}
+.e-pivotschemadesigner .memberEditorDiv {
+  height: 256px;
+  margin-top: 5px;
+  border: 1px solid #c8c8c8;
+}
+.e-pivotschemadesigner .dialogOKBtn,
+.e-pivotschemadesigner .dialogCancelBtn {
+  width: 69px;
+  margin-left: 10px;
+}
+.e-pivotschemadesigner .dialogOKBtn {
+  margin-left: 83px;
+}
+.e-pivotschemadesigner .e-chkbox-wrap {
+  margin-left: 7px;
+}
+.e-pivotschemadesigner .e-tbtn-wrap {
+  display: inline-block;
+}
+.e-pivotschemadesigner .e-togglebutton .e-icon {
+  height: 14px;
+  width: 14px;
+}
+.e-pivotschemadesigner .e-treeview .e-text {
+  min-height: 20px;
+  border: 1px solid transparent;
+  font-family: Segoe UI;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: move;
+  color: #333333;
+}
+.e-pivotschemadesigner .e-dialog .e-dialog-icon:hover {
+  background: #179bd7;
+}
+.e-pivotschemadesigner .e-treeview .e-active {
+  background: #2390c1;
+  color: white;
+}
+.e-pivotschemadesigner .btnDeferUpdate {
+  float: right;
+  margin-right: 10px;
+}
+.e-pivotschemadesigner .deferUpdateLayout {
+  margin-left: 5px;
+}
+.e-pivotschemadesigner .schemaFieldTree.e-treeview .e-text {
+  width: 90%;
+}
+.e-pivotschemadesigner .schemaFieldTree ul,
+.e-pivotschemadesigner .schemaFieldTree li {
+  width: 96%;
+  height: auto;
+}
+.e-pivotschemadesigner .e-btn .e-btntxt {
+  padding: 0 6px 6px;
+}
+.e-pivotschemadesigner .expandSchema {
+  background: url("../images/expand.png") repeat scroll 0 0 transparent;
+  display: block;
+  float: right;
+  height: 25px;
+  left: 24px;
+  position: relative;
+  top: -615px;
+  width: 23px;
+}
+.e-pivotschemadesigner .collapseSchema {
+  float: right;
+  height: 25px;
+  position: relative;
+  background-image: url("../images/colapse.png");
+  top: -615px;
+  width: 23px;
+}
+.e-pivotschemadesigner .freeze {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  content: ' ';
+  top: 0;
+  left: 0;
+  z-index: 10;
+  opacity: 0;
+  background-color: lightgray;
+  filter: alpha(opacity=0);
+}
+@media (min-width: 20px) and (max-width: 799px) {
+  .e-pivotgrid .e-table {
+    width: 100%;
+    /*table-layout:fixed;*/
+    overflow-wrap: break-word;
+  }
+  .e-pivotgrid .e-table td {
+    overflow-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+@media (min-width: 800px) and (max-width: 959px) {
+  .e-pivotgrid .e-table {
+    width: 100%;
+    /*table-layout:fixed;*/
+    overflow-wrap: break-word;
+  }
+  .e-pivotgrid .e-table td {
+    overflow-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+@media (min-width: 960px) and (max-width: 1120px) {
+  .e-pivotgrid .e-table {
+    width: 100%;
+    /*table-layout:fixed;*/
+    overflow-wrap: break-word;
+  }
+  .e-pivotgrid .e-table td {
+    overflow-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+@media (min-width: 1120px) {
+  .e-pivotgrid .e-table {
+    width: 100%;
+    /*table-layout:fixed;*/
+    overflow-wrap: break-word;
+  }
+  .e-pivotgrid .e-table td {
+    overflow-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

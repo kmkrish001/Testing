@@ -1,0 +1,89 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+.e-excelfilter.e-dlgcontainer {
+  font-family: Segoe UI;
+  font-weight: normal;
+  font-size: 13px;
+  color: #333333;
+  z-index: 10001;
+}
+.e-excelfilter .e-searchcontainer,
+.e-excelfilter.e-dlgcontainer {
+  background: none white;
+}
+.e-excelfilter .e-menu,
+.e-excelfilter .e-menu.e-vertical,
+.e-excelfilter .e-menu.e-vertical .e-list > ul {
+  background: white;
+}
+.e-excelfilter .e-checkboxlist {
+  background: #f7f7f7;
+  border: #f7f7f7;
+}
+.e-excelfilter.e-dlgcontainer,
+.e-excelfilter.e-dlgcustom .e-fieldset,
+.e-excelfilter .e-menu.e-vertical .e-list > ul,
+.e-excelfilter .e-btncontainer input {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #fafafa;
+}
+.e-excelfilter .e-checkboxlist label.e-ftrchk,
+.e-excelfilter.e-dlgcustom label.e-caption,
+.e-excelfilter .e-searchbox .e-searchitem {
+  font-weight: normal;
+}
+.e-sortasc,
+.e-sortdesc {
+  font-size: 18px;
+}
+.e-excelfilter.e-dlgcustom .e-fieldset legend {
+  font-size: 14px;
+  color: #333333;
+  border: none;
+}
+.e-excelfilter .e-select:hover .e-icon {
+  color: #282827;
+}
+.e-excelfilter.e-dlgcustom input {
+  line-height: normal;
+}
+.e-excelfilter {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.e-excelfilter .e-menu .e-list.e-fghdrcolor,
+.e-excelfilter .e-menu .e-list.e-bghdrcolor,
+e-excelfilter .e-menu .e-list.e-fghdrcolor.e-mhover.e-mfocused,
+.e-excelfilter .e-menu .e-list.e-bghdrcolor.e-mhover.e-mfocused,
+.e-excelfilter .e-menu.e-vertical .e-list.e-fghdrcolor:hover,
+.e-excelfilter .e-menu.e-vertical .e-list.e-bghdrcolor:hover {
+  background: white;
+}
+.e-excelfilter .e-menu .e-list.e-valcolor {
+  border-color: #fcfcfc;
+}
+.e-excelfilter .e-menu .e-list.e-valcolor.e-mhover.e-mfocused {
+  border-color: #179bd7;
+  background: transparent;
+}
+.e-excelfilter .e-menu .e-list.e-fghdrcolor.e-mhover > a,
+.e-excelfilter .e-menu .e-list.e-fghdrcolor.e-mfocused > a,
+.e-excelfilter .e-menu .e-list.e-bghdrcolor.e-mhover > a,
+.e-excelfilter .e-menu .e-list.e-bghdrcolor.e-mfocused > a {
+  background: transparent;
+  color: #282827;
+}

@@ -1,0 +1,35 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+.e-nb.e-nb-layout.e-nb-right {
+  color: #333333;
+  border-left: 1px solid #c8c8c8;
+  box-shadow: -1px 0 10px 0 black;
+  overflow-y: auto;
+}
+.e-nb.e-nb-layout.e-nb-right {
+  background: #ececec;
+}
+.e-nb.e-nb-layout.e-nb-left {
+  background: white;
+  border-right: 1px solid #c8c8c8;
+  box-shadow: -1px 0 10px 0 black;
+  overflow-y: auto;
+}
+.e-lv.subpage {
+  border-bottom: 1px solid #c8c8c8;
+  border-left: 1px solid #c8c8c8;
+  border-right: 1px solid #c8c8c8;
+}
+.e-lv .e-lv .e-list-container {
+  border: none;
+}

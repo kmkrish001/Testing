@@ -1,0 +1,82 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+/*------------------------------------- Rotator -------------------------------------------*/
+
+.e-rotator-wrap :focus {
+  outline: 0 none;
+}
+.e-rotator-wrap .e-in-wrap .e-single,
+.e-rotator-wrap .e-thumb .e-thumb-items li,
+.e-rotator-wrap .e-in-wrap.e-multiple {
+  border-color: #c8c8c8;
+}
+.e-rotator-wrap .e-thumb .e-thumb-items li:hover {
+  border-color: #c8c8c8;
+}
+.e-rotator-wrap .e-thumb .e-thumb-items li.e-active,
+.e-rotator-wrap.e-disable .e-thumb .e-thumb-items li.e-active:hover {
+  border-color: #c8c8c8;
+}
+.e-rotator-wrap .e-thumb .e-thumb-items li.e-thumbhover {
+  border-color: #c8c8c8;
+}
+.e-rotator-wrap.e-disable .e-thumb .e-thumb-items li:hover,
+.e-rotator-wrap.e-disable .e-thumb .e-thumb-items li.e-thumbhover {
+  border-color: #c8c8c8;
+}
+.e-rotator-wrap .e-inner .e-caption {
+  background-color: white;
+  color: #333333;
+}
+.e-rotator-wrap .e-pager-wrap .e-bullet > li:hover {
+  border-color: #c8c8c8;
+  background-color: #86cbea;
+}
+.e-rotator-wrap.e-disable .e-pager-wrap .e-bullet > li:hover {
+  border-color: #c8c8c8;
+  background-color: #ececec;
+}
+.e-rotator-wrap.e-disable .e-pager-wrap .e-bullet > li {
+  cursor: default;
+}
+.e-rotator-wrap .e-pager-wrap .e-bullet > li.e-active,
+.e-rotator-wrap.e-disable .e-pager-wrap .e-bullet > li.e-active:hover {
+  border-color: #c8c8c8;
+  background-color: #179bd7;
+}
+.e-rotator-wrap .e-pager-wrap .e-bullet > li {
+  background-color: #ececec;
+  border-color: #c8c8c8;
+}
+.e-rotator-wrap .e-in-wrap .e-nav-btn.e-icon,
+.e-rotator-wrap .e-thumb-nav .e-thumb-btn.e-icon {
+  background-image: url(images/rotator-icon.png);
+}
+.e-rotator-wrap .e-in-wrap .e-nav-btn.e-icon.play {
+  background-position: -161px 0px;
+}
+.e-rotator-wrap .e-in-wrap .e-nav-btn.e-icon.pause {
+  background-position: -248px 0px;
+}
+.e-rotator-wrap .e-in-wrap .e-nav-btn.e-icon.e-previous {
+  background-position: -64px -15px;
+}
+.e-rotator-wrap .e-in-wrap .e-nav-btn.e-icon.e-next {
+  background-position: -109px -15px;
+}
+.e-rotator-wrap .e-thumb-nav .e-thumb-btn.e-icon.e-previous {
+  background-position: 8px -18px;
+}
+.e-rotator-wrap .e-thumb-nav .e-thumb-btn.e-icon.e-next {
+  background-position: -27px -18px;
+}

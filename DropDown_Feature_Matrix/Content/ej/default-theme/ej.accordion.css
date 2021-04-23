@@ -1,0 +1,101 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+/*Theme Color*/
+
+.e-acrdn {
+  font-family: Segoe UI;
+}
+.e-acrdn > .e-content {
+  border-color: #c8c8c8;
+  background-color: white;
+  color: #333333;
+  font-size: 14px;
+}
+.e-acrdn > .e-select,
+.e-acrdn > .e-disable.e-select:hover,
+.e-acrdn > .e-disable.e-select:hover a {
+  color: #333333;
+}
+.e-acrdn > .e-select,
+.e-acrdn > .e-disable.e-select:hover,
+.e-acrdn > .e-disable.e-select:hover a {
+  background: #ececec;
+}
+.e-acrdn .e-select {
+  border-color: #c8c8c8;
+  font-weight: normal;
+  font-size: 16px;
+  font-family: Segoe UI;
+}
+.e-acrdn .e-select:hover {
+  color: #282827;
+  border-color: #c8c8c8;
+}
+.e-acrdn .e-select:hover {
+  background: #86cbea;
+}
+.e-acrdn .e-select a {
+  color: #333333;
+}
+.e-acrdn > .e-select:first-child {
+  border-top-color: #c8c8c8;
+}
+.e-acrdn .e-select.e-active,
+.e-acrdn .e-disable.e-active.e-select:hover a,
+.e-acrdn .e-disable.e-active.e-select:hover {
+  color: white;
+}
+.e-acrdn .e-select.e-active,
+.e-acrdn .e-disable.e-active.e-select:hover a,
+.e-acrdn .e-disable.e-active.e-select:hover {
+  background: #179bd7;
+}
+.e-acrdn.e-disable .e-select:hover,
+.e-acrdn.e-disable .e-select:hover a {
+  background: #ecedee;
+  color: #5c5c5c;
+}
+.e-acrdn .e-select.e-active {
+  border-color: #c8c8c8;
+  font-weight: normal;
+  border-bottom: medium none;
+}
+.e-acrdn .e-select.e-active:hover {
+  color: #282827;
+  border-color: #c8c8c8;
+}
+.e-acrdn .e-select.e-active:hover {
+  background: #86cbea;
+}
+.e-acrdn .e-select.e-active a {
+  color: white;
+}
+.e-acrdn .e-select:hover a,
+.e-acrdn .e-select.e-active:hover a {
+  color: #282827;
+}
+.e-acrdn .e-select > span {
+  color: #686969;
+}
+.e-acrdn .e-select.e-active > span {
+  color: white;
+}
+.e-acrdn .e-select:hover > span,
+.e-acrdn .e-select.e-active:hover > span {
+  color: #282827;
+}
+.e-acrdn .e-content.e-load {
+  background-image: url(images/ajax-loader.gif);
+  background-position: center;
+  background-repeat: no-repeat;
+}

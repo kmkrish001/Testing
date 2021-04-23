@@ -1,0 +1,89 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+/*Theme Color*/
+
+.e-lv {
+  font-family: Segoe UI;
+}
+/*List Item*/
+
+.e-lv .e-list {
+  border-bottom: 1px solid #c8c8c8;
+  font-size: 12px;
+}
+.e-lv .e-list .e-list-anchor.e-fontimage:before {
+  color: #686969;
+}
+.e-lv .e-list.e-state-default {
+  background-color: white;
+  border-color: #c8c8c8;
+}
+.e-lv .e-list.e-state-default > .e-list-anchor .e-list-text {
+  color: #333333;
+}
+.e-lv .e-list.e-state-default:hover {
+  color: #282827;
+}
+.e-lv .e-list.e-state-default:hover {
+  background: #86cbea;
+}
+.e-lv .e-list.e-state-default:hover > .e-list-anchor .e-list-text {
+  color: #282827;
+}
+.e-lv .e-list:hover > .e-list-anchor.e-fontimage:before {
+  color: #282827;
+}
+.e-lv .e-list .e-list-anchor:hover {
+  color: #282827;
+}
+.e-lv .e-list.e-state-active {
+  color: white;
+}
+.e-lv .e-list.e-state-active {
+  background: #179bd7;
+}
+.e-lv .e-list.e-state-active .e-list-anchor .e-list-text {
+  color: white;
+}
+.e-lv .e-list.e-state-active > .e-list-anchor.e-fontimage:before {
+  color: white;
+}
+/*Search Box*/
+
+.e-lv-inputdiv .e-lv-input {
+  border: 1px solid #c8c8c8;
+  border-radius: 7px;
+  font-size: 14px;
+}
+.e-lv .e-header {
+  color: #282827;
+  border: 1px solid #c8c8c8;
+  border-bottom: 3px solid #179bd7;
+}
+.e-lv .e-header {
+  background: #fcfcfc;
+}
+.e-lv.e-parentlv > .e-lv .e-list-container {
+  border-left: 1px solid #c8c8c8;
+  border-right: 1px solid #c8c8c8;
+  border-top: 1px solid #c8c8c8;
+}
+.e-lv.e-parentlv > .e-lv.subpage {
+  border: none;
+}
+.e-lv > .e-header:hover > .e-icon:before {
+  color: #282827;
+}
+.e-lv > .e-header > .e-icon:before {
+  color: #232323;
+}

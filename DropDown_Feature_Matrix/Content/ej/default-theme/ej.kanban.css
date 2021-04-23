@@ -1,0 +1,121 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+.e-kanban .e-headercell {
+  border-top-color: #c8c8c8;
+  border-left-color: #c8c8c8;
+  border-bottom-color: #c8c8c8;
+}
+.e-kanban .e-headercell {
+  background: #fcfcfc;
+}
+.e-kanban {
+  border-color: #c8c8c8;
+  color: #333333;
+}
+.e-kanban .e-swimlanerow {
+  background: #ececec;
+}
+.e-kanban .e-columnrow .e-kanbancard {
+  background: white;
+}
+.e-kanban .e-kanbancard {
+  border-color: #c8c8c8 #c8c8c8 #c8c8c8 #30c5f9;
+  color: #333333;
+}
+.e-kanban .e-kanbancard .e-tag {
+  background: #ececec;
+  color: #333333;
+}
+.e-kanban .e-kanbancard.e-cardselection,
+.e-kanban .e-dragedCard .e-kanbancard {
+  color: white;
+}
+.e-kanban .e-kanbancard.e-cardselection,
+.e-kanban .e-dragedCard .e-kanbancard {
+  background: #179bd7;
+}
+.e-kanban .e-columnrow {
+  background: white;
+}
+.e-kanban .e-kanbancard.e-hover {
+  color: #282827;
+}
+.e-kanban .e-kanbancard.e-hover {
+  background: #86cbea;
+}
+.e-kanban .e-headercontent {
+  border-right-color: #c8c8c8;
+}
+.e-kanban .e-scrollcss {
+  background: #fcfcfc;
+}
+.e-kanban .e-kanbanheader {
+  color: #282827;
+  border-bottom-color: #179bd7;
+  border-top-color: #c8c8c8;
+}
+.e-kanban .e-stackedHeaderRow th {
+  border-bottom: 1px solid #c8c8c8 !important;
+}
+.e-kanban .e-kanbancontent {
+  background-color: white;
+}
+.e-kanban .e-rowcell {
+  border-color: #c8c8c8;
+}
+.e-kanban .e-kanbancard .e-card_image {
+  background: #ececec;
+}
+.e-kanban .e-toolbar,
+.e-kanban .e-kanbantoolbar .e-quickfilter {
+  background: white;
+}
+.e-kanban .e-kanbantoolbar li {
+  border: 1px solid #c8c8c8 ! important;
+  background: #ececec;
+  border-color: #c8c8c8;
+}
+.e-kanban .e-kanbantoolbar li.e-select {
+  border-color: #333333;
+}
+.e-kanban .e-kanbantoolbar li.e-select {
+  background: #179bd7;
+}
+.e-kanban .e-kanbantoolbar .e-select .e-text {
+  color: white;
+}
+.e-kanban .e-kanbantoolbar .e-text {
+  color: #282827;
+}
+.e-kanban .e-kanbantoolbar .e-select.e-hover {
+  border-color: #c8c8c8;
+}
+.e-kanban .e-kanbantoolbar .e-select.e-hover {
+  background: #86cbea;
+}
+.e-kanban .e-rowcell.e-dropping {
+  border-color: #c8c8c8;
+}
+.e-kanban .e-rowcell.e-dragbackcolor {
+  background: #86cbea;
+}
+.e-kanban.e-rtl td:first-child,
+.e-kanban.e-rtl th:first-child,
+.e-kanban.e-rtl .e-headercontent,
+.e-kanban.e-rtl .e-columnrow td.e-dropping:first-child,
+.e-kanban .e-rowcell.e-dragged {
+  border-left-color: #c8c8c8 !important;
+}
+.e-kanban.e-rtl .e-kanbancard {
+  border-color: #c8c8c8 #30c5f9 #c8c8c8 #c8c8c8;
+}

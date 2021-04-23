@@ -1,0 +1,62 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+.e-dialog.e-dialog-wrap {
+  background: white;
+  font-family: Segoe UI;
+}
+.e-dialog .e-dialog-icon:hover {
+  border-image: initial;
+  border-color: #c8c8c8;
+}
+.e-dialog .e-dialog-icon:hover {
+  background: #86cbea;
+}
+.e-dialog.e-disable .e-dialog-icon:hover {
+  background: transparent;
+}
+.e-dialog .e-dialog-icon:before {
+  line-height: 1.5;
+}
+.e-dialog > .e-header {
+  color: #282827;
+  font-weight: normal;
+  font-size: 16px;
+  border: 1px solid #c8c8c8;
+  border-bottom: 3px solid #179bd7;
+}
+.e-dialog > .e-header {
+  background: #fcfcfc;
+}
+.e-dialog.e-widget-content {
+  background: white;
+  color: #333333;
+  font-size: 14px;
+}
+.e-dialog.e-widget-content.e-load {
+  background-image: url(images/ajax-loader.gif);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.e-overlay {
+  background-color: #383838;
+}
+.e-dialog > .e-dialog-scroller {
+  border: 1px solid #c8c8c8;
+  border-top: none;
+}
+.e-dialog .e-dialog-icon .e-icon:before {
+  color: #232323;
+}
+.e-dialog .e-dialog-icon:hover .e-icon:before {
+  color: #282827;
+}

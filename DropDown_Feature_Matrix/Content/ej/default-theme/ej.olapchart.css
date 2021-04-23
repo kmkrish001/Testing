@@ -1,0 +1,44 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+.e-olapchart {
+  font: normal 12px Segoe UI;
+  border: 1px solid #c8c8c8;
+  background-color: white;
+  color: #333333;
+}
+.e-olapchart .expandMenu {
+  min-height: 50px;
+}
+.e-olapchart .menuList {
+  list-style-type: none;
+  padding: 4px 15px 4px 15px;
+}
+.e-olapchart .menuList:hover {
+  list-style-type: none;
+  color: #282827;
+  background-color: #86cbea;
+  cursor: pointer;
+}
+.e-olapchart .e-dialog,
+.e-olapchart .e-wrapper,
+.e-olapchart .e-shadow {
+  min-height: 50px;
+}
+.e-olapchart .e-dialog-scroller {
+  height: auto !important;
+}
+.e-olapchart .e-dialog,
+.e-olapchart .e-content {
+  padding: 0;
+  min-width: 150px;
+}

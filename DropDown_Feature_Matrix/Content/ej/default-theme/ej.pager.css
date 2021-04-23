@@ -1,0 +1,103 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+.e-grid.e-rtl .e-nextpage,
+.e-grid.e-rtl .e-nextpagedisabled {
+  border-left-color: #c8c8c8;
+}
+.e-pager,
+.e-grid .e-pagerstatusbar {
+  background-color: #ececec;
+  border-color: #c8c8c8;
+  color: #333333;
+}
+.e-pager .e-icon {
+  color: #686969;
+}
+.e-pager .e-default:hover {
+  color: #282827;
+}
+.e-pager .e-spacing {
+  color: #333333;
+}
+.e-pager .e-spacing.e-NP {
+  color: #686969;
+}
+.e-pager .e-numericitem:hover {
+  color: #282827;
+}
+.e-pager .e-numericitem:hover {
+  background: #86cbea;
+}
+.e-pager .e-numericitem {
+  font-family: Segoe UI;
+  background: #ececec;
+  border-right-color: #c8c8c8;
+}
+.e-pager .e-prevpagedisabled,
+.e-pager .e-prevpage,
+.e-pager .e-nextpage,
+.e-pager .e-nextpagedisabled,
+.e-pager .e-lastpagedisabled,
+.e-pager .e-lastpage,
+.e-pager .e-firstpage,
+.e-pager .e-firstpagedisabled {
+  background-color: #ececec;
+  color: #686969;
+}
+.e-pager .e-lastpage,
+.e-pager .e-firstpage {
+  background-color: transparent;
+}
+.e-pager .e-nextpage:Hover,
+.e-pager .e-lastpage:Hover,
+.e-pager .e-firstpage:Hover,
+.e-pager .e-prevpage:Hover {
+  background: #86cbea;
+}
+.e-pager .e-pagercontainer {
+  background-color: #ececec;
+  border-color: #c8c8c8;
+}
+.e-pager.e-rtl .e-numericitem {
+  border-left-color: #c8c8c8;
+}
+.e-pager .e-firstpage,
+.e-pager .e-prevpage,
+.e-pager .e-firstpagedisabled,
+.e-pager .e-prevpagedisabled,
+.e-pager .e-nextpage,
+.e-pager .e-lastpage,
+.e-pager .e-nextpagedisabled,
+.e-pager .e-lastpagedisabled {
+  border-right-color: #c8c8c8;
+}
+.e-pager.e-rtl .e-firstpage,
+.e-pager.e-rtl .e-prevpage,
+.e-pager.e-rtl .e-firstpagedisabled,
+.e-pager.e-rtl .e-prevpagedisabled,
+.e-pager.e-rtl .e-nextpage,
+.e-pager.e-rtl .e-lastpage,
+.e-pager.e-rtl .e-nextpagedisabled,
+.e-pager.e-rtl .e-lastpagedisabled {
+  border-left-color: #c8c8c8;
+}
+.e-pager .e-currentitem,
+.e-pager .e-currentitem:hover {
+  color: white;
+  /*background-color:#428BCA;*/
+
+}
+.e-pager .e-currentitem,
+.e-pager .e-currentitem:hover {
+  background: #179bd7;
+}

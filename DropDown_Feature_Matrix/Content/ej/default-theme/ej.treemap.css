@@ -1,0 +1,25 @@
+/*-----------------------Map------------------*/
+/*-----------------------OLAP Definition-----------------*/
+/*-----------------------OLAP Definition End-----------------*/
+/*----------------------Reportviewer Definition start------------------*/
+/*----------------------Reportviewer Definition End------------------*/
+/*-----------------------SymbolPalette Definition-----------------*/
+/*-----------------------Datepicker Definition-----------------*/
+/*-----------------------Bootstrap support-----------------*/
+/*----------------------Ribbon Definition-----------------------*/
+/*----------------------Spreadsheet Definition-----------------------*/
+/*----------------------Spreadsheet End-----------------------*/
+
+.e-drilldownHeader {
+  font-size: 15px;
+  text-indent: 10px;
+}
+.e-drilldownlabel {
+  color: white;
+}
+.e-drilldownarrow {
+  fill: white;
+  stroke: transparent;
+  stroke-width: 1px;
+  zoom: 1;
+}
