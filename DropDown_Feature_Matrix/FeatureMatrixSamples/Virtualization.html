@@ -27,7 +27,7 @@
     <div class="content-container-fluid" style="width: 100%; height: 100%">
         <div style="margin-left: 200px">
             <div class="ctrllabel">Select Group</div>
-            <input id="selectCar" type="text" />
+            <input type="text" id="skillsets" />
         </div>
 
 
@@ -82,42 +82,39 @@
     <script type="text/javascript">
         var target, country, countries;
         $(function () {
-            //first level child
-            countries = [
-                { value: 11, parentId: 'a', category: "Group A", text: "Algeria", sprite: "flag-dz" },
-                { value: 12, parentId: 'a', category: "Group A", text: "Armenia", sprite: "flag-am" },
-                { value: 13, parentId: 'a', category: "Group A", text: "Bangladesh", sprite: "flag-bd" },
-                { value: 14, parentId: 'a', category: "Group A", text: "Cuba", sprite: "flag-cu" },
-                { value: 15, parentId: 'b', category: "Group B", text: "Denmark", sprite: "flag-dk" },
-                { value: 16, parentId: 'b', category: "Group B", text: "Egypt", sprite: "flag-eg" },
-                { value: 20, parentId: 'd', category: "Group D", text: "New Zealand", sprite: "flag-nz" },
-                { value: 21, parentId: 'd', category: "Group D", text: "Norway", sprite: "flag-no" },
-                { value: 22, parentId: 'd', category: "Group D", text: "Poland", sprite: "flag-pl" },
-                { value: 23, parentId: 'e', category: "Group E", text: "Romania", sprite: "flag-ro" },
-                { value: 24, parentId: 'e', category: "Group E", text: "Singapore", sprite: "flag-sg" },
-                { value: 25, parentId: 'e', category: "Group E", text: "Thailand", sprite: "flag-th" },
-                { value: 18, parentId: 'c', category: "Group C", text: "India", sprite: "flag-in" },
-                { value: 19, parentId: 'c', category: "Group C", text: "Malaysia", sprite: "flag-my" },
-                 { value: 17, parentId: 'c', category: "Group C", text: "Finland", sprite: "flag-fi" },
-                { value: 26, parentId: 'e', category: "Group E", text: "Ukraine", sprite: "flag-ua" }
-            ];
+
             window.country = [
            { text: "Algeria", sprite: "flag-dz" }, { text: "Argentina", sprite: "flag-ar" },
            { text: "Armenia", sprite: "flag-am" }, { text: "Brazil", sprite: "flag-br" },
            { text: "Bangladesh", sprite: "flag-bd" }
             ];
-            target = $('#selectCar').ejDropDownList({
-                dataSource: countries,
-                width: "100%",
-                fields: { 
-                    //category: "category",
-                 text: "text", value: 'value' },
-                showCheckbox:true,
-                enableFilterSearch: true,
-                selectedIndex: [4]
-              //  selectedIndices: [1,2]
-                
-        }).data("ejDropDownList");
+
+            var skillset = [];
+		  var selectedValue = [];
+         for (index = 1; index <= 100; index++){
+              skillset.push({value: index, text: index});
+            }
+			
+            var dataManagerObj = ej.DataManager(skillset);
+
+            target= $('#skillsets').ejDropDownList({
+                dataSource: dataManagerObj,
+                fields: { id: "value", text: "text", value: "value" },
+                showCheckbox: true,
+             //   width: "185px",
+              //  selectedIndex: [4],
+                //allowMultiSelection: true,
+                //itemsCount: 10,
+			//	selectedIndex:[18],
+                //value:"19",
+                //selectedIndices: [ 0,1,2,3,56],
+                allowVirtualScrolling: true,
+                virtualScrollMode:"continuous",
+                //enableFilterSearch:true
+                //enableIncrementalSearch: true
+               // text: "20"
+            }).data("ejDropDownList");
+
             $("#btndisableItemByIndex").ejToggleButton({ "click": "ondisableItemByIndex", "defaultText": "disableItemByIndex", "activeText": "enableItemByIndex", "cssClass": "button" });
             $("#btnendis").ejToggleButton({ "click": "onEnableDiasableAll", "defaultText": "Disable All", "activeText": "Enable All", "cssClass": "button" });
             $("#btnallowmul").ejToggleButton({ "click": "onallowmulti", "defaultText": "Multiselection:true", "activeText": "Multiselection:false", "cssClass": "button" });
@@ -299,7 +296,6 @@
         }
 
         function unselectItemBytext(args) {
-            target = $('#selectCar').data("ejDropDownList");
             var disitem = $("#numeric1").val();
             if (args.isChecked)
                 target.selectItemByText(disitem);
@@ -307,7 +303,6 @@
                 target.unselectItemByText(disitem);
         }
         function unselectItemByvalue(args) {
-            target = $('#selectCar').data("ejDropDownList");
             var disitem = $("#numeric2").val();
             if (args.isChecked)
                 target.selectItemByValue(disitem);
