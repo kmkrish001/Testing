@@ -1,3 +1,17 @@
+/*!
+*  filename: ej.draggable.js
+*  version : 12.3
+*  Copyright Syncfusion Inc. 2001 - 2018. All rights reserved.
+*  Use of this code is subject to the terms of our license.
+*  A copy of the current license can be obtained at any time by e-mailing
+*  licensing@syncfusion.com. Any infringement will be prosecuted under
+*  applicable laws. 
+*/
+(function (fn) {
+    typeof define === 'function' && define.amd ? define(["./ej.core"], fn) : fn();
+})
+(function () {
+	
 /**
 * @fileOverview Plugin to drag the html elements
 * @copyright Copyright Syncfusion Inc. 2001 - 2015. All rights reserved.
@@ -767,4 +781,6 @@
         }
     });
 
-})(jQuery, Syncfusion);
+})(jQuery, Syncfusion);;
+
+});

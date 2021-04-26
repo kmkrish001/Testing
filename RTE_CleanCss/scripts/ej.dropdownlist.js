@@ -1,3 +1,17 @@
+/*!
+*  filename: ej.dropdownlist.js
+*  version : 12.3
+*  Copyright Syncfusion Inc. 2001 - 2018. All rights reserved.
+*  Use of this code is subject to the terms of our license.
+*  A copy of the current license can be obtained at any time by e-mailing
+*  licensing@syncfusion.com. Any infringement will be prosecuted under
+*  applicable laws. 
+*/
+(function (fn) {
+    typeof define === 'function' && define.amd ? define(["./../common/ej.core","./../common/ej.globalize","./../common/ej.data","./../common/ej.scroller","./../common/ej.draggable"], fn) : fn();
+})
+(function () {
+	
 /**
 * @fileOverview Plugin to style the Html input elements
 * @copyright Copyright Syncfusion Inc. 2001 - 2015. All rights reserved.
@@ -4000,4 +4014,6 @@
         Continuous: "continuous"
     };
     
-})(jQuery, Syncfusion);
+})(jQuery, Syncfusion);;
+
+});

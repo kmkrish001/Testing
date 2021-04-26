@@ -1,3 +1,17 @@
+/*!
+*  filename: ej.tooltip.js
+*  version : 12.3
+*  Copyright Syncfusion Inc. 2001 - 2018. All rights reserved.
+*  Use of this code is subject to the terms of our license.
+*  A copy of the current license can be obtained at any time by e-mailing
+*  licensing@syncfusion.com. Any infringement will be prosecuted under
+*  applicable laws. 
+*/
+(function (fn) {
+    typeof define === 'function' && define.amd ? define(["./../common/ej.core"], fn) : fn();
+})
+(function () {
+	
 "use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -1027,3 +1041,6 @@ ej.Tooltip.Associate = {
     Target: "target",
     Axis: "axis"
 };
+;
+
+});

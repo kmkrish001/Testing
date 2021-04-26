@@ -1,3 +1,17 @@
+/*!
+*  filename: ej.core.js
+*  version : 12.3
+*  Copyright Syncfusion Inc. 2001 - 2018. All rights reserved.
+*  Use of this code is subject to the terms of our license.
+*  A copy of the current license can be obtained at any time by e-mailing
+*  licensing@syncfusion.com. Any infringement will be prosecuted under
+*  applicable laws. 
+*/
+(function (fn) {
+    typeof define === 'function' && define.amd ? define(["jquery"], fn) : fn();
+})
+(function () {
+	
 
 window.ej = window.Syncfusion = window.Syncfusion || {};
 
@@ -1880,3 +1894,6 @@ window.ej = window.Syncfusion = window.Syncfusion || {};
         return oldSelf.apply(this, arguments);
     };
 })();;
+;
+
+});

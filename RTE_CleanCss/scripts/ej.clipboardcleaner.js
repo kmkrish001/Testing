@@ -55,6 +55,8 @@ var clipboardCleaner = (function () {
         else
             this.currentDocument.body.attachEvent("onpaste", pasteRouter);
         function pasteRouter(args) {
+            if (!env.model.enabled)
+                return false;
             if (temp.CleanerState) {
                 temp._pasteHandler(args);
                 if (temp.syncLoad) {
@@ -108,13 +110,11 @@ var clipboardCleaner = (function () {
     };
     clipboardCleaner.prototype._insertContent = function (args) {
         if (args === void 0) { args = true; }
-        //var tempSpanNode = this.currentDocument.createElement("span"), 
-        var elemColl = [];
-        // content, blockElem = this.currentDocument.createElement("p");
-        // tempSpanNode.appendChild(content = this.currentDocument.createTextNode(String.fromCharCode(65279)));
-        // blockElem.appendChild(tempSpanNode);
+        var tempSpanNode = this.currentDocument.createElement("span"), elemColl = [], content, blockElem = this.currentDocument.createElement("p");
+        tempSpanNode.appendChild(content = this.currentDocument.createTextNode(String.fromCharCode(65279)));
+        blockElem.appendChild(tempSpanNode);
         this._finalCleanup(this.Container);
-        //this.Container.appendChild(blockElem);
+        this.Container.appendChild(blockElem);
         if (this._isIE() && args) {
             elemColl = [];
             for (var gt = this.Container.childNodes.length - 1; gt > -1; gt--)
@@ -125,10 +125,9 @@ var clipboardCleaner = (function () {
         }
         else
             this._contentPositionHandler();
-        //$((ej.browserInfo().name == "msie" || ej.browserInfo().name == "mozilla") ? this.currentDocument.body.parentNode : this.currentDocument.body).scrollTop($(tempSpanNode).offset().top - 25);
-        $((ej.browserInfo().name == "msie" || ej.browserInfo().name == "mozilla") ? this.currentDocument.body.parentNode : this.currentDocument.body).scrollTop();
+        $((ej.browserInfo().name == "msie" || ej.browserInfo().name == "mozilla") ? this.currentDocument.body.parentNode : this.currentDocument.body).scrollTop($(tempSpanNode).offset().top - 25);
         this.callback.call(this.env);
-        //this._updateRange(content, 0, content.textContent.length);
+        this._updateRange(content, 0, content.textContent.length);
     };
     clipboardCleaner.prototype._insertAfter = function (elem, newElem) {
         if (elem.nextSibling) {
@@ -176,13 +175,13 @@ var clipboardCleaner = (function () {
                         parentNodes.push(elem.nodeName.toLowerCase());
                     while (this.blockNode.indexOf(elem.nodeName.toLowerCase()) == -1 && (elem = elem.parentElement));
                     nodeSet = this._createNodeCollection(parentNodes);
-                    // if (elem)
-                    //     if (elem.nextSibling)
-                    //         elem.parentElement.insertBefore(nodeSet.root, elem.nextSibling);
-                    //     else
-                    //         elem.parentElement.appendChild(nodeSet.root);
+                    if (elem)
+                        if (elem.nextSibling)
+                            elem.parentElement.insertBefore(nodeSet.root, elem.nextSibling);
+                        else
+                            elem.parentElement.appendChild(nodeSet.root);
                     elem = this.Container;
-                    while (elem == elem.nextSibling)
+                    while (elem = elem.nextSibling)
                         nodeSet.leaf.appendChild(elem);
                     this._insertAfter(this.Container.parentElement, this.Container);
                 }
@@ -274,12 +273,7 @@ var clipboardCleaner = (function () {
     clipboardCleaner.prototype._processContent = function (args, state) {
         if (args === void 0) { args = null; }
         if (state === void 0) { state = true; }
-        if (args.target.textContent == "") {
-            args.target.parentElement.remove();
-        }
-        var elm = (args.target.textContent != "") ? this.currentDocument.createElement("span"): this.currentDocument.createElement("p");
-        //var elm = this.currentDocument.createElement("p");
-        var temp = this, nonBlock = true;
+        var elm = this.currentDocument.createElement("p"), temp = this, nonBlock = true;
         var patern = /class="?Mso|style="[^ ]*\bmso-/i, tempContainer = this.currentDocument.createElement("p"), ChildNode;
         if (patern.test(this.htmlContent) && state) {
             this.htmlContent = this.htmlContent.replace(/<img[^>]+>/i, "");
@@ -343,8 +337,7 @@ var clipboardCleaner = (function () {
                         tempColl.push(temp.childNodes[index]);
                     }
                     for (var index = 0; index < tempColl.length; index++) {
-                        if (temp.parentElement)
-                            temp.parentElement.insertBefore(tempColl[index], temp);
+                        temp.parentElement.insertBefore(tempColl[index], temp);
                     }
                 }
                 this._remove(temp);
@@ -446,25 +439,27 @@ var clipboardCleaner = (function () {
                 this.Collection = [];
                 continue;
             }
-            content = this.listNodes[index].attributes.getNamedItem("style").textContent;
-            if (content && content.indexOf("level") != -1)
-                level = parseInt(content.charAt(content.indexOf("level") + 5));
-            else
-                level = 1;
-            this.listContents = [];
-            this._findValidListType(this.listNodes[index]);
-            if (this.listContents[0].length > 1)
-                type = "ol";
-            else
-                type = "ul";
-            tempNode = this.listContents[1] ?
-                this.currentDocument.createTextNode(this.listContents[1]) :
-                this.currentDocument.createTextNode("");
-            this.Collection.push({
-                type: type,
-                content: tempNode,
-                level: level
-            });
+            if (this.listNodes[index].attributes.getNamedItem("style")) {
+                content = this.listNodes[index].attributes.getNamedItem("style").textContent;
+                if (content && content.indexOf("level") != -1)
+                    level = parseInt(content.charAt(content.indexOf("level") + 5));
+                else
+                    level = 1;
+                this.listContents = [];
+                this._findValidListType(this.listNodes[index]);
+                if (this.listContents[0].length > 1)
+                    type = "ol";
+                else
+                    type = "ul";
+                tempNode = this.listContents[1] ?
+                    this.currentDocument.createTextNode(this.listContents[1]) :
+                    this.currentDocument.createTextNode("");
+                this.Collection.push({
+                    type: type,
+                    content: tempNode,
+                    level: level
+                });
+            }
         }
         while ((stNode = this.listNodes.shift()) ? stNode : (stNode = this.listNodes.shift())) {
             elemColl = [];
