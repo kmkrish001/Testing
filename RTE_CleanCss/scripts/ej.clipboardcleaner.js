@@ -337,6 +337,7 @@ var clipboardCleaner = (function () {
                         tempColl.push(temp.childNodes[index]);
                     }
                     for (var index = 0; index < tempColl.length; index++) {
+                        if (temp.parentElement)
                         temp.parentElement.insertBefore(tempColl[index], temp);
                     }
                 }
