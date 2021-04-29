@@ -3008,7 +3008,7 @@
                         this._currentText = this._decode(this._getField(this.popupListItems[this._activeItem], this.mapFld._text));
                     }
                 this._currentText = (this._currentText === "" || this._currentText == null) ? this.activeItem.text() : this._currentText;
-                this._selectedValue =  this._getField(!ej.isNullOrUndefined(this._dataFIndex)? this.popupListItems[this._activeItem] : this.getItemDataByValue(this._activeItem)[0]+1, this.mapFld._value);
+                this._selectedValue =  this._getField(ej.isNullOrUndefined(this._dataFIndex)? this.popupListItems[this._activeItem] : this.getItemDataByValue(this._activeItem)[0]+1, this.mapFld._value);
                 this._selectedValue = (this._selectedValue != null) ? this._selectedValue : this._currentText;
                 this._itemID = this._getField(!ej.isNullOrUndefined(this._dataFIndex)?this.popupListItems[this._activeItem]:this.getItemDataByValue(this._activeItem)[0]+1, this.mapFld._id);
             } else {
