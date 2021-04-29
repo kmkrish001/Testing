@@ -3073,11 +3073,13 @@
                (this.element.closest("div").hasClass("e-normal"))? $rteEle = $("textarea#"+args.model.htmlAttributes.datafontid):$rteEle = this.element.closest("div.e-rte").find("textarea.e-rte");
 				var rteInstcne = $rteEle.ejRTE("instance"), rteId = $rteEle.attr('id');
 				rteInstcne._setBackupData();
-                if (!args.isInteraction){
                     rteInstcne._focus();
                     args.value !== "" && rteInstcne._onFontName(args.value);
+                    var proxy = this;
+                    setTimeout(function() {
+                        proxy.wrapper.focus();
+                    }, 100);
                     rteInstcne._onChange();
-                }
             }
         },
 
