@@ -139,7 +139,7 @@
                 fields: { category: "category", text: "text", value: 'value' },
                 value:23
             }).data("ejDropDownList");
-            target.selectItemByValue("Ukraine"); target.unselectItemByValue(["Ukraine"]);
+            target.selectItemByText("Ukraine"); target.unselectItemByText(["Ukraine"]);
             $("#btndisableItemByIndex").ejToggleButton({ "click": "ondisableItemByIndex", "defaultText": "disableItemByIndex", "activeText": "enableItemByIndex", "cssClass": "button" });
             $("#btnendis").ejToggleButton({ "click": "onEnableDiasableAll", "defaultText": "Disable All", "activeText": "Enable All", "cssClass": "button" });
             $("#btnallowmul").ejToggleButton({ "click": "onallowmulti", "defaultText": "Multiselection:true", "activeText": "Multiselection:false", "cssClass": "button" });

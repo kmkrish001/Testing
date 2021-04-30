@@ -136,8 +136,8 @@
             ];
             target = $('#selectCar').ejDropDownList({
                 dataSource: countries,
-                fields: { category: "category", text: "text", value: 'value' }
-                
+                fields: { category: "category", text: "text", value: 'value' },
+                showCheckbox: true
             }).data("ejDropDownList");
             target.uncheckAll();
             $("#btndisableItemByIndex").ejToggleButton({ "click": "ondisableItemByIndex", "defaultText": "disableItemByIndex", "activeText": "enableItemByIndex", "cssClass": "button" });

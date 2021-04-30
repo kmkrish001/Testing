@@ -630,10 +630,10 @@
                 for(var i=0; i<valTexts.length;i++){
                     if(this._dataSource() != null){
                     if(this._dataSource().dataSource){
-                        checkTexts.push(this._dataSource().dataSource.json.findIndex(x => x.text.toString() ===valTexts[i].replace(/^\s+|\s+$/gm,'')));
+                        checkTexts.push(this._dataSource().dataSource.json.findIndex(x => x[this.model.fields.text].toString() ===valTexts[i].replace(/^\s+|\s+$/gm,'')));
                     }
                     else {
-                    checkTexts.push(this._dataSource().findIndex(x => x.text.toString() ===valTexts[i].replace(/^\s+|\s+$/gm,'')));
+                    checkTexts.push(this._dataSource().findIndex(x => x[this.model.fields.text].toString() ===valTexts[i].replace(/^\s+|\s+$/gm,'')));
                     }
                 }
                     checkStringText = valTexts[i].replace(/^\s+|\s+$/gm,'');
@@ -3008,7 +3008,7 @@
                         this._currentText = this._decode(this._getField(this.popupListItems[this._activeItem], this.mapFld._text));
                     }
                 this._currentText = (this._currentText === "" || this._currentText == null) ? this.activeItem.text() : this._currentText;
-                this._selectedValue =  this._getField(!ej.isNullOrUndefined(this._dataFIndex)? this.popupListItems[this._activeItem] : this.getItemDataByValue(this._activeItem)[0]+1, this.mapFld._value);
+                this._selectedValue =  this._getField(ej.isNullOrUndefined(this._dataFIndex)? this.popupListItems[this._activeItem] : this.getItemDataByValue(this._activeItem)[0]+1, this.mapFld._value);
                 this._selectedValue = (this._selectedValue != null) ? this._selectedValue : this._currentText;
                 this._itemID = this._getField(!ej.isNullOrUndefined(this._dataFIndex)?this.popupListItems[this._activeItem]:this.getItemDataByValue(this._activeItem)[0]+1, this.mapFld._id);
             } else {

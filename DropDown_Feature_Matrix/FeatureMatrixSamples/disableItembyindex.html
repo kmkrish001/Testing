@@ -137,7 +137,7 @@
             target = $('#selectCar').ejDropDownList({
                 dataSource: countries,
                 fields: { category: "category", text: "text", value: 'value' },
-                disableItemsByIndex:"1,4"
+              //  disableItemsByIndex:"1,4"
                 
         }).data("ejDropDownList");
             $("#btndisableItemByIndex").ejToggleButton({ "click": "ondisableItemByIndex", "defaultText": "disableItemByIndex", "activeText": "enableItemByIndex", "cssClass": "button" });
