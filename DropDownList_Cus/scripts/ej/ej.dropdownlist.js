@@ -673,7 +673,7 @@
 			if(!ej.isNullOrUndefined(value) && (typeof value == "string" || typeof value == "number"))
 			 value = value.toString().split(",");
             if(!this._isInteralCall){
-                this._initDisabledItems = isSingleIndex ? this._initDisabledItems.push(value) : value;
+                this._initDisabledItems = value;
             }
             if (!this.model.enabled) return false;
             if(this.model.loadOnDemand && (ej.isNullOrUndefined(this.ultag) || this.ultag.children().length==0)) this._showFullList();
