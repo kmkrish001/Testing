@@ -1785,7 +1785,7 @@
         _updateSelectedIndexByValue: function (value) {
             if (!value || !this.model.enableFilterSearch) return;
             this._selectedIndices = this.model.selectedItems = this.model.selectedIndices = [];
-            this._virtualList = this._getLi();
+            this._virtualList = this._virtualUl.children("li:not('.e-category')");
             var item = this._toArray(value);
             for (var k = 0; k < item.length; k++) {
                 for (var m = 0; m < this._virtualList.length; m++) {
