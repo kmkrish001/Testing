@@ -6978,6 +6978,14 @@ input[type="text"].e-input {
 .e-widget .e-dialog.e-widget-content .e-pager .e-lastpagedisabled {
   
 }
+.e-widget .e-js.e-titlebar.e-dialog-header.e-dialog.e-header,
+.e-widget .e-js.e-footerbar.e-dialog-footer.e-dialog {
+  width: auto;
+}
+.e-widget .e-js.e-titlebar.e-dialog-header.e-dialog.e-header,
+.e-widget .e-js.e-footerbar.e-dialog-footer.e-dialog {
+  box-shadow: none;
+}
 
 /*-----------------------Map------------------*/
 /*-----------------------PdfViewer------------------*/

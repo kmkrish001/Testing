@@ -606,12 +606,12 @@
             if (typeof this._elementTitle !== "string")
                 this._elementTitle = "";
             this.model.title = this.model.title || this._elementTitle;
-            this._dialogTitlebar = ej.buildTag("div#" + this.element.prop("id") + "_title.e-titlebar e-header").prependTo(this._ejDialog);
+            this._dialogTitlebar = ej.buildTag("div#" + this.element.prop("id") + "_title.e-titlebar e-dialog-header e-dialog e-header").prependTo(this._ejDialog);
             this._addTitleText();
         },
 
         _renderFooterBar: function () {
-            this._dialogFooterbar = ej.buildTag("div#" + this.element.prop("id") + "_foot.e-footerbar e-js").appendTo(this._ejDialog);
+            this._dialogFooterbar = ej.buildTag("div#" + this.element.prop("id") + "_foot.e-footerbar e-dialog-footer e-dialog e-js").appendTo(this._ejDialog);
         },
 
         _addTitleText: function () {

@@ -752,7 +752,7 @@
 					listValues = elementValue.split(this.model.delimiterChar);                  
             }
             else {
-               listValues = elementValue.split(this.model.delimiterChar)
+               listValues = elementValue;
             }
             var compareVal;
             var count = 0, initialPosition = 0, dataPosition;
@@ -781,10 +781,15 @@
                 if (listValues.indexOf(listText) !== -1) {
                     if (value) 
                         listValues[listValues.indexOf(listText)] = initialPosition;
+                    else
+                        listValues = listValues.replace(listText, initialPosition);
                     listData.push(listText);
                     initialPosition++;
                 } else if (!value && listValues === "") break;
                 count++;
+            }
+            if (!value) {
+                listValues = listValues.split(this.model.delimiterChar);
             }
             }
             count = 0;

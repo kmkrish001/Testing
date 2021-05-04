@@ -7541,6 +7541,16 @@ input.e-fe-dialog-text:not(.e-textbox),
 .e-dialog.e-widget-content .e-pager .e-lastpagedisabled {
   
 }
+.e-js.e-titlebar.e-dialog-header.e-dialog.e-header,
+.e-js.e-footerbar.e-dialog-footer.e-dialog {
+  width: auto;
+}
+.e-js.e-titlebar.e-dialog-header.e-dialog.e-header {
+  
+}
+.e-js.e-footerbar.e-dialog-footer.e-dialog {
+  box-shadow: none;
+}
 
 /*-----------------------Map------------------*/
 /*-----------------------PdfViewer------------------*/

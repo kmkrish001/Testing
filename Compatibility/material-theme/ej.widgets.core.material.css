@@ -4696,6 +4696,10 @@ div.e-tooltip-wrap.e-customAnimation {
   right: 0;
   width: 16px;
 }
+.e-dialog .e-icon {
+  height: 20px;
+  width: 20px;
+}
 .e-dialog > .e-icon.e-resizable:before {
   position: absolute;
   top: 0;
