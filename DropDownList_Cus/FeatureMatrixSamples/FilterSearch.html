@@ -25,6 +25,9 @@
 </head>
 <body>
     <div class="content-container-fluid" style="width: 100%; height: 100%">
+        <button onclick="getSel()">Get SelectedIndices </button>
+        <button onclick="getText()">Get Text </button>
+        <button onclick="getVal()">Get Value </button>
         <div style="margin-left: 200px">
             <div class="ctrllabel">Select Group</div>
             <input id="selectCar" type="text" />
@@ -114,7 +117,7 @@
                  text: "text", value: 'value' },
                 showCheckbox:true,
                 enableFilterSearch: true,
-                selectedIndex: [4]
+              //  selectedIndex: [4]
               //  selectedIndices: [1,2]
                 
         }).data("ejDropDownList");
@@ -314,6 +317,16 @@
             else
                 target.unselectItemByValue(disitem);
         }
+        function getSel(){
+            alert(target.model.selectedIndices);
+        }
+        function getText(){
+            alert(target.model.text);
+        }
+        function getVal(){
+            alert(target.model.value);
+        }
+        
     </script>
     <style type="text/css" class="cssStyles">
         .control {
