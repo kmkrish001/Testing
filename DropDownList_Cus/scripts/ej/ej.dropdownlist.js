@@ -822,7 +822,7 @@
 					if( ele[i] == 'element' && $.inArray(val, splitedText) === -1){
 						splitedText.push(val);
 					}
-					else if( ele[i] == '_visibleInput') {
+					else if( ele[i] == '_visibleInput' && $.inArray(val, splitedText) === -1) {
 						splitedText.push(val);
 					}                    
                     this[ele[i]][0].value = splitedText.join(this.model.delimiterChar);
