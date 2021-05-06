@@ -633,7 +633,7 @@
         },
         getItemDataByValue: function (value) {
             var listitems = this._toArray(value, false);
-			var rawList  = (!ej.isNullOrUndefined(this.resultList)) ? this._rawList.concat(this.resultList): this._rawList;
+			var rawList  = (this.model.enableServerFiltering) ? ((!ej.isNullOrUndefined(this.resultList)) ? this._rawList.concat(this.resultList): this._rawList) : this._rawList;
             var k, m, selected = [], field = (this.model.fields && this.model.fields.value) ? this.model.fields["value"] : "value";
             if ( listitems.length > 0 && (rawList.indexOf(listitems[0]) > -1 || rawList.indexOf(Number(listitems[0])) > -1)) {
 				for (k = 0; ((k < listitems.length) && ( rawList.indexOf(listitems[k]) > -1 || rawList.indexOf(Number(listitems[k])) > -1)); k++) {
