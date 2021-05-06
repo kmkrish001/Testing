@@ -2420,7 +2420,9 @@
             if(this.model.loadOnDemand && (ej.isNullOrUndefined(this.ultag) || this.ultag.children().length==0))this._showFullList();
             for (var i = 0; i < chkitems.length; i++) {
                 this._activeItem = chkitems[i];
+                if(this.ultag.children()[this._activeItem]){
                 this._enterTextBoxValue();
+                }
             }
         },
 
