@@ -1804,6 +1804,7 @@
             if (!this.inputSearch || !(this.model && this.model.enableFilterSearch)) return;
             if (this.inputSearch.val() != "" && this._virtualUl) {
                 this.inputSearch.val("");
+                this._prevSearchValue = "";
                 this._resetList();
             }
         },
