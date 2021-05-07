@@ -1794,6 +1794,7 @@
                 }
             }
             this.model.selectedItems = this.model.selectedIndices = this._selectedIndices;
+            if(this.model.selectedIndices.length == 1) this.model.selectedIndex = this.selectedIndexValue = this.model.selectedIndices[0];
         },
         _getIndexedValue: function (item) {
             return this._getAttributeValue(item) ? this._getAttributeValue(item) : item.innerText;
