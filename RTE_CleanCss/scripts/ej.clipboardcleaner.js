@@ -273,7 +273,12 @@ var clipboardCleaner = (function () {
     clipboardCleaner.prototype._processContent = function (args, state) {
         if (args === void 0) { args = null; }
         if (state === void 0) { state = true; }
-        var elm = this.currentDocument.createElement("p"), temp = this, nonBlock = true;
+        var target = (ej.browserInfo().name == "mozilla" || ej.browserInfo().name == "edge") ? (args.target).firstChild : args.target;
+        if (target.textContent == "") {
+            target.parentElement.remove();
+        }
+        var elm = (target.textContent != "") ? this.currentDocument.createElement("span") : this.currentDocument.createElement("p");
+        var temp = this, nonBlock = true;
         var patern = /class="?Mso|style="[^ ]*\bmso-/i, tempContainer = this.currentDocument.createElement("p"), ChildNode;
         if (patern.test(this.htmlContent) && state) {
             this.htmlContent = this.htmlContent.replace(/<img[^>]+>/i, "");

@@ -53,7 +53,7 @@
     ej.clipboardCleaner.prototype._processContent = function (args, state) {
         if (args === void 0) { args = null; }
         if (state === void 0) { state = true; }
-        var target = args.target;
+         var target = (ej.browserInfo().name == "mozilla" || ej.browserInfo().name == "edge") ? (args.target).firstChild : args.target;
         if (target.textContent == "") {
             target.parentElement.remove();
         }
