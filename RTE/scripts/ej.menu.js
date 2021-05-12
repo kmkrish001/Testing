@@ -542,8 +542,8 @@
             for ( var i = 0; i < list.length; i++) {
                 listElement = $(list[i]);
                 listElement.siblings().attr({ "aria-hidden": true });
-                listElement.parent().attr({ "aria-haspopup": true, "role": "menuitem",  "tabindex":"-1", "aria-label": listElement.text()}).addClass("e-haschild");
-				listElement.siblings('ul').children('li').addClass('e-list').attr({"role": "menuitem", "tabindex":"-1"});
+                listElement.parent().attr({ "aria-haspopup": true, "role": "menuitem", "aria-label": listElement.text()}).addClass("e-haschild");
+				listElement.siblings('ul').children('li').addClass('e-list').attr("role", "menuitem");
 				if(!ej.isNullOrUndefined(listElement.siblings('ul').children('li').children('a')[i]))
 					for(j=0; j<listElement.siblings('ul').children('li').children('a').length; j++)
 					{
