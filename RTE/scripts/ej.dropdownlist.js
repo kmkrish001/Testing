@@ -3800,6 +3800,7 @@
                     }
                 }
             }
+            this._uiInteract = false;
         },
 
         _OnKeyUp: function (e) {
