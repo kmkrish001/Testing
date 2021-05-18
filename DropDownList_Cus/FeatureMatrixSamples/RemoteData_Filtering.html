@@ -84,15 +84,15 @@
         $(function () {
            
             var dataManagerObj = ej.DataManager({ 
-                url:   "http://mvc.syncfusion.com/services/Northwnd.svc/Orders" 
+                url:   "https://mvc.syncfusion.com/services/Northwnd.svc/Orders" 
             });
-            var query = ej.Query().select("ShipName", "ShipCountry");
+            var query = ej.Query().select("ShipName", "CustomerID");
             // declaration
             target = $('#RegionId').ejDropDownList(
         { 
            dataSource: dataManagerObj, 
            query: query, 
-           fields: { text: "ShipName"}, 
+           fields: { text: "ShipName", value: "CustomerID"}, 
            itemsCount : 20,
           enableFilterSearch: true,
           enableSorting: true

@@ -91,38 +91,35 @@
                 { value: 12, parentId: 'a', category: "Group A", text: "Armenia", sprite: "flag-am" },
                 { value: 13, parentId: 'a', category: "Group A", text: "Bangladesh", sprite: "flag-bd" },
                 { value: 14, parentId: 'a', category: "Group A", text: "Cuba", sprite: "flag-cu" },
-                { value: 11, parentId: 'a', category: "Group A", text: "Algeria", sprite: "flag-dz" },
-                { value: 12, parentId: 'a', category: "Group A", text: "Armenia", sprite: "flag-am" },
-                { value: 13, parentId: 'a', category: "Group A", text: "Bangladesh", sprite: "flag-bd" },
-                { value: 14, parentId: 'a', category: "Group A", text: "Cuba", sprite: "flag-cu" },
-                // { value: 15, parentId: 'b', category: "Group B", text: "Denmark", sprite: "flag-dk" },
-                // { value: 16, parentId: 'b', category: "Group B", text: "Egypt", sprite: "flag-eg" },
-                // { value: 20, parentId: 'd', category: "Group D", text: "New Zealand", sprite: "flag-nz" },
-                // { value: 21, parentId: 'd', category: "Group D", text: "Norway", sprite: "flag-no" },
-                // { value: 22, parentId: 'd', category: "Group D", text: "Poland", sprite: "flag-pl" },
-                // { value: 23, parentId: 'e', category: "Group E", text: "Romania", sprite: "flag-ro" },
-                // { value: 24, parentId: 'e', category: "Group E", text: "Singapore", sprite: "flag-sg" },
-                // { value: 25, parentId: 'e', category: "Group E", text: "Thailand", sprite: "flag-th" },
-                // { value: 18, parentId: 'c', category: "Group C", text: "India", sprite: "flag-in" },
-                // { value: 19, parentId: 'c', category: "Group C", text: "Malaysia", sprite: "flag-my" },
-                //  { value: 17, parentId: 'c', category: "Group C", text: "Finland", sprite: "flag-fi" },
-                // { value: 26, parentId: 'e', category: "Group E", text: "Ukraine", sprite: "flag-ua" }
+                { value: 15, parentId: 'a', category: "Group A", text: "Algeria", sprite: "flag-dz" },
+                { value: 16, parentId: 'a', category: "Group A", text: "Armenia", sprite: "flag-am" },
+                { value: 17, parentId: 'a', category: "Group A", text: "Bangladesh", sprite: "flag-bd" },
+                { value: 18, parentId: 'a', category: "Group A", text: "Cuba", sprite: "flag-cu" },
             ];
             window.country = [
            { text: "Algeria", sprite: "flag-dz" }, { text: "Argentina", sprite: "flag-ar" },
            { text: "Armenia", sprite: "flag-am" }, { text: "Brazil", sprite: "flag-br" },
            { text: "Bangladesh", sprite: "flag-bd" }
             ];
+            var data = [
+                {text: "AAA", value: "0"},
+                {text: "AAA", value: "1"},
+                {text: "AAA", value: "2"},
+                {text: "AAA", value: "3"},
+                {text: "AAA", value: "4"},
+                {text: "AAA", value: "5"},
+                {text: "AAA", value: "6"},
+                {text: "AAA", value: "7"},
+                {text: "AAA", value: "8"},
+                {text: "AAA", value: "9"},
+            ];
             target = $('#selectCar').ejDropDownList({
-                dataSource: countries,
+                dataSource: data,
                 width: "100%",
                 fields: { 
-                    //category: "category",
                  text: "text", value: 'value' },
                 showCheckbox:true,
                 enableFilterSearch: true,
-              //  selectedIndex: [4]
-              //  selectedIndices: [1,2]
                 
         }).data("ejDropDownList");
             $("#btndisableItemByIndex").ejToggleButton({ "click": "ondisableItemByIndex", "defaultText": "disableItemByIndex", "activeText": "enableItemByIndex", "cssClass": "button" });
