@@ -170,21 +170,9 @@ var clipboardCleaner = (function () {
                     range.deleteContents();
                 range.insertNode(this.Container);
                 elem = this.Container.parentNode;
-                if (elem.nodeName.toLowerCase() != "body") {
-                    do
-                        parentNodes.push(elem.nodeName.toLowerCase());
-                    while (this.blockNode.indexOf(elem.nodeName.toLowerCase()) == -1 && (elem = elem.parentElement));
-                    nodeSet = this._createNodeCollection(parentNodes);
-                    if (elem)
-                        if (elem.nextSibling)
-                            elem.parentElement.insertBefore(nodeSet.root, elem.nextSibling);
-                        else
-                            elem.parentElement.appendChild(nodeSet.root);
-                    elem = this.Container;
-                    while (elem = elem.nextSibling)
-                        nodeSet.leaf.appendChild(elem);
-                    this._insertAfter(this.Container.parentElement, this.Container);
-                }
+                pastedtContentEle = elem.querySelector('.pasteContent');
+                Content = $(pastedtContentEle).contents();
+                $(pastedtContentEle).replaceWith(Content);
                 for (var index = 0; index < this.Container.childNodes.length; index++)
                     childNodes.push(this.Container.childNodes[index]);
                 while (tempElem = childNodes.shift())
@@ -279,7 +267,9 @@ var clipboardCleaner = (function () {
         }
         var elm = (target.textContent != "") ? this.currentDocument.createElement("span") : this.currentDocument.createElement("p");
         var temp = this, nonBlock = true;
-        var patern = /class="?Mso|style="[^ ]*\bmso-/i, tempContainer = this.currentDocument.createElement("p"), ChildNode;
+        var patern = /class="?Mso|style="[^ ]*\bmso-/i, tempContainer = this.currentDocument.createElement("div"), ChildNode;
+        tempContainer.className = "pasteContent";
+        tempContainer.setAttribute("style", "display:inline;");
         if (patern.test(this.htmlContent) && state) {
             this.htmlContent = this.htmlContent.replace(/<img[^>]+>/i, "");
             elm.innerHTML = this.htmlContent;

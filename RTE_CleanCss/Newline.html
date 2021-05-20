@@ -56,14 +56,15 @@
     ej.clipboardCleaner.prototype._processContent = function (args, state) {
         if (args === void 0) { args = null; }
         if (state === void 0) { state = true; }
-        var target = args.target;
-         //var target = (ej.browserInfo().name == "mozilla" || ej.browserInfo().name == "edge") ? (args.target).firstChild : args.target;
+        var target = (ej.browserInfo().name == "mozilla" || ej.browserInfo().name == "edge") ? (args.target).firstChild : args.target;
         if (target.textContent == "") {
             target.parentElement.remove();
         }
         var elm = (target.textContent != "") ? this.currentDocument.createElement("span") : this.currentDocument.createElement("p");
         var temp = this, nonBlock = true;
-        var patern = /class="?Mso|style="[^ ]*\bmso-/i, tempContainer = this.currentDocument.createElement("p"), ChildNode;
+        var patern = /class="?Mso|style="[^ ]*\bmso-/i, tempContainer = this.currentDocument.createElement("div"), ChildNode;
+        tempContainer.className = "pasteContent";
+        tempContainer.setAttribute("style", "display:inline;");
         if (patern.test(this.htmlContent) && state) {
             this.htmlContent = this.htmlContent.replace(/<img[^>]+>/i, "");
             elm.innerHTML = this.htmlContent;
@@ -117,16 +118,18 @@
     };
 
         function PasteComplete(args) {
-            var selection = this._getDocument().getSelection();
-            var emptyP_node = selection.anchorNode.parentElement.parentNode;
-            var lastSelectionNode = selection.anchorNode.parentElement.parentNode.previousElementSibling;
-            var lastText = lastElement(lastSelectionNode);
-            var range = this._getDocument().createRange();
-            range.setStart(lastText, lastText.length);
-            range.setEnd(lastText, lastText.length);
-            selection.removeAllRanges();
-            selection.addRange(range);
-            emptyP_node.remove();
+            if(this.model.pasteCleanupSettings.listConversion ||this.model.pasteCleanupSettings.cleanCSS || this.model.pasteCleanupSettings.removeStyles || this.model.pasteCleanupSettings.cleanElements ) {
+                var selection = this._getDocument().getSelection();
+                var emptyP_node = selection.anchorNode.parentElement.parentNode;
+                var lastSelectionNode = selection.anchorNode.parentElement.parentNode.previousElementSibling;
+                var lastText = lastElement(lastSelectionNode);
+                var range = this._getDocument().createRange();
+                range.setStart(lastText, lastText.length);
+                range.setEnd(lastText, lastText.length);
+                selection.removeAllRanges();
+                selection.addRange(range);
+                emptyP_node.remove();
+            }
         }
 
         // to get the last paste element
