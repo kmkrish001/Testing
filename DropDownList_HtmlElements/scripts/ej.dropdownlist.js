@@ -2211,7 +2211,7 @@
                     {
                         if (ej.isNullOrUndefined(_dtext)) _dtext = String(_dtext);
                         var textEle = document.createElement("span");
-                        textEle.appendChild(document.createTextNode(_dtext));
+                        textEle.innerHTML = _dtext;
                         this._setClass(textEle, "e-ddltxt");
                         litag.appendChild(textEle);
                     }
