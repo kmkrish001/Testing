@@ -1043,7 +1043,7 @@
             if (pixel === "") return;
             if (this._hScrollbar) pixel = parseFloat(pixel) > this._hScrollbar._scrollData.scrollable ? this._hScrollbar._scrollData.scrollable : parseFloat(pixel);
             var browserName = ej.browserInfo().name;
-            if (this.model.enableRTL && browserName != "mozilla") {
+            if (this.model.enableRTL && browserName != "mozilla" && browserName != "chrome") {
                 if (pixel < 0) pixel = Math.abs(pixel);
                 var content = this.model.targetPane != null ? this.content().find(this.model.targetPane)[0] : this.content()[0];
                 if (e != "mousemove" && e != "touchmove" && (browserName != "msie")) if (browserName != "msie") pixel = this._hScrollbar._scrollData.scrollable - pixel;
