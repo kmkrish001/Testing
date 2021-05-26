@@ -1788,7 +1788,9 @@
             for (var k = 0; k < item.length; k++) {
                 for (var m = 0; m < this._virtualList.length; m++) {
                     if (item[k] == this._getIndexedValue(this._virtualList[m])) {
+                        if ($.inArray(m, this._selectedIndices) == -1) {
                         this._selectedIndices.push(m);
+                        }
                         break;
                     }
                 }
