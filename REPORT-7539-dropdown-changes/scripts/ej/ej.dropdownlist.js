@@ -823,8 +823,20 @@
 						splitedText.push(val);
 					}
 					else if( ele[i] == '_visibleInput') {
-						splitedText.push(val);
-					}                    
+                        var textField = this.model.fields.text;
+                        if($.inArray(val, splitedText) != -1) {
+                            var popuplistArr = this.popupListItems.filter(function (item) { 
+                                return item[textField] == val;
+                            });
+                            var selectedText = splitedText.filter(function (item) { 
+                                return item == val;
+                            });
+                            if(popuplistArr.length > selectedText.length)
+                                splitedText.push(val);
+                        } else {
+                            splitedText.push(val);
+                        }
+					}
                     this[ele[i]][0].value = splitedText.join(this.model.delimiterChar);
                 } else {
 					if(val =="")
