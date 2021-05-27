@@ -823,7 +823,7 @@
 						splitedText.push(val);
 					}
 					else if( ele[i] == '_visibleInput') {
-                        var textField = this.model.fields.text;
+                        var textField = (this.model.fields.text) ? this.model.fields.text: "text";
                         if($.inArray(val, splitedText) != -1) {
                             var popuplistArr = this.popupListItems.filter(function (item) { 
                                 return item[textField] == val;
