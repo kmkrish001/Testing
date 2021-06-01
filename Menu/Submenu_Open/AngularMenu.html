@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="menuApp">
+<head>
+    <meta charset="utf-8">
+    <title>Essential Studio for JavaScript : Angular JS support for Menu</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8"  />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.syncfusion.com/17.4.0.46/js/web/flat-azure/ej.web.all.min.css" rel="stylesheet" />
+    <script src="https://cdn.syncfusion.com/js/assets/external/jquery-1.11.3.min.js" type="text/javascript"> </script>
+
+	    <!--[if lt IE 9]>
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> 
+	<![endif]-->
+    <!--[if IE 9]><!-->
+        <!-- <script src="scripts/jquery-3.4.1.min.js" type="text/javascript"></script> -->
+        <!--<![endif]--> 
+        <script src="https://cdn.syncfusion.com/js/assets/external/angular.min.js"></script>
+
+        <!-- <script src="scripts/ej.core.js"></script>
+        <script src="scripts/ej.data.js"></script>
+        <script src="scripts/ej.scroller.js"></script>
+        <script src="scripts/ej.draggable.js"></script>
+        <script src="scripts/ej.globalize.js"></script>
+        <script src="scripts/ej.menu.js"></script> -->
+        <script src="https://cdn.syncfusion.com/19.1.0.66/js/web/ej.web.all.min.js" type="text/javascript" ></script>
+
+        <script src="https://cdn.syncfusion.com/17.4.0.46/js/common/ej.widget.angular.min.js" type="text/javascript"></script>	
+
+</head>
+<body ng-controller="MenuCtrl">
+    <div class="content-container-fluid">
+        <div class="row">
+            <div class="cols-sample-area">
+                <ul id="menu" ej-menu e-fields-dataSource="dataList" e-fields-id="id" e-fields-parentId="parentId"
+                    e-fields-text="text" e-fields-spriteCssClass="sprite">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>       
+       var data = [
+            { id: 1, text: "Mail", parentId: null },
+            { id: 2, text: "Calender", parentId: null },
+            { id: 3, text: "Notes", parentId: null },
+            { id: 4, text: "Contacts", parentId: null },
+            //first level child
+            { id: 11, parentId: 1, text: "Inbox", sprite: "mailicon sprite-inbox" },
+            { id: 12, parentId: 1, text: "Drafts", sprite: "mailicon sprite-drafts" },
+            { id: 13, parentId: 1, text: "Sent items", sprite: "mailicon sprite-sentitems" },
+            { id: 14, parentId: 1, text: "Deleted", sprite: "mailicon sprite-deleted" },
+            { id: 15, parentId: 1, text: "Junk mails", sprite: "mailicon sprite-junk" },
+            { id: 16, parentId: 1, text: "Personal", sprite: "mailicon sprite-folders" },
+            { id: 17, parentId: 2, text: "My Calender", sprite: "mailicon sprite-calendar" },
+            { id: 18, parentId: 2, text: "Team", sprite: "mailicon sprite-calendar" },
+            { id: 19, parentId: 2, text: "Others", sprite: "mailicon sprite-calendar" },
+            { id: 20, parentId: 3, text: "My Reference", sprite: "mailicon sprite-folder" },
+            { id: 21, parentId: 3, text: "Team Meeting", sprite: "mailicon sprite-folder" },
+            { id: 22, parentId: 3, text: "Others", sprite: "mailicon sprite-folder" },
+            { id: 23, parentId: 4, text: "Suggested", sprite: "mailicon sprite-contacts" },
+            { id: 24, parentId: 4, text: "My Team", sprite: "mailicon sprite-contacts" },
+            { id: 25, parentId: 4, text: "Others", sprite: "mailicon sprite-contacts" },
+            //second level child
+            { id: 111, parentId: 11, text: "Development", sprite: "mailicon sprite-folders" },
+            { id: 111, parentId: 11, text: "Supports", sprite: "mailicon sprite-folders" },
+            { id: 111, parentId: 11, text: "HR Team", sprite: "mailicon sprite-folders" },
+            { id: 112, parentId: 12, text: "Support Template", sprite: "mailicon sprite-folders" },
+            { id: 112, parentId: 12, text: "Personal", sprite: "mailicon sprite-folders" }
+            ];
+			angular.module('menuApp', ['ejangular']).controller('MenuCtrl', function ($scope) {
+						$scope.dataList = data;               
+					});          
+    </script>
+ <style type="text/css">
+        #menu{
+            margin-left: 50px;
+        }
+        .e-menu li > ul > li > a
+        { padding: 0 18px 0 28px; }
+
+        [class^="sprite-"],
+        [class*="sprite-"] 
+        {
+            /* background-image: url("./images/flags.png"); */
+            height: 25px;
+            left: 2px;
+            top: 4px;
+            width: 50px;
+        }
+        .sprite-calendar
+        {
+            background-position: -25px -255px;
+        }
+
+        .sprite-contacts
+        {
+            background-position: -26px -429px;
+        }
+
+        .sprite-deleted
+        {
+            background-position: -24px -152px;
+        }
+
+        .sprite-drafts
+        {
+            background-position:-24px -83px;
+        }
+
+        .sprite-folder
+        {
+            background-position: -24px -464px;
+        }
+
+        .sprite-folders
+        {
+            background-position: -24px -222px;
+        }
+
+        .sprite-inbox
+        {
+            background-position: -25px -13px;
+        }
+
+        .sprite-junk
+        {
+            background-position: -23px -187px;
+        }
+
+        .sprite-notes
+        {
+            background-position: -26px -394px;
+        }
+
+        .sprite-outbox
+        {
+            background-position: 0 -414px;
+            width: 16px;
+            height: 16px;
+        }
+
+        .sprite-root
+        {
+            background-position: -25px -49px;
+        }
+
+        .sprite-sentitems
+        {
+            background-position: -26px -118px;
+        }
+    </style>
+</body>
+</html>
