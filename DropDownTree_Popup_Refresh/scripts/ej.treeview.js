@@ -1288,8 +1288,10 @@
                                 }
                                 this._loadOnDemand(args, element[0]);
                             }
-                            else
-                                (element.hasClass('e-plus')) ? this._expandNode(parentLi) : this._collapseNode(parentLi);
+                            else {
+                                var isInteraction = true;
+                                (element.hasClass('e-plus')) ? this._expandNode(parentLi, isInteraction) : this._collapseNode(parentLi, isInteraction);
+                            }
                         }
                         else if (this.model.fullRowSelect && (element.hasClass("e-fullrow") || element.hasClass("e-text-wrap"))) {
                             element = element.closest('.e-item').find("> .e-text-wrap .e-text");
@@ -1619,7 +1621,7 @@
             }
         },
 
-        _expandCollapseAction: function (element) {
+        _expandCollapseAction: function (element, isInteraction) {
             if (element && !element.hasClass("e-process")) {
                 var expandUl, proxy = this, parentLi, nodeDetails, data, isChildLoaded;
                 parentLi = element.closest('.e-item');
@@ -1631,7 +1633,7 @@
                     var tempInstance = $(element).closest('.e-treeview.e-js').data('ejTreeView');
 					nodeDetails = tempInstance._getNodeDetails(parentLi);
                     isChildLoaded = this.isChildLoaded(parentLi);
-                    data = { currentElement: parentLi, value: nodeDetails.text, isChildLoaded: isChildLoaded, id: nodeDetails.id, parentId: nodeDetails.parentId, async: false };
+                    data = { currentElement: parentLi, value: nodeDetails.text, isChildLoaded: isChildLoaded, id: nodeDetails.id, parentId: nodeDetails.parentId, async: false, isInteraction: isInteraction };
                     if (!this._isNodeExpanded(parentLi) && isChildLoaded) {
                         if (!this._isEventTriggered)
                             if (this._triggerEvent('beforeExpand', data)) return false;
@@ -1947,7 +1949,7 @@
             query.sortBy(key, order);
         },
 
-        _expandNode: function (liElement) {
+        _expandNode: function (liElement, isInteraction) {
             if (liElement[0] != null && liElement.length > 0) {
                 var expandIcon = liElement.find('> div > div:first');
                 if (this.model.loadOnDemand && !this.model.enablePersistence) {
@@ -1963,7 +1965,7 @@
                         var isExpanded = liElement.find('> ul > .e-item').length > 0 ? true : false;
                         if (isExpanded) {
                             if (!this.model.enableMultipleExpand) this._denyMultipleExpand(liElement);
-                            this._expandCollapseAction(expandIcon);
+                            this._expandCollapseAction(expandIcon, isInteraction);
                         }
                     }
                 }
@@ -1971,12 +1973,12 @@
             return true;
         },
 
-        _collapseNode: function (liElement) {
+        _collapseNode: function (liElement, isInteraction) {
             if (liElement[0] != null && liElement.length > 0) {
                 if (liElement.find('> ul > .e-item').length > 0) {
                     var collapseIcon = liElement.find('> div > div:first');
                     if (collapseIcon.hasClass('e-minus'))
-                        this._expandCollapseAction(collapseIcon);
+                        this._expandCollapseAction(collapseIcon, isInteraction);
                 }
             }
         },
