@@ -1168,7 +1168,7 @@
         },
 
         _normalizingDelta: function (e) {
-            var delta = navigator.platform.indexOf("Mac") == 0 ? -e.wheelDelta / 3 : -e.wheelDelta / 120;
+            var delta = navigator.platform.indexOf("Mac") == 0 ? ((Math.abs(e.wheelDelta) !== 120) ? -e.wheelDelta / 3: -e.wheelDelta / 80) : -e.wheelDelta / 120;
             return delta;
         },
 
