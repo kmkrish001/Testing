@@ -655,7 +655,14 @@
             var option;
             for (option in options) {
                 switch (option) {
-                    case "dataSource": this.model.dataSource = null; break;
+                    case "dataSource": 
+                        if(this.model.loadOnDemand) {
+                            var oldWrapper = $("#" + this.element[0].id + "_suggestion").get(0);
+                            if (oldWrapper) $(oldWrapper).remove();
+                            this.suggestionList = undefined;
+                        }
+                        this.model.dataSource = options[option];
+                        break;
                     case "watermarkText": this._changeWatermark(options[option]); break;
                     case "delaySuggestionTimeout": this.model.delaySuggestionTimeout = parseInt(options[option]); break;
                     case "value":
