@@ -44,32 +44,7 @@
     </div>
 
     <script type="text/javascript">
-	ej.TreeView.prototype._orderDataSource = function () {
-	 this._beforeBaseClass();
-            this._updatePersistProb();
-            var orderedData = [], datasource = JSON.parse(JSON.stringify(this._newDataSource));
-             if (this.dataSource() instanceof ej.DataManager && this._templateType == 2) { 
-                 return this._newDataSource;
-             } 
-             else {
-                 for (var i = 0, objlen = this._liList.length; i < objlen; i++) { 
-                     for (var j = 0, dlen = datasource.length; j < dlen; j++) { 
-                         if ($(document.getElementById(ej.getObject(this.model.fields.id, datasource[j]))).length > 0 && !ej.isNullOrUndefined(datasource[j]) && !ej.isNullOrUndefined(datasource[j][this.model.fields.id]) && datasource[j][this.model.fields.id].toString() == $(this._liList[i]).attr('id')) { 
-                             if ($(document.getElementById(ej.getObject(this.model.fields.id, datasource[j]))).find('> ul .e-item').length == 0) { 
-                                 this._deepPropertyDelete(this.model.fields.hasChild, datasource[j]); 
-                                 if (this._templateType == 2) 
-                                     delete datasource[j]["child"]; 
-                            } else if (this._templateType == 1) 
-                                 ej.createObject(this.model.fields.hasChild, true, datasource[j]); 
-                            else 
-                                this._updateChildData(datasource[j]["child"], this.model.fields);
-                             orderedData.push(datasource[j]); 
-                         } 
-                    } 
-                } 
-             } 
-            return orderedData;
-	}
+	
         var target;
         $(function () {
 			var dataManger2= ej.DataManager({
@@ -88,6 +63,10 @@
                     fields: {
                         dataSource: dataManger2,  id: "id",  parentId: "pid",text: "name", query:query2,
                     }
+                },
+                create: function (args) 
+                {
+                     this._skipOrderData = true;                  
                 }
 				});
           
