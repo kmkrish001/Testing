@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Essential Studio for JavaScript">
     <meta name="author" content="Syncfusion">
-    <title>Untitled</title>
+    <title>DropDownList</title>
     <!-- Essential Studio for JavaScript  theme reference --> 
     <link rel="stylesheet" href="https://cdn.syncfusion.com/17.4.0.46/js/web/flat-azure/ej.web.all.min.css" />
     <!-- Essential Studio for JavaScript  script references -->
@@ -97,25 +97,37 @@
 	];
 		
 	
-				$(function () {
+		$(function () {
 					$("#dropdown1").ejDropDownList({
 						dataSource: myDS,
 						width: '450px',
 						enableFilterSearch: true,
 					});
-			//	var valDefault = "Italian";
+
+				$("#dropdown2").ejDropDownList({
+						dataSource: myDS,
+						width: '450px',
+						enableFilterSearch: true,
+						showCheckbox: true
+					});
+
 				var valDefault = "IT";
 				var ddlObj = $("#dropdown1").ejDropDownList("instance");
-			//	ddlObj.option("value", valDefault);
-				ddlObj.option("value", valDefault.trim().toUpperCase());	
-				});
+				ddlObj.option("value", valDefault.trim().toUpperCase());
+
+				var ddlObj1 = $("#dropdown2").ejDropDownList("instance");
+				ddlObj1.option("value", valDefault.trim().toUpperCase());
+		});
 		
 			</script>
 	</head>
 	
 	<body>
+		<h3>Single Selection</h3>
 		<input id="dropdown1"/>
 	   
+		<h3>Multi Selection checkbox</h3>
+		<input id="dropdown2"/>
 	<br/>
 	<pre id="result">
 	</pre>
