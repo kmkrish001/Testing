@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Essential Studio for JavaScript">
+    <meta name="author" content="Syncfusion">
+    <title>Untitled</title>
+    <!-- Essential Studio for JavaScript  theme reference --> 
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/17.4.0.46/js/web/flat-azure/ej.web.all.min.css" />
+    <!-- Essential Studio for JavaScript  script references -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> 
+    <script src="https://cdn.syncfusion.com/js/assets/external/jsrender.min.js"></script>
+    <!--<script src="https://cdn.syncfusion.com/17.2.0.34/js/web/ej.web.all.min.js"> </script>-->
+	<script src="scripts/ej.core.js"></script>
+    <script src="scripts/ej.data.js"></script>
+    <script src="scripts/ej.scroller.js"></script>
+    <script src="scripts/ej.draggable.js"></script>
+    <script src="scripts/ej.globalize.js"></script>
+    <script src="scripts/ej.button.js"></script>
+    <script src="scripts/ej.checkbox.js"></script>
+    <script src="scripts/ej.dropdownlist.js"></script>
+    <!--Add custom scripts here -->
+	<script>
+		var myDS = [
+		{
+			"value": "ZH",
+			"valueOriginale": "ZH",
+			"text": "Chinese",
+			"valore_descrizione": "ZH - Chinese"
+		},
+		{
+			"value": "CS",
+			"valueOriginale": "CS",
+			"text": "Czech",
+			"valore_descrizione": "CS - Czech"
+		},
+		{
+			"value": "NL",
+			"valueOriginale": "NL",
+			"text": "Dutch",
+			"valore_descrizione": "NL - Dutch"
+		},
+		{
+			"value": "EN",
+			"valueOriginale": "EN",
+			"text": "English",
+			"valore_descrizione": "EN - English"
+		},
+		{
+			"value": "FR",
+			"valueOriginale": "FR",
+			"text": "French",
+			"valore_descrizione": "FR - French"
+		},
+		{
+			"value": "DE",
+			"valueOriginale": "DE",
+			"text": "German",
+			"valore_descrizione": "DE - German"
+		},
+		{
+			"value": "IT",
+			"valueOriginale": "IT",
+			"text": "Italian",
+			"valore_descrizione": "IT - Italian"
+		},
+		{
+			"value": "KO",
+			"valueOriginale": "KO",
+			"text": "Korean",
+			"valore_descrizione": "KO - Korean"
+		},
+		{
+			"value": "PL",
+			"valueOriginale": "PL",
+			"text": "Polish",
+			"valore_descrizione": "PL - Polish"
+		},
+		{
+			"value": "PT",
+			"valueOriginale": "PT",
+			"text": "Portuguese",
+			"valore_descrizione": "PT - Portuguese"
+		},
+		{
+			"value": "RU",
+			"valueOriginale": "RU",
+			"text": "Russian",
+			"valore_descrizione": "RU - Russian"
+		},
+		{
+			"value": "ES",
+			"valueOriginale": "ES",
+			"text": "Spanish",
+			"valore_descrizione": "ES - Spanish"
+		}
+	];
+		
+	
+				$(function () {
+					$("#dropdown1").ejDropDownList({
+						dataSource: myDS,
+						width: '450px',
+						enableFilterSearch: true,
+					});
+			//	var valDefault = "Italian";
+				var valDefault = "IT";
+				var ddlObj = $("#dropdown1").ejDropDownList("instance");
+			//	ddlObj.option("value", valDefault);
+				ddlObj.option("value", valDefault.trim().toUpperCase());	
+				});
+		
+			</script>
+	</head>
+	
+	<body>
+		<input id="dropdown1"/>
+	   
+	<br/>
+	<pre id="result">
+	</pre>
+	</body>
+
+</html>
