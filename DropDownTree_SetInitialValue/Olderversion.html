@@ -21,14 +21,14 @@
     <script src="scripts/ej.waitingpopup.js"></script>
     <script src="scripts/ej.treeview.js"></script>
 
-    <script src="scripts/ej.dropdowntree.js"></script>
+    <script src="old/ej.dropdowntree.js"></script>
 </head>
 <body>
       <div class="content-container-fluid">
         <div class="row">
             <div class="cols-sample-area">
                 <div class="frame">
-                    <div style="display: flex;"><h3>Loading time : </h3> <h4 id="time"></h4></div>
+                <div style="display: flex;"><h3>Loading time : </h3> <h4 id="time"></h4></div>
                     <div class="control">
                       <button>
                         set value
@@ -63,10 +63,6 @@
                     fields: {
                         dataSource: dataManger2,  id: "id",  parentId: "pid",text: "name", query:query2,
                     }
-                },
-                orderingDataSource: function (args)
-                {
-                    args.cancel = true;
                 },
                 open: function (args){
                     endTime = new Date();
