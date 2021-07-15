@@ -288,6 +288,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             if (this.model.loadOnDemand && ej.isNullOrUndefined(this.popupListWrapper)) {
                 this.popupCreation();
                 this.renderScroller();
+                this._skipOrderDataSource = this._trigger('orderingDataSource');
                 if(this.value() && !ej.isNullOrUndefined(this.model.treeViewSettings.fields)){
                     this._setValuesCalled = true;
                      this.setValueText(this.value(), 'value');
@@ -986,7 +987,7 @@ var __extends = (this && this.__extends) || function (d, b) {
                     }
                 }
                 else {
-                    treeSrc = (this._skipOrderData) ? [] : this.treeView.getTreeData();
+                    treeSrc = (this._skipOrderDataSource) ? [] : this.treeView.getTreeData();
                     if(this.model.loadOnDemand &&  $(this.visibleInput).val() !== ""){
                         $(this.visibleInput).val('');
                     }
