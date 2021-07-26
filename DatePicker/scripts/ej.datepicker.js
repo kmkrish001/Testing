@@ -1910,7 +1910,7 @@
                 for (var j = 0; j < 4; j++) {
                     var td = $(dc('td'))
                         .addClass('e-current-month e-state-default')
-                        .attr({ 'data-index': month }).attr((this._isIE8) ? { 'unselectable': 'on' } : {})
+                        .attr({ 'data-index': month, 'data-month': this.Date.monthNames[month] + " "+ currentDate.getFullYear(), 'id': currentDate.getFullYear() +""+ (month + 1) }).attr((this._isIE8) ? { 'unselectable': 'on' } : {})
                         .html(this.Date.abbrMonthNames[month++]);
                     if (currentDate.getFullYear() < this.model.minDate.getFullYear() || currentDate.getFullYear() > this.model.maxDate.getFullYear()) {
                         td.addClass('e-hidedate');
@@ -1955,6 +1955,7 @@
                         td.addClass('e-hidedate');
                         td.removeClass('e-current-year');
                     }
+                    td.attr({ 'data-year': years[year], 'id': years[year] });
                     td.html(years[year++]);
                     row.append(td);
                 }
@@ -1989,6 +1990,7 @@
                         td.addClass('e-hidedate');
                         td.removeClass('e-current-allyear');
                     }
+                    td.attr({ 'data-decade': (years[year]).replaceAll("-","to"), 'id': (years[year]).replaceAll(" ","") });
                     td.html(years[year++]);
                     row.append(td);
                 }
@@ -2238,7 +2240,20 @@
                 this.sfCalendar.find("[aria-label]").removeAttr("aria-label");
                 $(this.element).attr("aria-activedescendant", next.attr('id'));
                 $(next).attr("aria-selected", true);
-                $(next).attr("aria-label", "The current focused date is " + this._formatter(this._getDateObj(next), "dddd, dd MMMM, yyyy"));
+                var result = this._getViewLabel(next);
+                $(next).attr("aria-label", "The current focused " + result[1] + " is " + result[0]);
+            }
+        },
+        _getViewLabel: function(ele) {
+            if(ele.attr("data-decade")) {
+                return [ele.attr("data-decade"), "decade"];
+            }
+            else if(ele.attr("data-year")) {
+                return [this._formatter(this._getDateObj(ele), "yyyy"), "year"];
+            } else if(ele.attr("data-month")) {
+                return [this._formatter(this._getDateObj(ele), "MMMM, yyyy"), "month"];
+            } else {
+                return [this._formatter(this._getDateObj(ele), "dddd, dd MMMM, yyyy"), "date"];
             }
         },
         _changeRowCol: function (t, key, rows, cols, target, ctrlKey) {
@@ -2415,7 +2430,14 @@
             return this.sfCalendar.find('tbody' + cls.parent + ' tr:nth-child(' + t.row + ') td' + cls.child + ':nth-child(' + t.col + ')');
         },
         _getDateObj: function (element) {
-            return new Date(element.attr("data-date"));
+            if(element.attr("data-year")) {
+                return new Date(element.attr("data-year"));
+            }
+            else if(element.attr("data-month")) {
+                return new Date(element.attr("data-month"));
+            } else {
+                return new Date(element.attr("data-date"));
+            }
         },
         _touchCalendar: function (e) {
             var tableClass = this.sfCalendar.find('table')[0].className;
