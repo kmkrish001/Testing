@@ -57,18 +57,18 @@ BikeList = [
                 enabled: true,
                 width: '162px',
                 height: '26px', showRoundedCorner: true,
-             //   loadOnDemand: true,
+                loadOnDemand: true,
                 enableAnimation: true,
                 create: function (args) 
             {
-//  var dropDownInstance = $('#bikeList').ejDropDownList('instance');
-//         $(dropDownInstance.popup).ejScroller({
-//             buttonSize: 14,
-//             scrollerSize: 12,
-//             enableTouchScroll: true,
-//             autoHide: true,
-//             cssClass: 'e-reportdesigner-scroller'
-//         })			
+ var dropDownInstance = $('#bikeList').ejDropDownList('instance');
+        $(dropDownInstance.popup).ejScroller({
+            buttonSize: 14,
+            scrollerSize: 12,
+            enableTouchScroll: true,
+            autoHide: true,
+            cssClass: 'e-reportdesigner-scroller'
+        })			
             },
                 enableFilterSearch: true,
                 popupHeight: '180px'
@@ -80,10 +80,10 @@ BikeList = [
 		 var tag = $('#bikeList');
 		 var instance = tag.ejDropDownList('instance');
          instance.setModel({ dataSource: Customers});
-		   //tag.data('ejDropDownList').setModel({ dataSource: BikeList2, fields: { id: "empid", text: "text", value: "text" } });
-		  // if ($(instance.popup).data('ejScroller')) {
-           // $(instance.popup).data('ejScroller').refresh();
-        //}
+		  tag.data('ejDropDownList').setModel({ dataSource: BikeList2, fields: { id: "empid", text: "text", value: "text" } });
+		  if ($(instance.popup).data('ejScroller')) {
+           $(instance.popup).data('ejScroller').refresh();
+        }
 		   }
     </script>
  <style class="cssStyles">

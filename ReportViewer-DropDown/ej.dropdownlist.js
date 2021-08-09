@@ -956,6 +956,7 @@
                                 var oldWrapper = $("#" + this.element[0].id + "_popup_wrapper").get(0);
                                 if (oldWrapper) $(oldWrapper).remove();
                                 this.popupListWrapper = undefined;
+                                this.inputSearch = undefined;
                             }
                             this._checkModelDataBinding(ej.util.getVal(options[option]), this.model.query);
                             this._refreshScroller(); 
