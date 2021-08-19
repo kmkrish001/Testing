@@ -56,9 +56,10 @@
             $("#scrollcontent").ejScroller({
                 height: 400,
                 width:700,
-                scroll: function (e) {
-                    if (scrollerObj) {
-                        scrollerPositon = e.scrollTop;
+				//enableTouchScroll: true,
+               // scroll: function (e) {
+                   // if (scrollerObj) {
+                    //    scrollerPositon = e.scrollTop;
                         // if (!contentLoaded && document.querySelectorAll(".sampleContent")[0].scrollHeight - (e.scrollTop) <= scrollerObj.option("height")) {
                         //     $.ajax({
                         //         url: "../17.4.0.46/themes/web/content/samplecontent/" + content[list] + ".html",
@@ -77,8 +78,8 @@
                         //         }
                         //     });
                         // }
-                    }
-                }
+                    //}
+               // }
             });
             scrollerObj = $("#scrollcontent").data("ejScroller");
         });
@@ -96,14 +97,14 @@
             width: 650px;
             padding: 15px;
             text-align:justify;
-            -webkit-touch-callout: none;
+            /* -webkit-touch-callout: none;
             -webkit-user-select: none;
             -khtml-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
-            user-select: none;
+            user-select: none; */
         }
-        #e-newItem0 {
+        /* #e-newItem0 {
             height:400px;
         }
         #e-newItem1 {
@@ -111,7 +112,7 @@
         }
         #e-newItem3, #e-newItem2 {
             height: 340px;
-        }
+        } */
     </style>
 </body>
 </html>

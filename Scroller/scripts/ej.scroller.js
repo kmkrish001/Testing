@@ -1130,7 +1130,7 @@
                     return true;
             }
             if (this._browser == "mozilla")
-                e.axis == e.HORIZONTAL_AXIS ? data = this._scrollXdata : this._scrollYdata;
+                e.axis == e.HORIZONTAL_AXIS ? data = (this._scrollXdata ? this._scrollXdata: data) : this._scrollYdata;
             else if (this._browser == "msie") {
                 if ((e.type == "wheel")) delta = e.deltaX / 120;
                 if ((e.type == "mousewheel" && e.shiftKey)) {
