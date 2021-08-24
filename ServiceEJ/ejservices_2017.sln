@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.25909.2
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ejservices_2017", "ejservices_2017.csproj", "{4F53C0DB-22BC-49D3-8904-79B551DF52FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug-xml|Any CPU = Debug-xml|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Release-xml|Any CPU = Release-xml|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4F53C0DB-22BC-49D3-8904-79B551DF52FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F53C0DB-22BC-49D3-8904-79B551DF52FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F53C0DB-22BC-49D3-8904-79B551DF52FE}.Debug-xml|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F53C0DB-22BC-49D3-8904-79B551DF52FE}.Debug-xml|Any CPU.Build.0 = Debug|Any CPU
+		{4F53C0DB-22BC-49D3-8904-79B551DF52FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F53C0DB-22BC-49D3-8904-79B551DF52FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F53C0DB-22BC-49D3-8904-79B551DF52FE}.Release-xml|Any CPU.ActiveCfg = Release|Any CPU
+		{4F53C0DB-22BC-49D3-8904-79B551DF52FE}.Release-xml|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
