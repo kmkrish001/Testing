@@ -886,7 +886,7 @@
         },
 
         _setValue: function (value, isCode) {
-            var reg = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$";
+            var reg = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}|[0-9]{6}[a-z]{2})$";
             if (typeof value == "object" || (typeof value == "number") || ej.isNullOrUndefined(value.match(reg))) value = null;
             this.value(value);
             this._tempValue = value;
@@ -1686,13 +1686,14 @@
         },
         _HexToRGB: function (hex) {
             if (!ej.isNullOrUndefined(hex)) {
-                var reg = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$", hex, validate = hex.match(reg);
+                var reg = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}|[0-9]{6}[a-z]{2})$", hex, validate = hex.match(reg);
                 if (ej.isNullOrUndefined(validate)) { this._change = false; return false; }
+                var value = (hex.length == 9 ) ? Number((parseInt(hex.slice(-2), 16) / 255).toFixed(2)) : 1;
+                hex = hex.slice(1, 7);
                 if (validate[1].length == 3)
                     hex = "#" + validate[1][0] + validate[1][0] + validate[1][1] + validate[1][1] + validate[1][2] + validate[1][2];
                 this._change = true;
                 hex = parseInt(((hex.indexOf('#') > -1) ? hex.substring(1) : hex), 16);
-                var value = ej.isNullOrUndefined(this.rgb) ? parseFloat(this._tempOpacity) / 100 : this.rgb.a;
                 return this.rgb = { r: hex >> 16, g: (hex & 0x00FF00) >> 8, b: (hex & 0x0000FF), a: value };
             }
         },
@@ -1717,6 +1718,7 @@
             hsv.h *= 60;
             if (hsv.h < 0) hsv.h += 360;
             hsv.s *= 100 / 255;
+            hsv.a = rgb.a;
             this._hsv = hsv;
             return hsv;
         },
@@ -1742,7 +1744,7 @@
                 else { rgb.r = 0; rgb.g = 0; rgb.b = 0 }
             }
             this._hsv = hsv;
-            var value = ej.isNullOrUndefined(this.rgb) ? parseFloat(this._tempOpacity) / 100 : this.rgb.a;
+            var value = hsv.a;
             return { r: Math.round(rgb.r), g: Math.round(rgb.g), b: Math.round(rgb.b), a: value }
         },
         _HSVToHex: function (hsv) {
