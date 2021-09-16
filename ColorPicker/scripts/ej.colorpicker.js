@@ -886,7 +886,7 @@
         },
 
         _setValue: function (value, isCode) {
-            var reg = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}|[0-9]{6}[a-z]{2})$";
+            var reg = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}|[A-Fa-f0-9]{8})$";
             if (typeof value == "object" || (typeof value == "number") || ej.isNullOrUndefined(value.match(reg))) value = null;
             this.value(value);
             this._tempValue = value;
@@ -1686,7 +1686,7 @@
         },
         _HexToRGB: function (hex) {
             if (!ej.isNullOrUndefined(hex)) {
-                var reg = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}|[0-9]{6}[a-z]{2})$", hex, validate = hex.match(reg);
+                var reg = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}|[A-Fa-f0-9]{8})$", hex, validate = hex.match(reg);
                 if (ej.isNullOrUndefined(validate)) { this._change = false; return false; }
                 var value = (hex.length == 9 ) ? Number((parseInt(hex.slice(-2), 16) / 255).toFixed(2)) : parseFloat(this._tempOpacity) / 100;
                 hex = hex.slice(1, 7);
