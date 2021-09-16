@@ -1688,7 +1688,7 @@
             if (!ej.isNullOrUndefined(hex)) {
                 var reg = "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}|[0-9]{6}[a-z]{2})$", hex, validate = hex.match(reg);
                 if (ej.isNullOrUndefined(validate)) { this._change = false; return false; }
-                var value = (hex.length == 9 ) ? Number((parseInt(hex.slice(-2), 16) / 255).toFixed(2)) : 1;
+                var value = (hex.length == 9 ) ? Number((parseInt(hex.slice(-2), 16) / 255).toFixed(2)) : parseFloat(this._tempOpacity) / 100;
                 hex = hex.slice(1, 7);
                 if (validate[1].length == 3)
                     hex = "#" + validate[1][0] + validate[1][0] + validate[1][1] + validate[1][1] + validate[1][2] + validate[1][2];

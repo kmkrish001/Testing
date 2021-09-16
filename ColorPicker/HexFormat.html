@@ -69,12 +69,15 @@
 
         var colorObj;
         $(function () {
-            // declaration           
-
+            // declaration   
+            // cp=$('#colorPicker').ejColorPicker("instance")        
+// cp.setModel({value: "#278787"})
             $('#colorPicker').ejColorPicker({
-               // value: "#278787ce",
-              //  value: "#31A8A8",
+              //  value: "#278787aa",
+            //    value: "#31A8A8",
                value: "#278787dd",
+              // value: "#965523",
+              // value: "#9999ff",
                 enableOpacity: true,
               //  displayInline: true,
                // open: "onFocusIn",
@@ -121,7 +124,7 @@
         }
         function onSelect(args) {
           console.log("select")
-            console.log(this._tempOpacity);
+           // console.log(this._tempOpacity);
             console.log(args.RGBA);
             jQuery.addEventLog("The value '" + args.value + "' has been <span class='eventTitle'>selected</span>.");
         }
