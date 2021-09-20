@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+    <!-- Essential Studio for JavaScript  theme reference --> 
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/17.4.0.46/js/web/flat-azure/ej.web.all.min.css" />
+    <!-- Essential Studio for JavaScript  script references -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> 
+    <script src="https://cdn.syncfusion.com/js/assets/external/jsrender.min.js"></script>
+    <!--<script src="https://cdn.syncfusion.com/17.2.0.34/js/web/ej.web.all.min.js"> </script>-->
+	<script src="scripts/ej.core.js"></script>
+    <script src="scripts/ej.data.js"></script>
+    <script src="scripts/ej.scroller.js"></script>
+    <script src="scripts/ej.draggable.js"></script>
+    <script src="scripts/ej.globalize.js"></script>
+    <script src="scripts/ej.button.js"></script>
+    <script src="scripts/ej.togglebutton.js"></script>
+    <script src="scripts/ej.checkbox.js"></script>
+    <script src="scripts/ej.dropdownlist.js"></script>
+</head>
+<body>
+    <div class="content-container-fluid" style="width: 100%; height: 100%">
+        <button onclick="getSel()">Get SelectedIndices </button>
+        <div style="margin-left: 200px">
+            <div class="ctrllabel">Select Group</div>
+            <input id="selectCar" type="text" />
+        </div>
+
+
+        <div class="row" style="width: 100%; height: 100%;">
+            <div class="col-lg-2" style="float: right">
+                <div>
+                    Methods
+                    <input type="checkbox" id="btnendis" class="e-togglebtn" value="checkuncheck" />
+                </div>
+                <input id="numeric" type="text" /><br />
+                <input type="checkbox" id="btnendisitem" class="e-togglebtn" value="checkuncheck" />
+                <button class="button" id="getSelectedItem">getSelectedValue</button><br />
+                <input id="numeric1" type="text" />
+                <input type="checkbox" id="unselectItemByText" class="e-togglebtn" value="checkuncheck" />
+                <input id="numeric2" type="text" /><br />
+                <input type="checkbox" id="unselectItemByValue" class="e-togglebtn" value="checkuncheck" />
+
+                <button class="button" id="addItem">addItem</button><br />
+                <button class="button" id="clearText">clearText</button>
+                <input id="numeric4" type="text" />
+                <button class="button" id="unselectItemByIndex1">unselectItemByIndex</button>
+                <input id="Text1" type="text" />
+                <button class="button" id="selectItemByIndex1">selectItemByIndex</button>
+                <button class="button" id="checkbutton">checkAll</button>
+                <button class="button" id="uncheckbutton">uncheckAll</button>
+                <button class="button" id="btngetselecteditem">getSelectedItem</button>
+            </div>
+            <div class="col-lg-2" style="float: right">
+                API
+              
+                <input type="checkbox" id="btnallowcheck" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btncheckall" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btncaseSensitiveSearch" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btnFilterSearch" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btnenableIncrementalSearch" class="e-togglebtn" value="checkuncheck" />
+               
+                <input type="checkbox" id="btndelimit" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btnenabled" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btnreadonly" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btnsorting" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btnvisualmulti" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btndelimitmulti" class="e-togglebtn" value="checkuncheck" />
+                <input type="checkbox" id="btndisableItemByIndex" class="e-togglebtn" value="checkuncheck" />
+                <input id="Text3" type="text" />
+                <button class="button" id="btnselectedItems">SelectedItems</button>
+                <input id="Text4" type="text" />
+                <button class="button" id="Valuebtn">Value</button>
+
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+var tmpDS = [
+        {
+            "value": "IT",
+            "valueOriginale": "IT",
+            "text": "Italian",
+            "valore_descrizione": "IT - Italian"
+        },
+    ];
+    
+        var myDS = [
+        {
+            "value": "ZH",
+            "valueOriginale": "ZH",
+            "text": "Chinese",
+            "valore_descrizione": "ZH - Chinese"
+        },
+        {
+            "value": "CS",
+            "valueOriginale": "CS",
+            "text": "Czech",
+            "valore_descrizione": "CS - Czech"
+        },
+        {
+            "value": "NL",
+            "valueOriginale": "NL",
+            "text": "Dutch",
+            "valore_descrizione": "NL - Dutch"
+        },
+        {
+            "value": "EN",
+            "valueOriginale": "EN",
+            "text": "English",
+            "valore_descrizione": "EN - English"
+        },
+        {
+            "value": "FR",
+            "valueOriginale": "FR",
+            "text": "French",
+            "valore_descrizione": "FR - French"
+        },
+        {
+            "value": "DE",
+            "valueOriginale": "DE",
+            "text": "German",
+            "valore_descrizione": "DE - German"
+        },
+        {
+            "value": "IT",
+            "valueOriginale": "IT",
+            "text": "Italian",
+            "valore_descrizione": "IT - Italian"
+        },
+        {
+            "value": "KO",
+            "valueOriginale": "KO",
+            "text": "Korean",
+            "valore_descrizione": "KO - Korean"
+        },
+        {
+            "value": "PL",
+            "valueOriginale": "PL",
+            "text": "Polish",
+            "valore_descrizione": "PL - Polish"
+        },
+        {
+            "value": "PT",
+            "valueOriginale": "PT",
+            "text": "Portuguese",
+            "valore_descrizione": "PT - Portuguese"
+        },
+        {
+            "value": "RU",
+            "valueOriginale": "RU",
+            "text": "Russian",
+            "valore_descrizione": "RU - Russian"
+        },
+        {
+            "value": "ES",
+            "valueOriginale": "ES",
+            "text": "Spanish",
+            "valore_descrizione": "ES - Spanish"
+        }
+    ];
+
+    var startDS = null;
+        if (confirm("Load temporary DS and default element?"))
+        {
+            startDS = tmpDS;
+        }
+        var target, country, countries;
+        $(function () {
+            //first level child
+            
+            target = $('#selectCar').ejDropDownList({
+                dataSource: startDS,
+            width: '450px',
+            enableFilterSearch: true,
+            showCheckbox: true,
+            multiSelectMode: ej.MultiSelectMode.VisualMode
+                
+        }).data("ejDropDownList");
+
+        var ddlObj = $("#selectCar").ejDropDownList("instance");
+    
+    if (startDS != null)
+    {
+        var valDefault = "IT";
+        ddlObj.option("value", valDefault.trim().toUpperCase());
+    }
+
+    setTimeout(function() {
+        console.log("loading combo datasource");
+        ddlObj.option({
+            dataSource: myDS,
+        });
+        
+        if (startDS != null)
+        {
+            // We use selectItemByValue in our application, but even with 'option("value",...' the bug occurs
+            ddlObj.selectItemByValue(valDefault.trim().toUpperCase());
+        
+            //ddlObj.option("value", valDefault.trim().toUpperCase());
+        }
+    }, 5000);
+
+            $("#btndisableItemByIndex").ejToggleButton({ "click": "ondisableItemByIndex", "defaultText": "disableItemByIndex", "activeText": "enableItemByIndex", "cssClass": "button" });
+            $("#btnendis").ejToggleButton({ "click": "onEnableDiasableAll", "defaultText": "Disable All", "activeText": "Enable All", "cssClass": "button" });
+            $("#btnallowmul").ejToggleButton({ "click": "onallowmulti", "defaultText": "Multiselection:true", "activeText": "Multiselection:false", "cssClass": "button" });
+            $("#btnallowcheck").ejToggleButton({ "click": "onshowcheckbox", "defaultText": "Showcheckbox:true", "activeText": "Showcheckbox:false", "cssClass": "button" });
+            $("#btncaseSensitiveSearch").ejToggleButton({ "click": "oncaseSensitiveSearch", "defaultText": "caseSensitiveSearch:true", "activeText": "caseSensitiveSearch:false", "cssClass": "button" });
+            $("#btnFilterSearch").ejToggleButton({ "click": "onFilterSearch", "defaultText": "enableFilterSearch :true", "activeText": "enableFilterSearch:false", "cssClass": "button" });
+            $("#btnenableIncrementalSearch").ejToggleButton({ "click": "onenableIncrementalSearch", "defaultText": "enableIncrementalSearch:true", "activeText": "enableIncrementalSearch:false", "cssClass": "button" });
+            $("#btncheckall").ejToggleButton({ "click": "oncheckall", "defaultText": "checkall", "activeText": "uncheckall", "cssClass": "button" });
+            $("#btnendisitem").ejToggleButton({ "click": "onEnableDiasableitem", "defaultText": "disableItemByIndex", "activeText": "enableItemByIndex", "cssClass": "button" });
+            $("#unselectItemByText").ejToggleButton({ "click": "unselectItemBytext", "defaultText": "selectItemByText", "activeText": "unselectItembytext", "cssClass": "button" });
+            $("#unselectItemByValue").ejToggleButton({ "click": "unselectItemByvalue", "defaultText": "selectItemByValue", "activeText": "unselectItembyValue", "cssClass": "button" });
+            $("#btndelimit").ejToggleButton({ "click": "ondelimitchange", "defaultText": "delimiter:(.)", "activeText": "delimiter:(,)", "cssClass": "button" });
+            $("#btnenabled").ejToggleButton({ "click": "onenablechange", "defaultText": "disabled:true", "activeText": "enabled:true", "cssClass": "button" });
+            $("#btnreadonly").ejToggleButton({ "click": "onreadonlychange", "defaultText": "readonly:false", "activeText": "readonly:true", "cssClass": "button" });
+            $("#btnsorting").ejToggleButton({ "click": "onsortingchange", "defaultText": "sorting:false", "activeText": "sorting:true", "cssClass": "button" });
+            $("#btnvisualmulti").ejToggleButton({ "click": "onmultiselectvisual", "defaultText": "multiselectmode:visual", "activeText": "multiselect:none", "cssClass": "button" });
+            $("#btndelimitmulti").ejToggleButton({ "click": "onmultiselectdelimit", "defaultText": "multiselectmode:delimit", "activeText": "multiselect:none", "cssClass": "button" });           
+            $("#checkbutton").ejButton({ click: "oncheckapi" });
+            $("#uncheckbutton").ejButton({ click: "onuncheckapi" });
+            $("#getSelectedItem").ejButton({
+                size: "normal", click: "getSelecteditem",
+            });
+            $("#addItem").ejButton({
+                size: "normal", click: "additem",
+            });
+            $("#btngetselecteditem").ejButton({
+                size: "normal", click: function () {
+                    alert(target.getSelectedItem().length);
+                }
+            });
+
+            $("#clearText").ejButton({
+                size: "normal", click: "cleartext",
+            });
+            $("#btnselectedItems").ejButton({
+                size: "normal", click: "btnselectedItems",
+            });
+            $("#Valuebtn").ejButton({
+                size: "normal", click: "onvaluechange",
+            });
+            $("#unselectItemByIndex1").ejButton({ "click": "unselectItemByindex", "cssClass": "button" });
+            $("#selectItemByIndex1").ejButton({ "click": "selectItemByindex", "cssClass": "button" });
+        });
+        function onvaluechange() {
+            target.setModel({ value: $("#Text4").val() });
+        }
+        function btnselectedItems() {
+            var val2 = $("#Text3").val().split(',');
+            target.setModel({ selectedItems: val2 });
+        }
+        function onEnableDiasableAll(args) {
+            if (args.isChecked)
+                target.disable();
+            else
+                target.enable();
+        }
+        function oncheckapi(args) {
+            target.checkAll();
+        }
+        function onuncheckapi(args) {
+            target.unCheckAll();
+        }
+        function onmultiselectvisual(args) {
+            if (args.isChecked)
+                target.setModel({ multiSelectMode: "visualmode" });
+            else
+                target.setModel({ multiSelectMode: "none" });
+        }
+        function onmultiselectdelimit(args) {
+            if (args.isChecked)
+                target.setModel({ multiSelectMode: "delimiter" });
+            else
+                target.setModel({ multiSelectMode: "none" });
+        }
+        function ondisableItemByIndex(args) {
+            var val = $("#Text2").val();
+            if (args.isChecked)
+                target.setModel({ disableItemsByIndex: val });
+            else
+                target.setModel({ enableItemsByIndex: val });
+        }
+        function onreadonlychange(args) {
+            if (args.isChecked) {
+                target.setModel({ "readOnly": true });
+            }
+            else {
+                target.setModel({ "readOnly": false });
+            }
+        }
+        function oncheckall(args) {
+            if (args.isChecked) {
+                target.setModel({ "checkAll": true });
+            }
+            else {
+                target.setModel({ "uncheckAll": true });
+            }
+        }
+        function onsortingchange(args) {
+            if (args.isChecked) {
+                target.setModel({ "checkAll": true });
+            }
+            else {
+                target.setModel({ "uncheckAll": false });
+            }
+        }
+        function onenablechange(args) {
+            if (!args.isChecked) {
+                target.setModel({ "enabled": true });
+            } else {
+                target.setModel({ "enabled": false });
+            }
+        }
+        function ondelimitchange(args) {
+            if (args.isChecked) {
+                target.setModel({ "delimiterChar": '.' });
+            } else {
+                target.setModel({ "delimiterChar": ',' });
+            }
+        }
+        function onallowmulti(args) {
+            if (args.isChecked)
+                target.option("allowMultiSelection", true);
+            else
+                target.option("allowMultiSelection", false);
+        }
+        function oncaseSensitiveSearch(args) {
+            if (args.isChecked)
+                target.model.caseSensitiveSearch = true;
+            else
+                target.model.caseSensitiveSearch = false;
+        }
+        function onFilterSearch(args){
+            if (args.isChecked)
+                target.setModel({ "enableFilterSearch": true });
+            else
+                target.setModel({ "enableFilterSearch": false });
+        }
+        function onenableIncrementalSearch(args) {
+            if (args.isChecked)
+                target.setModel({ "enableIncrementalSearch": true });
+            else
+                target.setModel({ "enableIncrementalSearch": false });
+        }
+        function onshowcheckbox(args) {
+            if (args.isChecked)
+                target.option("showCheckbox", true);
+            else
+                target.option("showCheckbox", false);
+        }
+        function onEnableDiasableitem(args) {
+            var disitem = $("#numeric").val();
+            if (args.isChecked)
+                target.disableItemByIndex(disitem);
+            else
+                target.enableItemByIndex(disitem);
+        }
+
+        function cleartext(e) {
+            target.clearText();
+        }
+        function additem(e) {
+
+            target.addItem(window.country);
+        }
+        function unselectItemByindex(e) {
+            var disitem = $("#numeric4").val();
+
+            target.unselectItemByIndex(disitem);
+
+        }
+        function selectItemByindex(e) {
+            var disitem = $("#Text1").val();
+
+            target.selectItemByIndex(disitem);
+
+        }
+        function getSelecteditem(e) {
+            alert(target.getSelectedValue());
+        }
+
+        function unselectItemBytext(args) {
+            target = $('#selectCar').data("ejDropDownList");
+            var disitem = $("#numeric1").val();
+            if (args.isChecked)
+                target.selectItemByText(disitem);
+            else
+                target.unselectItemByText(disitem);
+        }
+        function unselectItemByvalue(args) {
+            target = $('#selectCar').data("ejDropDownList");
+            var disitem = $("#numeric2").val();
+            if (args.isChecked)
+                target.selectItemByValue(disitem);
+            else
+                target.unselectItemByValue(disitem);
+        }
+
+        function getSel(){
+            var ddObj = $('#selectCar').ejDropDownList("instance");
+            alert(ddObj.model.selectedIndices);
+        }
+    </script>
+    <style type="text/css" class="cssStyles">
+        .control {
+            margin-left: 30px;
+        }
+
+        .ctrllabel {
+            padding-top: 15px;
+        }
+
+        .button {
+            font-size: 12px;
+        }
+
+        .applycssClass {
+            background-color: yellow;
+        }
+
+        .button {
+            display: block;
+        }
+    </style>
+</body>
+</html>
