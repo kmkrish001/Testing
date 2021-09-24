@@ -1022,20 +1022,18 @@
             if (this._change && this._previousValue !== this._tempValue) {
                 this.popupContainer && this._alphaGradient(this._tempValue);
                 this._previousValue = this._tempValue;
-                this._trigger("change", { value: this._tempValue, changeFrom: element ? "slider" : "picker", isInteraction: !isCode });
+                this._trigger("change", { value: this._tempValue, RGBA: this.rgb, changeFrom: element ? "slider" : "picker", isInteraction: !isCode });
                 this._updateColor(element);
             }else{
                this.popupContainer && this._alphaGradient(this._tempValue);
             }
         },
         _selectEvent: function () {
-            if (this._previousColor !== this._tempValue || this._tempOpacity !== this._previousOpacity) {
                 this.value(this._tempValue);
                 if (this.element.is("input")) this._updateValue();
                 this.element.val(this.value());
                 this._trigger("select", { value: this.value(), RGBA: this.rgb });
                 this._previousColor = this._tempValue;
-            }
         },
         _changeHue: function (e) {
             this._handleArea.css("visibility", "visible");
@@ -1067,10 +1065,10 @@
             }
             this._inputTagValue(this._selectedButton);
             if (this.model.displayInline) {
-                this._trigger("change", { value: this._tempValue, changeFrom: "slider", isInteraction: !ej.isNullOrUndefined(e) ? e.isInteraction : false });
+                this._trigger("change", { value: this._tempValue, RGBA: this.rgb, changeFrom: "slider", isInteraction: !ej.isNullOrUndefined(e) ? e.isInteraction : false });
                 (this._trigger("select", { value: this.value(), RGBA: this.rgb }));
             }
-        else this._trigger("change", { value: this._tempValue, changeFrom: "slider", isInteraction: !ej.isNullOrUndefined(e) ? e.isInteraction: false });
+        else this._trigger("change", { value: this._tempValue, RGBA: this.rgb, changeFrom: "slider", isInteraction: !ej.isNullOrUndefined(e) ? e.isInteraction: false });
         },
         _updateValue: function () {
             if (this.value()) {
@@ -1355,7 +1353,7 @@
             }
             this._tempValue = null;
             if (this._previousValue !== this._tempValue) {
-                this._trigger("change", { value: null });
+                this._trigger("change", { value: null, RGBA: null });
                 this._previousValue = this._tempValue
             }
         },
