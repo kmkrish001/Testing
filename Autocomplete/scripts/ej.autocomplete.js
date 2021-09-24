@@ -2443,6 +2443,7 @@
 
          _OnMouseClick: function (e) {
              this._getActiveItemIndex(e);
+             this._checkEmptyList();
             if (!this.noresult) {
                 this._enterTextBoxValue(e);
                 this._isOpened = false;
