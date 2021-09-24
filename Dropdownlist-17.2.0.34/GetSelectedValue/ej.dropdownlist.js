@@ -812,10 +812,6 @@
             var ele = ["element", "_visibleInput"], val = [];
             for (var i = 0; i < ele.length; i++) {
             val = ele[i] == "element" ? this._hiddenValue : currentValue;
-			if (!this._isSingleSelect()&& JSON.stringify(this._boxValue) != JSON.stringify(this._valueContainer))
-			{
-				this._boxValue = this._valueContainer;
-			}
 				var srcContainer = ele[i] == "element" ? this._valueContainer : this._textContainer;
                 if (this[ele[i]][0].value && this[ele[i]][0].value != "") {
                     var splitedText = (ele[i] == 'element') ? this[ele[i]][0].value.split(this.model.delimiterChar): this._visibleValue;
