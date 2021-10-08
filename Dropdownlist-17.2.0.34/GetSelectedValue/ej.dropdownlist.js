@@ -574,7 +574,10 @@
                                     this._activeItem = i;
                                     if (this._activeItem == this._aselectedItem) this._aselectedItem = null;
                                     if((this._visibleInput.val()!= this._checkedValues && (e && e.type == "keyup")) || this.model.enablePersistence){
+                                        var PrevItemLen = items.length;
                                         this._removeTextBoxValue();
+                                        var CurtItemLen = items.length;
+                                        if (CurtItemLen < PrevItemLen) k--;
                                     }
                                     break;
                                 }
