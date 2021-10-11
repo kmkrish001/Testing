@@ -551,7 +551,8 @@
                                 if (this._selectedValue) {
                                     this._activeItem = i;
                                     this._aselectedItem = this._activeItem;
-                                    this._enterTextBoxValue();
+                                    if (this.model.showCheckbox) this._enterTextBoxValue(true);
+                                    else { this._enterTextBoxValue(); }
                                     break;
                                 } 
                         }
@@ -837,7 +838,7 @@
 						}
 						else
                             this[ele[i]][0].value = val;
-                            if(ele[i] == '_visibleInput') this._visibleValue.push(val);
+                            if(ele[i] == '_visibleInput' && $.inArray(val, this._visibleValue) == -1) this._visibleValue.push(val);
 					}
 				}
 				srcContainer.push(val);
@@ -946,7 +947,6 @@
                     case "template": this.model.template = options[option]; this._checkModelDataBinding(this._dataSource(), this.model.query); break;
                     case "value": 
 					var optionValue = ej.util.getVal(options[option]);
-					if (ej.isNullOrUndefined(optionValue) || optionValue === "") this._clearTextboxValue();
 					if (ej.isNullOrUndefined(optionValue) || optionValue === "") this._clearTextboxValue();
                     else { this._checkedValues.push(options.value); this._setValue(ej.util.getVal(options[option])); options[option] = this.model.value; } break;
                     case "incrementalSearchDelay": this.model.incrementalSearchDelay = options[option]; break;
@@ -1295,6 +1295,7 @@
         _checkModelDataBinding: function (source, query) {
             this.element.val("");
             this._visibleInput.val("");
+            this._checkedValues = [];
             (this.value()!==null && this.value()!=='') && this._updateValue("");
             this.selectedTextValue = this._selectedValue = this._hiddenValue = "";
             this._updateText();
@@ -2767,7 +2768,7 @@
                 else valueModified = false;
                 if(valueModified) {
 					this.checkedStatus = true;
-					if(isCheck)								
+					if(isCheck && $.inArray(this.activeItem.text(), this._checkedValues) == -1)								
 					  this._checkedValues.push(this.activeItem.text());
                     this._onValueChange();					
                     this._cascadeAction();
