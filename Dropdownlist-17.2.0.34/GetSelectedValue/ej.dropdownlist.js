@@ -2390,7 +2390,7 @@
 			if(quote.test(value))
 			     value =value.replace(quote,"&apos;")
             var arrayEle = this.container.find("[id='#" + value + "']");
-			this._hiddenInputElement.splice($.inArray(arrayEle.value,this._hiddenInputElement),1);
+			this._hiddenInputElement.splice($.inArray(arrayEle.val(),this._hiddenInputElement),1);
 			var index = this._boxValue.indexOf(value)
 			if(index != -1)this._boxValue.splice(index,1);
             $(arrayEle).remove();
