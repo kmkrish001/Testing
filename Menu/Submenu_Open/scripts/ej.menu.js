@@ -466,7 +466,7 @@
         _overflowClose: function (e) {
             if(this._ensureOverflowPopup() && !ej.isNullOrUndefined(this.popupWrapper)){            
                 this.popupWrapper.find("li.e-list").removeClass(".e-mhover.e-active.e-mfocused");
-                if (ej.browserInfo().name === 'chrome')
+                if (ej.browserInfo().name === 'chrome' || ej.browserInfo().name === 'opera')
                     this._hideAnimation(this.popupWrapper.find('li.e-list:has(ul)').find('> ul:visible'), this._hideAnim);
                 else
                 this._hideAnimation(this.popupWrapper.find('li.e-list:has("> ul")').find('> ul:visible'), this._hideAnim);
@@ -536,7 +536,7 @@
         },
         _addClass : function (){
             //Adding arrows to items with sub items
-            if (ej.browserInfo().name === 'chrome')
+            if (ej.browserInfo().name === 'chrome' || ej.browserInfo().name === 'opera')
                 this.element.find('li:has(ul)').find('> a,> span').addClass('aschild');
             else
             this.element.find('li:has("> ul")').find('> a,> span').addClass('aschild');
@@ -704,13 +704,13 @@
         _addArrow: function (topArrows, bottomArrows) {
             if (topArrows) {
 				var arrowIcon = (this.model.orientation == "horizontal") ? "e-arrowhead-down" : "e-arrowhead-right";
-				if (ej.browserInfo().name === 'chrome')
+				if (ej.browserInfo().name === 'chrome' || ej.browserInfo().name === 'opera')
                     this.element.find('>li.e-list:has(ul)').children('a').append($('<span>').addClass("e-icon "+arrowIcon)).addClass("e-arrow-space");
                 else
 				this.element.find('>li.e-list:has("> ul")').children('a').append($('<span>').addClass("e-icon "+arrowIcon)).addClass("e-arrow-space");
 			}
             else {
-                if (ej.browserInfo().name === 'chrome')
+                if (ej.browserInfo().name === 'chrome' || ej.browserInfo().name === 'opera')
                     this.element.find('>li.e-list:has(ul)').children('a').removeClass("e-arrow-space").children('span.e-icon').remove();
                 else
                 this.element.find('>li.e-list:has("> ul")').children('a').removeClass("e-arrow-space").children('span.e-icon').remove();
@@ -886,7 +886,7 @@
         },
 
         _closeMenu: function () {
-            if (ej.browserInfo().name === 'chrome')
+            if (ej.browserInfo().name === 'chrome' || ej.browserInfo().name === 'opera')
                 this._hideAnimation(this.element.find('li.e-list:has(ul)').find('> ul:visible'), this._hideAnim);
             else
             this._hideAnimation(this.element.find('li.e-list:has("> ul")').find('> ul:visible'), this._hideAnim);
@@ -1036,7 +1036,7 @@
         },
 
         _closeAll: function () {
-            if (ej.browserInfo().name === 'chrome')
+            if (ej.browserInfo().name === 'chrome' || ej.browserInfo().name === 'opera')
                 this._hideAnimation(this.element.find('li.e-list:has(ul)').find('> ul:visible'), this._hideAnim);
             else
             this._hideAnimation(this.element.find('li.e-list:has("> ul")').find('> ul:visible'), this._hideAnim);
@@ -1098,7 +1098,7 @@
             target.append(ulTag);
             target.attr({ 'role': 'menu', 'aria-haspopup': 'true' });
             target.addClass("e-haschild");
-            if (ej.browserInfo().name === 'chrome')
+            if (ej.browserInfo().name === 'chrome' || ej.browserInfo().name === 'opera')
                 this.element.find('li:has(ul)').find('> a,>span').addClass('aschild e-arrow-space');
             else
             this.element.find('li:has("> ul")').find('> a,>span').addClass('aschild e-arrow-space');
@@ -1714,7 +1714,7 @@
                     this.hideContextMenu(e);
                 else
 					this.element.find("li.e-list").removeClass("e-mhover");
-                    if (ej.browserInfo().name === 'chrome')
+                    if (ej.browserInfo().name === 'chrome' || ej.browserInfo().name === 'opera')
                         this.element.find('li.e-list:has(ul)').find('> ul:visible').parents("li.e-list").addClass("e-mhover");
                     else
                     this.element.find('li.e-list:has("> ul")').find('> ul:visible').parents("li.e-list").addClass("e-mhover");
