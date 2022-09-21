@@ -1376,10 +1376,17 @@ var __extends = (this && this.__extends) || function (d, b) {
                         var wordWithoutSpace = '';
                         var isWordRightSpace = false;
                         var isWord = false;
+                        var isNonAlphabetAdded = false;
                         for (var cx = 0; cx < currentCursorNode.length; cx++) {
                             var cc = currentCursorNode.data.charAt(cx);
                             if (cc.charCodeAt(0) != 160) {
                                 if (cc.charCodeAt(0) != 32) {
+                                    if(!isNonAlphabetAdded && this.model.enableValidateOnType){
+                                        if(!(cc.charCodeAt(0) >= 65 && cc.charCodeAt(0) <= 90) && !(cc.charCodeAt(0) >= 97 && cc.charCodeAt(0) <= 122)) {
+                                            currentWord = '';
+                                            isNonAlphabetAdded = true;
+                                        }
+                                    }
                                     if (wordEmptySpace === '') {
                                         currentWord = currentWord + cc;
                                     }
@@ -1455,10 +1462,13 @@ var __extends = (this && this.__extends) || function (d, b) {
                         }
                     }
                     var textNode = currentCursorNode;
+                    console.log(currentCursorNode);
                     range.collapse(true);
+                    console.log(currentCursorPosition);
                     range.setStart(textNode, currentCursorPosition);
                     range.setEnd(textNode, currentCursorPosition);
                     selection.removeAllRanges();
+                    console.log(range);
                     selection.addRange(range);
                 }
             }
