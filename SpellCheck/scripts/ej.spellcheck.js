@@ -1382,10 +1382,13 @@ var __extends = (this && this.__extends) || function (d, b) {
                             if (cc.charCodeAt(0) != 160) {
                                 if (cc.charCodeAt(0) != 32) {
                                     if(!isNonAlphabetAdded && this.model.enableValidateOnType){
-                                        if(!(cc.charCodeAt(0) >= 65 && cc.charCodeAt(0) <= 90) && !(cc.charCodeAt(0) >= 97 && cc.charCodeAt(0) <= 122)) {
+                                        if(!(this._isAlphabet(cc))) {
                                             currentWord = '';
                                             isNonAlphabetAdded = true;
                                         }
+                                    }
+                                    if (isNonAlphabetAdded && currentWord.length == 1 && !(this._isAlphabet(currentWord))) {
+                                        currentWord = '';
                                     }
                                     if (wordEmptySpace === '') {
                                         currentWord = currentWord + cc;
@@ -1460,19 +1463,26 @@ var __extends = (this && this.__extends) || function (d, b) {
                             currentCursorNode = elementTextNodes[i];
                             break;
                         }
+                        if (isNonAlphabetAdded && this.model.enableValidateOnType) {
+                            currentCursorPosition = elementTextNodes[i].data.length;
+                            currentCursorNode = elementTextNodes[i];
+                            break;
+                        }
                     }
                     var textNode = currentCursorNode;
-                    console.log(currentCursorNode);
                     range.collapse(true);
-                    console.log(currentCursorPosition);
                     range.setStart(textNode, currentCursorPosition);
                     range.setEnd(textNode, currentCursorPosition);
                     selection.removeAllRanges();
-                    console.log(range);
                     selection.addRange(range);
                 }
             }
         };
+
+        SpellCheck.prototype._isAlphabet = function (val) {
+            return ((val.charCodeAt(0) >= 65 && val.charCodeAt(0) <= 90) || (val.charCodeAt(0) >= 97 && val.charCodeAt(0) <= 122)) ? true : false;
+        };
+
         SpellCheck.prototype._normalizeTextNodes = function (element) {
             element.normalize();
             return;
