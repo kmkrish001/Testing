@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Essential JS 1: DropDownList - Default Functionalities</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+    <link href="https://cdn.syncfusion.com/18.4.0.30/js/web/flat-azure/ej.web.all.min.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> 
+	<![endif]-->
+    <!--[if IE 9]><!-->
+        <script src="scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <!--<![endif]--> 
+    <script src="scripts/ej.core.js"></script>
+    <script src="scripts/ej.data.js"></script>
+    <script src="scripts/ej.scroller.js"></script>
+    <script src="scripts/ej.draggable.js"></script>
+    <script src="scripts/ej.globalize.js"></script>
+    <script src="scripts/ej.button.js"></script>
+    <script src="scripts/ej.checkbox.js"></script>
+    <script src="scripts/ej.datepicker.js"></script>
+    <script src="scripts/ej.dialog.js"></script>
+    <script src="scripts/ej.menu.js"></script>
+    <script src="scripts/ej.listbox.js"></script>
+    <script src="scripts/ej.tooltip.js"></script>
+    <script src="scripts/ej.uploadbox.js"></script>
+</head>
+<body>
+	<div class="content-container-fluid">
+        <div class="row">
+            <div class="cols-sample-area">
+                <div class="frame">
+                    <div class="control">
+                        Select a file to upload
+                                <div class="posupload">
+                                    <div id="UploadDefault"></div>
+                                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            // declaration
+            $("#UploadDefault").ejUploadbox({
+                saveUrl: "https://js.syncfusion.com/demos/jquery/uploadbox/saveFiles.ashx",
+                removeUrl: "https://js.syncfusion.com/demos/jquery/uploadbox/removeFiles.ashx"
+            });
+        });
+
+
+        ej.Uploadbox.prototype._isAllowed = function (files) {
+            var inputfield, uploadControl, args, allowExtension,allowSize,denyExtension, proxy = this, allowedFiles = [], filteredFiles = [],status=true;
+            inputfield = this.element.find(".e-uploadinput");
+            uploadControl = this;
+			
+            if (this.model.extensionsAllow != "") {
+                allowExtension = this.model.extensionsAllow.replace(/\s/g, "").toLowerCase().split(",");
+				
+             
+                $(files).each(function () {
+                    if ($.inArray((this.extension).toLowerCase(), allowExtension) == -1) {
+
+                        args = { action: "Files Processing", error:proxy._getLocalizedLabels("allowError").replace("#Extension", allowExtension.join(", ")), files: this };
+                        uploadControl._trigger('error', args);
+						proxy._errorFiles.push(args.files);
+						proxy._resetFileInput(inputfield);
+                        status = false;
+                    }
+                    else {
+                        // if (this.extension != "")
+                            allowedFiles.push(this);
+                    }
+                });
+            }
+
+            else if (this.model.extensionsDeny != "") {
+                denyExtension = this.model.extensionsDeny.replace(/\s/g, "").toLowerCase().split(",");
+				
+				
+                $(files).each(function () {
+                    if ($.inArray((this.extension).toLowerCase(), denyExtension) != -1) {
+
+                        args = { action: "Files Processing", error: proxy._getLocalizedLabels("denyError").replace("#Extension", denyExtension.join(", ")), files: this };
+                        uploadControl._trigger('error', args);
+						proxy._errorFiles.push(args.files);
+						proxy._resetFileInput(inputfield);
+                        status = false;
+                    }
+                    else {
+                        // if (this.extension != "")
+                            allowedFiles.push(this);
+                    }
+                });
+            }
+            else {
+                $(files).each(function () {
+                    // if (this.extension != "")
+                        allowedFiles.push(this);
+                });
+            }
+            if (this.model.fileSize != "") {
+                allowSize = this.model.fileSize;
+                $(allowedFiles).each(function () {
+                    if ((this.size > allowSize)) {
+                  
+                        args = { action: "Files Processing", error: proxy._getLocalizedLabels("filedetail").replace("#fileSize", allowSize), files: this };
+                        uploadControl._trigger('error', args);
+						proxy._errorFiles.push(args.files);
+						proxy._resetFileInput(inputfield);
+                        status = false;
+                    }
+                    else {
+                        filteredFiles.push(this);
+                    }
+                });
+            }
+            else
+                filteredFiles = allowedFiles;
+            return { files: filteredFiles, status: status };
+        }
+
+    </script>
+    <style class="cssStyles">
+        .posupload {
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+
+        .frame {
+            margin-top: 10%;
+        }
+
+        .control {
+            margin-left: 20%;
+            margin-top: 8%;
+        }
+    </style>
+</body>
+</html>
